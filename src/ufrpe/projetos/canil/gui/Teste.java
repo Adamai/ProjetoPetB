@@ -9,7 +9,7 @@ import ufrpe.projetos.canil.negocio.*;
 import ufrpe.projetos.canil.*;
 
 public class Teste {
-
+//COLOCAR IF PARA ADOTADO, CASO true = print SIM, CASO false = print NÃO
 public static void main(String[] args){
 		
 	int controlador = 1;

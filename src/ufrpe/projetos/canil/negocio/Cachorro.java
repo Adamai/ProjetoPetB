@@ -8,14 +8,16 @@ public class Cachorro {
 		private int idade;
 		private String saude;
 		private String temperamento;
+		private Boolean adotado;
 		
-		public Cachorro(String nome, String raca, double peso, int idade, String saude, String temperamento){
+		public Cachorro(String nome, String raca, double peso, int idade, String saude, String temperamento, Boolean adotado){
 			this.nome = nome;
 			this.raca = raca;
 			this.peso = peso;
 			this.idade = idade;
 			this.saude = saude;
 			this.temperamento = temperamento;
+			this.adotado = adotado;
 		}
 
 		public String getNome() {
@@ -56,6 +58,14 @@ public class Cachorro {
 
 		public String getTemperamento() {
 			return temperamento;
+		}
+		
+		public Boolean getAdotado(){
+			return adotado;
+		}
+		
+		public void setAdotado(Boolean adotado){
+			this.adotado = adotado;
 		}
 
 		public String toString(){
