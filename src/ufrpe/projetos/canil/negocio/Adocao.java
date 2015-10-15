@@ -14,7 +14,7 @@ public class Adocao {
 	
 	public void adotar(Cachorro c, Pessoa p){
 		c.setAdotado(true);
-		//juntar cachorro, pessoa e data em um registro. criar repositorio adotados?
+		//juntar cachorro, pessoa e data em um registro. 
 		
 		
 	}
