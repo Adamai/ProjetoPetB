@@ -1,8 +1,8 @@
 package ufrpe.projetos.canil.negocio;
 
-public class Cachorro extends Animal{
-	
-	public Cachorro(String nome, String raca, double peso, int idade, String saude, String temperamento){
+public class Gato extends Animal{
+
+	public Gato(String nome, String raca, double peso, int idade, String saude, String temperamento){
 		super(nome,raca,peso,idade,saude,temperamento);
 	}
 
@@ -49,7 +49,5 @@ public class Cachorro extends Animal{
 		public String toString(){
 			return this.nome + ", "+ this.peso+" kg, " + this.raca +", "+ this.idade +" anos, " + this.saude + ", " +this.temperamento;
 		}
-		
 		*/
-	}
-
+}
