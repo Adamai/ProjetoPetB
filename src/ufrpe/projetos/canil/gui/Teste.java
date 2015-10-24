@@ -22,6 +22,7 @@ while(controlador !=0){
 	System.out.println("1 - Cadastro de Cliente");
 	System.out.println("2 - Cadastro de Animais");
 	System.out.println("3 - Acessar Animais");
+	System.out.println("4 - Adotar Animais");
 	
 	Scanner scan = new Scanner(System.in);
 	int escolha = scan.nextInt();
@@ -48,7 +49,7 @@ while(controlador !=0){
 		 endereco = scan.next();
 		 System.out.println(endereco);
 		 		
-		 Pessoa p = new Pessoa(nome,idade,contato,donos,endereco,"batata","doce");
+		 Pessoa p = new Pessoa(nome,idade,contato, endereco,"batata","doce");
 		 cadastrop.cadastrar(p);
 		 
 	}
@@ -149,7 +150,50 @@ while(controlador !=0){
 			
 		}
 		
+		
 			}
+	
+	if(escolha == 4){
+		//listar animais com o nome inserido e seus dados com um numero para ser inserido ao lado
+		//ex: procuro Ringo, vai aparecer:
+		//1 - Iggy  Peso: tal, status: tal
+		//2 - Iggy  Peso: tal, status: tal
+		// O usuario insere o numero respectivo ao que quer adotar e confirma a escolha
+		Scanner scan2 = new Scanner(System.in);
+		System.out.println("1 -Cachorro");
+		System.out.println("2 - Gato");
+		int escolha2 = scan2.nextInt();
+		
+		if(escolha2 <= 1){
+			String raca;
+			System.out.println("Digite a raca do animal que está procurando");
+			raca = scan2.next();
+			ArrayList<Animal>cachorros = cadastro.buscaCachorro(raca);
+			Animal c = cachorros.get(0);
+			Pessoa p = new Pessoa("Johny Joestar", 15, 40028922, "Rua dos bobos nº 0", "Pipoca", "1234");
+			Adocao a = new Adocao(c, p);
+			if(c.isAdotado() == true)
+				System.out.print("Adoção realizada com sucesso em: " +a.getData());
+			}
+			System.out.print("\n");
+			
+		
+		
+		if(escolha2 >= 2){
+			String raca;
+			System.out.println("Digite a raca do animal que está procurando");
+			raca = scan2.next();
+			ArrayList<Animal>gatos = cadastro.buscaGato(raca);
+			int aux = cadastro.buscaGato(raca).size();
+			for(int i=0;i<aux;i++){
+				System.out.println(gatos.get(i).toString());
+			}
+			System.out.print("\n");
+			
+		}
+		
+		
+	}
 					
 		
 		}//FIM WHILE

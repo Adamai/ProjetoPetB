@@ -62,7 +62,7 @@ public class RepositorioAnimais {
 		
 	}
 	
-	public int[] buscaIndices(String raca){ // BUSCA UM CONJUNTO DE CACHORROS DE UMA MESMA RAÇA
+	public int[] buscaIndices(String raca){ // BUSCA UM CONJUNTO DE ANIMAIS DE UMA MESMA RAÇA
 		int numeroAnimal = this.buscaNumero(raca);
 		int indices[] = new int[numeroAnimal];
 		int indice = 0;
@@ -85,7 +85,7 @@ public class RepositorioAnimais {
 		return indices;
 	}
 	
-	public Animal[] buscaPorIndices(int indices[]){ // CRIA UM ARRAY COM OS CACHORROS PROCURADOS
+	public Animal[] buscaPorIndices(int indices[]){ // CRIA UM ARRAY COM OS ANIMAIS PROCURADOS
 		
 		Animal a[] = new Animal[indices.length];
 		for(int i = 0;i<indices.length;i++){
@@ -95,15 +95,7 @@ public class RepositorioAnimais {
 		return a;
 	}
 	
-	/*public Animal[] buscaAnimal(String raca){ // RETORNA TODOS OS CACHORROS DE DETERMINADA RAÇA
-		
-		if(this.buscaPorIndices(this.buscaIndices(raca)) != null){
-			Animal a[] = this.buscaPorIndices(this.buscaIndices(raca));
-			return a;
-		}
-		else
-			return null;
-	}*/
+
 	
 	public ArrayList<Animal> buscaCachorro(String raca){ // RETORNA TODOS OS CACHORROS DE DETERMINADA RAÇA
 		ArrayList<Animal>cachorros = new ArrayList<Animal>();

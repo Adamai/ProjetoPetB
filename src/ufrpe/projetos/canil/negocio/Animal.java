@@ -1,6 +1,6 @@
 package ufrpe.projetos.canil.negocio;
 
-public class Animal {
+public abstract class Animal {
 
 	private String nome; 
 	private String raca;
@@ -8,7 +8,8 @@ public class Animal {
 	private int idade;
 	private String saude;
 	private String temperamento;
-	
+	private boolean adotado;
+	//LIGAR O ANIMAL COM UM VETERINARIO NA HORA DE CRIA-LO
 	public Animal(String nome, String raca, double peso, int idade, String saude, String temperamento){
 		this.nome = nome;
 		this.raca = raca;
@@ -16,6 +17,7 @@ public class Animal {
 		this.idade = idade;
 		this.saude = saude;
 		this.temperamento = temperamento;
+		this.adotado = false;
 		}
 	
 	public String getNome() {
@@ -60,6 +62,14 @@ public class Animal {
 
 	public String toString(){
 		return this.nome + ", "+ this.peso+" kg, " + this.raca +", "+ this.idade +" anos, " + this.saude + ", " +this.temperamento;
+	}
+
+	public boolean isAdotado() {
+		return adotado;
+	}
+
+	public void setAdotado(boolean adotado) {
+		this.adotado = adotado;
 	}
 	
 	

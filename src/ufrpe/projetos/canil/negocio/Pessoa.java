@@ -1,51 +1,19 @@
 package ufrpe.projetos.canil.negocio;
 
-public class Pessoa {
-	private String nome;
-	private int idade;
-	private int contato;
-	private int donos;
+public class Pessoa extends Usuario {
+	
 	private String endereco;
 	private String login;
 	private String senha;
+
 	
-	public Pessoa(String nome, int idade, int contato,int donos, String endereco,String login,String senha){
-		this.nome = nome;
-		this.idade = idade;
-		this.contato = contato;
-		this.donos = donos;
+	public Pessoa(String nome, int idade, int contato, String endereco,String login,String senha){
+		super(nome, idade, contato);
 		this.endereco = endereco;
 		this.login = login;
 		this.senha = senha;
 	}
 
-	public String getNome() {
-		return nome;
-	}
-
-	public int getIdade() {
-		return idade;
-	}
-
-	public void setIdade(int idade) {
-		this.idade = idade;
-	}
-
-	public int getContato() {
-		return contato;
-	}
-
-	public void setContato(int contato) {
-		this.contato = contato;
-	}
-
-	public int getDonos() {
-		return donos;
-	}
-
-	public void setDonos(int donos) {
-		this.donos = donos;
-	}
 
 	public String getEndereco() {
 		return endereco;

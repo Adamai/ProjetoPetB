@@ -7,21 +7,35 @@ import java.util.Date;
 import ufrpe.projetos.canil.dados.*;
 
 public class Adocao {
-	
-	Date d = new Date();  
-    SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");  
-    String data =  sdf.format(d).toString();
-	
-	public void adotar(Cachorro c, Pessoa p){
-		c.setAdotado(true);
-		//juntar cachorro, pessoa e data em um registro. 
-		
-		
+	private Animal animal;
+	private Pessoa pessoa;
+	private String data;
+
+	public Adocao(Animal animal, Pessoa pessoa) {
+		this.animal = animal;
+		this.pessoa = pessoa;
+		this.data = this.setData();
+		animal.setAdotado(true);
+	}
+
+	public String setData() {
+		Date d = new Date();
+		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+		String data = sdf.format(d).toString();
+		return data;
+	}
+
+	public Animal getAnimal() {
+		return animal;
+	}
+
+	public Pessoa getPessoa() {
+		return pessoa;
+	}
+
+	public String getData() {
+		return data;
 	}
 	
-	
-	
-	
-	
-	
+
 }
