@@ -2,7 +2,7 @@ package ufrpe.projetos.canil.negocio;
 
 import ufrpe.projetos.canil.dados.*;
 
-public class CadastroCachorro {
+public class CadastroCachorro implements BuscaCachorro {
 
 	private RepositorioCachorros repositorio;
 	
@@ -29,7 +29,7 @@ public class CadastroCachorro {
 	}*/
 	
 	public Cachorro[] busca(String raca){
-		
+		//como retorna algo ao user, precisa de interface
 		if((this.repositorio.buscaCachorro(raca)) !=null){
 			Cachorro c[] = this.repositorio.buscaCachorro(raca);
 			return c;

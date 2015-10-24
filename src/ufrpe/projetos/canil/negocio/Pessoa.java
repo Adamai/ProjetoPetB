@@ -1,13 +1,10 @@
 package ufrpe.projetos.canil.negocio;
 
-public class Pessoa {
-	private String nome;
-	private int idade;
-	private int contato;
+public class Pessoa extends Usuario {
+
 	private int donos;
 	private String endereco;
-	private String login;
-	private String senha;
+
 	
 	public Pessoa(String nome, int idade, int contato,int donos, String endereco,String login,String senha){
 		this.nome = nome;

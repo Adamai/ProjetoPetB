@@ -76,7 +76,7 @@ while(controlador !=0){
 		System.out.println("Informe a idade");
 		idade = scan.nextInt();
 	
-		Cachorro c = new Cachorro(nome,raca,peso,idade,"saudavel","calmo");
+		Cachorro c = new Cachorro(nome,raca,peso,idade,"saudavel","calmo", false);
 		cadastroc.cadastrar(c);
 		System.out.println("Cadastro realizado com sucesso");
 		System.out.print("\n");
@@ -86,7 +86,7 @@ while(controlador !=0){
 	if(escolha == 3){
 		Scanner scan2 = new Scanner(System.in);
 		
-		String bug;
+		
 		String raca;
 		System.out.println("Digite a raca do cachorro q está procurando");
 		raca = scan2.nextLine();
