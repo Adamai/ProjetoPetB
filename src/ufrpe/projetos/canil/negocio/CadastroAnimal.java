@@ -6,10 +6,11 @@ import java.util.ArrayList;
 public class CadastroAnimal {
 
 private RepositorioAnimais repositorio;
+private RepositorioAdotados adotados;
 	
 	public CadastroAnimal(){
 		this.repositorio = new RepositorioAnimais();
-	
+		this.adotados = new RepositorioAdotados();
 	}
 	
 	public void cadastrar(Animal a){
@@ -35,5 +36,12 @@ public ArrayList<Animal> buscaGato(String raca){
 	}
 	else 
 		return null;
+}
+
+
+public Animal adotar(String nome){
+	Animal a = this.repositorio.buscaAdocao(nome);
+	this.adotados.cadastrar(a);
+	return a;
 }
 }

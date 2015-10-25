@@ -28,7 +28,7 @@ while(controlador !=0){
 	int escolha = scan.nextInt();
 	
 	
-	if(escolha == 1){
+	if(escolha == 1){//CADASTRO USUÁRIO
 		 String nome;
 		 int idade;
 		 int contato;
@@ -54,7 +54,7 @@ while(controlador !=0){
 		 
 	}
 	
-	if(escolha==2){
+	if(escolha==2){//CADASTRO ANIMAIS
 		String nome;
 		String raca;
 		double peso;
@@ -118,7 +118,7 @@ while(controlador !=0){
 	
 	
 	
-	if(escolha == 3){
+	if(escolha == 3){//BUSCA
 		Scanner scan2 = new Scanner(System.in);
 		System.out.println("1 -Cachorro");
 		System.out.println("2 - Gato");
@@ -131,7 +131,7 @@ while(controlador !=0){
 			ArrayList<Animal>cachorros = cadastro.buscaCachorro(raca);
 			int aux = cadastro.buscaCachorro(raca).size();
 			for(int i=0;i<aux;i++){
-				System.out.println(cachorros.get(i).toString());
+				System.out.println(cachorros.get(i));
 			}
 			System.out.print("\n");
 			
@@ -153,7 +153,7 @@ while(controlador !=0){
 		
 			}
 	
-	if(escolha == 4){
+	if(escolha == 4){//ADOÇAO
 		//listar animais com o nome inserido e seus dados com um numero para ser inserido ao lado
 		//ex: procuro Ringo, vai aparecer:
 		//1 - Iggy  Peso: tal, status: tal
@@ -165,11 +165,11 @@ while(controlador !=0){
 		int escolha2 = scan2.nextInt();
 		
 		if(escolha2 <= 1){
-			String raca;
-			System.out.println("Digite a raca do animal que está procurando");
-			raca = scan2.next();
-			ArrayList<Animal>cachorros = cadastro.buscaCachorro(raca);
-			Animal c = cachorros.get(0);
+			String nome;
+			System.out.println("Digite o nome do animal que está procurando");
+			nome = scan2.next();
+			Animal c = cadastro.adotar(nome);
+			System.out.println(c);
 			Pessoa p = new Pessoa("Johny Joestar", 15, 40028922, "Rua dos bobos nº 0", "Pipoca", "1234");
 			Adocao a = new Adocao(c, p);
 			if(c.isAdotado() == true)
@@ -190,10 +190,10 @@ while(controlador !=0){
 			}
 			System.out.print("\n");
 			
+		    }	
+		
+		
 		}
-		
-		
-	}
 					
 		
 		}//FIM WHILE
