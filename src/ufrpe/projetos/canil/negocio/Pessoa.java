@@ -14,7 +14,6 @@ public class Pessoa extends Usuario {
 		this.senha = senha;
 	}
 
-
 	public String getEndereco() {
 		return endereco;
 	}
@@ -31,5 +30,4 @@ public class Pessoa extends Usuario {
 		return senha;
 	}
 
-	
 }

@@ -71,6 +71,5 @@ public abstract class Animal {
 	public void setAdotado(boolean adotado) {
 		this.adotado = adotado;
 	}
-	
-	
+		
 	}

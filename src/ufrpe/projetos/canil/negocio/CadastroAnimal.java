@@ -37,11 +37,20 @@ public ArrayList<Animal> buscaGato(String raca){
 	else 
 		return null;
 }
+public ArrayList<Animal> buscaOutro(String especie){
+	
+	if((this.repositorio.buscaOutro(especie)) !=null){
+		 ArrayList<Animal>outros= this.repositorio.buscaOutro(especie);
+		return outros;
+	}
+	else 
+		return null;
+}
 
 
 public Animal adotar(String nome){
 	Animal a = this.repositorio.buscaAdocao(nome);
 	this.adotados.cadastrar(a);
 	return a;
-}
+			}
 }

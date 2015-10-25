@@ -19,12 +19,17 @@ public class Adocao {
 	}
 
 	public String setData() {
+
 		Date d = new Date();
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 		String data = sdf.format(d).toString();
 		return data;
 	}
-
+	
+	public String getData() {
+		return data;
+	}
+	
 	public Animal getAnimal() {
 		return animal;
 	}
@@ -32,10 +37,5 @@ public class Adocao {
 	public Pessoa getPessoa() {
 		return pessoa;
 	}
-
-	public String getData() {
-		return data;
-	}
-	
 
 }

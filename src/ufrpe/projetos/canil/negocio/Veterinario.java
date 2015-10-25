@@ -7,5 +7,4 @@ public class Veterinario extends Usuario {
 		
 	}
 	
-
 }

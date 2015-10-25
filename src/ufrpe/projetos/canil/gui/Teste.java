@@ -12,11 +12,10 @@ public static void main(String[] args){
 	int controlador = 1;
 	
 	CadastroPessoa cadastrop = new CadastroPessoa();
-	//CadastroCachorro cadastroc = new CadastroCachorro();
 	CadastroAnimal cadastro = new CadastroAnimal();
 	System.out.println("Bem vindo ao Pet Buddy");
 	
-while(controlador !=0){	
+	while(controlador !=0){	
 	
 	System.out.println("O Que deseja fazer?");
 	System.out.println("1 - Cadastro de Cliente");
@@ -63,6 +62,7 @@ while(controlador !=0){
 		
 		System.out.println("1 - Cachorro");
 		System.out.println("2 - Gato");
+		System.out.println("3 - Outro");
 		int escolha2 = scan.nextInt();
 		
 		if(escolha2 <= 1 ){
@@ -86,18 +86,12 @@ while(controlador !=0){
 			System.out.println("Cadastro realizado com sucesso");
 			System.out.print("\n");
 		
-			/*if(a instanceof Cachorro){
-				Cachorro cachorro = (Cachorro) a;
-				cadastroc.cadastrar(cachorro);
-				System.out.println("Cadastro realizado com sucesso");
-				System.out.print("\n");
-			}*/
+			
 		}
-			if(escolha2 >= 2){
+			if(escolha2 == 2){
 				
 				System.out.println("Digite o nome do Gato");
 				nome = scan.next();
-			
 			
 				System.out.println("Digite a raça do Gato");
 				raca = scan.next();
@@ -113,15 +107,38 @@ while(controlador !=0){
 				cadastro.cadastrar(a);
 				System.out.println("Cadastro realizado com sucesso");
 				System.out.print("\n");
-			}
 		}
-	
-	
+			if(escolha2 >=3){
+				
+				System.out.println("Digite a especie do Animal");
+				String especie = scan.next();
+				
+				System.out.println("Digite o nome do Animal");
+				nome = scan.next();			
+			
+				System.out.println("Digite a raça do Animal");
+				raca = scan.next();
+			
+				System.out.println("Informe o peso");
+				peso = scan.nextDouble();
+			
+				System.out.println("Informe a idade");
+				idade = scan.nextInt();
+		
+				Animal a = new Outro(nome,raca,peso,idade,"saudavel","calmo", especie);
+				
+				cadastro.cadastrar(a);
+				System.out.println("Cadastro realizado com sucesso");
+				System.out.print("\n");
+			}
+			
+		}
 	
 	if(escolha == 3){//BUSCA
 		Scanner scan2 = new Scanner(System.in);
 		System.out.println("1 -Cachorro");
 		System.out.println("2 - Gato");
+		System.out.println("3 - Outro");
 		int escolha2 = scan2.nextInt();
 		
 		if(escolha2 <= 1){
@@ -137,7 +154,7 @@ while(controlador !=0){
 			
 		}
 		
-		if(escolha2 >= 2){
+		if(escolha2 == 2){
 			String raca;
 			System.out.println("Digite a raca do animal que está procurando");
 			raca = scan2.next();
@@ -149,7 +166,18 @@ while(controlador !=0){
 			System.out.print("\n");
 			
 		}
-		
+		if(escolha2 >= 3){
+			String especie;
+			System.out.println("Digite a especie do animal que está procurando");
+			especie = scan2.next();
+			ArrayList<Animal>outros = cadastro.buscaOutro(especie);
+			int aux = cadastro.buscaOutro(especie).size();
+			for(int i=0;i<aux;i++){
+				System.out.println(outros.get(i).toString());
+			}
+			System.out.print("\n");
+			
+		}
 		
 			}
 	

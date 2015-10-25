@@ -35,8 +35,6 @@ public class RepositorioPessoas {
 		return -1;
 	}
 	
-	
-	
 	public void remover(Pessoa p){
 		int indice = this.busca(p);
 		
