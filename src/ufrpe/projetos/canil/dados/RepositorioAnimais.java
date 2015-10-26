@@ -16,158 +16,58 @@ public class RepositorioAnimais {
 		this.animais.add(animal);
 	}
 		
-	public int buscaNumero(String raca){// BUSCA O NÚMERO DE CACHORROS DE UMA RAÇA
-		int indice = 0;
-		int i = 0;
-		
-		while(indice<this.animais.size()){
-			
-			String procurado = this.animais.get(indice).getRaca();
-			
-			if(procurado.contains(raca)){
-				i++;
-				indice++;
-			}
-			else{
-				indice++;
-				}
-			}
-		
-		return i;
-		
-	} 
-	public int buscaNumero2(String especie){// BUSCA O NÚMERO DE ANIMAIS DE UMA ESPECIE
-		int indice = 0;
-		int i = 0;
-		
-		while(indice<this.animais.size()){
-			Outro o = (Outro) this.animais.get(indice);
-			String procurado = o.getEspecie();
-			
-			if(procurado.contains(especie)){
-				i++;
-				indice++;
-			}
-			else{
-				indice++;
-				}
-			}
-		
-		return i;
-		
-	}
-		
-	public int buscaIndice(String nome){// BUSCA O INDICE DE UM ANIMAL ESPECÍFICO ATRAVÉS DO NOME
-		
-		int indice = 0;
-		boolean achou = false;
-		
-		while(indice<this.animais.size() && !achou){
-			
-			String procurado = this.animais.get(indice).getNome();
-			
-			if(procurado.contains(nome)){
-				achou = true;
-			}
-			else{
-				indice++;
-				}
-			}
-		
-		return indice;
-		
-	}
-	
-	
-	public int[] buscaIndices(String raca){ // BUSCA UM CONJUNTO DE ANIMAIS DE UMA MESMA RAÇA
-
-		int numeroAnimal = this.buscaNumero(raca);
-		int indices[] = new int[numeroAnimal];
-		int indice = 0;
-		int i = 0;
-		
-		while(indice<this.animais.size()){
-			
-			String procurado = this.animais.get(indice).getRaca();
-			
-			if(procurado.contains(raca)){
-				indices[i] = indice;
-				i++;
-				indice++;
-			}
-			else{
-				indice++;
-				}
-			}
-		
-		return indices;
-	}	
-	public int[] buscaIndices2(String especie){ // BUSCA UM CONJUNTO DE ANIMAIS DE UMA MESMA ESPECIE
-		int numeroAnimal = this.buscaNumero2(especie);
-		int indices[] = new int[numeroAnimal];
-		int indice = 0;
-		int i = 0;
-		
-		while(indice<this.animais.size()){
-			Outro o = (Outro)this.animais.get(indice);
-			String procurado = o.getEspecie();
-			
-			if(procurado.contains(especie)){
-				indices[i] = indice;
-				i++;
-				indice++;
-			}
-			else{
-				indice++;
-				}
-			}
-		
-		return indices;
-	}
-	
 	public ArrayList<Animal> buscaCachorro(String raca){ // RETORNA TODOS OS CACHORROS DE DETERMINADA RAÇA
 		ArrayList<Animal>cachorros = new ArrayList<Animal>();
 		
-		int indices[] = this.buscaIndices(raca);
-			for(int i =0;i<indices.length;i++){
-				if(animais.get(indices[i]) instanceof Cachorro){
-					cachorros.add((Cachorro)animais.get(indices[i]));
-				}
+		for(int i = 0; i<this.animais.size();i++){
+			Animal a = this.animais.get(i);
+			if(a.getRaca().contains(raca) && a instanceof Cachorro){
+				cachorros.add(a);
 			}
+		}
 			return cachorros;
 		}
+	
 	public ArrayList<Animal> buscaGato(String raca){ // RETORNA TODOS OS GATOS DE DETERMINADA RAÇA
 		ArrayList<Animal>gatos = new ArrayList<Animal>();
 		
-		int indices[] = this.buscaIndices(raca);
-			for(int i =0;i<indices.length;i++){
-				if(animais.get(indices[i]) instanceof Gato){
-					gatos.add((Gato)animais.get(indices[i]));
+		for(int i = 0; i<this.animais.size();i++){
+			Animal a = this.animais.get(i);
+			if(a.getRaca().contains(raca) && a instanceof Gato){
+				gatos.add(a);
 			}
 		}
 		return gatos;
 	}
+	
 	public ArrayList<Animal> buscaOutro(String especie){ //RETORNA TODOS OS OUTROS DE DETERMINADA ESPECIE
 		ArrayList<Animal>outros = new ArrayList<Animal>();
 		
-		int indices[] = this.buscaIndices2(especie);
-			for (int i =0;i<indices.length;i++){
-				if(animais.get(indices[i]) instanceof Outro){
-					outros.add((Outro)animais.get(indices[i]));
+		for(int i = 0; i<this.animais.size();i++){
+			Animal a = this.animais.get(i);
+			if(a instanceof Outro){
+				Outro outro = (Outro)a;
+				if(outro.getEspecie().contains(especie))
+				outros.add(outro);
 			}
 		}
+		
 		return outros;
 	}
 	
-	public Animal buscaAdocao(String nome){
-		int indice = this.buscaIndice(nome);
-		Animal a = animais.get(indice);
-		this.remover(a);
-		return a;
+	public Animal buscaAdocao(String nome){//ADOTA UM ANIMAL ESPECIFICO POR NOME 
 		
+		for(int i = 0;i<this.animais.size();i++){
+			if(this.animais.get(i).getNome().contains(nome)){
+				Animal a = this.animais.get(i);
+				this.remover(a);
+				return a;
+			}
+		}
+		return null;
 	}
 	
-	public void remover(Animal a){ // REMOVE UM CACHORRO ESPECÍFICO ATRAVÉS DO NOME
+	public void remover(Animal a){ // REMOVE UM ANIMAL ESPECÍFICO ATRAVÉS DO NOME
 		for(int i = 0;i<animais.size();i++){
 			if(animais.get(i).equals(a)){
 				animais.remove(i);
