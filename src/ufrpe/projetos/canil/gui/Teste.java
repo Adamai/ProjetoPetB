@@ -35,9 +35,10 @@ public static void main(String[] args){
 		 String endereco;
 		 //String login;
 		 //String senha;
-		 
+			Scanner scan5 = new Scanner(System.in);
+			Scanner scan6 = new Scanner(System.in);
 		 System.out.println("Digite seu nome");
-		 nome = scan.next();
+		 nome = scan5.nextLine();
 		 System.out.println("Informe seu numero de contato");
 		 contato = scan.nextInt();
 		 System.out.println("informe o numero de moradores da sua casa");
@@ -45,7 +46,7 @@ public static void main(String[] args){
 		 System.out.println("Insira sua idade");
 		 idade = scan.nextInt();
 		 System.out.println("Infome seu endereco");
-		 endereco = scan.next();
+		 endereco = scan6.nextLine();
 		 System.out.println(endereco);
 		 		
 		 Pessoa p = new Pessoa(nome,idade,contato, endereco,"batata","doce");
@@ -66,13 +67,14 @@ public static void main(String[] args){
 		int escolha2 = scan.nextInt();
 		
 		if(escolha2 <= 1 ){
-			
+			Scanner scan5 = new Scanner(System.in);
+			Scanner scan6 = new Scanner(System.in);
 			System.out.println("Digite o nome do cão");
-			nome = scan.next();
+			nome = scan5.nextLine();
 		
 		
 			System.out.println("Digite a raça do cão");
-			raca = scan.next();
+			raca = scan6.nextLine();
 		
 			System.out.println("Informe o peso");
 			peso = scan.nextDouble();
@@ -89,12 +91,13 @@ public static void main(String[] args){
 			
 		}
 			if(escolha2 == 2){
-				
+				Scanner scan5 = new Scanner(System.in);
+				Scanner scan6 = new Scanner(System.in);
 				System.out.println("Digite o nome do Gato");
-				nome = scan.next();
+				nome = scan5.nextLine();
 			
 				System.out.println("Digite a raça do Gato");
-				raca = scan.next();
+				raca = scan6.nextLine();
 			
 				System.out.println("Informe o peso");
 				peso = scan.nextDouble();
@@ -109,15 +112,17 @@ public static void main(String[] args){
 				System.out.print("\n");
 		}
 			if(escolha2 >=3){
-				
+				Scanner scan5 = new Scanner(System.in);
+				Scanner scan6 = new Scanner(System.in);
+				Scanner scan7 = new Scanner(System.in);
 				System.out.println("Digite a especie do Animal");
-				String especie = scan.next();
+				String especie = scan5.nextLine();
 				
 				System.out.println("Digite o nome do Animal");
-				nome = scan.next();			
+				nome = scan6.nextLine();			
 			
 				System.out.println("Digite a raça do Animal");
-				raca = scan.next();
+				raca = scan7.nextLine();
 			
 				System.out.println("Informe o peso");
 				peso = scan.nextDouble();
@@ -190,6 +195,7 @@ public static void main(String[] args){
 		Scanner scan2 = new Scanner(System.in);
 		System.out.println("1 -Cachorro");
 		System.out.println("2 - Gato");
+		System.out.println("3 - Outro <AINDA NÃO FUNCIONA> ");
 		int escolha2 = scan2.nextInt();
 		
 		if(escolha2 <= 1){
@@ -207,7 +213,7 @@ public static void main(String[] args){
 			
 		
 		
-		if(escolha2 >= 2){
+		if(escolha2 == 2){
 			String raca;
 			System.out.println("Digite a raca do animal que está procurando");
 			raca = scan2.next();
@@ -219,6 +225,17 @@ public static void main(String[] args){
 			System.out.print("\n");
 			
 		    }	
+		if(escolha2 == 3){
+			String animal;
+			System.out.println("Digite qual o animal que está procurando");
+			/* Adicionar adoção para o animal procurado, fazer listar pessoas para conta adm */
+			
+			
+			
+			}
+			System.out.print("\n");
+			
+		    }
 		
 		
 		}
@@ -227,4 +244,4 @@ public static void main(String[] args){
 		}//FIM WHILE
 	
 	}
-}
+
