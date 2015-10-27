@@ -8,7 +8,7 @@ import ufrpe.projetos.canil.negocio.*;
 public class Teste {
 
 public static void main(String[] args){
-	long id=0;
+		
 	int controlador = 1;
 	
 	CadastroPessoa cadastrop = new CadastroPessoa();
@@ -72,7 +72,6 @@ public static void main(String[] args){
 			System.out.println("Digite o nome do cão");
 			nome = scan5.nextLine();
 		
-		
 			System.out.println("Digite a raça do cão");
 			raca = scan6.nextLine();
 		
@@ -82,8 +81,8 @@ public static void main(String[] args){
 			System.out.println("Informe a idade");
 			idade = scan.nextInt();
 	
-			Animal a = new Cachorro(nome,raca,peso,idade,"saudavel","calmo", id+1);
-			id++;
+			Animal a = new Cachorro(nome,raca,peso,idade,"saudavel","calmo");
+			
 			cadastro.cadastrar(a);
 			System.out.println("Cadastro realizado com sucesso");
 			System.out.print("\n");
@@ -105,8 +104,8 @@ public static void main(String[] args){
 				System.out.println("Informe a idade");
 				idade = scan.nextInt();
 		
-				Animal a = new Gato(nome,raca,peso,idade,"saudavel","calmo", id+1);
-				id++;
+				Animal a = new Gato(nome,raca,peso,idade,"saudavel","calmo");
+				
 				cadastro.cadastrar(a);
 				System.out.println("Cadastro realizado com sucesso");
 				System.out.print("\n");
@@ -130,8 +129,8 @@ public static void main(String[] args){
 				System.out.println("Informe a idade");
 				idade = scan.nextInt();
 		
-				Animal a = new Outro(nome,raca,peso,idade,"saudavel","calmo", especie, id+1);
-				id++;
+				Animal a = new Outro(nome,raca,peso,idade,"saudavel","calmo", especie);
+				
 				cadastro.cadastrar(a);
 				System.out.println("Cadastro realizado com sucesso");
 				System.out.print("\n");
@@ -150,8 +149,8 @@ public static void main(String[] args){
 			String raca;
 			System.out.println("Digite a raca do animal que está procurando");
 			raca = scan2.next();
-			ArrayList<Animal>cachorros = cadastro.buscaCachorro(raca.toLowerCase());
-			int aux = cadastro.buscaCachorro(raca).size();
+			ArrayList<Animal>cachorros = cadastro.buscaAnimais(raca,escolha2);
+			int aux = cadastro.buscaAnimais(raca,escolha2).size();
 			for(int i=0;i<aux;i++){
 				System.out.println(cachorros.get(i));
 			}
@@ -163,8 +162,8 @@ public static void main(String[] args){
 			String raca;
 			System.out.println("Digite a raca do animal que está procurando");
 			raca = scan2.next();
-			ArrayList<Animal>gatos = cadastro.buscaGato(raca);
-			int aux = cadastro.buscaGato(raca).size();
+			ArrayList<Animal>gatos = cadastro.buscaAnimais(raca,escolha2);
+			int aux = cadastro.buscaAnimais(raca,escolha2).size();
 			for(int i=0;i<aux;i++){
 				System.out.println(gatos.get(i).toString());
 			}
@@ -175,8 +174,8 @@ public static void main(String[] args){
 			String especie;
 			System.out.println("Digite a especie do animal que está procurando");
 			especie = scan2.next();
-			ArrayList<Animal>outros = cadastro.buscaOutro(especie);
-			int aux = cadastro.buscaOutro(especie).size();
+			ArrayList<Animal>outros = cadastro.buscaAnimais(especie,escolha2);
+			int aux = cadastro.buscaAnimais(especie,escolha2).size();
 			for(int i=0;i<aux;i++){
 				System.out.println(outros.get(i).toString());
 			}
@@ -184,9 +183,9 @@ public static void main(String[] args){
 			
 		}
 		
-			}
+		}
 	
-	if(escolha == 4){//ADOÇAO
+	/*if(escolha == 4){//ADOÇAO
 		//listar animais com o nome inserido e seus dados com um numero para ser inserido ao lado
 		//ex: procuro Ringo, vai aparecer:
 		//1 - Iggy  Peso: tal, status: tal
@@ -217,8 +216,8 @@ public static void main(String[] args){
 			String raca;
 			System.out.println("Digite a raca do animal que está procurando");
 			raca = scan2.next();
-			ArrayList<Animal>gatos = cadastro.buscaGato(raca);
-			int aux = cadastro.buscaGato(raca).size();
+			ArrayList<Animal>gatos = cadastro.buscaAnimais(raca,escolha2);
+			int aux = cadastro.buscaAnimais(raca,escolha2).size();
 			for(int i=0;i<aux;i++){
 				System.out.println(gatos.get(i).toString());
 			}
@@ -228,7 +227,6 @@ public static void main(String[] args){
 		if(escolha2 == 3){
 			String animal;
 			System.out.println("Digite qual o animal que está procurando");
-			/* Adicionar adoção para o animal procurado, fazer listar pessoas para conta adm */
 			
 			
 			
@@ -237,7 +235,7 @@ public static void main(String[] args){
 			
 		    }
 		
-		
+		*/
 		}
 					
 		

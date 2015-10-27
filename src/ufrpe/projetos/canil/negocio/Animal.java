@@ -9,9 +9,8 @@ public abstract class Animal {
 	private String saude;
 	private String temperamento;
 	private boolean adotado;
-	private long numid;
 	//LIGAR O ANIMAL COM UM VETERINARIO NA HORA DE CRIA-LO
-	public Animal(String nome, String raca, double peso, int idade, String saude, String temperamento, long numid){
+	public Animal(String nome, String raca, double peso, int idade, String saude, String temperamento){
 		this.nome = nome;
 		this.raca = raca;
 		this.peso = peso;
@@ -19,7 +18,6 @@ public abstract class Animal {
 		this.saude = saude;
 		this.temperamento = temperamento;
 		this.adotado = false;
-		this.numid = numid;
 		}
 	
 	public String getNome() {
@@ -63,9 +61,7 @@ public abstract class Animal {
 	}
 
 	public String toString(){
-		return "Id: " +this.numid + "\n" +"Nome: " +this.nome + "\nPeso: "+ this.peso+" kg\nEspécie/Raça: " 
-	+ this.raca +"\nIdade: "+ this.idade +" anos\nEstado de saúde: " 
-	+ this.saude + "\nTemperamento: " +this.temperamento +"\n\n";
+		return this.nome + ", "+ this.peso+" kg, " + this.raca +", "+ this.idade +" anos, " + this.saude + ", " +this.temperamento;
 	}
 
 	public boolean isAdotado() {
@@ -74,10 +70,6 @@ public abstract class Animal {
 
 	public void setAdotado(boolean adotado) {
 		this.adotado = adotado;
-	}
-
-	public long getNumid() {
-		return numid;
 	}
 		
 	}

@@ -5,52 +5,34 @@ import java.util.ArrayList;
 
 public class CadastroAnimal {
 
-private RepositorioAnimais repositorio;
-private RepositorioAdotados adotados;
+private IRepositorio[] repositorios;
 	
 	public CadastroAnimal(){
-		this.repositorio = new RepositorioAnimais();
-		this.adotados = new RepositorioAdotados();
+		this.repositorios = new IRepositorio[2];
+		this.repositorios[0] = new RepositorioAnimais();
+		this.repositorios[1] = new RepositorioAdotados();
 	}
 	
 	public void cadastrar(Animal a){
 		if(a != null ){ // incluir condição de existencia
-			this.repositorio.cadastrar(a);
+			this.repositorios[0].cadastrar(a);
 		}
 	}
 	
-public ArrayList<Animal> buscaCachorro(String raca){
+public ArrayList<Animal> buscaAnimais(String raca, int num){ 
 		
-		if((this.repositorio.buscaCachorro(raca)) !=null){
-			 ArrayList<Animal>cachorros= this.repositorio.buscaCachorro(raca);
-			return cachorros;
+		if((this.repositorios[0].busca(raca, num)) !=null){
+			ArrayList<Animal>buscados = this.repositorios[0].busca(raca,num);
+			return buscados;
 		}
 		else 
 			return null;
 	}
-public ArrayList<Animal> buscaGato(String raca){
-	
-	if((this.repositorio.buscaGato(raca)) !=null){
-		 ArrayList<Animal>gatos= this.repositorio.buscaGato(raca);
-		return gatos;
-	}
-	else 
-		return null;
-}
-public ArrayList<Animal> buscaOutro(String especie){
-	
-	if((this.repositorio.buscaOutro(especie)) !=null){
-		 ArrayList<Animal>outros= this.repositorio.buscaOutro(especie);
-		return outros;
-	}
-	else 
-		return null;
-}
 
 
-public Animal adotar(String nome){
-	Animal a = this.repositorio.buscaAdocao(nome);
-	this.adotados.cadastrar(a);
-	return a;
-			}
+//public Animal adotar(String nome){
+	//Animal a = this.repositorios[].buscaAdocao(nome);
+	//this.repositorios[2].cadastrar(a);
+	//return a;
+	//		}
 }

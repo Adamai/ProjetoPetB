@@ -2,7 +2,7 @@ package ufrpe.projetos.canil.dados;
 import ufrpe.projetos.canil.negocio.*;
 import java.util.ArrayList;
 
-public class RepositorioAnimais {
+public class RepositorioAnimais implements IRepositorio {
 
 	private ArrayList<Animal> animais;
 	
@@ -16,43 +16,43 @@ public class RepositorioAnimais {
 		this.animais.add(animal);
 	}
 		
-	public ArrayList<Animal> buscaCachorro(String raca){ // RETORNA TODOS OS CACHORROS DE DETERMINADA RAÇA
-		ArrayList<Animal>cachorros = new ArrayList<Animal>();
+	public ArrayList<Animal> busca(String raca, int num){
+		ArrayList<Animal>buscados = new ArrayList<Animal>();
 		
-		for(int i = 0; i<this.animais.size();i++){
-			Animal a = this.animais.get(i);
-			if(a.getRaca().toLowerCase().contains(raca.toLowerCase()) && a instanceof Cachorro){
-				cachorros.add(a);
+		if(num ==1){//CACHORROS
+			for(int i = 0; i<this.animais.size();i++){
+				Animal a = this.animais.get(i);
+				if(a.getRaca().contains(raca) && a instanceof Cachorro){
+					buscados.add(a);
+				}
 			}
-		}
-			return cachorros;
-		}
-	
-	public ArrayList<Animal> buscaGato(String raca){ // RETORNA TODOS OS GATOS DE DETERMINADA RAÇA
-		ArrayList<Animal>gatos = new ArrayList<Animal>();
+				return buscados;
+		}//FIM IF 1
 		
-		for(int i = 0; i<this.animais.size();i++){
-			Animal a = this.animais.get(i);
-			if(a.getRaca().toLowerCase().contains(raca.toLowerCase()) && a instanceof Gato){
-				gatos.add(a);
+		else if(num == 2){//GATOS
+			for(int i = 0; i<this.animais.size();i++){
+				Animal a = this.animais.get(i);
+				if(a.getRaca().contains(raca) && a instanceof Gato){
+					buscados.add(a);
+				}
 			}
+			return buscados;
 		}
-		return gatos;
-	}
-	
-	public ArrayList<Animal> buscaOutro(String especie){ //RETORNA TODOS OS OUTROS DE DETERMINADA ESPECIE
-		ArrayList<Animal>outros = new ArrayList<Animal>();
 		
-		for(int i = 0; i<this.animais.size();i++){
-			Animal a = this.animais.get(i);
-			if(a instanceof Outro){
-				Outro outro = (Outro)a;
-				if(outro.getEspecie().toLowerCase().contains(especie.toLowerCase()))
-				outros.add(outro);
+		else if(num == 3){//OUTROS
+			for(int i = 0; i<this.animais.size();i++){
+				Animal a = this.animais.get(i);
+				if(a instanceof Outro){
+					Outro outro = (Outro)a;
+					if(outro.getEspecie().contains(raca))
+					buscados.add(outro);
+				}
 			}
+			return buscados;
 		}
+		else
+			return null;
 		
-		return outros;
 	}
 	
 	public Animal buscaAdocao(String nome){//ADOTA UM ANIMAL ESPECIFICO POR NOME 
