@@ -8,7 +8,7 @@ import ufrpe.projetos.canil.negocio.*;
 public class Teste {
 
 public static void main(String[] args){
-		
+	long id=0;
 	int controlador = 1;
 	
 	CadastroPessoa cadastrop = new CadastroPessoa();
@@ -82,8 +82,8 @@ public static void main(String[] args){
 			System.out.println("Informe a idade");
 			idade = scan.nextInt();
 	
-			Animal a = new Cachorro(nome,raca,peso,idade,"saudavel","calmo");
-			
+			Animal a = new Cachorro(nome,raca,peso,idade,"saudavel","calmo", id+1);
+			id++;
 			cadastro.cadastrar(a);
 			System.out.println("Cadastro realizado com sucesso");
 			System.out.print("\n");
@@ -105,8 +105,8 @@ public static void main(String[] args){
 				System.out.println("Informe a idade");
 				idade = scan.nextInt();
 		
-				Animal a = new Gato(nome,raca,peso,idade,"saudavel","calmo");
-				
+				Animal a = new Gato(nome,raca,peso,idade,"saudavel","calmo", id+1);
+				id++;
 				cadastro.cadastrar(a);
 				System.out.println("Cadastro realizado com sucesso");
 				System.out.print("\n");
@@ -130,8 +130,8 @@ public static void main(String[] args){
 				System.out.println("Informe a idade");
 				idade = scan.nextInt();
 		
-				Animal a = new Outro(nome,raca,peso,idade,"saudavel","calmo", especie);
-				
+				Animal a = new Outro(nome,raca,peso,idade,"saudavel","calmo", especie, id+1);
+				id++;
 				cadastro.cadastrar(a);
 				System.out.println("Cadastro realizado com sucesso");
 				System.out.print("\n");
