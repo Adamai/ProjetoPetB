@@ -22,7 +22,7 @@ public class RepositorioAnimais implements IRepositorio {
 		if(num ==1){//CACHORROS
 			for(int i = 0; i<this.animais.size();i++){
 				Animal a = this.animais.get(i);
-				if(a.getRaca().contains(raca) && a instanceof Cachorro){
+				if(a.getRaca().toLowerCase().contains(raca.toLowerCase()) && a instanceof Cachorro){
 					buscados.add(a);
 				}
 			}
@@ -32,7 +32,7 @@ public class RepositorioAnimais implements IRepositorio {
 		else if(num == 2){//GATOS
 			for(int i = 0; i<this.animais.size();i++){
 				Animal a = this.animais.get(i);
-				if(a.getRaca().contains(raca) && a instanceof Gato){
+				if(a.getRaca().toLowerCase().contains(raca.toLowerCase()) && a instanceof Gato){
 					buscados.add(a);
 				}
 			}
@@ -44,7 +44,7 @@ public class RepositorioAnimais implements IRepositorio {
 				Animal a = this.animais.get(i);
 				if(a instanceof Outro){
 					Outro outro = (Outro)a;
-					if(outro.getEspecie().contains(raca))
+					if(outro.getEspecie().toLowerCase().contains(raca.toLowerCase()))
 					buscados.add(outro);
 				}
 			}
