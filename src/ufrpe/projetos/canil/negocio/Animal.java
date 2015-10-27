@@ -61,7 +61,8 @@ public abstract class Animal {
 	}
 
 	public String toString(){
-		return this.nome + ", "+ this.peso+" kg, " + this.raca +", "+ this.idade +" anos, " + this.saude + ", " +this.temperamento;
+		return "Nome: " +this.nome + "\nPeso: "+ this.peso+" kg\nEspécie/Raça: " 
+	+ this.raca +"\nIdade: "+ this.idade +" anos\nEstado de saúde: " + this.saude + "\nTemperamento: " +this.temperamento +"\n\n";
 	}
 
 	public boolean isAdotado() {

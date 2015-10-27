@@ -150,7 +150,7 @@ public static void main(String[] args){
 			String raca;
 			System.out.println("Digite a raca do animal que está procurando");
 			raca = scan2.next();
-			ArrayList<Animal>cachorros = cadastro.buscaCachorro(raca);
+			ArrayList<Animal>cachorros = cadastro.buscaCachorro(raca.toLowerCase());
 			int aux = cadastro.buscaCachorro(raca).size();
 			for(int i=0;i<aux;i++){
 				System.out.println(cachorros.get(i));

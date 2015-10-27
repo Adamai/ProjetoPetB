@@ -21,7 +21,7 @@ public class RepositorioAnimais {
 		
 		for(int i = 0; i<this.animais.size();i++){
 			Animal a = this.animais.get(i);
-			if(a.getRaca().contains(raca) && a instanceof Cachorro){
+			if(a.getRaca().toLowerCase().contains(raca.toLowerCase()) && a instanceof Cachorro){
 				cachorros.add(a);
 			}
 		}
@@ -33,7 +33,7 @@ public class RepositorioAnimais {
 		
 		for(int i = 0; i<this.animais.size();i++){
 			Animal a = this.animais.get(i);
-			if(a.getRaca().contains(raca) && a instanceof Gato){
+			if(a.getRaca().toLowerCase().contains(raca.toLowerCase()) && a instanceof Gato){
 				gatos.add(a);
 			}
 		}
@@ -47,7 +47,7 @@ public class RepositorioAnimais {
 			Animal a = this.animais.get(i);
 			if(a instanceof Outro){
 				Outro outro = (Outro)a;
-				if(outro.getEspecie().contains(especie))
+				if(outro.getEspecie().toLowerCase().contains(especie.toLowerCase()))
 				outros.add(outro);
 			}
 		}
