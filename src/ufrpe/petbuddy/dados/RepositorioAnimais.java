@@ -67,7 +67,7 @@ public class RepositorioAnimais implements IRepositorio {
 		return null;
 	}
 	
-	public void remover(long numid){ // REMOVE UM ANIMAL ESPECÍFICO ATRAVÉS DO NOME
+	public void remover(long numid){ // REMOVE UM ANIMAL ESPECÍFICO ATRAVÉS DO ID
 		this.animais.remove(this.busca(numid));
 	}
 }

@@ -15,7 +15,7 @@ public class RepositorioAdocoes {
 		this.adocoes.add(a);
 	}
 	
-	public ArrayList<Adocao> buscar(){
+	public ArrayList<Adocao> busca(){
 		return this.adocoes;
 	}
 	

@@ -1,5 +1,6 @@
 package ufrpe.petbuddy.negocio;
 
+import java.util.ArrayList;
 import ufrpe.petbuddy.dados.*;
 
 public class CadastroAdocao {
@@ -11,6 +12,10 @@ public class CadastroAdocao {
 	}
 	
 	public void cadastrar(Adocao a){
-		this.repositorio.
+		this.repositorio.cadastrar(a);
+	}
+	
+	public ArrayList<Adocao> busca(){
+		return this.repositorio.busca();
 	}
 }

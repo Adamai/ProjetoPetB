@@ -11,12 +11,16 @@ public class Adocao {
 	private Animal animal;
 	private Pessoa pessoa;
 	private String data;
+	private long numid;
+	private static long proximo = 1;
 
 	public Adocao(Animal animal, Pessoa pessoa) {
 		this.animal = animal;
 		this.pessoa = pessoa;
 		this.data = this.setData();
+		this.numid = proximo;
 		animal.setAdotado(true);
+		Adocao.AumentarProximo();
 	}
 
 	public String setData() {
@@ -26,6 +30,11 @@ public class Adocao {
 		String data = sdf.format(d).toString();
 		return data;
 	}
+	
+	public static void AumentarProximo(){
+		proximo = proximo + 1;
+	}
+	
 	
 	public String getData() {
 		return data;
@@ -39,4 +48,9 @@ public class Adocao {
 		return pessoa;
 	}
 
+	public long getNumid() {
+		return numid;
+	}
+
+	
 }

@@ -30,6 +30,9 @@ public ArrayList<Animal> buscaAnimais(String raca, int num){
 			return null;
 	}
 
+public Animal busca(long numid){
+	return this.repositorios[0].busca(numid);
+}
 
 //public Animal adotar(String nome){
 	//Animal a = this.repositorios[].buscaAdocao(nome);

@@ -7,8 +7,8 @@ public class CadastroLogins {
 	
 	public Pessoa efetuarLogin(String login, String senha){
 		
-		if(this.repositorio.buscaLogin(login, senha) != null){
-			Pessoa p = this.repositorio.buscaLogin(login, senha);
+		if(this.repositorio.busca(login, senha) != null){
+			Pessoa p = this.repositorio.busca(login, senha);
 			return p;
 		}
 		return null;

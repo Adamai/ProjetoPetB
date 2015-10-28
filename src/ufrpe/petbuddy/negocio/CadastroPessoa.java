@@ -13,8 +13,8 @@ public class CadastroPessoa {
 		this.repositorio.cadastrar(p);
 	}
 	
-	public void descadastrar(Pessoa p){
-		this.repositorio.remover(p);
+	public void descadastrar(String nome){
+		this.repositorio.remover(nome);
 	}
 	
 }

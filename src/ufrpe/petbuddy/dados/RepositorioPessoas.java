@@ -26,6 +26,14 @@ public class RepositorioPessoas {
 		return null;
 	}
 	
+	public Pessoa busca(String login, String senha){
+		for(int i = 0;i<this.pessoas.size();i++){
+			if(this.pessoas.get(i).getLogin().equals(login) && this.pessoas.get(i).getSenha().equals(senha))
+				return this.pessoas.get(i);
+		}
+		return null;
+	}
+	
 	public void remover(String nome){
 		this.pessoas.remove(this.busca(nome));
 	}
