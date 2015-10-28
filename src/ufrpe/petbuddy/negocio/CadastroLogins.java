@@ -1,0 +1,16 @@
+package ufrpe.petbuddy.negocio;
+
+import ufrpe.petbuddy.dados.*;
+public class CadastroLogins {
+	
+	private RepositorioPessoas repositorio;
+	
+	public Pessoa efetuarLogin(String login, String senha){
+		
+		if(this.repositorio.buscaLogin(login, senha) != null){
+			Pessoa p = this.repositorio.buscaLogin(login, senha);
+			return p;
+		}
+		return null;
+	}
+}
