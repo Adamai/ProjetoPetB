@@ -60,7 +60,7 @@ public static void main(String[] args){
 		String nome;
 		String raca;
 		double peso;
-		int idade;
+		String idade;
 		
 		
 		System.out.println("1 - Cachorro");
@@ -81,7 +81,7 @@ public static void main(String[] args){
 			peso = scan.nextDouble();
 		
 			System.out.println("Informe a idade");
-			idade = scan.nextInt();
+			idade = scan.nextLine();
 	
 			Animal a = new Cachorro(nome,raca,peso,idade,"saudavel","calmo");
 			
@@ -104,7 +104,7 @@ public static void main(String[] args){
 				peso = scan.nextDouble();
 			
 				System.out.println("Informe a idade");
-				idade = scan.nextInt();
+				idade = scan.nextLine();
 		
 				Animal a = new Gato(nome,raca,peso,idade,"saudavel","calmo");
 				cadastro.cadastrar(a);
@@ -128,7 +128,7 @@ public static void main(String[] args){
 				peso = scan.nextDouble();
 			
 				System.out.println("Informe a idade");
-				idade = scan.nextInt();
+				idade = scan.nextLine();
 		
 				Animal a = new Outro(nome,raca,peso,idade,"saudavel","calmo", especie);
 				cadastro.cadastrar(a);
@@ -186,17 +186,8 @@ public static void main(String[] args){
 		}
 	
 	if(escolha == 4){//ADOÇAO
-		//listar animais com o nome inserido e seus dados com um numero para ser inserido ao lado
-		//ex: procuro Ringo, vai aparecer:
-		//1 - Iggy  Peso: tal, status: tal
-		//2 - Iggy  Peso: tal, status: tal
-		// O usuario insere o numero respectivo ao que quer adotar e confirma a escolha
-		Scanner scan2 = new Scanner(System.in);
-		//System.out.println("1 -Cachorro");
-		//System.out.println("2 - Gato");
-		//System.out.println("3 - Outro <AINDA NÃO FUNCIONA> ");
-		//int escolha2 = scan2.nextInt();
 		
+		Scanner scan2 = new Scanner(System.in);
 			long numero;
 			System.out.println("Digite o id do animal que está procurando");
 			numero = scan2.nextLong();
@@ -210,36 +201,7 @@ public static void main(String[] args){
 			}
 			System.out.print("\n");
 			
-		
-		
-		//if(escolha2 == 2){
-		//	String raca;
-		//	System.out.println("Digite a raca do animal que está procurando");
-		//	raca = scan2.next();
-		//	ArrayList<Animal>gatos = cadastro.buscaAnimais(raca,escolha2);
-		//	int aux = cadastro.buscaAnimais(raca,escolha2).size();
-		//	for(int i=0;i<aux;i++){
-		//		System.out.println(gatos.get(i).toString());
-		//	}
-		//	System.out.print("\n");
-			
-		    }	
-	//	if(escolha2 == 3){
-		//	String animal;
-		//	System.out.println("Digite qual o animal que está procurando");
-		//	
-			
-			
-		//	}
-		//	System.out.print("\n");
-			
-		//   }
-		
-		
-	//	}
-					
-		
-		}//FIM WHILE
+			}//FIM WHILE
 	
-	}
+}}
 

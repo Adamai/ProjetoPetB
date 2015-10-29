@@ -5,14 +5,14 @@ public abstract class Animal {
 	private String nome; 
 	private String raca;
 	private double peso;
-	private int idade;
+	private String idade;
 	private String saude;
 	private String temperamento;
 	private boolean adotado;
 	private long numid;
 	private static long proximo = 1;
 	//LIGAR O ANIMAL COM UM VETERINARIO NA HORA DE CRIA-LO
-	public Animal(String nome, String raca, double peso, int idade, String saude, String temperamento){
+	public Animal(String nome, String raca, double peso, String idade, String saude, String temperamento){
 		this.nome = nome;
 		this.raca = raca;
 		this.peso = peso;
@@ -47,11 +47,11 @@ public abstract class Animal {
 		this.peso = peso;
 	}
 
-	public int getIdade() {
+	public String getIdade() {
 		return this.idade;
 	}
 
-	public void setIdade(int idade) {
+	public void setIdade(String idade) {
 		this.idade = idade;
 	}
 
@@ -69,7 +69,7 @@ public abstract class Animal {
 
 	public String toString(){
 		return "Id: " +this.numid + "\n" +"Nome: " +this.nome + "\nPeso: "+ this.peso+" kg\nEspécie/Raça: " 
-					+ this.raca +"\nIdade: "+ this.idade +" anos\nEstado de saúde: " 
+					+ this.raca +"\nIdade: "+ this.idade +"\nEstado de saúde: " 
 					+ this.saude + "\nTemperamento: " +this.temperamento +"\n\n";
 		 	}
 

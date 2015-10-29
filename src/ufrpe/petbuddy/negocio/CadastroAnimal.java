@@ -11,7 +11,7 @@ private IRepositorio[] repositorios;
 	public CadastroAnimal(){
 		this.repositorios = new IRepositorio[2];
 		this.repositorios[0] = new RepositorioAnimais();
-		this.repositorios[1] = new RepositorioAdotados();
+		
 	}
 	
 	public void cadastrar(Animal a){

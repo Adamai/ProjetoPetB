@@ -67,8 +67,4 @@ public class RepositorioAdotados implements IRepositorio{
 	public void remover(long numid){ // REMOVE UM ANIMAL ESPECÍFICO ATRAVÉS DO NUMERO
 		this.adotados.remove(this.busca(numid));
 	}
-
-	
-	
-	
 }
