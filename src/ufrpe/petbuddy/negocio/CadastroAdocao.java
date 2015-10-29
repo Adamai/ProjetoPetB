@@ -3,7 +3,7 @@ package ufrpe.petbuddy.negocio;
 import java.util.ArrayList;
 import ufrpe.petbuddy.dados.*;
 
-public class CadastroAdocao {
+public class CadastroAdocao implements ICadastroC{
 
 	private RepositorioAdocoes repositorio;
 	
@@ -17,5 +17,9 @@ public class CadastroAdocao {
 	
 	public ArrayList<Adocao> busca(){
 		return this.repositorio.busca();
+	}
+	
+	public Adocao busca(long numid){
+		return this.repositorio.busca(numid);
 	}
 }

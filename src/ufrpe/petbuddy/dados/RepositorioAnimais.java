@@ -5,13 +5,15 @@ import ufrpe.petbuddy.negocio.*;
 
 import java.util.ArrayList;
 
-public class RepositorioAnimais implements IRepositorio {
+public class RepositorioAnimais implements IRepositorioA {
 
 	private ArrayList<Animal> animais;
+	private ArrayList<Animal> adotados;
 	
 	
 	public RepositorioAnimais(){
 		this.animais = new ArrayList<Animal>();
+		this.adotados = new ArrayList<Animal>();
 	}
 	
 	
@@ -25,7 +27,7 @@ public class RepositorioAnimais implements IRepositorio {
 		if(num ==1){//CACHORROS
 			for(int i = 0; i<this.animais.size();i++){
 				Animal a = this.animais.get(i);
-				if(a.getRaca().toLowerCase().contains(raca.toLowerCase()) && a instanceof Cachorro){
+				if(a.getRaca().toLowerCase().contains(raca.toLowerCase())&& a instanceof Cachorro ){
 					buscados.add(a);
 				}
 			}
@@ -35,7 +37,7 @@ public class RepositorioAnimais implements IRepositorio {
 		else if(num == 2){//GATOS
 			for(int i = 0; i<this.animais.size();i++){
 				Animal a = this.animais.get(i);
-				if(a.getRaca().toLowerCase().contains(raca.toLowerCase()) && a instanceof Gato){
+				if(a.getRaca().toLowerCase().contains(raca.toLowerCase())&& a instanceof Gato){
 					buscados.add(a);
 				}
 			}
@@ -47,7 +49,7 @@ public class RepositorioAnimais implements IRepositorio {
 				Animal a = this.animais.get(i);
 				if(a instanceof Outro){
 					Outro outro = (Outro)a;
-					if(outro.getEspecie().toLowerCase().contains(raca.toLowerCase()))
+					if(outro.getEspecie().toLowerCase().contains(raca.toLowerCase()) && outro instanceof Outro)
 					buscados.add(outro);
 				}
 			}
@@ -58,16 +60,25 @@ public class RepositorioAnimais implements IRepositorio {
 		
 	}
 	
-	public Animal busca(long numid){//BUSCA UM ANIMAL ESPECIFICO POR ID
+	public Animal busca(long numid){//BUSCA UM ANIMAL ESPECIFICO POR ID 
 		
 		for(int i = 0;i<this.animais.size();i++){
-			if(this.animais.get(i).getNumid() == numid)
+			if(this.animais.get(i).getNumid() == numid){
+				this.animais.get(i).setAdotado(true);
 				return this.animais.get(i);
+			}
 		}
 		return null;
 	}
 	
-	public void remover(long numid){ // REMOVE UM ANIMAL ESPECÍFICO ATRAVÉS DO ID
-		this.animais.remove(this.busca(numid));
+	public void adotar(long numid){
+		Animal a = this.busca(numid);
+		this.adotados.add(a);
+		this.remover(this.busca(numid));
+	}
+	
+	
+	public void remover(Animal a){ // REMOVE UM ANIMAL ESPECÍFICO ATRAVÉS DO ID
+		this.animais.remove(a);
 	}
 }

@@ -31,4 +31,10 @@ public class Pessoa extends Usuario {
 		return senha;
 	}
 
+	@Override
+	public String toString() {
+		return  "Nome: " + nome+ "\nidade: " + idade + "\nendereco: " + endereco + "\ncontato: " + contato ;
+	}
+
+	
 }

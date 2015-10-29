@@ -1,4 +1,4 @@
-package ufrpe.petbuddy.negocio;
+/*package ufrpe.petbuddy.negocio;
 
 import ufrpe.petbuddy.dados.*;
 public class CadastroLogins {
@@ -13,4 +13,4 @@ public class CadastroLogins {
 		}
 		return null;
 	}
-}
+}*/

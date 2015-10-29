@@ -1,7 +1,7 @@
 package ufrpe.petbuddy.negocio;
 
 import ufrpe.petbuddy.dados.*;
-public class CadastroPessoa {
+public class CadastroPessoa implements ICadastroB{
 
 	private RepositorioPessoas repositorio;
 	
@@ -11,6 +11,10 @@ public class CadastroPessoa {
 	
 	public void cadastrar(Pessoa p){
 		this.repositorio.cadastrar(p);
+	}
+	
+	public Pessoa busca(String nome){
+		return this.repositorio.busca(nome);
 	}
 	
 	public void descadastrar(String nome){

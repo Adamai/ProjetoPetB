@@ -74,7 +74,7 @@ public abstract class Animal {
 		 	}
 
 	public boolean isAdotado() {
-		return adotado;
+		return this.adotado;
 	}
 
 	public void setAdotado(boolean adotado) {
@@ -82,7 +82,7 @@ public abstract class Animal {
 	}
 
 	public long getNumid() {
-		return numid;
+		return this.numid;
 	}
 		
 	}

@@ -4,26 +4,25 @@ import ufrpe.petbuddy.dados.*;
 
 import java.util.ArrayList;
 
-public class CadastroAnimal {
+public class CadastroAnimal implements ICadastroA{
 
-private IRepositorio[] repositorios;
+private IRepositorioA repositorio;
 	
 	public CadastroAnimal(){
-		this.repositorios = new IRepositorio[2];
-		this.repositorios[0] = new RepositorioAnimais();
+		this.repositorio = new RepositorioAnimais();
 		
 	}
 	
 	public void cadastrar(Animal a){
 		if(a != null ){ // incluir condição de existencia
-			this.repositorios[0].cadastrar(a);
+			this.repositorio.cadastrar(a);
 		}
 	}
 	
 public ArrayList<Animal> buscaAnimais(String raca, int num){ 
 		
-		if((this.repositorios[0].busca(raca, num)) !=null){
-			ArrayList<Animal>buscados = this.repositorios[0].busca(raca,num);
+		if((this.repositorio.busca(raca, num)) !=null){
+			ArrayList<Animal>buscados = this.repositorio.busca(raca,num);
 			return buscados;
 		}
 		else 
@@ -31,12 +30,9 @@ public ArrayList<Animal> buscaAnimais(String raca, int num){
 	}
 
 public Animal busca(long numid){
-	return this.repositorios[0].busca(numid);
-}
+	Animal a = this.repositorio.busca(numid);
+	this.repositorio.adotar(numid);
+	return a;
+	}
 
-//public Animal adotar(String nome){
-	//Animal a = this.repositorios[].buscaAdocao(nome);
-	//this.repositorios[2].cadastrar(a);
-	//return a;
-	//		}
 }

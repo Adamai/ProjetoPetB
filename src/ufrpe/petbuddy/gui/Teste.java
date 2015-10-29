@@ -9,12 +9,11 @@ import ufrpe.petbuddy.negocio.*;
 public class Teste {
 
 public static void main(String[] args){
-	long id=0;
 	int controlador = 1;
 	
-	CadastroPessoa cadastrop = new CadastroPessoa();
-	CadastroAnimal cadastro = new CadastroAnimal();
-	CadastroAdocao cadastroad = new CadastroAdocao();
+	ICadastroA cadastro = new CadastroAnimal();
+	ICadastroB cadastrop = new CadastroPessoa();
+	ICadastroC cadastroad = new CadastroAdocao();
 	System.out.println("Bem vindo ao Pet Buddy");
 	
 	while(controlador !=0){	
@@ -43,16 +42,16 @@ public static void main(String[] args){
 		 nome = scan5.nextLine();
 		 System.out.println("Informe seu numero de contato");
 		 contato = scan.nextInt();
-		 System.out.println("informe o numero de moradores da sua casa");
-		 donos = scan.nextInt();
 		 System.out.println("Insira sua idade");
 		 idade = scan.nextInt();
 		 System.out.println("Infome seu endereco");
 		 endereco = scan6.nextLine();
-		 System.out.println(endereco);
 		 		
 		 Pessoa p = new Pessoa(nome,idade,contato, endereco,"batata","doce");
 		 cadastrop.cadastrar(p);
+		 System.out.println("Cadastro realizado com sucesso");
+		 System.out.println(cadastrop.busca(nome));
+		 
 		 
 	}
 	
@@ -81,7 +80,7 @@ public static void main(String[] args){
 			peso = scan.nextDouble();
 		
 			System.out.println("Informe a idade");
-			idade = scan.nextLine();
+			idade = scan5.nextLine();
 	
 			Animal a = new Cachorro(nome,raca,peso,idade,"saudavel","calmo");
 			
@@ -104,7 +103,7 @@ public static void main(String[] args){
 				peso = scan.nextDouble();
 			
 				System.out.println("Informe a idade");
-				idade = scan.nextLine();
+				idade = scan5.nextLine();
 		
 				Animal a = new Gato(nome,raca,peso,idade,"saudavel","calmo");
 				cadastro.cadastrar(a);
@@ -128,7 +127,7 @@ public static void main(String[] args){
 				peso = scan.nextDouble();
 			
 				System.out.println("Informe a idade");
-				idade = scan.nextLine();
+				idade = scan5.nextLine();
 		
 				Animal a = new Outro(nome,raca,peso,idade,"saudavel","calmo", especie);
 				cadastro.cadastrar(a);
@@ -199,7 +198,7 @@ public static void main(String[] args){
 				System.out.print("Adoção realizada com sucesso em: " +a.getData());
 				cadastroad.cadastrar(a);
 			}
-			System.out.print("\n");
+			System.out.print("\n\n");
 			
 			}//FIM WHILE
 	
