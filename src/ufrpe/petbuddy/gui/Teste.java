@@ -38,19 +38,19 @@ public static void main(String[] args){
 		 //String senha;
 			Scanner scan5 = new Scanner(System.in);
 			Scanner scan6 = new Scanner(System.in);
-		 System.out.println("Digite seu nome");
+		 System.out.println("Digite seu nome"); // ADD EXCEPTION
 		 nome = scan5.nextLine();
-		 System.out.println("Informe seu numero de contato");
+		 System.out.println("Informe seu numero de contato"); // ADD EXCEPTION
 		 contato = scan.nextInt();
-		 System.out.println("Insira sua idade");
+		 System.out.println("Insira sua idade"); // ADD EXCEPTION 
 		 idade = scan.nextInt();
-		 System.out.println("Infome seu endereco");
+		 System.out.println("Infome seu endereco"); 
 		 endereco = scan6.nextLine();
 		 		
 		 Pessoa p = new Pessoa(nome,idade,contato, endereco,"batata","doce");
 		 cadastrop.cadastrar(p);
 		 System.out.println("Cadastro realizado com sucesso");
-		 System.out.println(cadastrop.busca(nome));
+		 System.out.println(cadastrop.busca(nome)); // ADD EXCEPTION
 		 
 		 
 	}
@@ -148,7 +148,7 @@ public static void main(String[] args){
 			String raca;
 			System.out.println("Digite a raca do animal que está procurando");
 			raca = scan2.next();
-			ArrayList<Animal>cachorros = cadastro.buscaAnimais(raca,escolha2);
+			ArrayList<Animal>cachorros = cadastro.buscaAnimais(raca,escolha2); // ADD EXCEPTION
 			int aux = cadastro.buscaAnimais(raca,escolha2).size();
 			for(int i=0;i<aux;i++){
 				System.out.println(cachorros.get(i));
@@ -161,7 +161,7 @@ public static void main(String[] args){
 			String raca;
 			System.out.println("Digite a raca do animal que está procurando");
 			raca = scan2.next();
-			ArrayList<Animal>gatos = cadastro.buscaAnimais(raca,escolha2);
+			ArrayList<Animal>gatos = cadastro.buscaAnimais(raca,escolha2); // ADD EXCEPTION
 			int aux = cadastro.buscaAnimais(raca,escolha2).size();
 			for(int i=0;i<aux;i++){
 				System.out.println(gatos.get(i).toString());
@@ -173,7 +173,7 @@ public static void main(String[] args){
 			String especie;
 			System.out.println("Digite a especie do animal que está procurando");
 			especie = scan2.next();
-			ArrayList<Animal>outros = cadastro.buscaAnimais(especie,escolha2);
+			ArrayList<Animal>outros = cadastro.buscaAnimais(especie,escolha2); // ADD EXCEPTION
 			int aux = cadastro.buscaAnimais(especie,escolha2).size();
 			for(int i=0;i<aux;i++){
 				System.out.println(outros.get(i).toString());
@@ -190,7 +190,7 @@ public static void main(String[] args){
 			long numero;
 			System.out.println("Digite o id do animal que está procurando");
 			numero = scan2.nextLong();
-			Animal c = cadastro.busca(numero);
+			Animal c = cadastro.busca(numero); // ADD EXCEPTION
 			System.out.println(c);
 			Pessoa p = new Pessoa("Johny Joestar", 15, 40028922, "Rua dos bobos nº 0", "Pipoca", "1234");
 			Adocao a = new Adocao(c, p);

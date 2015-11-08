@@ -15,11 +15,11 @@ public class CadastroAdocao implements ICadastroC{
 		this.repositorio.cadastrar(a);
 	}
 	
-	public ArrayList<Adocao> busca(){
+	public ArrayList<Adocao> busca(){ // ADD NULL EXCEPTION 
 		return this.repositorio.busca();
 	}
 	
-	public Adocao busca(long numid){
+	public Adocao busca(long numid){ // ADD NULL EXCEPTION
 		return this.repositorio.busca(numid);
 	}
 }

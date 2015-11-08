@@ -14,22 +14,21 @@ private IRepositorioA repositorio;
 	}
 	
 	public void cadastrar(Animal a){
-		if(a != null ){ // incluir condição de existencia
 			this.repositorio.cadastrar(a);
 		}
-	}
+
 	
-public ArrayList<Animal> buscaAnimais(String raca, int num){ 
+public ArrayList<Animal> buscaAnimais(String raca, int num){ // ADD NULL EXCEPTION
 		
-		if((this.repositorio.busca(raca, num)) !=null){
+		if((this.repositorio.busca(raca, num)) !=null){ //ADD EXCEPTION
 			ArrayList<Animal>buscados = this.repositorio.busca(raca,num);
 			return buscados;
 		}
 		else 
-			return null;
+			return null; // REMOVER
 	}
 
-public Animal busca(long numid){
+public Animal busca(long numid){ //ADD NULL EXCEPTION
 	Animal a = this.repositorio.busca(numid);
 	this.repositorio.adotar(numid);
 	return a;

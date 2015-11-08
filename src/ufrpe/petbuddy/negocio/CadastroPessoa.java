@@ -13,11 +13,11 @@ public class CadastroPessoa implements ICadastroB{
 		this.repositorio.cadastrar(p);
 	}
 	
-	public Pessoa busca(String nome){
+	public Pessoa busca(String nome){// ADD EXCEPTION
 		return this.repositorio.busca(nome);
 	}
 	
-	public void descadastrar(String nome){
+	public void descadastrar(String nome){// ADD EXCEPTION
 		this.repositorio.remover(nome);
 	}
 	

@@ -21,7 +21,7 @@ public class RepositorioAnimais implements IRepositorioA {
 		this.animais.add(animal);
 	}
 		
-	public ArrayList<Animal> busca(String raca, int num){
+	public ArrayList<Animal> busca(String raca, int num){ // ADD NULL EXCEPTION EM TODOS OS CASOS
 		ArrayList<Animal>buscados = new ArrayList<Animal>();
 		
 		if(num ==1){//CACHORROS
@@ -56,11 +56,11 @@ public class RepositorioAnimais implements IRepositorioA {
 			return buscados;
 		}
 		else
-			return null;
+			return null; // REMOVER
 		
 	}
 	
-	public Animal busca(long numid){//BUSCA UM ANIMAL ESPECIFICO POR ID 
+	public Animal busca(long numid){//BUSCA UM ANIMAL ESPECIFICO POR ID // ADD NULL EXCEPTION
 		
 		for(int i = 0;i<this.animais.size();i++){
 			if(this.animais.get(i).getNumid() == numid){
@@ -68,10 +68,10 @@ public class RepositorioAnimais implements IRepositorioA {
 				return this.animais.get(i);
 			}
 		}
-		return null;
+		return null; // REMOVER
 	}
 	
-	public void adotar(long numid){
+	public void adotar(long numid){ // EXCEPTION?
 		Animal a = this.busca(numid);
 		this.adotados.add(a);
 		this.remover(this.busca(numid));

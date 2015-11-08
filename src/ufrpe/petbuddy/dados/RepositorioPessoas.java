@@ -18,7 +18,7 @@ public class RepositorioPessoas implements IRepositorioB {
 		this.pessoas.add(p);
 	}
 	
-	public Pessoa busca(String nome){
+	public Pessoa busca(String nome){ // ADD NULL EXCEPTION
 		for(int i = 0;i<this.pessoas.size();i++){
 			if(this.pessoas.get(i).getNome().equalsIgnoreCase(nome))
 				return this.pessoas.get(i);
@@ -26,7 +26,7 @@ public class RepositorioPessoas implements IRepositorioB {
 		return null;
 	}
 	
-	//public Pessoa busca(String login, String senha){
+	//public Pessoa busca(String login, String senha){ // ADD NULL EXCEPTION 
 	//	for(int i = 0;i<this.pessoas.size();i++){
 	//		if(this.pessoas.get(i).getLogin().equals(login) && this.pessoas.get(i).getSenha().equals(senha))
 	//			return this.pessoas.get(i);
@@ -34,7 +34,7 @@ public class RepositorioPessoas implements IRepositorioB {
 	//	return null;
 	//}
 	
-	public void remover(String nome){
+	public void remover(String nome){ // EXCEPTION?
 		this.pessoas.remove(this.busca(nome));
 	}
 	
