@@ -2,6 +2,7 @@ package ufrpe.petbuddy.negocio;
 
 import java.util.ArrayList;
 import ufrpe.petbuddy.dados.*;
+import ufrpe.petbuddy.dados.exceptions.*;
 
 public class CadastroAdocao implements ICadastroC{
 
@@ -19,7 +20,7 @@ public class CadastroAdocao implements ICadastroC{
 		return this.repositorio.busca();
 	}
 	
-	public Adocao busca(long numid){ // ADD NULL EXCEPTION
+	public Adocao busca(long numid) throws IDException{ // ADD NULL EXCEPTION
 		return this.repositorio.busca(numid);
 	}
 }

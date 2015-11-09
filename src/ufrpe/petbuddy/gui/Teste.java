@@ -3,7 +3,7 @@ package ufrpe.petbuddy.gui;
 import java.util.Scanner;
 import java.util.ArrayList;
 
-import ufrpe.petbuddy.dados.exceptions.RepoException;
+import ufrpe.petbuddy.dados.exceptions.*;
 import ufrpe.petbuddy.negocio.*;
 
 
@@ -71,11 +71,23 @@ public static void main(String[] args){
 		if(escolha2 <= 1 ){
 			Scanner scan5 = new Scanner(System.in);
 			Scanner scan6 = new Scanner(System.in);
+			Scanner scan7 = new Scanner(System.in);
 			System.out.println("Digite o nome do cão"); // ADD INPUT EXCEPTION SÓ LETRAS
 			nome = scan5.nextLine();
 		
 			System.out.println("Digite a raça do cão"); // ADD INPUT EXCEPTION SÓ LETRAS
 			raca = scan6.nextLine();
+			
+			System.out.println("Informe o sexo do animal");
+			System.out.println("1 - Fêmea\n2 - Macho");
+			String sexo = null;
+			int escsexo = scan7.nextInt();
+			if(escsexo <= 1)
+				sexo = "Fêmea";
+			else
+				sexo = "Macho";
+			
+			
 		
 			System.out.println("Informe o peso"); // ADD INPUT EXCEPTION SÓ NUMEROS
 			peso = scan.nextDouble();
@@ -83,7 +95,7 @@ public static void main(String[] args){
 			System.out.println("Informe a idade"); // ADD INPUT EXCEPTION SÓ NUMEROS
 			idade = scan5.nextLine();
 	
-			Animal a = new Cachorro(nome,raca,peso,idade,"saudavel","calmo");
+			Animal a = new Cachorro(nome,raca,sexo,peso,idade,"saudavel","calmo");
 			
 			cadastro.cadastrar(a);
 			System.out.println("Cadastro realizado com sucesso");
@@ -94,19 +106,29 @@ public static void main(String[] args){
 			if(escolha2 == 2){
 				Scanner scan5 = new Scanner(System.in);
 				Scanner scan6 = new Scanner(System.in);
+				Scanner scan7 = new Scanner(System.in);
 				System.out.println("Digite o nome do Gato"); // ADD INPUT EXCEPTION SÓ LETRAS
 				nome = scan5.nextLine();
 			
 				System.out.println("Digite a raça do Gato"); // ADD INPUT EXCEPTION SÓ LETRAS
 				raca = scan6.nextLine();
 			
+				System.out.println("Informe o sexo do animal");
+				System.out.println("1 - Fêmea\n2 - Macho");
+				String sexo = null;
+				int escsexo = scan7.nextInt();
+				if(escsexo <= 1)
+					sexo = "Fêmea";
+				else
+					sexo = "Macho";
+				
 				System.out.println("Informe o peso"); // ADD INPUT EXCEPTION SÓ NUMEROS
 				peso = scan.nextDouble();
 			
 				System.out.println("Informe a idade"); // ADD INPUT EXCEPTION SÓ NUMEROS
 				idade = scan5.nextLine();
 		
-				Animal a = new Gato(nome,raca,peso,idade,"saudavel","calmo");
+				Animal a = new Gato(nome,raca,sexo,peso,idade,"saudavel","calmo");
 				cadastro.cadastrar(a);
 				System.out.println("Cadastro realizado com sucesso");
 				System.out.print("\n");
@@ -115,6 +137,7 @@ public static void main(String[] args){
 				Scanner scan5 = new Scanner(System.in);
 				Scanner scan6 = new Scanner(System.in);
 				Scanner scan7 = new Scanner(System.in);
+				Scanner scan8 = new Scanner(System.in);
 				System.out.println("Digite a especie do Animal"); // ADD INPUT EXCEPTION SÓ LETRAS
 				String especie = scan5.nextLine();
 				
@@ -123,6 +146,16 @@ public static void main(String[] args){
 			
 				System.out.println("Digite a raça do Animal"); // ADD INPUT EXCEPTION SÓ LETRAS
 				raca = scan7.nextLine();
+				
+				System.out.println("Informe o sexo do animal");
+				System.out.println("1 - Fêmea\n2 - Macho");
+				String sexo = null;
+				int escsexo = scan7.nextInt();
+				if(escsexo <= 1)
+					sexo = "Fêmea";
+				else
+					sexo = "Macho";
+				
 			
 				System.out.println("Informe o peso"); // ADD INPUT EXCEPTION SÓ NUMEROS
 				peso = scan.nextDouble();
@@ -130,7 +163,7 @@ public static void main(String[] args){
 				System.out.println("Informe a idade"); // ADD INPUT EXCEPTION SÓ NUMEROS
 				idade = scan5.nextLine();
 		
-				Animal a = new Outro(nome,raca,peso,idade,"saudavel","calmo", especie);
+				Animal a = new Outro(nome,raca,sexo,peso,idade,"saudavel","calmo", especie);
 				cadastro.cadastrar(a);
 				System.out.println("Cadastro realizado com sucesso");
 				System.out.print("\n");
@@ -218,7 +251,7 @@ public static void main(String[] args){
 				
 				System.out.print("\n\n");
 				}
-	catch(RepoException rep){
+	catch(IDException rep){
 		System.out.println(rep.getMessage());
 		System.out.println("\n");
 		}

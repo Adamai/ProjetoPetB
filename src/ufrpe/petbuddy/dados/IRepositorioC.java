@@ -7,6 +7,6 @@ import ufrpe.petbuddy.negocio.*;
 public interface IRepositorioC {
 
 	void cadastrar(Adocao a);
-	ArrayList<Adocao> busca() throws RepoException;
+	ArrayList<Adocao> busca();
 	Adocao busca(long numid)throws IDException;
 }

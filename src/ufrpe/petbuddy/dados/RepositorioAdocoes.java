@@ -21,8 +21,8 @@ public class RepositorioAdocoes implements IRepositorioC{
 		return this.adocoes;
 	}
 	
-	public Adocao busca(long numid) throws IDException{  // ADD NULL EXCEPTION
-		Adocao a;
+	public Adocao busca(long numid) throws IDException{ // ADD NULL EXCEPTION
+		Adocao a = null;
 		for(int i = 0;i<this.adocoes.size();i++){
 			if(this.adocoes.get(i).getNumid() == numid)
 				a= this.adocoes.get(i);

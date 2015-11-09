@@ -1,6 +1,7 @@
 package ufrpe.petbuddy.dados;
 
 
+import ufrpe.petbuddy.dados.exceptions.IDException;
 import ufrpe.petbuddy.dados.exceptions.RepoException;
 import ufrpe.petbuddy.negocio.*;
 
@@ -64,18 +65,21 @@ public class RepositorioAnimais implements IRepositorioA {
 		
 	}
 	
-	public Animal busca(long numid){//BUSCA UM ANIMAL ESPECIFICO POR ID // ADD NULL EXCEPTION
-		
+	public Animal busca(long numid)throws IDException{//BUSCA UM ANIMAL ESPECIFICO POR ID // ADD NULL EXCEPTION
+		Animal a = null;
 		for(int i = 0;i<this.animais.size();i++){
 			if(this.animais.get(i).getNumid() == numid){
 				this.animais.get(i).setAdotado(true);
-				return this.animais.get(i);
+				a= this.animais.get(i);
 			}
 		}
-		return null; // REMOVER
+		if(a != null)
+			return a;
+		else
+			throw new IDException(numid);
 	}
 	
-	public void adotar(long numid){ // EXCEPTION?
+	public void adotar(long numid) throws IDException{ // EXCEPTION?
 		Animal a = this.busca(numid);
 		this.adotados.add(a);
 		this.remover(this.busca(numid));
