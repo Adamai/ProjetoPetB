@@ -3,6 +3,7 @@ package ufrpe.petbuddy.gui;
 import java.util.Scanner;
 import java.util.ArrayList;
 
+import ufrpe.petbuddy.dados.exceptions.RepoException;
 import ufrpe.petbuddy.negocio.*;
 
 
@@ -148,41 +149,57 @@ public static void main(String[] args){
 			String raca;
 			System.out.println("Digite a raca do animal que está procurando");
 			raca = scan2.next();
-			ArrayList<Animal>cachorros = cadastro.buscaAnimais(raca,escolha2); // TRY CATCH
-			int aux = cadastro.buscaAnimais(raca,escolha2).size();
-			for(int i=0;i<aux;i++){
-				System.out.println(cachorros.get(i));
+			try{
+				ArrayList<Animal>cachorros = cadastro.buscaAnimais(raca,escolha2); // TRY CATCH
+				int aux = cadastro.buscaAnimais(raca,escolha2).size();
+				for(int i=0;i<aux;i++){
+					System.out.println(cachorros.get(i));
+				}
+				System.out.print("\n");
+				}
+			catch(RepoException rep){
+				System.out.println(rep.getMessage());
+				System.out.println("\n");
 			}
-			System.out.print("\n");
-			
 		}
 		
 		if(escolha2 == 2){
 			String raca;
 			System.out.println("Digite a raca do animal que está procurando");
 			raca = scan2.next();
-			ArrayList<Animal>gatos = cadastro.buscaAnimais(raca,escolha2); // TRY CATCH
-			int aux = cadastro.buscaAnimais(raca,escolha2).size();
-			for(int i=0;i<aux;i++){
-				System.out.println(gatos.get(i).toString());
+			try{ 
+				ArrayList<Animal>gatos = cadastro.buscaAnimais(raca,escolha2); // TRY CATCH
+				int aux = cadastro.buscaAnimais(raca,escolha2).size();
+				for(int i=0;i<aux;i++){
+					System.out.println(gatos.get(i).toString());
+				}
+				System.out.print("\n");
+				}
+			catch(RepoException rep){
+				System.out.println(rep.getMessage());
+				System.out.println("\n");
 			}
-			System.out.print("\n");
 			
 		}
 		if(escolha2 >= 3){
 			String especie;
 			System.out.println("Digite a especie do animal que está procurando");
 			especie = scan2.next();
-			ArrayList<Animal>outros = cadastro.buscaAnimais(especie,escolha2); // TRY CATCH
-			int aux = cadastro.buscaAnimais(especie,escolha2).size();
-			for(int i=0;i<aux;i++){
-				System.out.println(outros.get(i).toString());
+			try{
+				ArrayList<Animal>outros = cadastro.buscaAnimais(especie,escolha2); // TRY CATCH
+				int aux = cadastro.buscaAnimais(especie,escolha2).size();
+				for(int i=0;i<aux;i++){
+					System.out.println(outros.get(i).toString());
+				}
+				System.out.print("\n");
 			}
-			System.out.print("\n");
-			
-		}
+			catch(RepoException rep){
+				System.out.println(rep.getMessage());
+				System.out.println("\n");
+			}
 		
 		}
+	}
 	
 	if(escolha == 4){//ADOÇAO
 		
@@ -190,16 +207,23 @@ public static void main(String[] args){
 			long numero;
 			System.out.println("Digite o id do animal que está procurando");
 			numero = scan2.nextLong();
-			Animal c = cadastro.busca(numero); // TRY CATCH
-			System.out.println(c);
-			Pessoa p = new Pessoa("Johny Joestar", 15, 40028922, "Rua dos bobos nº 0", "Pipoca", "1234");
-			Adocao a = new Adocao(c, p);
-			if(c.isAdotado() == true)
-				System.out.print("Adoção realizada com sucesso em: " +a.getData());
-				cadastroad.cadastrar(a);
-			}
-			System.out.print("\n\n");
-			
+			try{
+				Animal c = cadastro.busca(numero); // TRY CATCH
+				System.out.println(c);
+				Pessoa p = new Pessoa("Johny Joestar", 15, 40028922, "Rua dos bobos nº 0", "Pipoca", "1234");
+				Adocao a = new Adocao(c, p);
+				if(c.isAdotado() == true)
+					System.out.print("Adoção realizada com sucesso em: " +a.getData());
+					cadastroad.cadastrar(a);
+				
+				System.out.print("\n\n");
+				}
+	catch(RepoException rep){
+		System.out.println(rep.getMessage());
+		System.out.println("\n");
+		}
+	
+	}
 			}//FIM WHILE
 	
 }}

@@ -1,9 +1,11 @@
 package ufrpe.petbuddy.negocio;
 
 import java.util.ArrayList;
+
+import ufrpe.petbuddy.dados.exceptions.RepoException;
 public interface ICadastroA {//interface de CadastroAnimal
 
 	void cadastrar(Animal a);
-	ArrayList<Animal> buscaAnimais(String raca, int num);
-	Animal busca(long numid);
+	ArrayList<Animal> buscaAnimais(String raca, int num) throws RepoException;
+	Animal busca(long numid) throws RepoException;
 }
