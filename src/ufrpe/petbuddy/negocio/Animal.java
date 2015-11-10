@@ -12,8 +12,9 @@ public abstract class Animal {
 	private long numid;
 	private String sexo;
 	private static long proximo = 1;
+	private Veterinario veterinario;
 	//LIGAR O ANIMAL COM UM VETERINARIO NA HORA DE CRIA-LO
-	public Animal(String nome, String raca,String sexo, double peso, String idade, String saude, String temperamento){
+	public Animal(String nome, String raca,String sexo, double peso, String idade, String saude, String temperamento, Veterinario veterinario){
 		this.nome = nome;
 		this.raca = raca;
 		this.sexo = sexo;
@@ -23,6 +24,7 @@ public abstract class Animal {
 		this.temperamento = temperamento;
 		this.adotado = false;
 		this.numid = proximo;
+		this.veterinario = veterinario;
 		Animal.AumentarProximo();
 		}
 	public static void AumentarProximo(){

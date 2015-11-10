@@ -15,6 +15,7 @@ public static void main(String[] args){
 	ICadastroA cadastro = new CadastroAnimal();
 	ICadastroB cadastrop = new CadastroPessoa();
 	ICadastroC cadastroad = new CadastroAdocao();
+	CheckEX check = new CheckEX();
 	System.out.println("Bem vindo ao Pet Buddy");
 	
 	while(controlador !=0){	
@@ -47,6 +48,7 @@ public static void main(String[] args){
 			 try{
 			 System.out.println("Digite seu nome"); // ADD INPUT EXCEPTION SÓ LETRAS
 			 nome = scan5.nextLine();
+			 check.checaNome(nome);
 			 System.out.println("Informe seu numero de contato"); // ADD INPUT EXCEPTION SÓ NUMEROS
 			 contato = scan6.nextInt();
 			 System.out.println("Insira sua idade"); // ADD INPUT EXCEPTION SÓ NUMEROS
@@ -62,6 +64,9 @@ public static void main(String[] args){
 		 	}
 		 catch(InputMismatchException i){
 			 System.err.println("Insira somente números");
+		 	}
+		 catch(NAMException n){
+			 System.err.println(n.getMessage());
 		 	}
 		 }
 	}
@@ -79,48 +84,14 @@ public static void main(String[] args){
 		int escolha2 = scan.nextInt();
 		
 		if(escolha2 <= 1 ){
-			Scanner scan5 = new Scanner(System.in);
-			Scanner scan6 = new Scanner(System.in);
-			Scanner scan7 = new Scanner(System.in);
-			System.out.println("Digite o nome do cão"); // ADD INPUT EXCEPTION SÓ LETRAS
-			nome = scan5.nextLine();
-		
-			System.out.println("Digite a raça do cão"); // ADD INPUT EXCEPTION SÓ LETRAS
-			raca = scan6.nextLine();
-			
-			System.out.println("Informe o sexo do animal");
-			System.out.println("1 - Fêmea\n2 - Macho");
-			String sexo = null;
-			int escsexo = scan7.nextInt();
-			if(escsexo <= 1)
-				sexo = "Fêmea";
-			else
-				sexo = "Macho";
-			
-			
-		
-			System.out.println("Informe o peso"); // ADD INPUT EXCEPTION SÓ NUMEROS
-			peso = scan.nextDouble();
-		
-			System.out.println("Informe a idade"); // ADD INPUT EXCEPTION SÓ NUMEROS
-			idade = scan5.nextLine();
-	
-			Animal a = new Cachorro(nome,raca,sexo,peso,idade,"saudavel","calmo");
-			
-			cadastro.cadastrar(a);
-			System.out.println("Cadastro realizado com sucesso");
-			System.out.print("\n");
-		
-			
-		}
-			if(escolha2 == 2){
+			try{
 				Scanner scan5 = new Scanner(System.in);
 				Scanner scan6 = new Scanner(System.in);
 				Scanner scan7 = new Scanner(System.in);
-				System.out.println("Digite o nome do Gato"); // ADD INPUT EXCEPTION SÓ LETRAS
+				System.out.println("Digite o nome do cão"); // ADD INPUT EXCEPTION SÓ LETRAS
 				nome = scan5.nextLine();
-			
-				System.out.println("Digite a raça do Gato"); // ADD INPUT EXCEPTION SÓ LETRAS
+				check.checaNome(nome);
+				System.out.println("Digite a raça do cão"); // ADD INPUT EXCEPTION SÓ LETRAS
 				raca = scan6.nextLine();
 			
 				System.out.println("Informe o sexo do animal");
@@ -131,52 +102,106 @@ public static void main(String[] args){
 					sexo = "Fêmea";
 				else
 					sexo = "Macho";
-				
+			
 				System.out.println("Informe o peso"); // ADD INPUT EXCEPTION SÓ NUMEROS
 				peso = scan.nextDouble();
-			
+		
 				System.out.println("Informe a idade"); // ADD INPUT EXCEPTION SÓ NUMEROS
 				idade = scan5.nextLine();
-		
-				Animal a = new Gato(nome,raca,sexo,peso,idade,"saudavel","calmo");
+	
+				Animal a = new Cachorro(nome,raca,sexo,peso,idade,"saudavel","calmo");
+			
 				cadastro.cadastrar(a);
 				System.out.println("Cadastro realizado com sucesso");
 				System.out.print("\n");
+			}
+			catch(InputMismatchException i){
+				System.err.println("Insira somente números");
+			}
+			catch(NAMException n){
+				System.err.println(n.getMessage());
+			}
 		}
-			if(escolha2 >=3){
-				Scanner scan5 = new Scanner(System.in);
-				Scanner scan6 = new Scanner(System.in);
-				Scanner scan7 = new Scanner(System.in);
-				Scanner scan8 = new Scanner(System.in);
-				System.out.println("Digite a especie do Animal"); // ADD INPUT EXCEPTION SÓ LETRAS
-				String especie = scan5.nextLine();
-				
-				System.out.println("Digite o nome do Animal"); // ADD INPUT EXCEPTION SÓ LETRAS
-				nome = scan6.nextLine();			
+			if(escolha2 == 2){
+				try{
+					Scanner scan5 = new Scanner(System.in);
+					Scanner scan6 = new Scanner(System.in);
+					Scanner scan7 = new Scanner(System.in);
+					System.out.println("Digite o nome do Gato"); // ADD INPUT EXCEPTION SÓ LETRAS
+					nome = scan5.nextLine();
+					check.checaNome(nome);
+					System.out.println("Digite a raça do Gato"); // ADD INPUT EXCEPTION SÓ LETRAS
+					raca = scan6.nextLine();
 			
-				System.out.println("Digite a raça do Animal"); // ADD INPUT EXCEPTION SÓ LETRAS
-				raca = scan7.nextLine();
+					System.out.println("Informe o sexo do animal");
+					System.out.println("1 - Fêmea\n2 - Macho");
+					String sexo = null;
+					int escsexo = scan7.nextInt();
+					if(escsexo <= 1)
+						sexo = "Fêmea";
+					else
+						sexo = "Macho";
 				
-				System.out.println("Informe o sexo do animal");
-				System.out.println("1 - Fêmea\n2 - Macho");
-				String sexo = null;
-				int escsexo = scan7.nextInt();
-				if(escsexo <= 1)
-					sexo = "Fêmea";
-				else
-					sexo = "Macho";
-				
+					System.out.println("Informe o peso"); // ADD INPUT EXCEPTION SÓ NUMEROS
+					peso = scan.nextDouble();
 			
-				System.out.println("Informe o peso"); // ADD INPUT EXCEPTION SÓ NUMEROS
-				peso = scan.nextDouble();
-			
-				System.out.println("Informe a idade"); // ADD INPUT EXCEPTION SÓ NUMEROS
-				idade = scan5.nextLine();
+					System.out.println("Informe a idade"); // ADD INPUT EXCEPTION SÓ NUMEROS
+					idade = scan5.nextLine();
 		
-				Animal a = new Outro(nome,raca,sexo,peso,idade,"saudavel","calmo", especie);
-				cadastro.cadastrar(a);
-				System.out.println("Cadastro realizado com sucesso");
-				System.out.print("\n");
+					Animal a = new Gato(nome,raca,sexo,peso,idade,"saudavel","calmo");
+					cadastro.cadastrar(a);
+					System.out.println("Cadastro realizado com sucesso");
+					System.out.print("\n");
+				}
+				catch(InputMismatchException i){
+					System.err.println("Insira somente números");
+				}
+				catch(NAMException n){
+					System.err.println(n.getMessage());
+				}
+			}
+			if(escolha2 >=3){
+				try{
+					Scanner scan5 = new Scanner(System.in);
+					Scanner scan6 = new Scanner(System.in);
+					Scanner scan7 = new Scanner(System.in);
+					Scanner scan8 = new Scanner(System.in);
+					System.out.println("Digite a especie do Animal"); // ADD INPUT EXCEPTION SÓ LETRAS
+					String especie = scan5.nextLine();
+					check.checaNome(especie);
+					System.out.println("Digite o nome do Animal"); // ADD INPUT EXCEPTION SÓ LETRAS
+					nome = scan6.nextLine();			
+			
+					System.out.println("Digite a raça do Animal"); // ADD INPUT EXCEPTION SÓ LETRAS
+					raca = scan7.nextLine();
+				
+					System.out.println("Informe o sexo do animal");
+					System.out.println("1 - Fêmea\n2 - Macho");
+					String sexo = null;
+					int escsexo = scan7.nextInt();
+					if(escsexo <= 1)
+						sexo = "Fêmea";
+					else
+						sexo = "Macho";
+				
+			
+					System.out.println("Informe o peso"); // ADD INPUT EXCEPTION SÓ NUMEROS
+					peso = scan.nextDouble();
+			
+					System.out.println("Informe a idade"); // ADD INPUT EXCEPTION SÓ NUMEROS
+					idade = scan5.nextLine();
+		
+					Animal a = new Outro(nome,raca,sexo,peso,idade,"saudavel","calmo", especie);
+					cadastro.cadastrar(a);
+					System.out.println("Cadastro realizado com sucesso");
+					System.out.print("\n");
+				}
+					catch(InputMismatchException i){
+						System.err.println("Insira somente números");
+				}
+					catch(NAMException n){
+						System.err.println(n.getMessage());
+				}
 			}
 			
 		}
