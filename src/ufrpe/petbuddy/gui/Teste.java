@@ -84,6 +84,8 @@ public static void main(String[] args){
 		int escolha2 = scan.nextInt();
 		
 		if(escolha2 <= 1 ){
+			boolean control = true;
+			while(control){
 			try{
 				Scanner scan5 = new Scanner(System.in);
 				Scanner scan6 = new Scanner(System.in);
@@ -93,7 +95,7 @@ public static void main(String[] args){
 				check.checaNome(nome);
 				System.out.println("Digite a raça do cão"); // ADD INPUT EXCEPTION SÓ LETRAS
 				raca = scan6.nextLine();
-			
+				check.checaNome(raca);
 				System.out.println("Informe o sexo do animal");
 				System.out.println("1 - Fêmea\n2 - Macho");
 				String sexo = null;
@@ -109,17 +111,19 @@ public static void main(String[] args){
 				System.out.println("Informe a idade"); // ADD INPUT EXCEPTION SÓ NUMEROS
 				idade = scan5.nextLine();
 	
-				Animal a = new Cachorro(nome,raca,sexo,peso,idade,"saudavel","calmo");
+				Animal a = new Cachorro(nome,raca,sexo,peso,idade,"saudavel","calmo",null);
 			
 				cadastro.cadastrar(a);
 				System.out.println("Cadastro realizado com sucesso");
 				System.out.print("\n");
+				control = false;
 			}
 			catch(InputMismatchException i){
 				System.err.println("Insira somente números");
 			}
 			catch(NAMException n){
 				System.err.println(n.getMessage());
+				}
 			}
 		}
 			if(escolha2 == 2){
@@ -148,7 +152,7 @@ public static void main(String[] args){
 					System.out.println("Informe a idade"); // ADD INPUT EXCEPTION SÓ NUMEROS
 					idade = scan5.nextLine();
 		
-					Animal a = new Gato(nome,raca,sexo,peso,idade,"saudavel","calmo");
+					Animal a = new Gato(nome,raca,sexo,peso,idade,"saudavel","calmo",null);
 					cadastro.cadastrar(a);
 					System.out.println("Cadastro realizado com sucesso");
 					System.out.print("\n");
@@ -191,7 +195,7 @@ public static void main(String[] args){
 					System.out.println("Informe a idade"); // ADD INPUT EXCEPTION SÓ NUMEROS
 					idade = scan5.nextLine();
 		
-					Animal a = new Outro(nome,raca,sexo,peso,idade,"saudavel","calmo", especie);
+					Animal a = new Outro(nome,raca,sexo,peso,idade,"saudavel","calmo", especie,null);
 					cadastro.cadastrar(a);
 					System.out.println("Cadastro realizado com sucesso");
 					System.out.print("\n");
