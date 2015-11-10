@@ -1,4 +1,4 @@
-package ufrpe.petbuddy.dados.exceptions;
+package ufrpe.petbuddy.exceptions;
 
 public class IDException extends Exception {
 

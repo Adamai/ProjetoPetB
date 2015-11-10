@@ -2,9 +2,9 @@ package ufrpe.petbuddy.gui;
 
 import java.util.Scanner;
 import java.util.ArrayList;
-
-import ufrpe.petbuddy.dados.exceptions.*;
+import ufrpe.petbuddy.exceptions.*;
 import ufrpe.petbuddy.negocio.*;
+import java.util.InputMismatchException;
 
 
 public class Teste {
@@ -33,27 +33,37 @@ public static void main(String[] args){
 		 String nome;
 		 int idade;
 		 int contato;
-		 int donos;
 		 String endereco;
 		 //String login;
 		 //String senha;
-			Scanner scan5 = new Scanner(System.in);
-			Scanner scan6 = new Scanner(System.in);
-		 System.out.println("Digite seu nome"); // ADD INPUT EXCEPTION SÓ LETRAS
-		 nome = scan5.nextLine();
-		 System.out.println("Informe seu numero de contato"); // ADD INPUT EXCEPTION SÓ NUMEROS
-		 contato = scan.nextInt();
-		 System.out.println("Insira sua idade"); // ADD INPUT EXCEPTION SÓ NUMEROS
-		 idade = scan.nextInt();
-		 System.out.println("Infome seu endereco"); 
-		 endereco = scan6.nextLine();
-		 		
-		 Pessoa p = new Pessoa(nome,idade,contato, endereco,"batata","doce");
-		 cadastrop.cadastrar(p);
-		 System.out.println("Cadastro realizado com sucesso");
-		 System.out.println(cadastrop.busca(nome)); // TRY CATCH
+		
+		 boolean control = true;
 		 
-		 
+		 while(control){
+			 Scanner scan5 = new Scanner(System.in);
+			 Scanner scan6 = new Scanner(System.in);
+			 Scanner scan7 = new Scanner(System.in);
+			 Scanner scan8 = new Scanner(System.in);
+			 try{
+			 System.out.println("Digite seu nome"); // ADD INPUT EXCEPTION SÓ LETRAS
+			 nome = scan5.nextLine();
+			 System.out.println("Informe seu numero de contato"); // ADD INPUT EXCEPTION SÓ NUMEROS
+			 contato = scan6.nextInt();
+			 System.out.println("Insira sua idade"); // ADD INPUT EXCEPTION SÓ NUMEROS
+			 idade = scan7.nextInt();
+			 System.out.println("Infome seu endereco"); 
+			 endereco = scan8.nextLine();
+			 		
+			 Pessoa p = new Pessoa(nome,idade,contato, endereco,"batata","doce");
+			 cadastrop.cadastrar(p);
+			 System.out.println("Cadastro realizado com sucesso");
+			 System.out.println(cadastrop.busca(nome)); // TRY CATCH
+			 control = false;
+		 	}
+		 catch(InputMismatchException i){
+			 System.err.println("Insira somente números");
+		 	}
+		 }
 	}
 	
 	if(escolha==2){//CADASTRO ANIMAIS
@@ -191,7 +201,7 @@ public static void main(String[] args){
 				System.out.print("\n");
 				}
 			catch(RepoException rep){
-				System.out.println(rep.getMessage());
+				System.err.println(rep.getMessage());
 				System.out.println("\n");
 			}
 		}
@@ -209,7 +219,7 @@ public static void main(String[] args){
 				System.out.print("\n");
 				}
 			catch(RepoException rep){
-				System.out.println(rep.getMessage());
+				System.err.println(rep.getMessage());
 				System.out.println("\n");
 			}
 			
@@ -227,7 +237,7 @@ public static void main(String[] args){
 				System.out.print("\n");
 			}
 			catch(RepoException rep){
-				System.out.println(rep.getMessage());
+				System.err.println(rep.getMessage());
 				System.out.println("\n");
 			}
 		
@@ -252,7 +262,7 @@ public static void main(String[] args){
 				System.out.print("\n\n");
 				}
 	catch(IDException rep){
-		System.out.println(rep.getMessage());
+		System.err.println(rep.getMessage());
 		System.out.println("\n");
 		}
 	

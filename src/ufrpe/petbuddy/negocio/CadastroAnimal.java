@@ -1,7 +1,9 @@
 package ufrpe.petbuddy.negocio;
 
 import ufrpe.petbuddy.dados.*;
-import ufrpe.petbuddy.dados.exceptions.*;
+import ufrpe.petbuddy.exceptions.*;
+import ufrpe.petbuddy.exceptions.IDException;
+import ufrpe.petbuddy.exceptions.RepoException;
 
 import java.util.ArrayList;
 

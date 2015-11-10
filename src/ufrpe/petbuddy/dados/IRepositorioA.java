@@ -2,7 +2,9 @@ package ufrpe.petbuddy.dados;
 
 import java.util.ArrayList;
 
-import ufrpe.petbuddy.dados.exceptions.*;
+import ufrpe.petbuddy.exceptions.*;
+import ufrpe.petbuddy.exceptions.IDException;
+import ufrpe.petbuddy.exceptions.RepoException;
 import ufrpe.petbuddy.negocio.Animal;
 
 public interface IRepositorioA {

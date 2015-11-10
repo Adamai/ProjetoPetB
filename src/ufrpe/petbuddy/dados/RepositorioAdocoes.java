@@ -2,7 +2,7 @@ package ufrpe.petbuddy.dados;
 
 import java.util.ArrayList;
 
-import ufrpe.petbuddy.dados.exceptions.IDException;
+import ufrpe.petbuddy.exceptions.IDException;
 import ufrpe.petbuddy.negocio.*;
 
 public class RepositorioAdocoes implements IRepositorioC{

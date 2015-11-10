@@ -1,8 +1,10 @@
 package ufrpe.petbuddy.negocio;
 
 import java.util.ArrayList;
+
 import ufrpe.petbuddy.dados.*;
-import ufrpe.petbuddy.dados.exceptions.*;
+import ufrpe.petbuddy.exceptions.*;
+import ufrpe.petbuddy.exceptions.IDException;
 
 public class CadastroAdocao implements ICadastroC{
 
