@@ -3,10 +3,10 @@ package ufrpe.petbuddy.negocio;
 import ufrpe.petbuddy.dados.*;
 public class CadastroPessoa implements ICadastroB{
 
-	private RepositorioPessoas repositorio;
+	private RepositorioUsuarios repositorio;
 	
 	public CadastroPessoa(){
-		this.repositorio = new RepositorioPessoas();
+		this.repositorio = new RepositorioUsuarios();
 	}
 	
 	public void cadastrar(Pessoa p){
@@ -21,4 +21,7 @@ public class CadastroPessoa implements ICadastroB{
 		this.repositorio.remover(nome);
 	}
 	
+	public Usuario busca(String login, String senha) throws NullPointerException{
+		return this.busca(login, senha);
+	}
 }
