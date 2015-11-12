@@ -17,8 +17,11 @@ public class RepositorioAdocoes implements IRepositorioC{
 		this.adocoes.add(a);
 	}
 	
-	public ArrayList<Adocao> busca(){ // ADD NULL EXCEPTION
-		return this.adocoes;
+	public ArrayList<Adocao> busca() throws NullPointerException{  // ADD NULL EXCEPTION
+		if(adocoes.size()>0)
+			return this.adocoes;
+		else
+			throw new NullPointerException("Nada encontrado");
 	}
 	
 	public Adocao busca(long numid) throws IDException{ // ADD NULL EXCEPTION

@@ -27,6 +27,7 @@ public abstract class Animal {
 		this.veterinario = veterinario;
 		Animal.AumentarProximo();
 		}
+	
 	public static void AumentarProximo(){
 		proximo = proximo + 1;
 	}

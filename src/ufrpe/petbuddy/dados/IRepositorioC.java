@@ -8,6 +8,6 @@ import ufrpe.petbuddy.negocio.*;
 public interface IRepositorioC {
 
 	void cadastrar(Adocao a);
-	ArrayList<Adocao> busca();
+	ArrayList<Adocao> busca() throws NullPointerException;
 	Adocao busca(long numid)throws IDException;
 }
