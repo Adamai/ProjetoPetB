@@ -2,17 +2,15 @@ package ufrpe.petbuddy.negocio;
 
 
 public class Pessoa extends Usuario {
-	
-	private String endereco;
-	private String login;
-	private String senha;
-
+private String login;
+private String senha;
+private String endereco;
 	
 	public Pessoa(String nome, int idade, int contato, String endereco,String login,String senha){
 		super(nome, idade, contato);
-		this.endereco = endereco;
 		this.login = login;
 		this.senha = senha;
+		this.endereco = endereco;
 	}
 
 	public String getEndereco() {

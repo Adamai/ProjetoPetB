@@ -13,4 +13,10 @@ public class Outro extends Animal{
 		public String getEspecie() {
 			return especie;
 		}
+		@Override
+		  public String toString(){
+		   return "Id: " +this.getNumid() + "\n" +"Sexo: "+ this.getSexo() +"\nNome: " +this.getNome() + "\nPeso: "+ this.getPeso()+" kg\nRaça: " 
+		      + this.getRaca() +"\nEspecie: " +this.especie + "\nIdade: "+ this.getIdade() +"\nEstado de saúde: " 
+		      + this.getSaude() + "\nTemperamento: " +this.getTemperamento() +"\n\n";
+		}
 }

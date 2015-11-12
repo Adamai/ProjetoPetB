@@ -78,10 +78,10 @@ public abstract class Animal {
 		return this.temperamento;
 	}
 
-	public String toString(){
-		return "Id: " +this.numid + "\n" +"Sexo: "+ this.sexo +"\nNome: " +this.nome + "\nPeso: "+ this.peso+" kg\nEspécie/Raça: " 
-					+ this.raca +"\nIdade: "+ this.idade +"\nEstado de saúde: " 
-					+ this.saude + "\nTemperamento: " +this.temperamento +"\n\n";
+	 public String toString(){
+		  return "Id: " +this.numid + "\n" +"Sexo: "+ this.sexo +"\nNome: " +this.nome + "\nPeso: "+ this.peso+" kg\nRaça: " 
+		     + this.raca +"\nIdade: "+ this.idade +"\nEstado de saúde: " 
+		     + this.saude + "\nTemperamento: " +this.temperamento +"\n\n";
 		 	}
 
 	public boolean isAdotado() {

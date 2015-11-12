@@ -7,5 +7,17 @@ public class Adm extends Usuario {
 	
 	public Adm(){
 		super("adm",30,5617467);
+		this.login = login;
+		this.senha = senha;
 	}
+
+	public String getLogin() {
+		return login;
+	}
+
+	public String getSenha() {
+		return senha;
+	}
+	
+	
 }

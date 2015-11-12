@@ -26,13 +26,13 @@ public class RepositorioPessoas implements IRepositorioB {
 		return null;
 	}
 	
-	//public Pessoa busca(String login, String senha){ // ADD NULL EXCEPTION 
-	//	for(int i = 0;i<this.pessoas.size();i++){
-	//		if(this.pessoas.get(i).getLogin().equals(login) && this.pessoas.get(i).getSenha().equals(senha))
-	//			return this.pessoas.get(i);
-	//	}
-	//	return null;
-	//}
+	public Pessoa buscaLogin(String login, String senha){ // ADD NULL EXCEPTION 
+		for(int i = 0;i<this.pessoas.size();i++){
+			if(this.pessoas.get(i).getLogin().equals(login) && this.pessoas.get(i).getSenha().equals(senha))
+				return this.pessoas.get(i);
+		}
+		return null;
+	}
 	
 	public void remover(String nome){ // EXCEPTION?
 		this.pessoas.remove(this.busca(nome));
