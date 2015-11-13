@@ -1,4 +1,4 @@
-package ufrpe.petbuddy.negocio;
+package ufrpe.petbuddy.negocio.beans;
 
 
 public class Veterinario extends Usuario {

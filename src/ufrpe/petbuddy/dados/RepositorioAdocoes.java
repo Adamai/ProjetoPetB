@@ -4,8 +4,9 @@ import java.util.ArrayList;
 
 import ufrpe.petbuddy.exceptions.IDException;
 import ufrpe.petbuddy.negocio.*;
+import ufrpe.petbuddy.negocio.beans.Adocao;
 
-public class RepositorioAdocoes implements IRepositorioC{
+public class RepositorioAdocoes implements IRepositorioAdocoes{
 
 	private ArrayList<Adocao>adocoes;
 	

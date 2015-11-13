@@ -4,9 +4,9 @@ import java.util.ArrayList;
 
 import ufrpe.petbuddy.dados.*;
 import ufrpe.petbuddy.exceptions.*;
-import ufrpe.petbuddy.exceptions.IDException;
+import ufrpe.petbuddy.negocio.beans.Adocao;
 
-public class CadastroAdocao implements ICadastroC{
+public class CadastroAdocao implements ICadastroAdocao{
 
 	private RepositorioAdocoes repositorio;
 	
@@ -18,11 +18,11 @@ public class CadastroAdocao implements ICadastroC{
 		this.repositorio.cadastrar(a);
 	}
 	
-	public ArrayList<Adocao> busca(){ // ADD NULL EXCEPTION 
+	public ArrayList<Adocao> buscahistoricoadocoes(){ // ADD NULL EXCEPTION 
 		return this.repositorio.busca();
 	}
 	
-	public Adocao busca(long numid) throws IDException{ // ADD NULL EXCEPTION
+	public Adocao buscaporid(long numid) throws IDException{ // ADD NULL EXCEPTION
 		return this.repositorio.busca(numid);
 	}
 }

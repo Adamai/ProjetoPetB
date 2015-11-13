@@ -1,5 +1,7 @@
 package ufrpe.petbuddy.negocio;
 
+import ufrpe.petbuddy.negocio.beans.Usuario;
+
 public class ControleLogin implements ILogin {
 	
 
@@ -10,7 +12,7 @@ public class ControleLogin implements ILogin {
 	}
 	
 	public Usuario EfetuarLogin(String login, String senha){
-		return this.cadastrop.busca(login, senha);
+		return this.cadastrop.buscausuario(login, senha);
 		
 	}
 	

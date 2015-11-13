@@ -2,25 +2,27 @@ package ufrpe.petbuddy.negocio;
 
 import ufrpe.petbuddy.dados.*;
 import ufrpe.petbuddy.exceptions.*;
+import ufrpe.petbuddy.negocio.beans.Veterinario;
+
 import java.util.ArrayList;
 
 public class CadastroVet {
 
-	private IRepositorioD repositorio;
+	private IRepositorioVet repositorio;
 	
 	public CadastroVet(){
-		this.repositorio = new RepositorioMedicos();
+		this.repositorio = new RepositorioVet();
 	}
 	
-	public void cadastrar(Veterinario vet){
+	public void cadastrarvet(Veterinario vet){
 		this.repositorio.cadastrar(vet);
 	}
 	
-	public Veterinario busca(long numid) throws IDException{
+	public Veterinario buscavet(long numid) throws IDException{
 		return this.repositorio.busca(numid);
 	}
 	
-	public ArrayList<Veterinario> busca() throws NullPointerException{
+	public ArrayList<Veterinario> buscavet() throws NullPointerException{
 		return this.repositorio.busca();
 	}
 	

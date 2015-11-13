@@ -1,4 +1,4 @@
-package ufrpe.petbuddy.negocio;
+package ufrpe.petbuddy.negocio.beans;
 
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;

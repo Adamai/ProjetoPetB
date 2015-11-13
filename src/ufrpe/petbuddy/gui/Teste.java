@@ -2,8 +2,16 @@ package ufrpe.petbuddy.gui;
 
 import java.util.Scanner;
 import java.util.ArrayList;
+
 import ufrpe.petbuddy.exceptions.*;
 import ufrpe.petbuddy.negocio.*;
+import ufrpe.petbuddy.negocio.beans.Adocao;
+import ufrpe.petbuddy.negocio.beans.Animal;
+import ufrpe.petbuddy.negocio.beans.Cachorro;
+import ufrpe.petbuddy.negocio.beans.Gato;
+import ufrpe.petbuddy.negocio.beans.Outro;
+import ufrpe.petbuddy.negocio.beans.Pessoa;
+
 import java.util.InputMismatchException;
 
 
@@ -12,9 +20,9 @@ public class Teste {
 public static void main(String[] args){
 	int controlador = 1;
 	
-	ICadastroA cadastro = new CadastroAnimal();
-	ICadastroB cadastrop = new CadastroPessoa();
-	ICadastroC cadastroad = new CadastroAdocao();
+	ICadastroAnimal cadastro = new CadastroAnimal();
+	ICadastroPessoa cadastrop = new CadastroPessoa();
+	ICadastroAdocao cadastroad = new CadastroAdocao();
 	CheckEX check = new CheckEX();
 	System.out.println("Bem vindo ao Pet Buddy");
 	
@@ -59,9 +67,9 @@ public static void main(String[] args){
 			 endereco = scan8.nextLine();
 			 		
 			 Pessoa p = new Pessoa(nome,idade,contato, endereco,"batata","doce");
-			 cadastrop.cadastrar(p);
+			 cadastrop.cadastrarpessoa(p);
 			 System.out.println("Cadastro realizado com sucesso");
-			 System.out.println(cadastrop.busca(nome)); // TRY CATCH
+			 System.out.println(cadastrop.buscanome(nome)); // TRY CATCH
 			 control = false;
 		 	}
 		 catch(InputMismatchException i){
@@ -115,7 +123,7 @@ public static void main(String[] args){
 	
 				Animal a = new Cachorro(nome,raca,sexo,peso,idade,"saudavel","calmo",null);
 			
-				cadastro.cadastrar(a);
+				cadastro.cadastraranimal(a);
 				System.out.println("Cadastro realizado com sucesso");
 				System.out.print("\n");
 				control = false;
@@ -155,7 +163,7 @@ public static void main(String[] args){
 					idade = scan5.nextLine();
 		
 					Animal a = new Gato(nome,raca,sexo,peso,idade,"saudavel","calmo",null);
-					cadastro.cadastrar(a);
+					cadastro.cadastraranimal(a);
 					System.out.println("Cadastro realizado com sucesso");
 					System.out.print("\n");
 				}
@@ -198,7 +206,7 @@ public static void main(String[] args){
 					idade = scan5.nextLine();
 		
 					Animal a = new Outro(nome,raca,sexo,peso,idade,"saudavel","calmo", especie,null);
-					cadastro.cadastrar(a);
+					cadastro.cadastraranimal(a);
 					System.out.println("Cadastro realizado com sucesso");
 					System.out.print("\n");
 				}
@@ -282,7 +290,7 @@ public static void main(String[] args){
 			System.out.println("Digite o id do animal que está procurando");
 			numero = scan2.nextLong();
 			try{
-				Animal c = cadastro.busca(numero); // TRY CATCH
+				Animal c = cadastro.buscaid(numero); // TRY CATCH
 				System.out.println(c);
 				Pessoa p = new Pessoa("Johny Joestar", 15, 40028922, "Rua dos bobos nº 0", "Pipoca", "1234");
 				Adocao a = new Adocao(c, p);

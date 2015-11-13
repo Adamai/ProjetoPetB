@@ -3,13 +3,14 @@ package ufrpe.petbuddy.dados;
 import java.util.ArrayList;
 
 import ufrpe.petbuddy.negocio.*;
+import ufrpe.petbuddy.negocio.beans.Veterinario;
 import ufrpe.petbuddy.exceptions.*;
 
-public class RepositorioMedicos implements IRepositorioD {
+public class RepositorioVet implements IRepositorioVet {
 
 	private ArrayList<Veterinario>veterinarios;
 	
-	public RepositorioMedicos(){
+	public RepositorioVet(){
 		this.veterinarios = new ArrayList<Veterinario>();
 	}
 	

@@ -4,10 +4,14 @@ package ufrpe.petbuddy.dados;
 import ufrpe.petbuddy.exceptions.IDException;
 import ufrpe.petbuddy.exceptions.RepoException;
 import ufrpe.petbuddy.negocio.*;
+import ufrpe.petbuddy.negocio.beans.Animal;
+import ufrpe.petbuddy.negocio.beans.Cachorro;
+import ufrpe.petbuddy.negocio.beans.Gato;
+import ufrpe.petbuddy.negocio.beans.Outro;
 
 import java.util.ArrayList;
 
-public class RepositorioAnimais implements IRepositorioA {
+public class RepositorioAnimais implements IRepositorioAnimais {
 
 	private ArrayList<Animal> animais;
 	private ArrayList<Animal> adotados;

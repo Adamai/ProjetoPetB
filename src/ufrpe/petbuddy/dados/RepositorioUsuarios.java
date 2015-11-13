@@ -1,10 +1,13 @@
 package ufrpe.petbuddy.dados;
 
 import ufrpe.petbuddy.negocio.*;
+import ufrpe.petbuddy.negocio.beans.Adm;
+import ufrpe.petbuddy.negocio.beans.Pessoa;
+import ufrpe.petbuddy.negocio.beans.Usuario;
 
 import java.util.ArrayList;
 
-public class RepositorioUsuarios implements IRepositorioB {
+public class RepositorioUsuarios implements IRepositorioUsuarios {
 
 	private ArrayList<Usuario>usuarios;
 	

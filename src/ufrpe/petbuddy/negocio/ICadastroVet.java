@@ -2,7 +2,9 @@ package ufrpe.petbuddy.negocio;
 
 import java.util.ArrayList;
 
-public interface ICadastroD {// INTERFACE DE CADASTROVET
+import ufrpe.petbuddy.negocio.beans.Veterinario;
+
+public interface ICadastroVet {// INTERFACE DE CADASTROVET
 
 	void cadastrar(Veterinario vet);
 	Veterinario busca(long numid) throws NullPointerException;

@@ -1,7 +1,8 @@
 package ufrpe.petbuddy.dados;
 
 import ufrpe.petbuddy.negocio.*;
-public interface IRepositorioB {
+import ufrpe.petbuddy.negocio.beans.Usuario;
+public interface IRepositorioUsuarios {
 
 	void cadastrar(Usuario u);
 	Usuario busca(String nome);
