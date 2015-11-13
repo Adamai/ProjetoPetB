@@ -30,7 +30,8 @@ public static void main(String[] args){
 	int escolha = scan.nextInt();
 	
 	
-	if(escolha == 1){//CADASTRO USUÁRIO
+	if(escolha == 1){//CADASTRO USUÁRIO TESTANDO CONFLITO
+		//tuts tuts
 		 String nome;
 		 int idade;
 		 int contato;
