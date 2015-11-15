@@ -6,7 +6,7 @@ import ufrpe.petbuddy.negocio.beans.Veterinario;
 
 import java.util.ArrayList;
 
-public class CadastroVet {
+public class CadastroVet implements ICadastroVet {
 
 	private IRepositorioVet repositorio;
 	
@@ -14,15 +14,15 @@ public class CadastroVet {
 		this.repositorio = new RepositorioVet();
 	}
 	
-	public void cadastrarvet(Veterinario vet){
+	public void cadastrar(Veterinario vet){
 		this.repositorio.cadastrar(vet);
 	}
 	
-	public Veterinario buscavet(long numid) throws IDException{
+	public Veterinario busca(long numid) throws IDException{
 		return this.repositorio.busca(numid);
 	}
 	
-	public ArrayList<Veterinario> buscavet() throws NullPointerException{
+	public ArrayList<Veterinario> busca() throws HistException{
 		return this.repositorio.busca();
 	}
 	

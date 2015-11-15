@@ -4,6 +4,7 @@ import ufrpe.petbuddy.negocio.*;
 import ufrpe.petbuddy.negocio.beans.Adm;
 import ufrpe.petbuddy.negocio.beans.Pessoa;
 import ufrpe.petbuddy.negocio.beans.Usuario;
+import ufrpe.petbuddy.exceptions.*;
 
 import java.util.ArrayList;
 
@@ -20,15 +21,19 @@ public class RepositorioUsuarios implements IRepositorioUsuarios {
 		this.usuarios.add(p);
 	}
 	
-	public Pessoa busca(String nome){ // ADD NULL EXCEPTION
+	public Pessoa busca(String nome) throws RepoException{ // ADD NULL EXCEPTION
+		Pessoa p = null;
 		for(int i = 0;i<this.usuarios.size();i++){
 			if(this.usuarios.get(i).getNome().equalsIgnoreCase(nome))
-				return (Pessoa)this.usuarios.get(i);
+				p= (Pessoa)this.usuarios.get(i);
 		}
-		return null;
+		if(p != null)
+			return p;
+		else
+			throw new RepoException(nome);
 	}
 	
-	public Usuario buscaLogin(String login, String senha)throws NullPointerException{ // ADD NULL EXCEPTION 
+	public Usuario buscaLogin(String login, String senha)throws RepoException{ // ADD NULL EXCEPTION 
 		Usuario aux = null;
 		for(int i = 0;i<this.usuarios.size();i++){
 			aux = this.usuarios.get(i);
@@ -46,11 +51,11 @@ public class RepositorioUsuarios implements IRepositorioUsuarios {
 				}
 			}
 		}
-		throw new NullPointerException("Login ou senha incorretos");
+		throw new RepoException(login,senha);
 		
 	}
 	
-	public void remover(String nome){ // EXCEPTION?
+	public void remover(String nome) throws RepoException{ // EXCEPTION?
 		this.usuarios.remove(this.busca(nome));
 	}
 	

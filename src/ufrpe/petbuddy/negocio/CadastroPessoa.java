@@ -3,27 +3,29 @@ package ufrpe.petbuddy.negocio;
 import ufrpe.petbuddy.dados.*;
 import ufrpe.petbuddy.negocio.beans.Pessoa;
 import ufrpe.petbuddy.negocio.beans.Usuario;
+import ufrpe.petbuddy.exceptions.*;
+
 public class CadastroPessoa implements ICadastroPessoa{
 
-	private RepositorioUsuarios repositorio;
+	private IRepositorioUsuarios repositorio;
 	
 	public CadastroPessoa(){
 		this.repositorio = new RepositorioUsuarios();
 	}
 	
-	public void cadastrarpessoa(Pessoa p){
+	public void cadastrar(Pessoa p){
 		this.repositorio.cadastrar(p);
 	}
 	
-	public Pessoa buscanome(String nome){// ADD EXCEPTION
-		return this.repositorio.busca(nome);
+	public Pessoa busca(String nome) throws RepoException{// ADD EXCEPTION
+		return  this.repositorio.busca(nome);
 	}
 	
-	public void descadastrar(String nome){// ADD EXCEPTION
+	public void descadastrar(String nome) throws RepoException{// ADD EXCEPTION
 		this.repositorio.remover(nome);
 	}
 	
-	public Usuario buscausuario(String login, String senha) throws NullPointerException{
-		return this.buscausuario(login, senha);
+	public Usuario busca(String login, String senha) throws RepoException{
+		return this.repositorio.buscaLogin(login, senha);
 	}
 }

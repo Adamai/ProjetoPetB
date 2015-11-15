@@ -31,11 +31,11 @@ public class RepositorioVet implements IRepositorioVet {
 		
 	}
 	
-	public ArrayList<Veterinario> busca() throws NullPointerException{
+	public ArrayList<Veterinario> busca() throws HistException{
 		if(this.veterinarios.size()>0)
 			return this.veterinarios;
 		else
-			throw new NullPointerException("Nada encontrado");
+			throw new HistException();
 	}
 	
 	

@@ -8,7 +8,7 @@ import ufrpe.petbuddy.negocio.beans.Adocao;
 
 public class CadastroAdocao implements ICadastroAdocao{
 
-	private RepositorioAdocoes repositorio;
+	private IRepositorioAdocoes repositorio;
 	
 	public CadastroAdocao(){
 		this.repositorio = new RepositorioAdocoes();
@@ -18,11 +18,11 @@ public class CadastroAdocao implements ICadastroAdocao{
 		this.repositorio.cadastrar(a);
 	}
 	
-	public ArrayList<Adocao> buscahistoricoadocoes(){ // ADD NULL EXCEPTION 
+	public ArrayList<Adocao> busca() throws HistException{ // ADD NULL EXCEPTION 
 		return this.repositorio.busca();
 	}
 	
-	public Adocao buscaporid(long numid) throws IDException{ // ADD NULL EXCEPTION
+	public Adocao busca(long numid) throws IDException{ // ADD NULL EXCEPTION
 		return this.repositorio.busca(numid);
 	}
 }

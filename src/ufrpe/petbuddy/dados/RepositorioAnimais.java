@@ -90,7 +90,7 @@ public class RepositorioAnimais implements IRepositorioAnimais {
 	}
 	
 	
-	public void remover(Animal a){ // REMOVE UM ANIMAL ESPECÍFICO ATRAVÉS DO ID
+	public void remover(Animal a){ 
 		this.animais.remove(a);
 	}
 }

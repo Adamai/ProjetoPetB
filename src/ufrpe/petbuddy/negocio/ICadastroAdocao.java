@@ -7,7 +7,7 @@ import ufrpe.petbuddy.negocio.beans.Adocao;
 public interface ICadastroAdocao {// interface de CadastroAdocao
 
 	void cadastrar(Adocao a);
-	ArrayList<Adocao> buscahistoricoadocoes();
-	Adocao buscaporid(long numid) throws IDException;
+	ArrayList<Adocao> busca() throws HistException;
+	Adocao busca(long numid) throws IDException;
 	
 }

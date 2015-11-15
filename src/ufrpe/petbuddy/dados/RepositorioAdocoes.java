@@ -2,7 +2,7 @@ package ufrpe.petbuddy.dados;
 
 import java.util.ArrayList;
 
-import ufrpe.petbuddy.exceptions.IDException;
+import ufrpe.petbuddy.exceptions.*;
 import ufrpe.petbuddy.negocio.*;
 import ufrpe.petbuddy.negocio.beans.Adocao;
 
@@ -18,11 +18,11 @@ public class RepositorioAdocoes implements IRepositorioAdocoes{
 		this.adocoes.add(a);
 	}
 	
-	public ArrayList<Adocao> busca() throws NullPointerException{  // ADD NULL EXCEPTION
+	public ArrayList<Adocao> busca() throws HistException{  // ADD NULL EXCEPTION
 		if(adocoes.size()>0)
 			return this.adocoes;
 		else
-			throw new NullPointerException("Nada encontrado");
+			throw new HistException();
 	}
 	
 	public Adocao busca(long numid) throws IDException{ // ADD NULL EXCEPTION

@@ -11,6 +11,6 @@ public interface IRepositorioVet {
 	
 	void cadastrar(Veterinario vet);
 	Veterinario busca(long numid)throws IDException;
-	ArrayList<Veterinario> busca() throws NullPointerException;
+	ArrayList<Veterinario> busca() throws HistException;
 	void remover(long numid) throws IDException;
 }
