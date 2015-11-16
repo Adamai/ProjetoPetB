@@ -17,7 +17,7 @@ import java.util.InputMismatchException;
 
 public class Teste {
 
-public static void main(String[] args){
+public static void main(String[] args) throws RepoException{
 	int controlador = 1;
 	
 	ICadastroAnimal cadastro = new CadastroAnimal();
@@ -67,9 +67,9 @@ public static void main(String[] args){
 			 endereco = scan8.nextLine();
 			 		
 			 Pessoa p = new Pessoa(nome,idade,contato, endereco,"batata","doce");
-			 cadastrop.cadastrarpessoa(p);
+			 cadastrop.cadastrar(p);
 			 System.out.println("Cadastro realizado com sucesso");
-			 System.out.println(cadastrop.buscanome(nome)); // TRY CATCH
+			 System.out.println(cadastrop.busca(nome)); // TRY CATCH
 			 control = false;
 		 	}
 		 catch(InputMismatchException i){
@@ -123,7 +123,7 @@ public static void main(String[] args){
 	
 				Animal a = new Cachorro(nome,raca,sexo,peso,idade,"saudavel","calmo",null);
 			
-				cadastro.cadastraranimal(a);
+				cadastro.cadastrar(a);
 				System.out.println("Cadastro realizado com sucesso");
 				System.out.print("\n");
 				control = false;
@@ -163,7 +163,7 @@ public static void main(String[] args){
 					idade = scan5.nextLine();
 		
 					Animal a = new Gato(nome,raca,sexo,peso,idade,"saudavel","calmo",null);
-					cadastro.cadastraranimal(a);
+					cadastro.cadastrar(a);
 					System.out.println("Cadastro realizado com sucesso");
 					System.out.print("\n");
 				}
@@ -206,7 +206,7 @@ public static void main(String[] args){
 					idade = scan5.nextLine();
 		
 					Animal a = new Outro(nome,raca,sexo,peso,idade,"saudavel","calmo", especie,null);
-					cadastro.cadastraranimal(a);
+					cadastro.cadastrar(a);
 					System.out.println("Cadastro realizado com sucesso");
 					System.out.print("\n");
 				}
@@ -232,8 +232,8 @@ public static void main(String[] args){
 			System.out.println("Digite a raca do animal que está procurando");
 			raca = scan2.next();
 			try{
-				ArrayList<Animal>cachorros = cadastro.buscaAnimais(raca,escolha2); // TRY CATCH
-				int aux = cadastro.buscaAnimais(raca,escolha2).size();
+				ArrayList<Animal>cachorros = cadastro.busca(raca,escolha2); // TRY CATCH
+				int aux = cadastro.busca(raca,escolha2).size();
 				for(int i=0;i<aux;i++){
 					System.out.println(cachorros.get(i));
 				}
@@ -250,8 +250,8 @@ public static void main(String[] args){
 			System.out.println("Digite a raca do animal que está procurando");
 			raca = scan2.next();
 			try{ 
-				ArrayList<Animal>gatos = cadastro.buscaAnimais(raca,escolha2); // TRY CATCH
-				int aux = cadastro.buscaAnimais(raca,escolha2).size();
+				ArrayList<Animal>gatos = cadastro.busca(raca,escolha2); // TRY CATCH
+				int aux = cadastro.busca(raca,escolha2).size();
 				for(int i=0;i<aux;i++){
 					System.out.println(gatos.get(i).toString());
 				}
@@ -268,8 +268,8 @@ public static void main(String[] args){
 			System.out.println("Digite a especie do animal que está procurando");
 			especie = scan2.next();
 			try{
-				ArrayList<Animal>outros = cadastro.buscaAnimais(especie,escolha2); // TRY CATCH
-				int aux = cadastro.buscaAnimais(especie,escolha2).size();
+				ArrayList<Animal>outros = cadastro.busca(especie,escolha2); // TRY CATCH
+				int aux = cadastro.busca(especie,escolha2).size();
 				for(int i=0;i<aux;i++){
 					System.out.println(outros.get(i).toString());
 				}
@@ -290,7 +290,7 @@ public static void main(String[] args){
 			System.out.println("Digite o id do animal que está procurando");
 			numero = scan2.nextLong();
 			try{
-				Animal c = cadastro.buscaid(numero); // TRY CATCH
+				Animal c = cadastro.busca(numero); // TRY CATCH
 				System.out.println(c);
 				Pessoa p = new Pessoa("Johny Joestar", 15, 40028922, "Rua dos bobos nº 0", "Pipoca", "1234");
 				Adocao a = new Adocao(c, p);
