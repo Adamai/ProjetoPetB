@@ -31,8 +31,9 @@ public class RepositorioAnimais implements IRepositorioAnimais, Serializable {
 	
 	
 	public void cadastrar(Animal animal ){
+		loadRepo();
 		this.animais.add(animal);
-		saveRepo();
+		overwriteRepo(this.animais);
 	}
 		
 	public ArrayList<Animal> busca(String raca, int num) throws RepoException{ // ADD NULL EXCEPTION EM TODOS OS CASOS
@@ -104,6 +105,7 @@ public class RepositorioAnimais implements IRepositorioAnimais, Serializable {
 		this.animais.remove(a);
 		overwriteRepo(this.animais);
 	}
+	@Override
 	public void loadRepo(){
 	File data = new File("DatabaseAnimal.rp");
 	ObjectInputStream readob = null;
@@ -112,20 +114,15 @@ public class RepositorioAnimais implements IRepositorioAnimais, Serializable {
 		FileInputStream read = new FileInputStream(data);
 		readob = new ObjectInputStream(read);
 		this.animais = (ArrayList<Animal>) readob.readObject();
+		readob.close();
 	} catch (Exception e){
 		e.printStackTrace();
 	}
-		finally {
-		try {
-			readob.close();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	}
+
 		}
 	}
 	@Override
-	public void saveRepo(){
+	public void saveRepo(){ //inutil
 		File data = new File("DatabaseAnimal.rp");
 		ObjectInputStream readob = null;
 		if (data.exists()){
@@ -133,17 +130,11 @@ public class RepositorioAnimais implements IRepositorioAnimais, Serializable {
 			FileInputStream read = new FileInputStream(data);
 			readob = new ObjectInputStream(read);
 			this.animais = (ArrayList<Animal>) readob.readObject();
+			readob.close();
 		} catch (Exception e){
 			e.printStackTrace();
 		}
-			finally {
-			try {
-				readob.close();
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
 		}
-			}
 		ObjectOutputStream save = null;
 		try{
 		FileOutputStream fos = new FileOutputStream(data);
@@ -155,9 +146,9 @@ public class RepositorioAnimais implements IRepositorioAnimais, Serializable {
 		}		
 		
 	}
-	
-	public void overwriteRepo(ArrayList<Animal> animais){ //usado para deletar   NÃO FUNCIONANDO 
-		
+	@Override
+	public void overwriteRepo(ArrayList<Animal> animais){ //usado para deletar   NÃO FUNCIONANDO
+		//inserir método para deletar o arquivo existente
 		File data = new File("DatabaseAnimal.rp");
 		ObjectOutputStream save = null;
 		try{

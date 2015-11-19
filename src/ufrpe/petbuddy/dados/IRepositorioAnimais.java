@@ -13,4 +13,6 @@ public interface IRepositorioAnimais {
 	void adotar(long numid)throws IDException;
 	void remover(Animal a);
 	void saveRepo();
+	void loadRepo();
+	void overwriteRepo(ArrayList<Animal> animais);
 }

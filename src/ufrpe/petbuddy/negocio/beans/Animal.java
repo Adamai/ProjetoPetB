@@ -1,6 +1,11 @@
 package ufrpe.petbuddy.negocio.beans;
 
 import java.io.Serializable;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 
 public abstract class Animal implements Serializable {
 
@@ -25,13 +30,40 @@ public abstract class Animal implements Serializable {
 		this.saude = saude;
 		this.temperamento = temperamento;
 		this.adotado = false;
+		loadProx();
 		this.numid = proximo;
 		this.veterinario = veterinario;
 		Animal.AumentarProximo();
 		}
 	
+	public static void loadProx(){
+		File data = new File("IdSetter.rp");
+		ObjectInputStream readob = null;
+		if (data.exists()){
+			try{
+			FileInputStream read = new FileInputStream(data);
+			readob = new ObjectInputStream(read);
+			proximo = (long) readob.readObject();
+			readob.close();
+		} catch (Exception e){
+			e.printStackTrace();
+		}
+			}
+	}
+	
 	public static void AumentarProximo(){
+		File data = new File("IdSetter.rp");
+		loadProx();
 		proximo = proximo + 1;
+		ObjectOutputStream save = null;
+		try{
+		FileOutputStream fos = new FileOutputStream(data);
+		save = new ObjectOutputStream(fos);
+		save.writeObject(proximo);
+		fos.close();
+		} catch (Exception e){
+			e.printStackTrace();
+		}	
 	}
 	
 	public String getNome() {
