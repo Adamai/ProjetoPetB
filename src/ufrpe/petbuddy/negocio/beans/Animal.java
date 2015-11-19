@@ -1,6 +1,8 @@
 package ufrpe.petbuddy.negocio.beans;
 
-public abstract class Animal {
+import java.io.Serializable;
+
+public abstract class Animal implements Serializable {
 
 	private String nome; 
 	private String raca;

@@ -12,4 +12,5 @@ public interface IRepositorioAnimais {
 	Animal busca(long numid) throws IDException;
 	void adotar(long numid)throws IDException;
 	void remover(Animal a);
+	void saveRepo();
 }

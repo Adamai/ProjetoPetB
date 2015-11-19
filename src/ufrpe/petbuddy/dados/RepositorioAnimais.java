@@ -9,9 +9,16 @@ import ufrpe.petbuddy.negocio.beans.Cachorro;
 import ufrpe.petbuddy.negocio.beans.Gato;
 import ufrpe.petbuddy.negocio.beans.Outro;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class RepositorioAnimais implements IRepositorioAnimais {
+public class RepositorioAnimais implements IRepositorioAnimais, Serializable {
 
 	private ArrayList<Animal> animais;
 	private ArrayList<Animal> adotados;
@@ -25,11 +32,12 @@ public class RepositorioAnimais implements IRepositorioAnimais {
 	
 	public void cadastrar(Animal animal ){
 		this.animais.add(animal);
+		saveRepo();
 	}
 		
 	public ArrayList<Animal> busca(String raca, int num) throws RepoException{ // ADD NULL EXCEPTION EM TODOS OS CASOS
 		ArrayList<Animal>buscados = new ArrayList<Animal>();
-		
+		loadRepo();
 		if(num ==1){//CACHORROS
 			for(int i = 0; i<this.animais.size();i++){
 				Animal a = this.animais.get(i);
@@ -70,6 +78,7 @@ public class RepositorioAnimais implements IRepositorioAnimais {
 	}
 	
 	public Animal busca(long numid)throws IDException{//BUSCA UM ANIMAL ESPECIFICO POR ID // ADD NULL EXCEPTION
+		loadRepo();
 		Animal a = null;
 		for(int i = 0;i<this.animais.size();i++){
 			if(this.animais.get(i).getNumid() == numid){
@@ -91,6 +100,77 @@ public class RepositorioAnimais implements IRepositorioAnimais {
 	
 	
 	public void remover(Animal a){ 
+		loadRepo();
 		this.animais.remove(a);
+		overwriteRepo(this.animais);
 	}
+	public void loadRepo(){
+	File data = new File("DatabaseAnimal.rp");
+	ObjectInputStream readob = null;
+	if (data.exists()){
+		try{
+		FileInputStream read = new FileInputStream(data);
+		readob = new ObjectInputStream(read);
+		this.animais = (ArrayList<Animal>) readob.readObject();
+	} catch (Exception e){
+		e.printStackTrace();
+	}
+		finally {
+		try {
+			readob.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+		}
+	}
+	@Override
+	public void saveRepo(){
+		File data = new File("DatabaseAnimal.rp");
+		ObjectInputStream readob = null;
+		if (data.exists()){
+			try{
+			FileInputStream read = new FileInputStream(data);
+			readob = new ObjectInputStream(read);
+			this.animais = (ArrayList<Animal>) readob.readObject();
+		} catch (Exception e){
+			e.printStackTrace();
+		}
+			finally {
+			try {
+				readob.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+			}
+		ObjectOutputStream save = null;
+		try{
+		FileOutputStream fos = new FileOutputStream(data);
+		save = new ObjectOutputStream(fos);
+		save.writeObject(this.animais);
+		fos.close();
+		} catch (Exception e){
+			e.printStackTrace();
+		}		
+		
+	}
+	
+	public void overwriteRepo(ArrayList<Animal> animais){ //usado para deletar   NÃO FUNCIONANDO 
+		
+		File data = new File("DatabaseAnimal.rp");
+		ObjectOutputStream save = null;
+		try{
+		FileOutputStream fos = new FileOutputStream(data);
+		save = new ObjectOutputStream(fos);
+		save.writeObject(animais);
+		fos.close();
+		} catch (Exception e){
+			e.printStackTrace();
+		}	
+	}
+	
+
+	
+	
 }
