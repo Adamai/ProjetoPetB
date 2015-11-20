@@ -3,12 +3,12 @@ package ufrpe.petbuddy.dados;
 import java.util.ArrayList;
 
 import ufrpe.petbuddy.exceptions.*;
-import ufrpe.petbuddy.negocio.beans.Animal;
+import ufrpe.petbuddy.negocio.beans.*;
 
 public interface IRepositorioAnimais {
 
 	void cadastrar(Animal animal);
-	ArrayList<Animal> busca(String nome, int num) throws RepoException;
+	ArrayList<Animal> busca(String nome, AnimalEspecie especie) throws RepoException;
 	Animal busca(long numid) throws IDException;
 	void adotar(long numid)throws IDException;
 	void remover(Animal a);

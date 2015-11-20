@@ -4,12 +4,7 @@ import java.util.ArrayList;
 import ufrpe.petbuddy.dados.*;
 import ufrpe.petbuddy.exceptions.*;
 import ufrpe.petbuddy.negocio.*;
-import ufrpe.petbuddy.negocio.beans.Adocao;
-import ufrpe.petbuddy.negocio.beans.Animal;
-import ufrpe.petbuddy.negocio.beans.Pessoa;
-import ufrpe.petbuddy.negocio.beans.Usuario;
-import ufrpe.petbuddy.negocio.beans.Veterinario;
-
+import ufrpe.petbuddy.negocio.beans.*;
 public class Fachada implements IFachada{
 
 	private ICadastroAdocao cadastroadocao;
@@ -54,9 +49,9 @@ public class Fachada implements IFachada{
 	}
 
 
-	public ArrayList<Animal> buscaAnimais(String raca, int num)
+	public ArrayList<Animal> buscaAnimais(String raca, AnimalEspecie especie)
 			throws RepoException {
-		return cadastroanimal.busca(raca, num);
+		return cadastroanimal.busca(raca, especie);
 	}
 
 

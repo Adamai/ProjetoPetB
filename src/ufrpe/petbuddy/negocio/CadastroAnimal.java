@@ -2,7 +2,7 @@ package ufrpe.petbuddy.negocio;
 
 import ufrpe.petbuddy.dados.*;
 import ufrpe.petbuddy.exceptions.*;
-import ufrpe.petbuddy.negocio.beans.Animal;
+import ufrpe.petbuddy.negocio.beans.*;
 
 import java.util.ArrayList;
 
@@ -20,10 +20,10 @@ private IRepositorioAnimais repositorio;
 		}
 
 	
-public ArrayList<Animal> busca(String raca, int num) throws RepoException{ // ADD NULL EXCEPTION
+public ArrayList<Animal> busca(String raca, AnimalEspecie especie) throws RepoException{ // ADD NULL EXCEPTION
 		
-			this.repositorio.busca(raca, num); 
-			ArrayList<Animal>buscados = this.repositorio.busca(raca,num);
+			this.repositorio.busca(raca, especie ); 
+			ArrayList<Animal>buscados = this.repositorio.busca(raca,especie);
 			return buscados;
 	}
 

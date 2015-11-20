@@ -5,13 +5,7 @@ import java.util.ArrayList;
 
 import ufrpe.petbuddy.exceptions.*;
 import ufrpe.petbuddy.negocio.*;
-import ufrpe.petbuddy.negocio.beans.Adocao;
-import ufrpe.petbuddy.negocio.beans.Animal;
-import ufrpe.petbuddy.negocio.beans.Cachorro;
-import ufrpe.petbuddy.negocio.beans.Gato;
-import ufrpe.petbuddy.negocio.beans.Outro;
-import ufrpe.petbuddy.negocio.beans.Pessoa;
-
+import ufrpe.petbuddy.negocio.beans.*;
 import java.util.InputMismatchException;
 
 

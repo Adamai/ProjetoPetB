@@ -5,11 +5,7 @@ import java.util.ArrayList;
 import ufrpe.petbuddy.exceptions.HistException;
 import ufrpe.petbuddy.exceptions.IDException;
 import ufrpe.petbuddy.exceptions.RepoException;
-import ufrpe.petbuddy.negocio.beans.Adocao;
-import ufrpe.petbuddy.negocio.beans.Animal;
-import ufrpe.petbuddy.negocio.beans.Pessoa;
-import ufrpe.petbuddy.negocio.beans.Usuario;
-import ufrpe.petbuddy.negocio.beans.Veterinario;
+import ufrpe.petbuddy.negocio.beans.*;
 
 public interface IFachada {
 
@@ -18,7 +14,7 @@ public interface IFachada {
 	ArrayList<Adocao> buscaHistoricoAdocoes() throws HistException;
 	Adocao buscaAdocao(long numid) throws IDException;
 	void cadastrarAnimal(Animal a);
-	ArrayList<Animal> buscaAnimais(String raca, int num) throws RepoException;
+	ArrayList<Animal> buscaAnimais(String raca, AnimalEspecie especie) throws RepoException;
 	Animal buscaAnimalID(long numid) throws IDException;
 	void cadastrarPessoa(Pessoa p);
 	Pessoa buscaNome(String nome) throws RepoException;
