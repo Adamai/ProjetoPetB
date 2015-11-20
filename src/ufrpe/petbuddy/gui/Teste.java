@@ -115,7 +115,7 @@ public static void main(String[] args) throws RepoException{
 				System.out.println("Informe a idade"); // ADD INPUT EXCEPTION SÓ NUMEROS
 				idade = scan5.nextLine();
 	
-				Animal a = new Cachorro(nome,raca,sexo,peso,idade,"saudavel","calmo",null);
+				Animal a = new Animal(nome,raca,sexo,peso,idade,"saudavel","calmo",null, AnimalEspecie.CACHORRO);
 			
 				cadastro.cadastrar(a);
 				System.out.println("Cadastro realizado com sucesso");
@@ -130,7 +130,7 @@ public static void main(String[] args) throws RepoException{
 				}
 			}
 		}
-			if(escolha2 == 2){
+			/*if(escolha2 == 2){
 				try{
 					Scanner scan5 = new Scanner(System.in);
 					Scanner scan6 = new Scanner(System.in);
@@ -167,8 +167,8 @@ public static void main(String[] args) throws RepoException{
 				catch(NAMException n){
 					System.err.println(n.getMessage());
 				}
-			}
-			if(escolha2 >=3){
+			} */
+			/*if(escolha2 >=3){
 				try{
 					Scanner scan5 = new Scanner(System.in);
 					Scanner scan6 = new Scanner(System.in);
@@ -210,7 +210,7 @@ public static void main(String[] args) throws RepoException{
 					catch(NAMException n){
 						System.err.println(n.getMessage());
 				}
-			}
+			}*/
 			
 		}
 	
@@ -226,8 +226,8 @@ public static void main(String[] args) throws RepoException{
 			System.out.println("Digite a raca do animal que está procurando");
 			raca = scan2.next();
 			try{
-				ArrayList<Animal>cachorros = cadastro.busca(raca,escolha2); // TRY CATCH
-				int aux = cadastro.busca(raca,escolha2).size();
+				ArrayList<Animal>cachorros = cadastro.busca(raca,AnimalEspecie.CACHORRO); // TRY CATCH
+				int aux = cadastro.busca(raca,AnimalEspecie.CACHORRO).size();
 				for(int i=0;i<aux;i++){
 					System.out.println(cachorros.get(i));
 				}
@@ -239,12 +239,12 @@ public static void main(String[] args) throws RepoException{
 			}
 		}
 		
-		if(escolha2 == 2){
+		/*if(escolha2 == 2){
 			String raca;
 			System.out.println("Digite a raca do animal que está procurando");
 			raca = scan2.next();
 			try{ 
-				ArrayList<Animal>gatos = cadastro.busca(raca,escolha2); // TRY CATCH
+				ArrayList<Animal>gatos = cadastro.busca(raca,AnimalEspecie.GATO); // TRY CATCH
 				int aux = cadastro.busca(raca,escolha2).size();
 				for(int i=0;i<aux;i++){
 					System.out.println(gatos.get(i).toString());
@@ -256,8 +256,8 @@ public static void main(String[] args) throws RepoException{
 				System.out.println("\n");
 			}
 			
-		}
-		if(escolha2 >= 3){
+		}*/
+		/*if(escolha2 >= 3){
 			String especie;
 			System.out.println("Digite a especie do animal que está procurando");
 			especie = scan2.next();
@@ -274,7 +274,7 @@ public static void main(String[] args) throws RepoException{
 				System.out.println("\n");
 			}
 		
-		}
+		}*/
 	}
 	
 	if(escolha == 4){//ADOÇAO

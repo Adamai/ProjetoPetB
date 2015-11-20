@@ -28,14 +28,14 @@ public class RepositorioAnimais implements IRepositorioAnimais, Serializable {
 	
 	
 	public void cadastrar(Animal animal ){
-		
+		loadRepo();
 		this.animais.add(animal);
 		overwriteRepo(this.animais);
 	}
 		
 	public ArrayList<Animal> busca(String raca, AnimalEspecie especie) throws RepoException{ // ADD NULL EXCEPTION EM TODOS OS CASOS
 		ArrayList<Animal>buscados = new ArrayList<Animal>();
-		
+		loadRepo();
 		if(especie.equals(AnimalEspecie.CACHORRO)){//CACHORROS
 			for(int i = 0; i<this.animais.size();i++){
 				Animal a = this.animais.get(i);
@@ -91,6 +91,7 @@ public class RepositorioAnimais implements IRepositorioAnimais, Serializable {
 	}
 	
 	public Animal busca(long numid)throws IDException{//BUSCA UM ANIMAL ESPECIFICO POR ID // ADD NULL EXCEPTION
+		loadRepo();
 		Animal a = null;
 		for(int i = 0;i<this.animais.size();i++){
 			if(this.animais.get(i).getNumid() == numid){
@@ -105,6 +106,7 @@ public class RepositorioAnimais implements IRepositorioAnimais, Serializable {
 	}
 	
 	public void adotar(long numid) throws IDException{ // EXCEPTION?
+		loadRepo();
 		Animal a = this.busca(numid);
 		this.adotados.add(a);
 		this.remover(this.busca(numid));
@@ -160,6 +162,7 @@ public class RepositorioAnimais implements IRepositorioAnimais, Serializable {
 	public void overwriteRepo(ArrayList<Animal> animais){ //usado para deletar   NÃO FUNCIONANDO
 		//inserir método para deletar o arquivo existente
 		File data = new File("DatabaseAnimal.rp");
+		data.delete();
 		ObjectOutputStream save = null;
 		try{
 		FileOutputStream fos = new FileOutputStream(data);

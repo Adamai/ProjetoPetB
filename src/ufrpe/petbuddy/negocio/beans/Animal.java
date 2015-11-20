@@ -7,7 +7,7 @@ import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
-public abstract class Animal implements Serializable {
+public  class Animal implements Serializable {
 
 	private String nome; 
 	private String raca;
