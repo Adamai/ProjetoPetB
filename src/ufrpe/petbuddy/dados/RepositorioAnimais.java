@@ -4,10 +4,7 @@ package ufrpe.petbuddy.dados;
 import ufrpe.petbuddy.exceptions.IDException;
 import ufrpe.petbuddy.exceptions.RepoException;
 import ufrpe.petbuddy.negocio.*;
-import ufrpe.petbuddy.negocio.beans.Animal;
-import ufrpe.petbuddy.negocio.beans.Cachorro;
-import ufrpe.petbuddy.negocio.beans.Gato;
-import ufrpe.petbuddy.negocio.beans.Outro;
+import ufrpe.petbuddy.negocio.beans.*;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -31,41 +28,56 @@ public class RepositorioAnimais implements IRepositorioAnimais, Serializable {
 	
 	
 	public void cadastrar(Animal animal ){
-		loadRepo();
+		
 		this.animais.add(animal);
 		overwriteRepo(this.animais);
 	}
 		
-	public ArrayList<Animal> busca(String raca, int num) throws RepoException{ // ADD NULL EXCEPTION EM TODOS OS CASOS
+	public ArrayList<Animal> busca(String raca, AnimalEspecie especie) throws RepoException{ // ADD NULL EXCEPTION EM TODOS OS CASOS
 		ArrayList<Animal>buscados = new ArrayList<Animal>();
-		loadRepo();
-		if(num ==1){//CACHORROS
+		
+		if(especie.equals(AnimalEspecie.CACHORRO)){//CACHORROS
 			for(int i = 0; i<this.animais.size();i++){
 				Animal a = this.animais.get(i);
-				if(a.getRaca().toLowerCase().contains(raca.toLowerCase())&& a instanceof Cachorro ){
+				if(a.getRaca().toLowerCase().contains(raca.toLowerCase())&& a.getEspecie().equals(AnimalEspecie.CACHORRO)){
 					buscados.add(a);
 				}
 			}
 				
 		}//FIM IF 1
 		
-		else if(num == 2){//GATOS
+		else if(especie.equals(AnimalEspecie.GATO)){//GATOS
 			for(int i = 0; i<this.animais.size();i++){
 				Animal a = this.animais.get(i);
-				if(a.getRaca().toLowerCase().contains(raca.toLowerCase())&& a instanceof Gato){
+				if(a.getRaca().toLowerCase().contains(raca.toLowerCase())&& a.getEspecie().equals(AnimalEspecie.GATO)){
 					buscados.add(a);
 				}
 			}
 			
 		}
 		
-		else if(num == 3){//OUTROS
+		else if(especie.equals(AnimalEspecie.AVE)){//OUTROS
 			for(int i = 0; i<this.animais.size();i++){
 				Animal a = this.animais.get(i);
-				if(a instanceof Outro){
-					Outro outro = (Outro)a;
-					if(outro.getEspecie().toLowerCase().contains(raca.toLowerCase()) && outro instanceof Outro)
-					buscados.add(outro);
+					if(a.getRaca().toLowerCase().contains(raca.toLowerCase())&& a.getEspecie().equals(AnimalEspecie.AVE)){
+					buscados.add(a);
+				}
+			}
+			
+		}
+		else if(especie.equals(AnimalEspecie.ROEDOR)){//OUTROS
+			for(int i = 0; i<this.animais.size();i++){
+				Animal a = this.animais.get(i);
+					if(a.getRaca().toLowerCase().contains(raca.toLowerCase())&& a.getEspecie().equals(AnimalEspecie.ROEDOR)){
+					buscados.add(a);
+				}
+			}
+		}
+		else if(especie.equals(AnimalEspecie.REPTIL)){//OUTROS
+			for(int i = 0; i<this.animais.size();i++){
+				Animal a = this.animais.get(i);
+					if(a.getRaca().toLowerCase().contains(raca.toLowerCase())&& a.getEspecie().equals(AnimalEspecie.REPTIL)){
+					buscados.add(a);
 				}
 			}
 			
@@ -73,13 +85,12 @@ public class RepositorioAnimais implements IRepositorioAnimais, Serializable {
 		if(buscados.size() > 0)
 			return buscados;
 			else
-				throw new RepoException(raca, num);
+				throw new RepoException(raca, especie);
 		
 		
 	}
 	
 	public Animal busca(long numid)throws IDException{//BUSCA UM ANIMAL ESPECIFICO POR ID // ADD NULL EXCEPTION
-		loadRepo();
 		Animal a = null;
 		for(int i = 0;i<this.animais.size();i++){
 			if(this.animais.get(i).getNumid() == numid){
@@ -101,7 +112,6 @@ public class RepositorioAnimais implements IRepositorioAnimais, Serializable {
 	
 	
 	public void remover(Animal a){ 
-		loadRepo();
 		this.animais.remove(a);
 		overwriteRepo(this.animais);
 	}

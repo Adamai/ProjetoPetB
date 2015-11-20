@@ -1,17 +1,19 @@
 package ufrpe.petbuddy.exceptions;
 
+import ufrpe.petbuddy.negocio.beans.*;
+
 public class RepoException extends Exception {
 
 	private String raca;
-	private int num;
+	private AnimalEspecie especie;
 	private String nome;
 	
 	
 
-	public RepoException(String raca, int num) {
+	public RepoException(String raca, AnimalEspecie especie) {
 		super("Não foi encontrado nenhum animal da raça " + raca);
 		this.raca = raca;
-		this.num = num;
+		this.especie = especie;
 
 	}
 	

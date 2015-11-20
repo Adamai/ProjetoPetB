@@ -20,8 +20,9 @@ public abstract class Animal implements Serializable {
 	private String sexo;
 	private static long proximo = 1;
 	private Veterinario veterinario;
+	private AnimalEspecie especie;
 	//LIGAR O ANIMAL COM UM VETERINARIO NA HORA DE CRIA-LO
-	public Animal(String nome, String raca,String sexo, double peso, String idade, String saude, String temperamento, Veterinario veterinario){
+	public Animal(String nome, String raca,String sexo, double peso, String idade, String saude, String temperamento, Veterinario veterinario, AnimalEspecie especie){
 		this.nome = nome;
 		this.raca = raca;
 		this.sexo = sexo;
@@ -33,6 +34,7 @@ public abstract class Animal implements Serializable {
 		loadProx();
 		this.numid = proximo;
 		this.veterinario = veterinario;
+		this.especie = especie;
 		Animal.AumentarProximo();
 		}
 	
@@ -128,6 +130,14 @@ public abstract class Animal implements Serializable {
 
 	public long getNumid() {
 		return this.numid;
+	}
+
+	public AnimalEspecie getEspecie() {
+		return especie;
+	}
+
+	public void setEspecie(AnimalEspecie especie) {
+		this.especie = especie;
 	}
 		
 	}
