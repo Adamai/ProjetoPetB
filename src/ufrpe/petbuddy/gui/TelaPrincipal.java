@@ -2,33 +2,36 @@ package ufrpe.petbuddy.gui;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JButton;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-public class TelaPrincipal extends JFrame {
+public class TelaPrincipal extends JFrame implements ActionListener{
 
 	private JPanel painel;
+	private JButton botaoLogin, botaoBusca, botaoCadastro;
+	
 
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					TelaPrincipal frame = new TelaPrincipal();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+	//public static void main(String[] args) {
+		//EventQueue.invokeLater(new Runnable() {
+			//public void run() {
+				//try {
+					//TelaPrincipal frame = new TelaPrincipal();
+					//frame.setVisible(true);
+			//	} catch (Exception e) {
+				//	e.printStackTrace();
+				//}
+			//}
+		//});
+	//}
 
 	/**
 	 * Create the frame.
@@ -46,17 +49,48 @@ public class TelaPrincipal extends JFrame {
 		textoBemVindo.setBounds(280, 11, 224, 78);
 		painel.add(textoBemVindo);
 		
-		JButton botaoCadastro = new JButton("Cadastre-se");
-		botaoCadastro.setBounds(322, 308, 164, 58);
+		this.botaoCadastro = new JButton("Cadastre-se");
+		this.botaoCadastro.setBounds(322, 308, 164, 58);
+		botaoCadastro.addActionListener(this);
 		painel.add(botaoCadastro);
 		
-		JButton botaoLogin = new JButton("Login");
-		botaoLogin.setBounds(322, 233, 164, 58);
+		this.botaoLogin = new JButton("Login");
+		this.botaoLogin.setBounds(322, 233, 164, 58);
+		botaoLogin.addActionListener(this);
 		painel.add(botaoLogin);
 		
-		JButton botaoBusca = new JButton("Procurar Animais");
-		botaoBusca.setBounds(322, 383, 164, 58);
+		
+		this.botaoBusca = new JButton("Procurar Animais");
+		this.botaoBusca.setBounds(322, 383, 164, 58);
+		//AcaoBotaoBusca actionBusca = new AcaoBotaoBusca();
+		botaoBusca.addActionListener(this);
 		painel.add(botaoBusca);
+		
+	}
+	
+	public void actionPerformed (ActionEvent evento){
+		if (evento.getSource().equals(this.botaoLogin)){
+			dispose();
+			TelaLogin login = new TelaLogin();
+			login.setVisible(true);
+		} else if(evento.getSource().equals(this.botaoCadastro)){
+			dispose();
+			TelaCadastroUsuario cadastro = new TelaCadastroUsuario();
+			cadastro.setVisible(true);
+		}else if(evento.getSource().equals(this.botaoBusca)){
+			dispose();
+			TelaBuscaAnimais buscaAnimais = new TelaBuscaAnimais();
+			buscaAnimais.setVisible(true);
+		}
 	}
 
+	//public class AcaoBotaoBusca implements ActionListener{
+	
+		//public void actionPerformed(ActionEvent evento){
+			//if (evento.getSource() == botaoBusca)
+		//	dispose();
+		//	TelaBuscaAnimais tela =new  TelaBuscaAnimais();
+			//tela.setVisible(true);
+		//}
+	//}
 }

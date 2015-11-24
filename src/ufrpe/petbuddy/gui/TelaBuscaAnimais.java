@@ -88,11 +88,17 @@ public class TelaBuscaAnimais extends JFrame {
 		painel.add(radioButtonAve);
 		
 		JButton botaoBuscar = new JButton("Buscar");
+		botaoBuscar.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		botaoBuscar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 			}
 		});
-		botaoBuscar.setBounds(425, 309, 116, 30);
+		botaoBuscar.setBounds(554, 420, 167, 60);
 		painel.add(botaoBuscar);
+		
+		JButton botaoVoltar = new JButton("Voltar");
+		botaoVoltar.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		botaoVoltar.setBounds(42, 425, 124, 52);
+		painel.add(botaoVoltar);
 	}
 }

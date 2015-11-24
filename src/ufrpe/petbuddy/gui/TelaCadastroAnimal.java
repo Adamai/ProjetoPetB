@@ -132,7 +132,7 @@ public class TelaCadastroAnimal extends JFrame {
 		
 		JButton botaoCadastrar = new JButton("Cadastrar");
 		botaoCadastrar.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		botaoCadastrar.setBounds(464, 463, 251, 67);
+		botaoCadastrar.setBounds(555, 449, 200, 50);
 		painel.add(botaoCadastrar);
 		
 		campoNome = new JTextField();
@@ -164,6 +164,11 @@ public class TelaCadastroAnimal extends JFrame {
 		JEditorPane editorSaude = new JEditorPane();
 		editorSaude.setBounds(31, 449, 207, 67);
 		painel.add(editorSaude);
+		
+		JButton botaoVoltar = new JButton("Voltar");
+		botaoVoltar.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		botaoVoltar.setBounds(323, 449, 127, 50);
+		painel.add(botaoVoltar);
 		
 		
 		

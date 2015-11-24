@@ -12,6 +12,7 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JPasswordField;
+import java.awt.Font;
 
 public class TelaLogin extends JFrame {
 
@@ -47,9 +48,9 @@ public class TelaLogin extends JFrame {
 		painel.setLayout(null);
 		setContentPane(painel);
 		
-		JLabel textoLogin = new JLabel("Usu\u00E1rio\r\n");
-		textoLogin.setBounds(70, 174, 60, 26);
-		painel.add(textoLogin);
+		JLabel textoLogins = new JLabel("Usu\u00E1rio\r\n");
+		textoLogins.setBounds(70, 174, 60, 26);
+		painel.add(textoLogins);
 		
 		JLabel textoSenha = new JLabel("Senha");
 		textoSenha.setBounds(70, 230, 46, 14);
@@ -69,8 +70,17 @@ public class TelaLogin extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 			}
 		});
-		botaoEfetuarLogin.setBounds(366, 286, 89, 23);
+		botaoEfetuarLogin.setBounds(540, 341, 125, 46);
 		painel.add(botaoEfetuarLogin);
+		
+		JLabel textoEntrar = new JLabel("Login");
+		textoEntrar.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		textoEntrar.setBounds(154, 43, 149, 38);
+		painel.add(textoEntrar);
+		
+		JButton btnVoltar = new JButton("Voltar");
+		btnVoltar.setBounds(70, 428, 89, 23);
+		painel.add(btnVoltar);
 		
 		
 	}

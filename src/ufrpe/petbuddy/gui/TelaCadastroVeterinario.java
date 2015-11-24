@@ -52,45 +52,50 @@ public class TelaCadastroVeterinario extends JFrame {
 		painel.add(textoCadastroVeterinario);
 		
 		JLabel textoNome = new JLabel("Nome");
-		textoNome.setBounds(65, 92, 56, 50);
+		textoNome.setBounds(55, 109, 56, 50);
 		painel.add(textoNome);
 		
 		JLabel textoTelefone = new JLabel("Telefone");
-		textoTelefone.setBounds(65, 194, 94, 50);
+		textoTelefone.setBounds(55, 230, 94, 50);
 		painel.add(textoTelefone);
 		
 		JLabel textoIdade = new JLabel("Idade");
-		textoIdade.setBounds(65, 312, 94, 50);
+		textoIdade.setBounds(435, 230, 94, 50);
 		painel.add(textoIdade);
 		
 		JLabel textoCrmv = new JLabel("CRMV");
-		textoCrmv.setBounds(65, 438, 43, 50);
+		textoCrmv.setBounds(435, 109, 43, 50);
 		painel.add(textoCrmv);
 		
 		campoNome = new JTextField();
-		campoNome.setBounds(98, 126, 228, 29);
+		campoNome.setBounds(65, 170, 228, 29);
 		painel.add(campoNome);
 		campoNome.setColumns(10);
 		
 		campoTelefone = new JTextField();
-		campoTelefone.setBounds(100, 239, 226, 29);
+		campoTelefone.setBounds(78, 302, 226, 29);
 		painel.add(campoTelefone);
 		campoTelefone.setColumns(10);
 		
 		campoIdade = new JTextField();
 		campoIdade.setColumns(10);
-		campoIdade.setBounds(98, 354, 226, 29);
+		campoIdade.setBounds(446, 302, 226, 29);
 		painel.add(campoIdade);
 		
 		campoCRMV = new JTextField();
 		campoCRMV.setColumns(10);
-		campoCRMV.setBounds(98, 474, 226, 29);
+		campoCRMV.setBounds(445, 170, 226, 29);
 		painel.add(campoCRMV);
 		
 		JButton botaoCadastrar = new JButton("Cadastrar");
 		botaoCadastrar.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		botaoCadastrar.setBounds(512, 357, 173, 92);
+		botaoCadastrar.setBounds(559, 408, 161, 77);
 		painel.add(botaoCadastrar);
+		
+		JButton botaoVoltar = new JButton("Voltar");
+		botaoVoltar.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		botaoVoltar.setBounds(55, 435, 139, 50);
+		painel.add(botaoVoltar);
 	}
 
 }

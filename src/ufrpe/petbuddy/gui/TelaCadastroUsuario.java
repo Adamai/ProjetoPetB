@@ -64,7 +64,7 @@ public class TelaCadastroUsuario extends JFrame {
 		contentPane.add(textoEmail);
 		
 		JLabel textoTelefone = new JLabel("Telefone");
-		textoTelefone.setBounds(42, 352, 46, 14);
+		textoTelefone.setBounds(42, 352, 66, 14);
 		contentPane.add(textoTelefone);
 		
 		JLabel textoIdade = new JLabel("Idade");
@@ -119,8 +119,13 @@ public class TelaCadastroUsuario extends JFrame {
 		contentPane.add(campoEndereco);
 		
 		JButton btnNewButton = new JButton("Cadastrar");
-		btnNewButton.setBounds(591, 453, 131, 53);
+		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		btnNewButton.setBounds(560, 370, 156, 58);
 		contentPane.add(btnNewButton);
+		
+		JButton botaoVoltar = new JButton("Voltar");
+		botaoVoltar.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		botaoVoltar.setBounds(575, 456, 127, 44);
+		contentPane.add(botaoVoltar);
 	}
-
 }
