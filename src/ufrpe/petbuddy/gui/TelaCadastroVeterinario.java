@@ -7,38 +7,51 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
+
 import java.awt.Font;
+
 import javax.swing.JTextField;
 import javax.swing.JButton;
 
-public class TelaCadastroVeterinario extends JFrame {
+import ufrpe.petbuddy.facade.*;
+
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+
+import ufrpe.petbuddy.negocio.beans.*;
+
+public class TelaCadastroVeterinario extends JFrame implements ActionListener{
 
 	private JPanel painel;
 	private JTextField campoNome;
 	private JTextField campoTelefone;
 	private JTextField campoIdade;
 	private JTextField campoCRMV;
+	private IFachada fachada;
+	private JButton botaoVoltar;
+	private JButton botaoCadastrar;
 
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					TelaCadastroVeterinario frame = new TelaCadastroVeterinario();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+	//public static void main(String[] args) {
+	//	EventQueue.invokeLater(new Runnable() {
+	//		public void run() {
+	//			try {
+	//				TelaCadastroVeterinario frame = new TelaCadastroVeterinario();
+	//				frame.setVisible(true);
+	//			} catch (Exception e) {
+	//				e.printStackTrace();
+	//			}
+	//		}
+	//	});
+	//}
 
 	/**
 	 * Create the frame.
 	 */
-	public TelaCadastroVeterinario() {
+	public TelaCadastroVeterinario(IFachada fachada) {
+		this.fachada = fachada;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 800, 600);
 		painel = new JPanel();
@@ -87,15 +100,34 @@ public class TelaCadastroVeterinario extends JFrame {
 		campoCRMV.setBounds(445, 170, 226, 29);
 		painel.add(campoCRMV);
 		
-		JButton botaoCadastrar = new JButton("Cadastrar");
+		this.botaoCadastrar = new JButton("Cadastrar");
 		botaoCadastrar.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		botaoCadastrar.setBounds(559, 408, 161, 77);
 		painel.add(botaoCadastrar);
 		
-		JButton botaoVoltar = new JButton("Voltar");
+		this.botaoVoltar = new JButton("Voltar");
 		botaoVoltar.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		botaoVoltar.setBounds(55, 435, 139, 50);
 		painel.add(botaoVoltar);
 	}
-
+	
+	public void actionPerformed(ActionEvent evento){
+		if(evento.getSource().equals(botaoCadastrar)){
+			String nome = campoNome.getText();
+			int telefone = Integer.parseInt(campoTelefone.getText());
+			int idade = Integer.parseInt(campoIdade.getText());
+			long crmv = Long.parseLong(campoCRMV.getText());
+			Veterinario vet = new Veterinario(nome,telefone,idade,crmv);
+			fachada.cadastrarVet(vet);
+			
+			dispose();
+			TelaAdm tela = new TelaAdm(fachada);
+			tela.setVisible(true);
+				
+		}	else if (evento.getSource().equals(botaoVoltar)){
+			dispose();
+			TelaAdm tela = new TelaAdm(fachada);
+			tela.setVisible(true);	
+	}
+}
 }

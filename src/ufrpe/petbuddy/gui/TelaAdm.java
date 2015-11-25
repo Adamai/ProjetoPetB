@@ -89,7 +89,7 @@ public class TelaAdm extends JFrame implements ActionListener{
 			cadastroAnimais.setVisible(true);
 		} else if(evento.getSource().equals(this.botaoCadastroVeterinario)){
 			dispose();
-			TelaCadastroVeterinario cadastroVet = new TelaCadastroVeterinario();
+			TelaCadastroVeterinario cadastroVet = new TelaCadastroVeterinario(fachada);
 			cadastroVet.setVisible(true);
 					}
 		}

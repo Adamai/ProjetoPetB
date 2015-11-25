@@ -7,14 +7,19 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
+
 import java.awt.Font;
+
 import javax.swing.JTextField;
 import javax.swing.JRadioButton;
 import javax.swing.JButton;
+
+import ufrpe.petbuddy.negocio.beans.Veterinario;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class TelaBuscaAnimais extends JFrame {
+public class TelaBuscaAnimais extends JFrame implements ActionListener {
 
 	private JPanel painel;
 	private JTextField textField;
@@ -101,4 +106,9 @@ public class TelaBuscaAnimais extends JFrame {
 		botaoVoltar.setBounds(42, 425, 124, 52);
 		painel.add(botaoVoltar);
 	}
+	
+	public void actionPerformed(ActionListener evento){
+	}
+	
 }
+

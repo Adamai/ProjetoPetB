@@ -30,12 +30,9 @@ import ufrpe.petbuddy.exceptions.*;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 
-public class TelaCadastroAnimal extends JFrame implements ActionListener,  ItemListener{
+public class TelaCadastroAnimal extends JFrame implements ActionListener{
 
 	private JPanel painel;
-	private String sexo;
-	private String temperamento;
-	private AnimalEspecie especie;
 	private JTextField campoNome;
 	private JTextField campoRaca;
 	private JTextField campoPeso;
@@ -114,13 +111,13 @@ public class TelaCadastroAnimal extends JFrame implements ActionListener,  ItemL
 		
 		this.radioButtonCalmo = new JRadioButton("Calmo");
 		radioButtonCalmo.setBounds(633, 211, 109, 23);
-		radioButtonCalmo.addItemListener(this);;
+		radioButtonCalmo.addActionListener(this);
 		painel.add(radioButtonCalmo);
 		grupo1.add(radioButtonCalmo);
 		
 		this.radioButtonAgitado = new JRadioButton("Agitado");
 		radioButtonAgitado.setBounds(535, 211, 95, 23);
-		radioButtonAgitado.addItemListener(this);
+		radioButtonAgitado.addActionListener(this);
 		painel.add(radioButtonAgitado);
 		grupo1.add(radioButtonAgitado);
 		
@@ -130,13 +127,13 @@ public class TelaCadastroAnimal extends JFrame implements ActionListener,  ItemL
 		
 		this.radioButtonMacho = new JRadioButton("Macho");
 		radioButtonMacho.setBounds(504, 86, 109, 23);
-		radioButtonMacho.addItemListener(this);
+		radioButtonMacho.addActionListener(this);
 		painel.add(radioButtonMacho);
 		grupo2.add(radioButtonMacho);
 		
 		this.radioButtonFemea = new JRadioButton("F\u00EAmea");
 		radioButtonFemea.setBounds(615, 86, 109, 23);
-		radioButtonFemea.addItemListener(this);
+		radioButtonFemea.addActionListener(this);
 		painel.add(radioButtonFemea);
 		grupo2.add(radioButtonFemea);
 		
@@ -150,31 +147,31 @@ public class TelaCadastroAnimal extends JFrame implements ActionListener,  ItemL
 		
 		this.radioButtonCachorro = new JRadioButton("Cachorro");
 		radioButtonCachorro.setBounds(468, 294, 109, 23);
-		radioButtonCachorro.addItemListener(this);
+		radioButtonCachorro.addActionListener(this);
 		painel.add(radioButtonCachorro);
 		grupo3.add(radioButtonCachorro);
 		
 		this.radioButtonGato = new JRadioButton("Gato");
 		radioButtonGato.setBounds(468, 339, 109, 23);
-		radioButtonGato.addItemListener(this);
+		radioButtonGato.addActionListener(this);
 		painel.add(radioButtonGato);
 		grupo3.add(radioButtonGato);
 		
 		this.radioButtonAve = new JRadioButton("Ave");
 		radioButtonAve.setBounds(468, 380, 109, 23);
-		radioButtonAve.addItemListener(this);
+		radioButtonAve.addActionListener(this);
 		painel.add(radioButtonAve);
 		grupo3.add(radioButtonAve);
 		
 		this.radioButtonRoedor = new JRadioButton("Roedor");
 		radioButtonRoedor.setBounds(633, 339, 109, 23);
-		radioButtonRoedor.addItemListener(this);
+		radioButtonRoedor.addActionListener(this);
 		painel.add(radioButtonRoedor);
 		grupo3.add(radioButtonRoedor);
 		
 		this.radioButtonReptil = new JRadioButton("R\u00E9ptil");
 		radioButtonReptil.setBounds(633, 294, 109, 23);
-		radioButtonReptil.addItemListener(this);
+		radioButtonReptil.addActionListener(this);
 		painel.add(radioButtonReptil);
 		grupo3.add(radioButtonReptil);
 		
@@ -223,51 +220,8 @@ public class TelaCadastroAnimal extends JFrame implements ActionListener,  ItemL
 		painel.add(botaoVoltar);	
 		
 	}
-	//TEM Q RESOLVER O LANCE DOS RADIOBUTTONS =\
 	
-	
-	//public void itemStateChanged(ItemEvent evento){
-	//	if(evento.getSource().equals(grupo2)){
-	//		if(radioButtonFemea.isSelected()){
-	//			this.sexo = "Fêmea";
-	//		}
-	//		else if(radioButtonMacho.isSelected()){
-	//			this.sexo = "Macho";
-	//		}
-	//	}
-	//	else if(evento.getSource().equals(grupo1)){
-	//		if(radioButtonCalmo.isSelected()){
-	//			this.temperamento = "Calmo";
-	//		}
-	//		else if(radioButtonAgitado.isSelected()){
-	//			this.temperamento = "Agitado";
-	//		}
-	//	}
-	//	else if(evento.getSource().equals(grupo3)){
-	//		if(radioButtonCachorro.isSelected())
-	//			this.especie = AnimalEspecie.CACHORRO;
-	//		else if(radioButtonGato.isSelected())
-	//			this.especie = AnimalEspecie.GATO;
-	//		else if (radioButtonAve.isSelected())
-	//			this.especie = AnimalEspecie.AVE;
-	//		else if (radioButtonRoedor.isSelected())
-	//			this.especie = AnimalEspecie.ROEDOR;
-	//		else if(radioButtonReptil.isSelected())
-	//			this.especie = AnimalEspecie.REPTIL;
-	//	}
-	//}
-	
-	public void handlerGrupo1 (ItemEvent evento){
-		if(grupo1.getSelection().equals(radioButtonAgitado)){
-			this.temperamento = "Agitado";
-		}
-		else if(grupo1.getSelection().equals(radioButtonCalmo)){
-			this.temperamento = "Calmo";
-		}
-	}
-	
-	
-	
+
 	
 	public void actionPerformed(ActionEvent evento){
 		
@@ -284,27 +238,57 @@ public class TelaCadastroAnimal extends JFrame implements ActionListener,  ItemL
 				long vet = Long.parseLong(campoVeterinario.getText());
 				String saude = editorSaude.getText();
 				
-				//Veterinario v = fachada.buscaVetID(vet);
+				if(radioButtonFemea.isSelected()){
+					sexo = "Femea";
+				}
+				if(radioButtonMacho.isSelected()){
+					sexo = "Macho";
+				}
+				if(radioButtonAgitado.isSelected()){
+					temperamento = "Agitado";
+				}
+				if(radioButtonCalmo.isSelected()){
+					temperamento = "Calmo";
+				}
+				if(radioButtonCachorro.isSelected()){
+					especie = AnimalEspecie.CACHORRO;
+				}
+				if(radioButtonGato.isSelected()){
+					especie = AnimalEspecie.GATO;
+				}
+				if(radioButtonAve.isSelected()){
+					especie = AnimalEspecie.AVE;
+				}
+				if(radioButtonReptil.isSelected()){
+					especie = AnimalEspecie.REPTIL;
+				}
+				if(radioButtonRoedor.isSelected()){
+					especie = AnimalEspecie.ROEDOR;
+				}
+
 				
-				Animal a = new Animal(nome,raca,sexo,peso,idade,saude,temperamento,null, especie);
+				Veterinario v = fachada.buscaVetID(vet);
+				
+				Animal a = new Animal(nome,raca,sexo,peso,idade,saude,temperamento,v, especie);
 				fachada.cadastrarAnimal(a);
 				
 				JOptionPane.showMessageDialog(null, a.getSexo());
 				JOptionPane.showMessageDialog(null, a.getSaude());
-				JOptionPane.showMessageDialog(null, a.getEspecie());
-				JOptionPane.showMessageDialog(null, a.getSaude());
-				JOptionPane.showMessageDialog(null, "cadastro realizado com sucesso");
+				if(especie != null){
+					JOptionPane.showMessageDialog(null, "FUNCIONOU LAGARTO GOD");
+				}
+				JOptionPane.showMessageDialog(null, "Cadastro Realizado com Sucesso");
 				dispose();
 				TelaAdm tela = new TelaAdm(fachada);
 				tela.setVisible(true);
 			}	
 			
 			catch(NumberFormatException n){
-				JOptionPane.showMessageDialog(null, "dados inválidos");
+				JOptionPane.showMessageDialog(null, "Dados Inválidos");
 			}
-			//catch(IDException i){
-			//	JOptionPane.showMessageDialog(null, i.getMessage());
-			//}
+			catch(IDException i){
+				JOptionPane.showMessageDialog(null, i.getMessage());
+			}
 		}
 		else if(evento.getSource().equals(botaoVoltar)){
 			dispose();
