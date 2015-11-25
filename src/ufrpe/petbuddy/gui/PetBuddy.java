@@ -1,10 +1,16 @@
 package ufrpe.petbuddy.gui;
 
+import ufrpe.petbuddy.facade.*;
+
 public class PetBuddy {
 
 	public static void main (String [] args){
 		
-		TelaPrincipal tela = new TelaPrincipal();
+		
+		IFachada fachada = Fachada.getInstance();
+		
+		
+		TelaPrincipal tela = new TelaPrincipal(fachada);
 		tela.setVisible(true);
 		
 		

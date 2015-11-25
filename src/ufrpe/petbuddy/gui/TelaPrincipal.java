@@ -10,12 +10,13 @@ import java.awt.Font;
 import javax.swing.JButton;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import ufrpe.petbuddy.facade.*;
 
 public class TelaPrincipal extends JFrame implements ActionListener{
 
 	private JPanel painel;
 	private JButton botaoLogin, botaoBusca, botaoCadastro;
-	
+	private IFachada fachada;
 
 	/**
 	 * Launch the application.
@@ -36,7 +37,9 @@ public class TelaPrincipal extends JFrame implements ActionListener{
 	/**
 	 * Create the frame.
 	 */
-	public TelaPrincipal() {
+	public TelaPrincipal(IFachada fachada) {
+		
+		this.fachada = fachada;		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 800, 600);
 		painel = new JPanel();
@@ -71,11 +74,11 @@ public class TelaPrincipal extends JFrame implements ActionListener{
 	public void actionPerformed (ActionEvent evento){
 		if (evento.getSource().equals(this.botaoLogin)){
 			dispose();
-			TelaLogin login = new TelaLogin();
+			TelaLogin login = new TelaLogin(fachada);
 			login.setVisible(true);
 		} else if(evento.getSource().equals(this.botaoCadastro)){
 			dispose();
-			TelaCadastroUsuario cadastro = new TelaCadastroUsuario();
+			TelaCadastroUsuario cadastro = new TelaCadastroUsuario(fachada);
 			cadastro.setVisible(true);
 		}else if(evento.getSource().equals(this.botaoBusca)){
 			dispose();

@@ -13,7 +13,7 @@ public  class Animal implements Serializable {
 	private String nome; 
 	private String raca;
 	private double peso;
-	private String idade;
+	private int idade;
 	private String saude;
 	private String temperamento;
 	private boolean adotado;
@@ -23,7 +23,7 @@ public  class Animal implements Serializable {
 	private Veterinario veterinario;
 	private AnimalEspecie especie;
 	//LIGAR O ANIMAL COM UM VETERINARIO NA HORA DE CRIA-LO
-	public Animal(String nome, String raca,String sexo, double peso, String idade, String saude, String temperamento, Veterinario veterinario, AnimalEspecie especie){
+	public Animal(String nome, String raca,String sexo, double peso, int idade, String saude, String temperamento, Veterinario veterinario, AnimalEspecie especie){
 		this.nome = nome;
 		this.raca = raca;
 		this.sexo = sexo;
@@ -95,11 +95,11 @@ public  class Animal implements Serializable {
 		this.peso = peso;
 	}
 
-	public String getIdade() {
+	public int getIdade() {
 		return this.idade;
 	}
 
-	public void setIdade(String idade) {
+	public void setIdade(int idade) {
 		this.idade = idade;
 	}
 

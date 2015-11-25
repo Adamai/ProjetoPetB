@@ -9,31 +9,38 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JButton;
+import ufrpe.petbuddy.facade.*;
+import ufrpe.petbuddy.negocio.beans.*;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
-public class TelaLogado extends JFrame {
+public class TelaLogado extends JFrame implements ActionListener{
 
 	private JPanel painel;
+	private JButton botaoBusca, botaoAdotar;
+	private IFachada fachada;
 
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					TelaLogado frame = new TelaLogado();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+	//public static void main(String[] args) {
+	//	EventQueue.invokeLater(new Runnable() {
+	//		public void run() {
+	//			try {
+	//				TelaLogado frame = new TelaLogado();
+	//				frame.setVisible(true);
+	//			} catch (Exception e) {
+	//				e.printStackTrace();
+	//			}
+	//		}
+	//	});
+	//}
 
 	/**
 	 * Create the frame.
 	 */
-	public TelaLogado() {
+	public TelaLogado(IFachada fachada) {
+		this.fachada = fachada;
 		setTitle("PetBuddy");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 800, 600);
@@ -47,14 +54,24 @@ public class TelaLogado extends JFrame {
 		textoPergunta.setBounds(328, 28, 127, 65);
 		painel.add(textoPergunta);
 		
-		JButton botaoBusca = new JButton("Procurar animais");
+		this.botaoBusca = new JButton("Procurar animais");
 		botaoBusca.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		botaoBusca.setBounds(304, 165, 179, 65);
+		botaoBusca.addActionListener(this);
 		painel.add(botaoBusca);
 		
-		JButton botaoAdotar = new JButton("Adotar Animal");
+		this.botaoAdotar = new JButton("Adotar Animal");
 		botaoAdotar.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		botaoAdotar.setBounds(306, 289, 179, 65);
+		botaoAdotar.addActionListener(this);
 		painel.add(botaoAdotar);
+	}
+	
+	public void actionPerformed(ActionEvent evento){
+		if(evento.getSource().equals(botaoBusca)){
+			dispose();
+			//TelaBuscaAnimais tela = new TelaBuscaAnimais(this.fachada);
+			//tela.setVisible(true);
+		}
 	}
 }

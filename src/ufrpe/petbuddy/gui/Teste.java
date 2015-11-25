@@ -79,7 +79,7 @@ public static void main(String[] args) throws RepoException{
 		String nome;
 		String raca;
 		double peso;
-		String idade;
+		int idade;
 		
 		
 		System.out.println("1 - Cachorro");
@@ -113,7 +113,7 @@ public static void main(String[] args) throws RepoException{
 				peso = scan.nextDouble();
 		
 				System.out.println("Informe a idade"); // ADD INPUT EXCEPTION SÓ NUMEROS
-				idade = scan5.nextLine();
+				idade = scan5.nextInt();
 	
 				Animal a = new Animal(nome,raca,sexo,peso,idade,"saudavel","calmo",null, AnimalEspecie.CACHORRO);
 			

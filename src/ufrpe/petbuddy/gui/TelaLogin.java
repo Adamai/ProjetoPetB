@@ -7,39 +7,51 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JButton;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+
 import javax.swing.JPasswordField;
+
 import java.awt.Font;
 
-public class TelaLogin extends JFrame {
+import ufrpe.petbuddy.facade.*;
+import ufrpe.petbuddy.negocio.beans.*;
+import ufrpe.petbuddy.exceptions.*;
+
+public class TelaLogin extends JFrame implements ActionListener {
 
 	private JPanel painel;
 	private JTextField campoLogin;
 	private JPasswordField campoSenha;
+	private JButton botaoVoltar;
+	private JButton botaoEfetuarLogin;
+	private IFachada fachada;
 
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					TelaLogin frame = new TelaLogin();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+	//public static void main(String[] args) {
+	//	EventQueue.invokeLater(new Runnable() {
+	//		public void run() {
+	//			try {
+	//				TelaLogin frame = new TelaLogin();
+	//				frame.setVisible(true);
+	//			} catch (Exception e) {
+	//				e.printStackTrace();
+	//			}
+	//		}
+	//	});
+	//}
 
 	/**
 	 * Create the frame.
 	 */
-	public TelaLogin() {
+	public TelaLogin(IFachada fachada) {
+		this.fachada = fachada;
 		setTitle("PetBuddy");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 800, 600);
@@ -65,11 +77,8 @@ public class TelaLogin extends JFrame {
 		campoSenha.setBounds(133, 227, 321, 20);
 		painel.add(campoSenha);
 		
-		JButton botaoEfetuarLogin = new JButton("Entrar");
-		botaoEfetuarLogin.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-			}
-		});
+		this.botaoEfetuarLogin = new JButton("Entrar");
+		botaoEfetuarLogin.addActionListener(this);
 		botaoEfetuarLogin.setBounds(540, 341, 125, 46);
 		painel.add(botaoEfetuarLogin);
 		
@@ -78,10 +87,37 @@ public class TelaLogin extends JFrame {
 		textoEntrar.setBounds(154, 43, 149, 38);
 		painel.add(textoEntrar);
 		
-		JButton btnVoltar = new JButton("Voltar");
-		btnVoltar.setBounds(70, 428, 89, 23);
-		painel.add(btnVoltar);
-		
-		
+		this.botaoVoltar = new JButton("Voltar");
+		botaoVoltar.setBounds(70, 428, 89, 23);
+		botaoVoltar.addActionListener(this);
+		painel.add(botaoVoltar);
+	
 	}
+	
+	public void actionPerformed(ActionEvent evento){
+		if(evento.getSource().equals(botaoEfetuarLogin)){
+			try{
+				Usuario usuario = fachada.buscaLogin(campoLogin.getText(), campoSenha.getText());
+				if(usuario instanceof Pessoa){
+					dispose();
+					TelaLogado tela = new TelaLogado(this.fachada);
+					tela.setVisible(true);
+					}
+				else if(usuario instanceof Adm){
+					dispose();
+					TelaAdm tela = new TelaAdm(this.fachada);
+					tela.setVisible(true);
+				}
+				}
+			catch(RepoException e){
+				JOptionPane.showMessageDialog(null, e.getMessage());
+				}
+			}
+		else if(evento.getSource().equals(botaoVoltar)){
+			dispose();
+			TelaPrincipal tela = new TelaPrincipal(fachada);
+			tela.setVisible(true);
+		}
+	}
+	
 }

@@ -7,21 +7,32 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
+
 import java.awt.Font;
+
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+import javax.swing.JPasswordField;
 import javax.swing.JButton;
 
-public class TelaCadastroUsuario extends JFrame {
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import ufrpe.petbuddy.facade.*;
+import ufrpe.petbuddy.negocio.beans.*;
+
+public class TelaCadastroUsuario extends JFrame implements ActionListener{
 
 	private JPanel contentPane;
 	private JTextField campoLogin;
-	private JTextField campoSenha;
+	private JPasswordField campoSenha;
 	private JTextField campoNome;
 	private JTextField campoEmail;
 	private JTextField campoTelefone;
 	private JTextField campoIdade;
 	private JTextField campoEndereco;
-
+	private JButton botaoCadastrar, botaoVoltar;
+	private IFachada fachada;
 	/**
 	 * Launch the application.
 	 */
@@ -29,7 +40,7 @@ public class TelaCadastroUsuario extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					TelaCadastroUsuario frame = new TelaCadastroUsuario();
+					TelaCadastroUsuario frame = new TelaCadastroUsuario(Fachada.getInstance());
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -41,7 +52,8 @@ public class TelaCadastroUsuario extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public TelaCadastroUsuario() {
+	public TelaCadastroUsuario(IFachada fachada) {
+		this.fachada = fachada;
 		setTitle("PetBuddy");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 800, 600);
@@ -88,7 +100,7 @@ public class TelaCadastroUsuario extends JFrame {
 		contentPane.add(campoLogin);
 		campoLogin.setColumns(10);
 		
-		campoSenha = new JTextField();
+		campoSenha = new JPasswordField();
 		campoSenha.setColumns(10);
 		campoSenha.setBounds(175, 166, 274, 20);
 		contentPane.add(campoSenha);
@@ -118,14 +130,56 @@ public class TelaCadastroUsuario extends JFrame {
 		campoEndereco.setBounds(175, 466, 274, 20);
 		contentPane.add(campoEndereco);
 		
-		JButton btnNewButton = new JButton("Cadastrar");
-		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		btnNewButton.setBounds(560, 370, 156, 58);
-		contentPane.add(btnNewButton);
+		this.botaoCadastrar = new JButton("Cadastrar");
+		botaoCadastrar.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		botaoCadastrar.setBounds(560, 370, 156, 58);
+		botaoCadastrar.addActionListener(this);
+		contentPane.add(botaoCadastrar);
 		
-		JButton botaoVoltar = new JButton("Voltar");
+		this.botaoVoltar = new JButton("Voltar");
 		botaoVoltar.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		botaoVoltar.setBounds(575, 456, 127, 44);
+		botaoVoltar.addActionListener(this);
 		contentPane.add(botaoVoltar);
 	}
+	
+	public void actionPerformed(ActionEvent evento){
+		String nome;
+		String login;
+		String senha;
+		String email;
+		int idade;
+		String endereco;
+		int contato;
+		
+		if(evento.getSource().equals(botaoCadastrar)){
+			try{
+			nome = campoNome.getText();
+			login = campoLogin.getText();
+			senha = campoSenha.getText();
+			email = campoEmail.getText();
+			idade = Integer.parseInt(campoIdade.getText());
+			endereco = campoEndereco.getText();
+			contato = Integer.parseInt(campoTelefone.getText());
+			
+			Pessoa p = new Pessoa(nome,idade,contato,endereco,login,senha);
+			fachada.cadastrarPessoa(p);
+			JOptionPane.showMessageDialog(null, "Cadastro realizado com sucesso");
+			dispose();
+			TelaPrincipal tela = new TelaPrincipal(fachada);
+			tela.setVisible(true);
+			}
+			catch(NumberFormatException e){
+				JOptionPane.showMessageDialog(null, "dados incorretos");
+			}
+			
+		}
+		else if (evento.getSource().equals(botaoVoltar)){
+			dispose();
+			TelaPrincipal tela = new TelaPrincipal(fachada);
+			tela.setVisible(true);
+		}
+	}
+	
+
 }
