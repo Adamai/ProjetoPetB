@@ -3,13 +3,11 @@ package ufrpe.petbuddy.dados;
 
 import ufrpe.petbuddy.exceptions.IDException;
 import ufrpe.petbuddy.exceptions.RepoException;
-import ufrpe.petbuddy.negocio.*;
 import ufrpe.petbuddy.negocio.beans.*;
 
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
-import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
@@ -159,8 +157,7 @@ public class RepositorioAnimais implements IRepositorioAnimais, Serializable {
 		
 	}
 	@Override
-	public void overwriteRepo(ArrayList<Animal> animais){ //usado para deletar   NÃO FUNCIONANDO
-		//inserir método para deletar o arquivo existente
+	public void overwriteRepo(ArrayList<Animal> animais){ //usado para deletar e recriar   -    FUNCIONANDO
 		File data = new File("DatabaseAnimal.rp");
 		data.delete();
 		ObjectOutputStream save = null;

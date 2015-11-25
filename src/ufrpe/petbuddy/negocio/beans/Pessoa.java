@@ -1,6 +1,7 @@
 package ufrpe.petbuddy.negocio.beans;
 
 
+
 public class Pessoa extends Usuario {
 private String login;
 private String senha;

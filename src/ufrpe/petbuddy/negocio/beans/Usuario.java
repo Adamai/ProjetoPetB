@@ -1,6 +1,9 @@
 package ufrpe.petbuddy.negocio.beans;
 
-public abstract class Usuario {
+import java.io.Serializable;
+
+
+public abstract class Usuario  implements Serializable {
 	protected int contato;
 	protected String nome;
 	protected int idade;
