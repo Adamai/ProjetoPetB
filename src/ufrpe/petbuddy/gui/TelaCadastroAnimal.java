@@ -287,6 +287,9 @@ public class TelaCadastroAnimal extends JFrame implements ActionListener{
 			catch(IDException i){
 				JOptionPane.showMessageDialog(null, i.getMessage());
 			}
+			catch(DadosException d){
+				JOptionPane.showMessageDialog(null, d.getMessage());
+			}
 		}
 		else if(evento.getSource().equals(botaoVoltar)){
 			dispose();

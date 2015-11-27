@@ -15,7 +15,7 @@ public static void main(String[] args) throws RepoException{
 	int controlador = 1;
 	
 	ICadastroAnimal cadastro = new CadastroAnimal();
-	ICadastroPessoa cadastrop = new CadastroPessoa();
+	ICadastroUsuario cadastrop = new CadastroUsuario();
 	ICadastroAdocao cadastroad = new CadastroAdocao();
 	CheckEX check = new CheckEX();
 	System.out.println("Bem vindo ao Pet Buddy");
@@ -69,7 +69,7 @@ public static void main(String[] args) throws RepoException{
 		 catch(InputMismatchException i){
 			 System.err.println("Insira somente números");
 		 	}
-		 catch(NAMException n){
+		 catch(DadosException n){
 			 System.err.println(n.getMessage());
 		 	}
 		 }
@@ -125,7 +125,7 @@ public static void main(String[] args) throws RepoException{
 			catch(InputMismatchException i){
 				System.err.println("Insira somente números");
 			}
-			catch(NAMException n){
+			catch(DadosException n){
 				System.err.println(n.getMessage());
 				}
 			}

@@ -6,6 +6,7 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import ufrpe.petbuddy.exceptions.*;
 
 
 public  class Animal implements Serializable {
@@ -23,22 +24,47 @@ public  class Animal implements Serializable {
 	private Veterinario veterinario;
 	private AnimalEspecie especie;
 	//LIGAR O ANIMAL COM UM VETERINARIO NA HORA DE CRIA-LO
-	public Animal(String nome, String raca,String sexo, double peso, int idade, String saude, String temperamento, Veterinario veterinario, AnimalEspecie especie){
-		this.nome = nome;
-		this.raca = raca;
-		this.sexo = sexo;
-		this.peso = peso;
-		this.idade = idade;
-		this.saude = saude;
+	public Animal(String nome, String raca,String sexo, double peso, int idade, String saude, String temperamento, 
+			Veterinario veterinario, AnimalEspecie especie) throws DadosException{
+		this.setNome(nome);
+		this.setRaca(raca);
+		this.setSexo(sexo);
+		this.setPeso(peso);
+		this.setIdade(idade);
+		this.setSaude(saude);
 		this.temperamento = temperamento;
 		this.adotado = false;
 		loadProx();
 		this.numid = proximo;
-		this.veterinario = veterinario;
-		this.especie = especie;
+		this.setVeterinario(veterinario);
+		this.setEspecie(especie);
 		Animal.AumentarProximo();
 		}
 	
+	public void setRaca(String raca)  throws DadosException {
+		if(raca != ""){
+			this.raca = raca;
+		}
+		else
+			throw new DadosException();
+	}
+
+	public void setTemperamento(String temperamento) throws DadosException {
+		if(temperamento != ""){
+			this.temperamento = temperamento;
+		}
+		else
+			throw new DadosException();
+	}
+
+	public void setVeterinario(Veterinario veterinario)  throws DadosException{
+		if(veterinario != null){
+			this.veterinario = veterinario;
+		}
+		else
+			throw new DadosException();
+	}
+
 	public static void loadProx(){
 		File data = new File("IdSetter.rp");
 		ObjectInputStream readob = null;
@@ -73,8 +99,12 @@ public  class Animal implements Serializable {
 		return this.nome;
 	}
 
-	public void setNome(String nome) {
-		this.nome = nome;
+	public void setNome(String nome)  throws DadosException{
+		if(nome != ""){
+			this.nome = nome;
+		}
+		else
+			throw new DadosException();
 	}
 
 	public String getRaca() {
@@ -88,27 +118,41 @@ public  class Animal implements Serializable {
 	public String getSexo() {
 		return sexo;
 	}
-	public void setSexo(String sexo) {
-		this.sexo = sexo;
+	public void setSexo(String sexo)  throws DadosException{
+		if(sexo != ""){
+			this.sexo = sexo;
+		}
+		else
+			throw new DadosException();
 	}
-	public void setPeso(double peso) {
-		this.peso = peso;
+	public void setPeso(double peso)  throws DadosException{
+		if(peso != 0 && peso>0){
+			this.peso = peso;
+		}
+		else 
+			throw new DadosException();
 	}
 
 	public int getIdade() {
 		return this.idade;
 	}
 
-	public void setIdade(int idade) {
-		this.idade = idade;
+	public void setIdade(int idade)  throws DadosException{
+		if(idade>=0){
+			this.idade = idade;
+		}
 	}
 
 	public String getSaude() {
 		return this.saude;
 	}
 
-	public void setSaude(String saude) {
-		this.saude = saude;
+	public void setSaude(String saude) throws DadosException {
+		if(saude != ""){
+			this.saude = saude;
+		}
+		else
+			throw new DadosException();
 	}
 
 	public String getTemperamento() {
@@ -137,8 +181,12 @@ public  class Animal implements Serializable {
 		return especie;
 	}
 
-	public void setEspecie(AnimalEspecie especie) {
-		this.especie = especie;
+	public void setEspecie(AnimalEspecie especie)  throws DadosException{
+		if(especie != null){
+			this.especie = especie;
+		}
+		else
+			throw new DadosException();
 	}
 		
 	}

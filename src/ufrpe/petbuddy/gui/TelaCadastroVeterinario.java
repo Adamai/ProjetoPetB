@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
@@ -13,12 +14,14 @@ import java.awt.Font;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 
+import ufrpe.petbuddy.exceptions.DadosException;
 import ufrpe.petbuddy.facade.*;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 import ufrpe.petbuddy.negocio.beans.*;
+import ufrpe.petbuddy.exceptions.*;
 
 public class TelaCadastroVeterinario extends JFrame implements ActionListener{
 
@@ -113,16 +116,21 @@ public class TelaCadastroVeterinario extends JFrame implements ActionListener{
 	
 	public void actionPerformed(ActionEvent evento){
 		if(evento.getSource().equals(botaoCadastrar)){
-			String nome = campoNome.getText();
-			int telefone = Integer.parseInt(campoTelefone.getText());
-			int idade = Integer.parseInt(campoIdade.getText());
-			long crmv = Long.parseLong(campoCRMV.getText());
-			Veterinario vet = new Veterinario(nome,telefone,idade,crmv);
-			fachada.cadastrarVet(vet);
+			try{
+				String nome = campoNome.getText();
+				int telefone = Integer.parseInt(campoTelefone.getText());
+				int idade = Integer.parseInt(campoIdade.getText());
+				long crmv = Long.parseLong(campoCRMV.getText());
+				Veterinario vet = new Veterinario(nome,telefone,idade,crmv);
+				fachada.cadastrarVet(vet);
 			
-			dispose();
-			TelaAdm tela = new TelaAdm(fachada);
-			tela.setVisible(true);
+				dispose();
+				TelaAdm tela = new TelaAdm(fachada);
+				tela.setVisible(true);
+			}
+			catch(DadosException d){
+				JOptionPane.showMessageDialog(null, d.getMessage());
+			}
 				
 		}	else if (evento.getSource().equals(botaoVoltar)){
 			dispose();

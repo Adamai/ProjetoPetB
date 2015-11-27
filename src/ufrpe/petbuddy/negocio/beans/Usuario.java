@@ -2,6 +2,8 @@ package ufrpe.petbuddy.negocio.beans;
 
 import java.io.Serializable;
 
+import ufrpe.petbuddy.exceptions.DadosException;
+
 
 public abstract class Usuario  implements Serializable {
 	protected int contato;
@@ -9,10 +11,10 @@ public abstract class Usuario  implements Serializable {
 	protected int idade;
 
 	
-	public Usuario(String nome, int idade, int contato){
-		this.nome = nome;
-		this.idade = idade;
-		this.contato = contato;
+	public Usuario(String nome, int idade, int contato)throws DadosException{
+		this.setNome(nome);
+		this.setIdade(idade);
+		this.setContato(contato);
 
 	}
 
@@ -25,16 +27,33 @@ public abstract class Usuario  implements Serializable {
 		return idade;
 	}
 
-	public void setIdade(int idade) {
-		this.idade = idade;
+	public void setIdade(int idade)throws DadosException {
+		if(idade>0){
+			this.idade = idade;
+		}
+		else
+			throw new DadosException();
 	}
 
 	public int getContato() {
 		return contato;
 	}
 
-	public void setContato(int contato) {
-		this.contato = contato;
+	public void setContato(int contato) throws DadosException {
+		if(contato>=10000000){
+			this.contato = contato;
+		}
+		else
+			throw new DadosException("contato inválido");
+	}
+
+
+	public void setNome(String nome) throws DadosException{
+		if(nome!= ""){
+			this.nome = nome;
+		}
+		else
+			throw new DadosException();
 	}
 
 	

@@ -6,9 +6,9 @@ import ufrpe.petbuddy.exceptions.*;
 public class ControleLogin implements ILogin {
 	
 
-	private CadastroPessoa cadastrop;
+	private CadastroUsuario cadastrop;
 	
-	public ControleLogin(CadastroPessoa cadastrop){
+	public ControleLogin(CadastroUsuario cadastrop){
 		this.cadastrop = cadastrop;
 	}
 	

@@ -18,6 +18,7 @@ import javax.swing.JButton;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import ufrpe.petbuddy.exceptions.DadosException;
 import ufrpe.petbuddy.facade.*;
 import ufrpe.petbuddy.negocio.beans.*;
 
@@ -171,6 +172,9 @@ public class TelaCadastroUsuario extends JFrame implements ActionListener{
 			}
 			catch(NumberFormatException e){
 				JOptionPane.showMessageDialog(null, "dados incorretos");
+			}
+			catch(DadosException d){
+				JOptionPane.showMessageDialog(null, d.getMessage());
 			}
 			
 		}

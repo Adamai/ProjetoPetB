@@ -1,5 +1,7 @@
 package ufrpe.petbuddy.negocio.beans;
 
+import ufrpe.petbuddy.exceptions.*;
+
 
 public class Veterinario extends Usuario {
 	
@@ -7,7 +9,7 @@ public class Veterinario extends Usuario {
 	private long numid;
 	private long crmv;
 	
-	public Veterinario(String nome, int idade, int contato, long crmv){
+	public Veterinario(String nome, int idade, int contato, long crmv) throws DadosException{
 		super(nome, idade, contato);
 		this.numid = proximo;
 		this.crmv = crmv;

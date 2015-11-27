@@ -19,10 +19,9 @@ public class RepositorioUsuarios implements IRepositorioUsuarios, Serializable {
 	private ArrayList<Usuario>usuarios;
 	
 	
-	public RepositorioUsuarios(){
+	public RepositorioUsuarios() {
 		this.usuarios = new ArrayList<Usuario>();
-		Usuario adm = new Adm();
-		usuarios.add(adm);
+		
 	}
 	
 	public void cadastrar(Usuario p){

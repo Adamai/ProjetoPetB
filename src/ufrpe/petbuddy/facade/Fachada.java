@@ -10,7 +10,7 @@ public class Fachada implements IFachada{
 	private ICadastroAdocao cadastroadocao;
 	private ICadastroAnimal cadastroanimal;
 	private ICadastroVet cadastrovet;
-	private ICadastroPessoa cadastropessoa;
+	private ICadastroUsuario cadastrousuario;
 	private ILogin controlelogin;
 	public static Fachada instance;
 
@@ -19,8 +19,8 @@ public class Fachada implements IFachada{
 		this.cadastroadocao = new CadastroAdocao();
 		this.cadastroanimal = new CadastroAnimal();
 		this.cadastrovet = new CadastroVet();
-		this.cadastropessoa = new CadastroPessoa();
-		this.controlelogin = new ControleLogin((CadastroPessoa)this.cadastropessoa);
+		this.cadastrousuario = new CadastroUsuario();
+		this.controlelogin = new ControleLogin((CadastroUsuario)this.cadastrousuario);
 	}
 
 	public static Fachada getInstance(){
@@ -60,23 +60,23 @@ public class Fachada implements IFachada{
 	}
 
 
-	public void cadastrarPessoa(Pessoa p) {
-		cadastropessoa.cadastrar(p);
+	public void cadastrarPessoa(Usuario p) {
+		cadastrousuario.cadastrar(p);
 	}
 
 
 	public Pessoa buscaNome(String nome) throws RepoException {
-		return cadastropessoa.busca(nome);
+		return cadastrousuario.busca(nome);
 	}
 
 
 	public Usuario buscaLogin(String login, String senha) throws RepoException  {
-		return cadastropessoa.busca(login, senha);
+		return cadastrousuario.busca(login, senha);
 	}
 
 
 	public void descadastrar(String nome) throws RepoException{
-		cadastropessoa.descadastrar(nome);
+		cadastrousuario.descadastrar(nome);
 	}
 
 
@@ -95,7 +95,7 @@ public class Fachada implements IFachada{
 	}
 	
 	public Usuario EfetuarLogin(String login, String senha) throws RepoException{
-		return this.cadastropessoa.busca(login, senha);
+		return this.controlelogin.EfetuarLogin(login, senha);
 		
 	}
 	

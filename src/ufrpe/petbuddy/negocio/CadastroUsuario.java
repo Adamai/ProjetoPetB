@@ -5,16 +5,16 @@ import ufrpe.petbuddy.negocio.beans.Pessoa;
 import ufrpe.petbuddy.negocio.beans.Usuario;
 import ufrpe.petbuddy.exceptions.*;
 
-public class CadastroPessoa implements ICadastroPessoa{
+public class CadastroUsuario implements ICadastroUsuario{
 
 	private IRepositorioUsuarios repositorio;
 	
-	public CadastroPessoa(){
+	public CadastroUsuario(){
 		this.repositorio = new RepositorioUsuarios();
 	}
 	
-	public void cadastrar(Pessoa p){
-		this.repositorio.cadastrar(p);
+	public void cadastrar(Usuario u){
+		this.repositorio.cadastrar(u);
 	}
 	
 	public Pessoa busca(String nome) throws RepoException{// ADD EXCEPTION

@@ -16,7 +16,7 @@ public interface IFachada {
 	void cadastrarAnimal(Animal a);
 	ArrayList<Animal> buscaAnimais(String raca, AnimalEspecie especie) throws RepoException;
 	Animal buscaAnimalID(long numid) throws IDException;
-	void cadastrarPessoa(Pessoa p);
+	void cadastrarPessoa(Usuario p);
 	Pessoa buscaNome(String nome) throws RepoException;
 	Usuario buscaLogin(String login, String senha) throws RepoException; 
 	void descadastrar(String nome) throws RepoException;
