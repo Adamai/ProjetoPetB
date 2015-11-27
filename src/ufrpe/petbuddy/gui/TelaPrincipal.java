@@ -82,7 +82,7 @@ public class TelaPrincipal extends JFrame implements ActionListener{
 			cadastro.setVisible(true);
 		}else if(evento.getSource().equals(this.botaoBusca)){
 			dispose();
-			TelaBuscaAnimais buscaAnimais = new TelaBuscaAnimais();
+			TelaBuscaAnimais buscaAnimais = new TelaBuscaAnimais(fachada);
 			buscaAnimais.setVisible(true);
 		}
 	}

@@ -221,8 +221,6 @@ public class TelaCadastroAnimal extends JFrame implements ActionListener{
 		
 	}
 	
-
-	
 	public void actionPerformed(ActionEvent evento){
 		
 		String sexo = "";
