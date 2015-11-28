@@ -106,11 +106,13 @@ public class TelaCadastroVeterinario extends JFrame implements ActionListener{
 		this.botaoCadastrar = new JButton("Cadastrar");
 		botaoCadastrar.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		botaoCadastrar.setBounds(559, 408, 161, 77);
+		botaoCadastrar.addActionListener(this);
 		painel.add(botaoCadastrar);
 		
 		this.botaoVoltar = new JButton("Voltar");
 		botaoVoltar.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		botaoVoltar.setBounds(55, 435, 139, 50);
+		botaoVoltar.addActionListener(this);
 		painel.add(botaoVoltar);
 	}
 	
@@ -118,12 +120,12 @@ public class TelaCadastroVeterinario extends JFrame implements ActionListener{
 		if(evento.getSource().equals(botaoCadastrar)){
 			try{
 				String nome = campoNome.getText();
-				int telefone = Integer.parseInt(campoTelefone.getText());
+				long contato = Long.parseLong(campoTelefone.getText());;
 				int idade = Integer.parseInt(campoIdade.getText());
 				long crmv = Long.parseLong(campoCRMV.getText());
-				Veterinario vet = new Veterinario(nome,telefone,idade,crmv);
+				Veterinario vet = new Veterinario(nome,idade,contato,crmv);
 				fachada.cadastrarVet(vet);
-			
+				JOptionPane.showMessageDialog(null, "Cadastro realizado com sucesso");
 				dispose();
 				TelaAdm tela = new TelaAdm(fachada);
 				tela.setVisible(true);

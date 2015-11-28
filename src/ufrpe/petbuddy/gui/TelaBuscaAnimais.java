@@ -187,7 +187,7 @@ public class TelaBuscaAnimais extends JFrame implements ActionListener {
 			}
 			 if(evento.getSource().equals(botaoVoltar)){
 				dispose();
-				TelaPrincipal tela = new TelaPrincipal(fachada);
+				TelaLogado tela = new TelaLogado(fachada,usuario);
 				tela.setVisible(true);
 				}
 

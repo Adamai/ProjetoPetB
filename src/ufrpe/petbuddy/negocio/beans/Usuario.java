@@ -6,12 +6,12 @@ import ufrpe.petbuddy.exceptions.DadosException;
 
 
 public abstract class Usuario  implements Serializable {
-	protected int contato;
+	protected long contato;
 	protected String nome;
 	protected int idade;
 
 	
-	public Usuario(String nome, int idade, int contato)throws DadosException{
+	public Usuario(String nome, int idade, long contato)throws DadosException{
 		this.setNome(nome);
 		this.setIdade(idade);
 		this.setContato(contato);
@@ -35,11 +35,11 @@ public abstract class Usuario  implements Serializable {
 			throw new DadosException();
 	}
 
-	public int getContato() {
+	public long getContato() {
 		return contato;
 	}
 
-	public void setContato(int contato) throws DadosException {
+	public void setContato(long contato) throws DadosException {
 		if(contato>=10000000){
 			this.contato = contato;
 		}

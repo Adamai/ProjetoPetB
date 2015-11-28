@@ -76,11 +76,12 @@ public class TelaLogado extends JFrame implements ActionListener{
 		botaoSair.addActionListener(this);
 		painel.add(botaoSair);
 		
+		if(usuario != null){
 		JLabel label = new JLabel("Bem vindo " + usuario.getNome());
 		label.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		label.setBounds(104, 11, 592, 65);
 		painel.add(label);
-	}
+	}}
 	
 	public void actionPerformed(ActionEvent evento){
 		if(evento.getSource().equals(botaoBusca)){

@@ -9,7 +9,7 @@ private String login;
 private String senha;
 private String endereco;
 	
-	public Pessoa(String nome, int idade, int contato, String endereco,String login,String senha) throws DadosException{
+	public Pessoa(String nome, int idade, long contato, String endereco,String login,String senha) throws DadosException{
 		super(nome, idade, contato);
 		this.setLogin(login);
 		this.setSenha(senha);

@@ -1,6 +1,7 @@
 package ufrpe.petbuddy.negocio.beans;
 
 import java.text.SimpleDateFormat;
+import ufrpe.petbuddy.exceptions.*;
 import java.time.LocalDateTime;
 import java.util.Calendar;
 import java.util.Date;
@@ -14,7 +15,7 @@ public class Adocao {
 	private long numid;
 	private static long proximo = 1;
 
-	public Adocao(Animal animal, Pessoa pessoa) {
+	public Adocao(Animal animal, Pessoa pessoa) throws DadosException {
 		this.animal = animal;
 		this.pessoa = pessoa;
 		this.data = this.setData();
@@ -52,5 +53,17 @@ public class Adocao {
 		return numid;
 	}
 
-	
-}
+	public void setAnimal(Animal animal)throws DadosException {
+		if( animal!= null){
+			this.animal = animal;
+		}else 
+			throw new DadosException();
+	}
+
+	public void setPessoa(Pessoa pessoa) throws DadosException{
+		if( pessoa!= null){
+		this.pessoa = pessoa;
+	}else 
+		throw new DadosException();
+
+}	}

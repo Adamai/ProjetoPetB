@@ -1,10 +1,12 @@
 package ufrpe.petbuddy.gui;
 
+
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
 import javax.swing.DefaultListModel;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.ListSelectionModel;
 import javax.swing.border.EmptyBorder;
@@ -20,6 +22,7 @@ import java.awt.event.ActionEvent;
 import javax.swing.JButton;
 
 import ufrpe.petbuddy.exceptions.DadosException;
+import ufrpe.petbuddy.exceptions.IDException;
 import ufrpe.petbuddy.exceptions.RepoException;
 import ufrpe.petbuddy.facade.*;
 import ufrpe.petbuddy.negocio.beans.AnimalEspecie;
@@ -74,13 +77,7 @@ public class TelaResultadoBusca extends JFrame implements ActionListener,ListSel
 		setContentPane(contentPane);
 		
 		
-		//Usuario vet = new Veterinario("jose",15,123456789,12345687);
-		//Animal a = new Animal("ringo","york","macho",12.1,10,"saudavel","calmo",(Veterinario)vet,AnimalEspecie.CACHORRO);
-		//Animal b = new Animal("like","york","macho",12.1,10,"saudavel","calmo",(Veterinario)vet,AnimalEspecie.CACHORRO);
-		//Animal c = new Animal("bia","york","femea",12.1,10,"saudavel","calmo",(Veterinario)vet,AnimalEspecie.CACHORRO);
-		//fachada.cadastrarAnimal(a);
-		//fachada.cadastrarAnimal(b);
-		//fachada.cadastrarAnimal(c);
+		
 		listmodel = new DefaultListModel();
 		ArrayList<Animal> buscados = resultado;
 		
@@ -132,8 +129,24 @@ public class TelaResultadoBusca extends JFrame implements ActionListener,ListSel
 	}
 	
 	public void actionPerformed(ActionEvent evento){
+	
+		if(evento.getSource().equals(botaoAdotar)){
+			try{
+				Animal a = fachada.buscaAnimalID(((Animal)lista.getSelectedValue()).getNumid());
+			Adocao adocao = new Adocao(a,(Pessoa)usuario);
+			fachada.cadastrarAdocao(adocao);
+			JOptionPane.showMessageDialog(null,"Adoção Realizada com Sucesso, em:"+adocao.getData());
+			dispose();
+			TelaLogado daniel = new TelaLogado(fachada,usuario);
+			daniel.setVisible(true);
+		}
+			catch(DadosException b){
+			JOptionPane.showMessageDialog(null,b.getMessage());
+		} catch (IDException i){
+			JOptionPane.showMessageDialog(null,i.getMessage());
+		}
 		
-		if(evento.getSource().equals(botaoVoltar)){
+		}else if(evento.getSource().equals(botaoVoltar)){
 			if(usuario == null){
 				dispose();
 				TelaPrincipal tela = new TelaPrincipal(fachada);
@@ -148,10 +161,10 @@ public class TelaResultadoBusca extends JFrame implements ActionListener,ListSel
 				dispose();
 				TelaAdm tela = new TelaAdm(fachada);
 				tela.setVisible(true);
-			}
+			} 
 			
 		}// fim IF VOLTAR
-		
+
 			}
 	}
 

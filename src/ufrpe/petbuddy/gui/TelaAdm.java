@@ -18,7 +18,7 @@ import ufrpe.petbuddy.facade.*;
 public class TelaAdm extends JFrame implements ActionListener{
 
 	private JPanel painel;
-	private JButton botaoCadastroAnimais,botaoCadastroVeterinario;
+	private JButton botaoCadastroAnimais,botaoCadastroVeterinario, botaoSair;
 	private IFachada fachada;
 	 
 	/**
@@ -57,30 +57,40 @@ public class TelaAdm extends JFrame implements ActionListener{
 		
 		this.botaoCadastroAnimais = new JButton("Cadastro Animais");
 		this.botaoCadastroAnimais.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		this.botaoCadastroAnimais.setBounds(257, 220, 210, 41);
+		this.botaoCadastroAnimais.setBounds(257, 186, 210, 41);
 		botaoCadastroAnimais.addActionListener(this);
 		painel.add(botaoCadastroAnimais);
 		
 		JLabel textoAdministrador = new JLabel("Administrador");
-		textoAdministrador.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		textoAdministrador.setFont(new Font("Tahoma", Font.PLAIN, 17));
 		textoAdministrador.setBounds(316, 43, 138, 50);
 		painel.add(textoAdministrador);
 		
 		this.botaoCadastroVeterinario = new JButton("Cadastro Veterin\u00E1rio");
 		this.botaoCadastroVeterinario.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		this.botaoCadastroVeterinario.setBounds(257, 388, 210, 41);
+		this.botaoCadastroVeterinario.setBounds(257, 238, 210, 41);
 		botaoCadastroVeterinario.addActionListener(this);
 		painel.add(botaoCadastroVeterinario);
 		
-		JButton botaoRemoverAnimais = new JButton("Remover Animais");
-		botaoRemoverAnimais.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		botaoRemoverAnimais.setBounds(257, 304, 210, 41);
-		painel.add(botaoRemoverAnimais);
+		this.botaoSair = new JButton("Sair");
+		this.botaoSair.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		this.botaoSair.setBounds(257, 469, 210, 41);
+		botaoSair.addActionListener(this);
+		painel.add(botaoSair);
 		
-		JButton botaoAtualizarDados = new JButton("Atualizar Dados");
-		botaoAtualizarDados.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		botaoAtualizarDados.setBounds(257, 472, 210, 41);
-		painel.add(botaoAtualizarDados);
+		JButton botaoAtualizarAnimais = new JButton("Atualizar Animais");
+		botaoAtualizarAnimais.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+			}
+		});
+		botaoAtualizarAnimais.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		botaoAtualizarAnimais.setBounds(257, 290, 210, 41);
+		painel.add(botaoAtualizarAnimais);
+		
+		JButton botaoControleVeterinarios = new JButton("Controle Veterin\u00E1rios");
+		botaoControleVeterinarios.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		botaoControleVeterinarios.setBounds(257, 342, 210, 41);
+		painel.add(botaoControleVeterinarios);
 	}
 	public void actionPerformed (ActionEvent evento){
 		if (evento.getSource().equals(this.botaoCadastroAnimais)){
@@ -91,7 +101,12 @@ public class TelaAdm extends JFrame implements ActionListener{
 			dispose();
 			TelaCadastroVeterinario cadastroVet = new TelaCadastroVeterinario(fachada);
 			cadastroVet.setVisible(true);
-					}
+					}else if(evento.getSource().equals(this.botaoSair)){
+						dispose();
+						TelaPrincipal tela = new TelaPrincipal(fachada);
+						tela.setVisible(true);
+		}
+			
 		}
 }
 
