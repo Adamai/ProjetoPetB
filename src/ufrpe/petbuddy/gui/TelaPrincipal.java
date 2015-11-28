@@ -48,6 +48,7 @@ public class TelaPrincipal extends JFrame implements ActionListener{
 		painel = new JPanel();
 		painel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		painel.setLayout(null);
+		painel.setBackground(new Color(255, 228, 181) );
 		setContentPane(painel);
 		
 		JLabel textoBemVindo = new JLabel("");
@@ -72,7 +73,7 @@ public class TelaPrincipal extends JFrame implements ActionListener{
 		//AcaoBotaoBusca actionBusca = new AcaoBotaoBusca();
 		botaoBusca.addActionListener(this);
 		painel.add(botaoBusca);
-		painel.setBackground(new Color(0, 209, 190) );
+		
 		
 	}
 	
