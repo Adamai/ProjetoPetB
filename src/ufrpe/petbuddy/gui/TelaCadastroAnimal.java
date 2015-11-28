@@ -265,8 +265,8 @@ public class TelaCadastroAnimal extends JFrame implements ActionListener{
 				}
 
 				
-				Veterinario v = fachada.buscaVetID(vet);
-				
+				//Veterinario v = fachada.buscaVetID(vet);
+				Veterinario v = new Veterinario("jose", 10, 12345789,1234578);
 				Animal a = new Animal(nome,raca,sexo,peso,idade,saude,temperamento,v, especie);
 				fachada.cadastrarAnimal(a);
 				
@@ -284,9 +284,9 @@ public class TelaCadastroAnimal extends JFrame implements ActionListener{
 			catch(NumberFormatException n){
 				JOptionPane.showMessageDialog(null, "Dados Inválidos");
 			}
-			catch(IDException i){
-				JOptionPane.showMessageDialog(null, i.getMessage());
-			}
+			//catch(IDException i){
+			//	//JOptionPane.showMessageDialog(null, i.getMessage());
+			//}
 			catch(DadosException d){
 				JOptionPane.showMessageDialog(null, d.getMessage());
 			}

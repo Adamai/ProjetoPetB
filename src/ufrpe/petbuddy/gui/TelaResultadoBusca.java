@@ -63,7 +63,7 @@ public class TelaResultadoBusca extends JFrame implements ActionListener,ListSel
 	/**
 	 * Create the frame.
 	 */
-	public TelaResultadoBusca(IFachada fachada, Usuario u,ArrayList<Animal>resultado) {
+	public TelaResultadoBusca(Usuario u,ArrayList<Animal>resultado) {
 		fachada = Fachada.getInstance();
 		usuario = u;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -141,7 +141,7 @@ public class TelaResultadoBusca extends JFrame implements ActionListener,ListSel
 			}
 			else if(usuario instanceof Pessoa){
 				dispose();
-				TelaLogado tela = new TelaLogado(fachada,usuario);
+				TelaBuscaAnimais tela = new TelaBuscaAnimais(usuario);
 				tela.setVisible(true);
 			}
 			else if(usuario instanceof Adm){

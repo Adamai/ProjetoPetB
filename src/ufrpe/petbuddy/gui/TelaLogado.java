@@ -17,9 +17,10 @@ import java.awt.event.ActionEvent;
 public class TelaLogado extends JFrame implements ActionListener{
 
 	private JPanel painel;
-	private JButton botaoBusca, botaoAdotar;
+	private JButton botaoBusca, botaoAdotar,botaoSair;
 	private IFachada fachada;
 	private Usuario usuario;
+
 
 	/**
 	 * Launch the application.
@@ -54,7 +55,7 @@ public class TelaLogado extends JFrame implements ActionListener{
 		
 		JLabel textoPergunta = new JLabel("O que deseja?");
 		textoPergunta.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		textoPergunta.setBounds(328, 28, 127, 65);
+		textoPergunta.setBounds(342, 89, 127, 65);
 		painel.add(textoPergunta);
 		
 		this.botaoBusca = new JButton("Procurar animais");
@@ -68,12 +69,28 @@ public class TelaLogado extends JFrame implements ActionListener{
 		botaoAdotar.setBounds(306, 289, 179, 65);
 		botaoAdotar.addActionListener(this);
 		painel.add(botaoAdotar);
+		
+		this.botaoSair = new JButton("Sair");
+		botaoSair.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		botaoSair.setBounds(304, 404, 179, 65);
+		botaoSair.addActionListener(this);
+		painel.add(botaoSair);
+		
+		JLabel label = new JLabel("Bem vindo " + usuario.getNome());
+		label.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		label.setBounds(104, 11, 592, 65);
+		painel.add(label);
 	}
 	
 	public void actionPerformed(ActionEvent evento){
 		if(evento.getSource().equals(botaoBusca)){
 			dispose();
-			TelaBuscaAnimais tela = new TelaBuscaAnimais(this.fachada,usuario);
+			TelaBuscaAnimais tela = new TelaBuscaAnimais(usuario);
+			tela.setVisible(true);
+		}
+		if(evento.getSource().equals(botaoSair)){
+			dispose();
+			TelaPrincipal tela = new TelaPrincipal(fachada);
 			tela.setVisible(true);
 		}
 	}

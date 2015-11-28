@@ -37,7 +37,7 @@ public class RepositorioAnimais implements IRepositorioAnimais, Serializable {
 		if(especie.equals(AnimalEspecie.CACHORRO)){//CACHORROS
 			for(int i = 0; i<this.animais.size();i++){
 				Animal a = this.animais.get(i);
-				if(a.getRaca().toLowerCase().contains(raca.toLowerCase())&& a.getEspecie().equals(AnimalEspecie.CACHORRO)){
+				if(a.getRaca().toLowerCase().equals(raca.toLowerCase())&& a.getEspecie().equals(AnimalEspecie.CACHORRO)){
 					buscados.add(a);
 				}
 			}
@@ -47,7 +47,7 @@ public class RepositorioAnimais implements IRepositorioAnimais, Serializable {
 		else if(especie.equals(AnimalEspecie.GATO)){//GATOS
 			for(int i = 0; i<this.animais.size();i++){
 				Animal a = this.animais.get(i);
-				if(a.getRaca().toLowerCase().contains(raca.toLowerCase())&& a.getEspecie().equals(AnimalEspecie.GATO)){
+				if(a.getRaca().toLowerCase().equals(raca.toLowerCase())&& a.getEspecie().equals(AnimalEspecie.GATO)){
 					buscados.add(a);
 				}
 			}
@@ -57,7 +57,7 @@ public class RepositorioAnimais implements IRepositorioAnimais, Serializable {
 		else if(especie.equals(AnimalEspecie.AVE)){//OUTROS
 			for(int i = 0; i<this.animais.size();i++){
 				Animal a = this.animais.get(i);
-					if(a.getRaca().toLowerCase().contains(raca.toLowerCase())&& a.getEspecie().equals(AnimalEspecie.AVE)){
+					if(a.getRaca().toLowerCase().equals(raca.toLowerCase())&& a.getEspecie().equals(AnimalEspecie.AVE)){
 					buscados.add(a);
 				}
 			}
@@ -66,7 +66,7 @@ public class RepositorioAnimais implements IRepositorioAnimais, Serializable {
 		else if(especie.equals(AnimalEspecie.ROEDOR)){//OUTROS
 			for(int i = 0; i<this.animais.size();i++){
 				Animal a = this.animais.get(i);
-					if(a.getRaca().toLowerCase().contains(raca.toLowerCase())&& a.getEspecie().equals(AnimalEspecie.ROEDOR)){
+					if(a.getRaca().toLowerCase().equals(raca.toLowerCase())&& a.getEspecie().equals(AnimalEspecie.ROEDOR)){
 					buscados.add(a);
 				}
 			}
@@ -74,7 +74,7 @@ public class RepositorioAnimais implements IRepositorioAnimais, Serializable {
 		else if(especie.equals(AnimalEspecie.REPTIL)){//OUTROS
 			for(int i = 0; i<this.animais.size();i++){
 				Animal a = this.animais.get(i);
-					if(a.getRaca().toLowerCase().contains(raca.toLowerCase())&& a.getEspecie().equals(AnimalEspecie.REPTIL)){
+					if(a.getRaca().toLowerCase().equals(raca.toLowerCase())&& a.getEspecie().equals(AnimalEspecie.REPTIL)){
 					buscados.add(a);
 				}
 			}

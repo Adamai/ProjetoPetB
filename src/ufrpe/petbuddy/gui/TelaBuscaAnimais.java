@@ -36,6 +36,7 @@ public class TelaBuscaAnimais extends JFrame implements ActionListener {
 	private JButton botaoBusca;
 	private ButtonGroup grupo;
 	private JRadioButton radioButtonCachorro, radioButtonGato,radioButtonAve,radioButtonRoedor,radioButtonReptil;
+	private ArrayList<Animal> buscados;
 
 	/**
 	 * Launch the application.
@@ -56,9 +57,9 @@ public class TelaBuscaAnimais extends JFrame implements ActionListener {
 	/**
 	 * Create the frame.
 	 */
-	public TelaBuscaAnimais(IFachada fachada, Usuario u) {
+	public TelaBuscaAnimais( Usuario u) {
 		this.usuario = u;
-		this.fachada = fachada; 
+		this.fachada = Fachada.getInstance(); 
 		setTitle("PetBuddy");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 800, 600);
@@ -135,9 +136,9 @@ public class TelaBuscaAnimais extends JFrame implements ActionListener {
 	public void actionPerformed(ActionEvent evento){
 		
 		AnimalEspecie especie = null;
+		String raca = campoRaca.getText();
 		
 			try{
-				String raca = campoRaca.getText();
 				
 				if(radioButtonCachorro.isSelected()){
 					especie = AnimalEspecie.CACHORRO;
@@ -159,17 +160,25 @@ public class TelaBuscaAnimais extends JFrame implements ActionListener {
 					especie = AnimalEspecie.ROEDOR;
 					botaoBusca.setEnabled(true);
 				}
+				
+				
 				if(evento.getSource().equals(botaoBusca)){
-				ArrayList<Animal> buscados = fachada.buscaAnimais(raca, especie);
-				dispose();
-				TelaResultadoBusca tela = new TelaResultadoBusca(fachada, usuario,buscados);
-				JOptionPane.showMessageDialog(null, "Busca Realizada com Sucesso");
-				tela.setVisible(true);
-				//dispose();
-				//Tela tela = new Tela(fachada);
-				//tela.setVisible(true);
-				}
-			}	
+					buscados = fachada.buscaAnimais(raca, especie);
+					
+					if(buscados != null){
+						JOptionPane.showMessageDialog(null, raca);
+						JOptionPane.showMessageDialog(null, buscados.size() + " Animais encontrados");			
+						dispose();
+						TelaResultadoBusca tela = new TelaResultadoBusca(usuario,buscados);
+						tela.setVisible(true);
+						//dispose();
+						//Tela tela = new Tela(fachada);
+					//tela.setVisible(true);	
+						}
+					else
+						JOptionPane.showMessageDialog(null, "Nenhum animal encontrado");
+					}
+			}
 			catch(NumberFormatException n){
 				JOptionPane.showMessageDialog(null, "Dados Inválidos");
 			}
