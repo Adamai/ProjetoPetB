@@ -30,6 +30,7 @@ public class TelaLogin extends JFrame implements ActionListener {
 	private JButton botaoVoltar;
 	private JButton botaoEfetuarLogin;
 	private IFachada fachada;
+	//private GerenciadorTelas gerenciador = GerenciadorTelas.getInstance();
 
 	/**
 	 * Launch the application.
@@ -100,7 +101,7 @@ public class TelaLogin extends JFrame implements ActionListener {
 				Usuario usuario = fachada.buscaLogin(campoLogin.getText(), campoSenha.getText());
 				if(usuario instanceof Pessoa){
 					dispose();
-					TelaLogado tela = new TelaLogado(this.fachada);
+					TelaLogado tela = new TelaLogado(this.fachada,usuario);
 					tela.setVisible(true);
 					}
 				else if(usuario instanceof Adm){

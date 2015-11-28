@@ -17,6 +17,7 @@ public class TelaPrincipal extends JFrame implements ActionListener{
 	private JPanel painel;
 	private JButton botaoLogin, botaoBusca, botaoCadastro;
 	private IFachada fachada;
+	//private GerenciadorTelas gerenciador = GerenciadorTelas.getInstance();
 
 	/**
 	 * Launch the application.
@@ -74,15 +75,15 @@ public class TelaPrincipal extends JFrame implements ActionListener{
 	public void actionPerformed (ActionEvent evento){
 		if (evento.getSource().equals(this.botaoLogin)){
 			dispose();
-			TelaLogin login = new TelaLogin(fachada);
-			login.setVisible(true);
+			TelaLogin tela = new TelaLogin(fachada);
+			tela.setVisible(true);
 		} else if(evento.getSource().equals(this.botaoCadastro)){
 			dispose();
 			TelaCadastroUsuario cadastro = new TelaCadastroUsuario(fachada);
 			cadastro.setVisible(true);
 		}else if(evento.getSource().equals(this.botaoBusca)){
 			dispose();
-			TelaBuscaAnimais buscaAnimais = new TelaBuscaAnimais(fachada);
+			TelaBuscaAnimais buscaAnimais = new TelaBuscaAnimais(fachada,null);
 			buscaAnimais.setVisible(true);
 		}
 	}

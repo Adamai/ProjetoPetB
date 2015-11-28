@@ -32,37 +32,40 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JEditorPane;
 
-public class TesteTelaBusca extends JFrame implements ActionListener,ListSelectionListener{
+public class TelaResultadoBusca extends JFrame implements ActionListener,ListSelectionListener{
 
 	private JPanel contentPane;
 	private JButton botaoAdotar;
+	private JButton botaoVoltar;
 	private JList lista;
 	private DefaultListModel listmodel;
 	private IFachada fachada;
+	private Usuario usuario;
 	private JScrollPane scrollPane;
 	private JEditorPane campoDados;
 
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					TesteTelaBusca frame = new TesteTelaBusca();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+	//public static void main(String[] args) {
+	//	EventQueue.invokeLater(new Runnable() {
+	//		public void run() {
+	//			try {
+	//				TelaResultadoBusca frame = new TelaResultadoBusca();
+	//				frame.setVisible(true);
+	//			} catch (Exception e) {
+	//				e.printStackTrace();
+	//			}
+	//		}
+	//	});
+	//}
 
 	/**
 	 * Create the frame.
 	 */
-	public TesteTelaBusca() {
+	public TelaResultadoBusca(IFachada fachada, Usuario u,ArrayList<Animal>resultado) {
 		fachada = Fachada.getInstance();
+		usuario = u;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 800, 600);
 		contentPane = new JPanel();
@@ -70,7 +73,7 @@ public class TesteTelaBusca extends JFrame implements ActionListener,ListSelecti
 		contentPane.setLayout(null);
 		setContentPane(contentPane);
 		
-		try{
+		
 		//Usuario vet = new Veterinario("jose",15,123456789,12345687);
 		//Animal a = new Animal("ringo","york","macho",12.1,10,"saudavel","calmo",(Veterinario)vet,AnimalEspecie.CACHORRO);
 		//Animal b = new Animal("like","york","macho",12.1,10,"saudavel","calmo",(Veterinario)vet,AnimalEspecie.CACHORRO);
@@ -78,20 +81,14 @@ public class TesteTelaBusca extends JFrame implements ActionListener,ListSelecti
 		//fachada.cadastrarAnimal(a);
 		//fachada.cadastrarAnimal(b);
 		//fachada.cadastrarAnimal(c);
-		listmodel = new DefaultListModel<Animal>();
-		ArrayList<Animal> buscados = fachada.buscaAnimais("york", AnimalEspecie.CACHORRO);
+		listmodel = new DefaultListModel();
+		ArrayList<Animal> buscados = resultado;
 		
 		for(int i = 0; i<buscados.size();i++){
 			listmodel.addElement(buscados.get(i));
 		}
 
-		}
-		catch(RepoException e){
-			System.out.println(e.getMessage());
-		}
-		//catch(DadosException d){
-		//	System.out.println(d.getMessage());
-		//}
+	
 		
 		scrollPane = new JScrollPane();
 		scrollPane.setBounds(27, 89, 224, 413);
@@ -109,16 +106,23 @@ public class TesteTelaBusca extends JFrame implements ActionListener,ListSelecti
 		lblNewLabel.setBounds(38, 30, 150, 48);
 		contentPane.add(lblNewLabel);
 		
-		this.botaoAdotar = new JButton("Adotar");
-		botaoAdotar.setBounds(493, 446, 141, 56);
-		botaoAdotar.addActionListener(this);
-		botaoAdotar.setEnabled(false);
-		contentPane.add(botaoAdotar);
+		if(u instanceof Pessoa){
+			this.botaoAdotar = new JButton("Adotar");
+			botaoAdotar.setBounds(493, 446, 141, 56);
+			botaoAdotar.addActionListener(this);
+			botaoAdotar.setEnabled(false);
+			contentPane.add(botaoAdotar);
+		}
 		
 		this.campoDados = new JEditorPane();
 		campoDados.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		campoDados.setBounds(433, 90, 278, 259);
 		contentPane.add(campoDados);
+		
+		this.botaoVoltar = new JButton("Voltar");
+		botaoVoltar.setBounds(377, 462, 107, 40);
+		botaoVoltar.addActionListener(this);
+		contentPane.add(botaoVoltar);
 	}
 	
 	public void valueChanged(ListSelectionEvent evento){
@@ -128,7 +132,25 @@ public class TesteTelaBusca extends JFrame implements ActionListener,ListSelecti
 	}
 	
 	public void actionPerformed(ActionEvent evento){
-
+		
+		if(evento.getSource().equals(botaoVoltar)){
+			if(usuario == null){
+				dispose();
+				TelaPrincipal tela = new TelaPrincipal(fachada);
+				tela.setVisible(true);
+			}
+			else if(usuario instanceof Pessoa){
+				dispose();
+				TelaLogado tela = new TelaLogado(fachada,usuario);
+				tela.setVisible(true);
+			}
+			else if(usuario instanceof Adm){
+				dispose();
+				TelaAdm tela = new TelaAdm(fachada);
+				tela.setVisible(true);
+			}
+			
+		}// fim IF VOLTAR
 		
 			}
 	}

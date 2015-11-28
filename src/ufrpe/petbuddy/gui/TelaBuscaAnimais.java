@@ -20,8 +20,7 @@ import ufrpe.petbuddy.exceptions.IDException;
 import ufrpe.petbuddy.exceptions.RepoException;
 import ufrpe.petbuddy.facade.Fachada;
 import ufrpe.petbuddy.facade.IFachada;
-import ufrpe.petbuddy.negocio.beans.Animal;
-import ufrpe.petbuddy.negocio.beans.AnimalEspecie;
+import ufrpe.petbuddy.negocio.beans.*;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -30,6 +29,7 @@ import java.util.ArrayList;
 public class TelaBuscaAnimais extends JFrame implements ActionListener {
 
 	private IFachada fachada;
+	private Usuario usuario;
 	private JPanel painel;
 	private JTextField campoRaca;
 	private JButton botaoVoltar;
@@ -40,24 +40,24 @@ public class TelaBuscaAnimais extends JFrame implements ActionListener {
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					TelaBuscaAnimais frame = new TelaBuscaAnimais(Fachada.getInstance());
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+	//public static void main(String[] args) {
+	//	EventQueue.invokeLater(new Runnable() {
+	//		public void run() {
+	//			try {
+	//				TelaBuscaAnimais frame = new TelaBuscaAnimais(Fachada.getInstance());
+	//				frame.setVisible(true);
+	//			} catch (Exception e) {
+	//				e.printStackTrace();
+	//			}
+	//		}
+	//	});
+	//}
 
 	/**
 	 * Create the frame.
 	 */
-	public TelaBuscaAnimais(IFachada fachada) {
-		
+	public TelaBuscaAnimais(IFachada fachada, Usuario u) {
+		this.usuario = u;
 		this.fachada = fachada; 
 		setTitle("PetBuddy");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -161,11 +161,10 @@ public class TelaBuscaAnimais extends JFrame implements ActionListener {
 				}
 				if(evento.getSource().equals(botaoBusca)){
 				ArrayList<Animal> buscados = fachada.buscaAnimais(raca, especie);
-				fachada.buscaAnimais(raca, especie);
-				
-				
-				
+				dispose();
+				TelaResultadoBusca tela = new TelaResultadoBusca(fachada, usuario,buscados);
 				JOptionPane.showMessageDialog(null, "Busca Realizada com Sucesso");
+				tela.setVisible(true);
 				//dispose();
 				//Tela tela = new Tela(fachada);
 				//tela.setVisible(true);
@@ -180,7 +179,9 @@ public class TelaBuscaAnimais extends JFrame implements ActionListener {
 			 if(evento.getSource().equals(botaoVoltar)){
 				dispose();
 				TelaPrincipal tela = new TelaPrincipal(fachada);
-				tela.setVisible(true);}
+				tela.setVisible(true);
+				}
+
 		
 		}
 			}

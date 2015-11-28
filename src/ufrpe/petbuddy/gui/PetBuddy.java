@@ -12,20 +12,20 @@ public class PetBuddy {
 		
 		
 		IFachada fachada = Fachada.getInstance();
-		
+		//GerenciadorTelas gerenciador = GerenciadorTelas.getInstance();
 		try{
 			Usuario adm = new Adm();
 			fachada.cadastrarPessoa(adm);
+			
 		}
 		catch(DadosException d){
 			JOptionPane.showMessageDialog(null, "não foi possivel inicializar o programa pois não existe adm cadastrado");
 		}
 
+		TelaPrincipal principal = new TelaPrincipal(fachada);
+		principal.setVisible(true);
 		
-		
-		
-		TelaPrincipal tela = new TelaPrincipal(fachada);
-		tela.setVisible(true);
+		//gerenciador.mostrarTelaPrincipal();
 		
 		
 	}

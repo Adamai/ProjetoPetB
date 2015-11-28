@@ -19,6 +19,7 @@ public class TelaLogado extends JFrame implements ActionListener{
 	private JPanel painel;
 	private JButton botaoBusca, botaoAdotar;
 	private IFachada fachada;
+	private Usuario usuario;
 
 	/**
 	 * Launch the application.
@@ -39,8 +40,10 @@ public class TelaLogado extends JFrame implements ActionListener{
 	/**
 	 * Create the frame.
 	 */
-	public TelaLogado(IFachada fachada) {
+	public TelaLogado(IFachada fachada, Usuario u) {
 		this.fachada = fachada;
+		this.usuario = u;
+		
 		setTitle("PetBuddy");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 800, 600);
@@ -70,8 +73,8 @@ public class TelaLogado extends JFrame implements ActionListener{
 	public void actionPerformed(ActionEvent evento){
 		if(evento.getSource().equals(botaoBusca)){
 			dispose();
-			//TelaBuscaAnimais tela = new TelaBuscaAnimais(this.fachada);
-			//tela.setVisible(true);
+			TelaBuscaAnimais tela = new TelaBuscaAnimais(this.fachada,usuario);
+			tela.setVisible(true);
 		}
 	}
 }
