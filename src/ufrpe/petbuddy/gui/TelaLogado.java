@@ -1,6 +1,7 @@
 package ufrpe.petbuddy.gui;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -81,7 +82,8 @@ public class TelaLogado extends JFrame implements ActionListener{
 		label.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		label.setBounds(104, 11, 592, 65);
 		painel.add(label);
-	}}
+	
+	}painel.setBackground(new Color(102, 255, 255) );}
 	
 	public void actionPerformed(ActionEvent evento){
 		if(evento.getSource().equals(botaoBusca)){

@@ -1,9 +1,11 @@
 package ufrpe.petbuddy.negocio.beans;
 
+import java.io.Serializable;
+
 import ufrpe.petbuddy.exceptions.*;
 
 
-public class Veterinario extends Usuario {
+public class Veterinario extends Usuario implements Serializable {
 	
 	private static long proximo = 1;
 	private long numid;

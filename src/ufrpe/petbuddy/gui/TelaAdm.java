@@ -1,6 +1,7 @@
 package ufrpe.petbuddy.gui;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -41,6 +42,7 @@ public class TelaAdm extends JFrame implements ActionListener{
 	 * Create the frame.
 	 */
 	public TelaAdm(IFachada fachada) {
+		painel.setBackground(new Color(102, 255, 255) );
 		this.fachada = fachada;
 		setTitle("PetBuddy");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

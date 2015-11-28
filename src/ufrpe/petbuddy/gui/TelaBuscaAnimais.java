@@ -1,6 +1,7 @@
 package ufrpe.petbuddy.gui;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -58,6 +59,7 @@ public class TelaBuscaAnimais extends JFrame implements ActionListener {
 	 * Create the frame.
 	 */
 	public TelaBuscaAnimais( Usuario u) {
+		
 		this.usuario = u;
 		this.fachada = Fachada.getInstance(); 
 		setTitle("PetBuddy");
@@ -131,6 +133,7 @@ public class TelaBuscaAnimais extends JFrame implements ActionListener {
 		botaoVoltar.setBounds(42, 425, 124, 52);
 		botaoVoltar.addActionListener(this);
 		painel.add(botaoVoltar);
+		painel.setBackground(new Color(102, 255, 255) );
 	}
 	
 	public void actionPerformed(ActionEvent evento){

@@ -1,5 +1,6 @@
 package ufrpe.petbuddy.negocio.beans;
 
+import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import ufrpe.petbuddy.exceptions.*;
 import java.time.LocalDateTime;
@@ -8,7 +9,7 @@ import java.util.Date;
 
 import ufrpe.petbuddy.dados.*;
 
-public class Adocao {
+public class Adocao implements Serializable {
 	private Animal animal;
 	private Pessoa pessoa;
 	private String data;

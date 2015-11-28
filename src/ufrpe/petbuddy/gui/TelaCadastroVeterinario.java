@@ -1,6 +1,7 @@
 package ufrpe.petbuddy.gui;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -54,6 +55,7 @@ public class TelaCadastroVeterinario extends JFrame implements ActionListener{
 	 * Create the frame.
 	 */
 	public TelaCadastroVeterinario(IFachada fachada) {
+		
 		this.fachada = fachada;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 800, 600);
@@ -114,6 +116,7 @@ public class TelaCadastroVeterinario extends JFrame implements ActionListener{
 		botaoVoltar.setBounds(55, 435, 139, 50);
 		botaoVoltar.addActionListener(this);
 		painel.add(botaoVoltar);
+		painel.setBackground(new Color(102, 255, 255) );
 	}
 	
 	public void actionPerformed(ActionEvent evento){

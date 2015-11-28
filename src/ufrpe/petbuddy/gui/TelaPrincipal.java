@@ -1,6 +1,7 @@
 package ufrpe.petbuddy.gui;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -39,7 +40,7 @@ public class TelaPrincipal extends JFrame implements ActionListener{
 	 * Create the frame.
 	 */
 	public TelaPrincipal(IFachada fachada) {
-		
+
 		this.fachada = fachada;		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 800, 600);
@@ -69,6 +70,7 @@ public class TelaPrincipal extends JFrame implements ActionListener{
 		//AcaoBotaoBusca actionBusca = new AcaoBotaoBusca();
 		botaoBusca.addActionListener(this);
 		painel.add(botaoBusca);
+		painel.setBackground(new Color(102, 255, 255) );
 		
 	}
 	
