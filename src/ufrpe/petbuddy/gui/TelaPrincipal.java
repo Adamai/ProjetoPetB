@@ -12,6 +12,7 @@ import javax.swing.JButton;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import ufrpe.petbuddy.facade.*;
+import javax.swing.ImageIcon;
 
 public class TelaPrincipal extends JFrame implements ActionListener{
 
@@ -49,9 +50,10 @@ public class TelaPrincipal extends JFrame implements ActionListener{
 		painel.setLayout(null);
 		setContentPane(painel);
 		
-		JLabel textoBemVindo = new JLabel("Bem vindo ao PetBuddy");
+		JLabel textoBemVindo = new JLabel("");
+		textoBemVindo.setIcon(new ImageIcon("E:\\Projetos Git\\Sprites\\PetBuddy.gif"));
 		textoBemVindo.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		textoBemVindo.setBounds(280, 11, 224, 78);
+		textoBemVindo.setBounds(237, 22, 340, 78);
 		painel.add(textoBemVindo);
 		
 		this.botaoCadastro = new JButton("Cadastre-se");
@@ -70,7 +72,7 @@ public class TelaPrincipal extends JFrame implements ActionListener{
 		//AcaoBotaoBusca actionBusca = new AcaoBotaoBusca();
 		botaoBusca.addActionListener(this);
 		painel.add(botaoBusca);
-		painel.setBackground(new Color(102, 255, 255) );
+		painel.setBackground(new Color(0, 209, 190) );
 		
 	}
 	

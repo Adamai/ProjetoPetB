@@ -42,14 +42,16 @@ public class TelaAdm extends JFrame implements ActionListener{
 	 * Create the frame.
 	 */
 	public TelaAdm(IFachada fachada) {
-		painel.setBackground(new Color(102, 255, 255) );
+		
 		this.fachada = fachada;
 		setTitle("PetBuddy");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 800, 600);
+		
 		painel = new JPanel();
 		painel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		painel.setLayout(null);
+		painel.setBackground(new Color(102, 255, 255) );
 		setContentPane(painel);
 		
 		JButton botaoHistoricoAdocoes = new JButton("Hist\u00F3rico Ado\u00E7\u00F5es");
