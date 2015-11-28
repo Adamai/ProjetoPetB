@@ -121,6 +121,7 @@ public class TelaBuscaAnimais extends JFrame implements ActionListener {
 		this.botaoBusca = new JButton("Buscar");
 		botaoBusca.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		botaoBusca.setBounds(554, 420, 167, 60);
+		botaoBusca.setEnabled(false);
 		botaoBusca.addActionListener(this);
 		painel.add(botaoBusca);
 		
@@ -135,43 +136,48 @@ public class TelaBuscaAnimais extends JFrame implements ActionListener {
 		
 		AnimalEspecie especie = null;
 		
-		if(evento.getSource().equals(botaoBusca)){
 			try{
 				String raca = campoRaca.getText();
 				
 				if(radioButtonCachorro.isSelected()){
 					especie = AnimalEspecie.CACHORRO;
+					botaoBusca.setEnabled(true);
 				}
 				if(radioButtonGato.isSelected()){
 					especie = AnimalEspecie.GATO;
+					botaoBusca.setEnabled(true);
 				}
 				if(radioButtonAve.isSelected()){
 					especie = AnimalEspecie.AVE;
+					botaoBusca.setEnabled(true);
 				}
 				if(radioButtonReptil.isSelected()){
 					especie = AnimalEspecie.REPTIL;
+					botaoBusca.setEnabled(true);
 				}
 				if(radioButtonRoedor.isSelected()){
 					especie = AnimalEspecie.ROEDOR;
+					botaoBusca.setEnabled(true);
 				}
+				if(evento.getSource().equals(botaoBusca)){
 				ArrayList<Animal> buscados = fachada.buscaAnimais(raca, especie);
 				fachada.buscaAnimais(raca, especie);
 				
-				if(especie != null){
-					JOptionPane.showMessageDialog(null, "Aguarde...");
-				}
+				
+				
 				JOptionPane.showMessageDialog(null, "Busca Realizada com Sucesso");
 				//dispose();
 				//Tela tela = new Tela(fachada);
 				//tela.setVisible(true);
+				}
 			}	
 			catch(NumberFormatException n){
 				JOptionPane.showMessageDialog(null, "Dados Inválidos");
 			}
 			catch(RepoException i){
 				JOptionPane.showMessageDialog(null, i.getMessage());
-			}}
-			else if(evento.getSource().equals(botaoVoltar)){
+			}
+			 if(evento.getSource().equals(botaoVoltar)){
 				dispose();
 				TelaPrincipal tela = new TelaPrincipal(fachada);
 				tela.setVisible(true);}
