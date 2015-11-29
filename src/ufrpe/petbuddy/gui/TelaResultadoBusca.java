@@ -2,6 +2,7 @@ package ufrpe.petbuddy.gui;
 
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.EventQueue;
 
 import javax.swing.DefaultListModel;
@@ -75,24 +76,20 @@ public class TelaResultadoBusca extends JFrame implements ActionListener,ListSel
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(null);
+		contentPane.setBackground(new Color(255, 228, 181) );
 		setContentPane(contentPane);
-		
-		
-		
+				
 		listmodel = new DefaultListModel();
 		ArrayList<Animal> buscados = resultado;
 		
 		for(int i = 0; i<buscados.size();i++){
 			listmodel.addElement(buscados.get(i));
 		}
-
-	
 		
 		scrollPane = new JScrollPane();
 		scrollPane.setBounds(27, 89, 224, 413);
 		contentPane.add(scrollPane);
-		
-		
+				
 		lista = new JList(listmodel);
 		scrollPane.setViewportView(lista);
 		lista.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
@@ -121,7 +118,7 @@ public class TelaResultadoBusca extends JFrame implements ActionListener,ListSel
 		campoDados.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		campoDados.setBounds(451, 86, 275, 232);
 		contentPane.add(campoDados);
-	}
+		}
 	
 	public void valueChanged(ListSelectionEvent evento){
 		campoDados.setText(((Animal)lista.getSelectedValue()).exibirDados());

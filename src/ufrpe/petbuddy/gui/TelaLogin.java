@@ -61,6 +61,7 @@ public class TelaLogin extends JFrame implements ActionListener {
 		painel = new JPanel();
 		painel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		painel.setLayout(null);
+		painel.setBackground(new Color(255, 228, 181) );
 		setContentPane(painel);
 		
 		JLabel textoLogins = new JLabel("Usu\u00E1rio\r\n");
@@ -94,7 +95,7 @@ public class TelaLogin extends JFrame implements ActionListener {
 		botaoVoltar.setBounds(70, 428, 89, 23);
 		botaoVoltar.addActionListener(this);
 		painel.add(botaoVoltar);
-		painel.setBackground(new Color(102, 255, 255) );
+		
 	
 	}
 	

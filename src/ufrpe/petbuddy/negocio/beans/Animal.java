@@ -167,7 +167,7 @@ public  class Animal implements Serializable {
 	 public String exibirDados(){
 		 return "Id: " +this.numid + "\n" +"Sexo: "+ this.sexo +"\nNome: " +this.nome + "\nPeso: "+ this.peso+" kg\nRaça: " 
 			     + this.raca +"\nIdade: "+ this.idade +"\nEstado de saúde: " 
-			     + this.saude + "\nTemperamento: " +this.temperamento +"\n\n";
+			     + this.saude + "\nTemperamento: " +this.temperamento +"\n"+"Veterinário: "+this.veterinario.getNome();
 	 }
 
 	public boolean isAdotado() {

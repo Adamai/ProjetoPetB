@@ -76,6 +76,7 @@ public class TelaCadastroAnimal extends JFrame implements ActionListener{
 		painel = new JPanel();
 		painel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		painel.setLayout(null);
+		painel.setBackground(new Color(255, 228, 181) );
 		setContentPane(painel);
 		
 		this.grupo1 = new ButtonGroup();
@@ -113,12 +114,14 @@ public class TelaCadastroAnimal extends JFrame implements ActionListener{
 		painel.add(textoTemperamento);
 		
 		this.radioButtonCalmo = new JRadioButton("Calmo");
+		radioButtonCalmo.setBackground(new Color(255, 228, 181) );
 		radioButtonCalmo.setBounds(633, 211, 109, 23);
 		radioButtonCalmo.addActionListener(this);
 		painel.add(radioButtonCalmo);
 		grupo1.add(radioButtonCalmo);
 		
 		this.radioButtonAgitado = new JRadioButton("Agitado");
+		radioButtonAgitado.setBackground(new Color(255, 228, 181) );
 		radioButtonAgitado.setBounds(535, 211, 95, 23);
 		radioButtonAgitado.addActionListener(this);
 		painel.add(radioButtonAgitado);
@@ -129,12 +132,14 @@ public class TelaCadastroAnimal extends JFrame implements ActionListener{
 		painel.add(textoSexo);
 		
 		this.radioButtonMacho = new JRadioButton("Macho");
+		radioButtonMacho.setBackground(new Color(255, 228, 181) );
 		radioButtonMacho.setBounds(504, 86, 109, 23);
 		radioButtonMacho.addActionListener(this);
 		painel.add(radioButtonMacho);
 		grupo2.add(radioButtonMacho);
 		
 		this.radioButtonFemea = new JRadioButton("F\u00EAmea");
+		radioButtonFemea.setBackground(new Color(255, 228, 181) );
 		radioButtonFemea.setBounds(615, 86, 109, 23);
 		radioButtonFemea.addActionListener(this);
 		painel.add(radioButtonFemea);
@@ -149,30 +154,35 @@ public class TelaCadastroAnimal extends JFrame implements ActionListener{
 		painel.add(textoEspecie);
 		
 		this.radioButtonCachorro = new JRadioButton("Cachorro");
+		radioButtonCachorro.setBackground(new Color(255, 228, 181) );
 		radioButtonCachorro.setBounds(468, 294, 109, 23);
 		radioButtonCachorro.addActionListener(this);
 		painel.add(radioButtonCachorro);
 		grupo3.add(radioButtonCachorro);
 		
 		this.radioButtonGato = new JRadioButton("Gato");
+		radioButtonGato.setBackground(new Color(255, 228, 181) );
 		radioButtonGato.setBounds(468, 339, 109, 23);
 		radioButtonGato.addActionListener(this);
 		painel.add(radioButtonGato);
 		grupo3.add(radioButtonGato);
 		
 		this.radioButtonAve = new JRadioButton("Ave");
+		radioButtonAve.setBackground(new Color(255, 228, 181) );
 		radioButtonAve.setBounds(468, 380, 109, 23);
 		radioButtonAve.addActionListener(this);
 		painel.add(radioButtonAve);
 		grupo3.add(radioButtonAve);
 		
 		this.radioButtonRoedor = new JRadioButton("Roedor");
+		radioButtonRoedor.setBackground(new Color(255, 228, 181) );
 		radioButtonRoedor.setBounds(633, 339, 109, 23);
 		radioButtonRoedor.addActionListener(this);
 		painel.add(radioButtonRoedor);
 		grupo3.add(radioButtonRoedor);
 		
 		this.radioButtonReptil = new JRadioButton("R\u00E9ptil");
+		radioButtonReptil.setBackground(new Color(255, 228, 181) );
 		radioButtonReptil.setBounds(633, 294, 109, 23);
 		radioButtonReptil.addActionListener(this);
 		painel.add(radioButtonReptil);
@@ -221,7 +231,7 @@ public class TelaCadastroAnimal extends JFrame implements ActionListener{
 		botaoVoltar.setBounds(323, 449, 127, 50);
 		botaoVoltar.addActionListener(this);
 		painel.add(botaoVoltar);	
-		painel.setBackground(new Color(102, 255, 255) );
+		
 		
 	}
 	
@@ -269,8 +279,7 @@ public class TelaCadastroAnimal extends JFrame implements ActionListener{
 				}
 
 				
-				//Veterinario v = fachada.buscaVetID(vet);
-				Veterinario v = new Veterinario("jose", 10, 12345789,1234578);
+				Veterinario v = fachada.buscaVetID(vet);
 				Animal a = new Animal(nome,raca,sexo,peso,idade,saude,temperamento,v, especie);
 				fachada.cadastrarAnimal(a);
 				
@@ -288,9 +297,9 @@ public class TelaCadastroAnimal extends JFrame implements ActionListener{
 			catch(NumberFormatException n){
 				JOptionPane.showMessageDialog(null, "Dados Inválidos");
 			}
-			//catch(IDException i){
-			//	//JOptionPane.showMessageDialog(null, i.getMessage());
-			//}
+			catch(IDException i){
+				JOptionPane.showMessageDialog(null, i.getMessage());
+			}
 			catch(DadosException d){
 				JOptionPane.showMessageDialog(null, d.getMessage());
 			}

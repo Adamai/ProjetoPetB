@@ -1,6 +1,7 @@
 package ufrpe.petbuddy.gui;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -25,33 +26,36 @@ public class TelaListaVeterinarios extends JFrame implements ActionListener{
 	private JTable table;
 	private JButton botaoVoltar;
 	private IFachada fachada;
+	private Usuario usuario;
 
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					TelaListaVeterinarios frame = new TelaListaVeterinarios();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+	//public static void main(String[] args) {
+		//EventQueue.invokeLater(new Runnable() {
+			//public void run() {
+			//	try {
+			//		TelaListaVeterinarios frame = new TelaListaVeterinarios();
+			//		frame.setVisible(true);
+				//} catch (Exception e) {
+			//		e.printStackTrace();
+			//	}
+		//	}
+		//});
+	//}
 
 	/**
 	 * Create the frame.
 	 */
-	public TelaListaVeterinarios() {
+	public TelaListaVeterinarios(Usuario usuario) {
+		this.usuario = usuario;
 		this.fachada = Fachada.getInstance();
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 800, 600);
 		painel = new JPanel();
 		painel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		painel.setLayout(null);
+		painel.setBackground(new Color(255, 228, 181) );
 		setContentPane(painel);
 		
 		JScrollPane scrollPane = new JScrollPane();
@@ -70,9 +74,8 @@ public class TelaListaVeterinarios extends JFrame implements ActionListener{
 		
 		modelo.addColumn("Nome");
 		modelo.addColumn("Contato");
-		modelo.addColumn("CRVM");
-		
-		
+		modelo.addColumn("ID");
+				
 		table.getColumnModel().getColumn(0).setPreferredWidth(115);
 		table.getColumnModel().getColumn(1).setPreferredWidth(115);
 		table.getColumnModel().getColumn(2).setPreferredWidth(115);
@@ -82,8 +85,7 @@ public class TelaListaVeterinarios extends JFrame implements ActionListener{
 			for(int i =0;i<veterinarios.size();i++){
 				String campo1 = veterinarios.get(i).getNome();
 				long campo2 = veterinarios.get(i).getContato();
-				long campo3 = veterinarios.get(i).getCrmv();
-				;
+				long campo3 = veterinarios.get(i).getNumid();
 				modelo.addRow(new Object[]{campo1,campo2,campo3});
 			}
 		}
@@ -94,7 +96,11 @@ public class TelaListaVeterinarios extends JFrame implements ActionListener{
 	}
 	
 	public void actionPerformed(ActionEvent evento){
+		if(evento.getSource().equals(botaoVoltar)){
+			dispose();
+			TelaAdm tela = new TelaAdm(fachada,usuario);
+			tela.setVisible(true);
 		
 	}
-
-}
+		}
+	}

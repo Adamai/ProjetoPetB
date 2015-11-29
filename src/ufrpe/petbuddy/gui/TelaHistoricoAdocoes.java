@@ -1,6 +1,7 @@
 package ufrpe.petbuddy.gui;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -31,27 +32,29 @@ public class TelaHistoricoAdocoes extends JFrame implements ActionListener{
 	private JTable table;
 	private IFachada fachada;
 	private JButton botaoVoltar;
+	private Usuario usuario;
 
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					TelaHistoricoAdocoes frame = new TelaHistoricoAdocoes();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+	//public static void main(String[] args) {
+		//EventQueue.invokeLater(new Runnable() {
+			//public void run() {
+				//try {
+				//	TelaHistoricoAdocoes frame = new TelaHistoricoAdocoes();
+					//frame.setVisible(true);
+				//} catch (Exception e) {
+				//	e.printStackTrace();
+				//}
+			//}
+		//});
+//	}
 
 	/**
 	 * Create the frame.
 	 */
-	public TelaHistoricoAdocoes() {
+	public TelaHistoricoAdocoes(Usuario usuario) {
+		this.usuario = usuario;
 		fachada = Fachada.getInstance();
 		setTitle("PetBuddy");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -59,6 +62,7 @@ public class TelaHistoricoAdocoes extends JFrame implements ActionListener{
 		painel = new JPanel();
 		painel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		painel.setLayout(null);
+		painel.setBackground(new Color(255, 228, 181) );
 		setContentPane(painel);
 		
 		JScrollPane scrollPane = new JScrollPane();
@@ -108,7 +112,7 @@ public class TelaHistoricoAdocoes extends JFrame implements ActionListener{
 	public void actionPerformed(ActionEvent evento){
 		if(evento.getSource().equals(botaoVoltar)){
 			dispose();
-			TelaAdm tela = new TelaAdm(fachada,null);
+			TelaAdm tela = new TelaAdm(fachada,usuario);
 			tela.setVisible(true);
 		}
 	}

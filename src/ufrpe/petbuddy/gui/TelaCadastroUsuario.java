@@ -1,6 +1,7 @@
 package ufrpe.petbuddy.gui;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -37,18 +38,18 @@ public class TelaCadastroUsuario extends JFrame implements ActionListener{
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					TelaCadastroUsuario frame = new TelaCadastroUsuario(Fachada.getInstance());
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+	//public static void main(String[] args) {
+		//EventQueue.invokeLater(new Runnable() {
+			//public void run() {
+				//try {
+					//TelaCadastroUsuario frame = new TelaCadastroUsuario(Fachada.getInstance());
+					//frame.setVisible(true);
+				//} catch (Exception e) {
+					//e.printStackTrace();
+				//}
+			//}
+		//});
+	//}
 
 	/**
 	 * Create the frame.
@@ -61,6 +62,7 @@ public class TelaCadastroUsuario extends JFrame implements ActionListener{
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(null);
+		contentPane.setBackground(new Color(255, 228, 181) );
 		setContentPane(contentPane);
 		
 		JLabel textoCadastroUsuario = new JLabel("Cadastro Usu\u00E1rio");

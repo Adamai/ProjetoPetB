@@ -68,6 +68,7 @@ public class TelaBuscaAnimais extends JFrame implements ActionListener {
 		painel = new JPanel();
 		painel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		painel.setLayout(null);
+		painel.setBackground(new Color(255, 228, 181) );
 		setContentPane(painel);
 		this.grupo = new ButtonGroup();
 		
@@ -87,6 +88,7 @@ public class TelaBuscaAnimais extends JFrame implements ActionListener {
 		campoRaca.setColumns(10);
 		
 		this.radioButtonCachorro = new JRadioButton("Cachorro");
+		radioButtonCachorro.setBackground(new Color(255, 228, 181) );
 		radioButtonCachorro.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		radioButtonCachorro.setBounds(39, 156, 109, 23);
 		radioButtonCachorro.addActionListener(this);
@@ -94,6 +96,7 @@ public class TelaBuscaAnimais extends JFrame implements ActionListener {
 		grupo.add(radioButtonCachorro);
 		
 		this.radioButtonGato = new JRadioButton("Gato");
+		radioButtonGato.setBackground(new Color(255, 228, 181) );
 		radioButtonGato.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		radioButtonGato.setBounds(187, 156, 109, 23);
 		radioButtonGato.addActionListener(this);
@@ -101,6 +104,7 @@ public class TelaBuscaAnimais extends JFrame implements ActionListener {
 		grupo.add(radioButtonGato);
 		
 		this.radioButtonReptil = new JRadioButton("Reptil");
+		radioButtonReptil.setBackground(new Color(255, 228, 181) );
 		radioButtonReptil.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		radioButtonReptil.setBounds(483, 156, 109, 23);
 		radioButtonReptil.addActionListener(this);
@@ -108,6 +112,7 @@ public class TelaBuscaAnimais extends JFrame implements ActionListener {
 		grupo.add(radioButtonReptil);
 		
 		this.radioButtonRoedor = new JRadioButton("Roedor");
+		radioButtonRoedor.setBackground(new Color(255, 228, 181) );
 		radioButtonRoedor.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		radioButtonRoedor.setBounds(631, 156, 109, 23);
 		radioButtonRoedor.addActionListener(this);
@@ -115,7 +120,7 @@ public class TelaBuscaAnimais extends JFrame implements ActionListener {
 		grupo.add(radioButtonRoedor);
 		
 		this.radioButtonAve = new JRadioButton("Ave");
-		radioButtonAve.setBackground(new Color(102, 255, 255) );
+		radioButtonAve.setBackground(new Color(255, 228, 181) );
 		radioButtonAve.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		radioButtonAve.setBounds(335, 156, 109, 23);
 		radioButtonAve.addActionListener(this);
@@ -134,7 +139,7 @@ public class TelaBuscaAnimais extends JFrame implements ActionListener {
 		botaoVoltar.setBounds(42, 425, 124, 52);
 		botaoVoltar.addActionListener(this);
 		painel.add(botaoVoltar);
-		painel.setBackground(new Color(102, 255, 255) );
+		
 	}
 	
 	public void actionPerformed(ActionEvent evento){
@@ -142,8 +147,6 @@ public class TelaBuscaAnimais extends JFrame implements ActionListener {
 		AnimalEspecie especie = null;
 		String raca = campoRaca.getText();
 		
-			try{
-				
 				if(radioButtonCachorro.isSelected()){
 					especie = AnimalEspecie.CACHORRO;
 					botaoBusca.setEnabled(true);
@@ -165,54 +168,47 @@ public class TelaBuscaAnimais extends JFrame implements ActionListener {
 					botaoBusca.setEnabled(true);
 				}
 				
-				
 				if(evento.getSource().equals(botaoBusca)){
-					buscados = fachada.buscaAnimais(raca, especie);
-					
-					if(buscados != null){
-						JOptionPane.showMessageDialog(null, raca);
-						JOptionPane.showMessageDialog(null, buscados.size() + " Animais encontrados");
-						if(usuario instanceof Pessoa){
+					try{
+						buscados = fachada.buscaAnimais(raca, especie);
+						if(buscados.size()>0 && (usuario instanceof Pessoa || usuario == null)){
+							JOptionPane.showMessageDialog(null,buscados.size() + " Animais encontrados" );
 							dispose();
 							TelaResultadoBusca tela = new TelaResultadoBusca(usuario,buscados);
 							tela.setVisible(true);
-						}
-						else if(usuario instanceof Adm){
-							dispose();
-							TelaAtualizarAnimais tela = new TelaAtualizarAnimais(fachada, buscados);
+								}
+						else if(buscados.size()>0 && usuario instanceof Adm){
+							TelaAtualizarAnimais tela = new TelaAtualizarAnimais (fachada,usuario,buscados);
 							tela.setVisible(true);
-						}
-						}
-					else
-						JOptionPane.showMessageDialog(null, "Nenhum animal encontrado");
+									}
+						else{
+							JOptionPane.showMessageDialog(null, "Nenhum Animal Encontrado!");
+								}
 					}
-			}
-			catch(NumberFormatException n){
-				JOptionPane.showMessageDialog(null, "Dados Inválidos");
-			}
-			catch(RepoException i){
-				JOptionPane.showMessageDialog(null, i.getMessage());
-			}
+					
+										
+					catch(NumberFormatException n){
+						JOptionPane.showMessageDialog(null, "Dados Inválidos");
+					}
+					catch(RepoException i){
+						JOptionPane.showMessageDialog(null, i.getMessage());
+					}
+						}
 			 if(evento.getSource().equals(botaoVoltar) && usuario instanceof Pessoa){
 				dispose();
 				TelaLogado tela = new TelaLogado(fachada,usuario);
 				tela.setVisible(true);
-			}else if (evento.getSource().equals(botaoVoltar) && usuario == null) {
-					dispose();
-					TelaPrincipal tela = new TelaPrincipal(fachada);
-					tela.setVisible(true);
-			}else if(evento.getSource().equals(botaoVoltar) && usuario instanceof Adm){
+			
+			}if(evento.getSource().equals(botaoVoltar) && usuario instanceof Adm){
 				dispose();
 				TelaAdm tela = new TelaAdm(fachada, usuario);
 				tela.setVisible(true);
+			}if (evento.getSource().equals(botaoVoltar) && usuario == null) {
+					dispose();
+					TelaPrincipal tela = new TelaPrincipal(fachada);
+					tela.setVisible(true);
 			}
-
-		
-		}
-			}
+	}
+	}
 			
-
-	
-	
-
-
+			

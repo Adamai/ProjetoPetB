@@ -20,7 +20,12 @@ import ufrpe.petbuddy.negocio.beans.*;
 public class TelaAdm extends JFrame implements ActionListener{
 
 	private JPanel painel;
-	private JButton botaoCadastroAnimais,botaoCadastroVeterinario, botaoSair, botaoHistoricoAdocoes,botaoAtualizarAnimais;
+	private JButton botaoCadastroAnimais; 
+	private JButton botaoCadastroVeterinario;
+	private JButton botaoHistoricoAdocoes;
+	private JButton botaoAtualizarAnimais;
+	private JButton botaoControleVeterinarios;
+	private JButton botaoSair;
 	private IFachada fachada;
 	private Usuario usuario;
 	 
@@ -54,7 +59,7 @@ public class TelaAdm extends JFrame implements ActionListener{
 		painel = new JPanel();
 		painel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		painel.setLayout(null);
-		painel.setBackground(new Color(102, 255, 255) );
+		painel.setBackground(new Color(255, 228, 181) );
 		setContentPane(painel);
 		
 		this.botaoHistoricoAdocoes = new JButton("Hist\u00F3rico Ado\u00E7\u00F5es");
@@ -92,10 +97,12 @@ public class TelaAdm extends JFrame implements ActionListener{
 		botaoAtualizarAnimais.addActionListener(this);
 		painel.add(botaoAtualizarAnimais);
 		
-		JButton botaoControleVeterinarios = new JButton("Controle Veterin\u00E1rios");
+		this.botaoControleVeterinarios = new JButton("Controle Veterin\u00E1rios");
 		botaoControleVeterinarios.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		botaoControleVeterinarios.setBounds(257, 342, 210, 41);
+		botaoControleVeterinarios.addActionListener(this);
 		painel.add(botaoControleVeterinarios);
+		
 	}
 	public void actionPerformed (ActionEvent evento){
 		if (evento.getSource().equals(this.botaoCadastroAnimais)){
@@ -113,12 +120,16 @@ public class TelaAdm extends JFrame implements ActionListener{
 		}
 		else if(evento.getSource().equals(botaoHistoricoAdocoes)){
 			dispose();
-			TelaHistoricoAdocoes tela = new TelaHistoricoAdocoes();
+			TelaHistoricoAdocoes tela = new TelaHistoricoAdocoes(usuario);
 			tela.setVisible(true);
 		}
 		else if(evento.getSource().equals(botaoAtualizarAnimais)){
 			dispose();
 			TelaBuscaAnimais tela = new TelaBuscaAnimais(usuario);
+			tela.setVisible(true);
+		} else if(evento.getSource().equals(botaoControleVeterinarios)){
+			dispose();
+			TelaListaVeterinarios tela = new TelaListaVeterinarios(usuario);
 			tela.setVisible(true);
 		}
 		

@@ -52,6 +52,7 @@ public class TelaLogado extends JFrame implements ActionListener{
 		painel = new JPanel();
 		painel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		painel.setLayout(null);
+		painel.setBackground(new Color(255, 228, 181) );
 		setContentPane(painel);
 		
 		JLabel textoPergunta = new JLabel("O que deseja?");
@@ -83,7 +84,7 @@ public class TelaLogado extends JFrame implements ActionListener{
 		label.setBounds(104, 11, 592, 65);
 		painel.add(label);
 	
-	}painel.setBackground(new Color(102, 255, 255) );}
+	}}
 	
 	public void actionPerformed(ActionEvent evento){
 		if(evento.getSource().equals(botaoBusca)){

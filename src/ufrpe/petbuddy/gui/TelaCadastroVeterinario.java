@@ -30,7 +30,6 @@ public class TelaCadastroVeterinario extends JFrame implements ActionListener{
 	private JTextField campoNome;
 	private JTextField campoTelefone;
 	private JTextField campoIdade;
-	private JTextField campoCRMV;
 	private IFachada fachada;
 	private JButton botaoVoltar;
 	private JButton botaoCadastrar;
@@ -62,6 +61,7 @@ public class TelaCadastroVeterinario extends JFrame implements ActionListener{
 		painel = new JPanel();
 		painel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		painel.setLayout(null);
+		painel.setBackground(new Color(255, 228, 181) );
 		setContentPane(painel);
 		
 		JLabel textoCadastroVeterinario = new JLabel("Cadastro Veterin\u00E1rio");
@@ -70,53 +70,44 @@ public class TelaCadastroVeterinario extends JFrame implements ActionListener{
 		painel.add(textoCadastroVeterinario);
 		
 		JLabel textoNome = new JLabel("Nome");
-		textoNome.setBounds(55, 109, 56, 50);
+		textoNome.setBounds(56, 82, 56, 50);
 		painel.add(textoNome);
 		
 		JLabel textoTelefone = new JLabel("Telefone");
-		textoTelefone.setBounds(55, 230, 94, 50);
+		textoTelefone.setBounds(56, 198, 94, 50);
 		painel.add(textoTelefone);
 		
 		JLabel textoIdade = new JLabel("Idade");
-		textoIdade.setBounds(435, 230, 94, 50);
+		textoIdade.setBounds(56, 318, 94, 50);
 		painel.add(textoIdade);
 		
-		JLabel textoCrmv = new JLabel("CRMV");
-		textoCrmv.setBounds(435, 109, 43, 50);
-		painel.add(textoCrmv);
-		
 		campoNome = new JTextField();
-		campoNome.setBounds(65, 170, 228, 29);
+		campoNome.setBounds(66, 143, 228, 29);
 		painel.add(campoNome);
 		campoNome.setColumns(10);
 		
 		campoTelefone = new JTextField();
-		campoTelefone.setBounds(78, 302, 226, 29);
+		campoTelefone.setBounds(66, 259, 226, 29);
 		painel.add(campoTelefone);
 		campoTelefone.setColumns(10);
 		
 		campoIdade = new JTextField();
 		campoIdade.setColumns(10);
-		campoIdade.setBounds(446, 302, 226, 29);
+		campoIdade.setBounds(66, 379, 226, 29);
 		painel.add(campoIdade);
-		
-		campoCRMV = new JTextField();
-		campoCRMV.setColumns(10);
-		campoCRMV.setBounds(445, 170, 226, 29);
-		painel.add(campoCRMV);
 		
 		this.botaoCadastrar = new JButton("Cadastrar");
 		botaoCadastrar.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		botaoCadastrar.setBounds(559, 408, 161, 77);
+		botaoCadastrar.setBounds(550, 460, 161, 77);
 		botaoCadastrar.addActionListener(this);
 		painel.add(botaoCadastrar);
 		
 		this.botaoVoltar = new JButton("Voltar");
 		botaoVoltar.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		botaoVoltar.setBounds(55, 435, 139, 50);
+		botaoVoltar.setBounds(66, 487, 139, 50);
 		botaoVoltar.addActionListener(this);
 		painel.add(botaoVoltar);
-		painel.setBackground(new Color(102, 255, 255) );
+		
 	}
 	
 	public void actionPerformed(ActionEvent evento){
@@ -125,8 +116,7 @@ public class TelaCadastroVeterinario extends JFrame implements ActionListener{
 				String nome = campoNome.getText();
 				long contato = Long.parseLong(campoTelefone.getText());;
 				int idade = Integer.parseInt(campoIdade.getText());
-				long crmv = Long.parseLong(campoCRMV.getText());
-				Veterinario vet = new Veterinario(nome,idade,contato,crmv);
+				Veterinario vet = new Veterinario(nome,idade,contato);
 				fachada.cadastrarVet(vet);
 				JOptionPane.showMessageDialog(null, "Cadastro realizado com sucesso");
 				dispose();

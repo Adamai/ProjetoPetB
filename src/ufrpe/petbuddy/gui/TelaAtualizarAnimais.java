@@ -1,6 +1,7 @@
 package ufrpe.petbuddy.gui;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -19,7 +20,7 @@ import javax.swing.event.ListSelectionListener;
 
 import ufrpe.petbuddy.exceptions.DadosException;
 import ufrpe.petbuddy.facade.IFachada;
-import ufrpe.petbuddy.negocio.beans.Animal;
+import ufrpe.petbuddy.negocio.beans.*;
 
 import javax.swing.JTextField;
 import javax.swing.JButton;
@@ -40,6 +41,7 @@ public class TelaAtualizarAnimais extends JFrame implements ActionListener, List
 	private JEditorPane editorSaude;
 	private JButton botaoVoltar, botaoRemover, botaoAtualizar;
 	private IFachada fachada;
+	private Usuario usuario;
 
 	/**
 	 * Launch the application.
@@ -61,14 +63,16 @@ public class TelaAtualizarAnimais extends JFrame implements ActionListener, List
 	 * Create the frame.
 	 */
 	
-	public TelaAtualizarAnimais(IFachada fachada, ArrayList<Animal> resultado) {
+	public TelaAtualizarAnimais(IFachada fachada,Usuario u, ArrayList<Animal> resultado) {
 		this.fachada = fachada;
+		this.usuario = usuario;
 		setTitle("PetBuddy");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 800, 600);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(null);
+		contentPane.setBackground(new Color(255, 228, 181) );
 		setContentPane(contentPane);
 		
 		listmodel = new DefaultListModel();
@@ -78,13 +82,10 @@ public class TelaAtualizarAnimais extends JFrame implements ActionListener, List
 			listmodel.addElement(buscados.get(i));
 		}
 
-	
-		
 		scrollPane = new JScrollPane();
 		scrollPane.setBounds(27, 89, 224, 413);
 		contentPane.add(scrollPane);
-		
-		
+				
 		lista = new JList(listmodel);
 		scrollPane.setViewportView(lista);
 		lista.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
@@ -152,16 +153,12 @@ public class TelaAtualizarAnimais extends JFrame implements ActionListener, List
 
 		campoNome.setText(((Animal)lista.getSelectedValue()).getNome());
 		campoRaca.setText(((Animal)lista.getSelectedValue()).getRaca());
-		campoRaca.setEditable(false);
-		//int numero = ((Animal)lista.getSelectedValue()).getIdade();
+		campoRaca.setEditable(false);	
 		String idade = String.valueOf(((Animal)lista.getSelectedValue()).getIdade());
 		campoIdade.setText(idade);
 		editorSaude.setText(((Animal)lista.getSelectedValue()).getSaude());
-		//campoDados.setText(((Animal)lista.getSelectedValue()).exibirDados());
-		//campoDados.setEditable(false);
-		//botaoAdotar.setEnabled(true);
+		
 	}
-	
 	
 	public void actionPerformed(ActionEvent evento){
 		if(evento.getSource().equals(botaoAtualizar)){
@@ -182,6 +179,12 @@ public class TelaAtualizarAnimais extends JFrame implements ActionListener, List
 			catch(NumberFormatException n){
 				JOptionPane.showMessageDialog(null, "erro de conversão");
 			}
+			
+		}else if (evento.getSource().equals(botaoVoltar)){
+			dispose();
+		TelaBuscaAnimais tela = new TelaBuscaAnimais(usuario);
+		tela.setVisible(true);
+			
 			
 		}
 		
