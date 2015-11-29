@@ -34,7 +34,7 @@ public class TelaCadastroVeterinario extends JFrame implements ActionListener{
 	private IFachada fachada;
 	private JButton botaoVoltar;
 	private JButton botaoCadastrar;
-
+	private Usuario usuario;
 	/**
 	 * Launch the application.
 	 */
@@ -54,8 +54,8 @@ public class TelaCadastroVeterinario extends JFrame implements ActionListener{
 	/**
 	 * Create the frame.
 	 */
-	public TelaCadastroVeterinario(IFachada fachada) {
-		
+	public TelaCadastroVeterinario(IFachada fachada,Usuario usuario) {
+		this.usuario = usuario;
 		this.fachada = fachada;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 800, 600);
@@ -130,7 +130,7 @@ public class TelaCadastroVeterinario extends JFrame implements ActionListener{
 				fachada.cadastrarVet(vet);
 				JOptionPane.showMessageDialog(null, "Cadastro realizado com sucesso");
 				dispose();
-				TelaAdm tela = new TelaAdm(fachada);
+				TelaAdm tela = new TelaAdm(fachada,usuario);
 				tela.setVisible(true);
 			}
 			catch(DadosException d){
@@ -139,7 +139,7 @@ public class TelaCadastroVeterinario extends JFrame implements ActionListener{
 				
 		}	else if (evento.getSource().equals(botaoVoltar)){
 			dispose();
-			TelaAdm tela = new TelaAdm(fachada);
+			TelaAdm tela = new TelaAdm(fachada,usuario);
 			tela.setVisible(true);	
 	}
 }

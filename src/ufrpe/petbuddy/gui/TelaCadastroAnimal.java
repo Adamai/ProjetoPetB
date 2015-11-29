@@ -33,6 +33,7 @@ import java.awt.event.ItemListener;
 
 public class TelaCadastroAnimal extends JFrame implements ActionListener{
 
+	private Usuario usuario;
 	private JPanel painel;
 	private JTextField campoNome;
 	private JTextField campoRaca;
@@ -50,24 +51,24 @@ public class TelaCadastroAnimal extends JFrame implements ActionListener{
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-				TelaCadastroAnimal frame = new TelaCadastroAnimal(Fachada.getInstance());
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+	//public static void main(String[] args) {
+	//	EventQueue.invokeLater(new Runnable() {
+	//		public void run() {
+	//			try {
+	//			TelaCadastroAnimal frame = new TelaCadastroAnimal(Fachada.getInstance());
+	//				frame.setVisible(true);
+	//			} catch (Exception e) {
+	//				e.printStackTrace();
+	//			}
+	//		}
+	//	});
+	//}
 
 	/**
 	 * Create the frame.
 	 */
-	public TelaCadastroAnimal(IFachada fachada) {
-
+	public TelaCadastroAnimal(IFachada fachada,Usuario usuario) {
+		this.usuario = usuario;
 		this.fachada = fachada;
 		setTitle("PetBuddy");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -280,7 +281,7 @@ public class TelaCadastroAnimal extends JFrame implements ActionListener{
 				}
 				JOptionPane.showMessageDialog(null, "Cadastro Realizado com Sucesso");
 				dispose();
-				TelaAdm tela = new TelaAdm(fachada);
+				TelaAdm tela = new TelaAdm(fachada,usuario);
 				tela.setVisible(true);
 			}	
 			
@@ -296,7 +297,7 @@ public class TelaCadastroAnimal extends JFrame implements ActionListener{
 		}
 		else if(evento.getSource().equals(botaoVoltar)){
 			dispose();
-			TelaAdm tela = new TelaAdm(fachada);
+			TelaAdm tela = new TelaAdm(fachada,usuario);
 			tela.setVisible(true);
 		}
 	}

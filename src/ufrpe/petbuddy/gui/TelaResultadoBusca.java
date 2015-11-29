@@ -124,7 +124,6 @@ public class TelaResultadoBusca extends JFrame implements ActionListener,ListSel
 	}
 	
 	public void valueChanged(ListSelectionEvent evento){
-		//int index = lista.getSelectedIndex();
 		campoDados.setText(((Animal)lista.getSelectedValue()).exibirDados());
 		campoDados.setEditable(false);
 		botaoAdotar.setEnabled(true);
@@ -161,7 +160,7 @@ public class TelaResultadoBusca extends JFrame implements ActionListener,ListSel
 			}
 			else if(usuario instanceof Adm){
 				dispose();
-				TelaAdm tela = new TelaAdm(fachada);
+				TelaAdm tela = new TelaAdm(fachada,usuario);
 				tela.setVisible(true);
 			} 
 			

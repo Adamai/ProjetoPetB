@@ -15,12 +15,14 @@ import java.awt.Font;
 
 import javax.swing.JLabel;
 import ufrpe.petbuddy.facade.*;
+import ufrpe.petbuddy.negocio.beans.*;
 
 public class TelaAdm extends JFrame implements ActionListener{
 
 	private JPanel painel;
-	private JButton botaoCadastroAnimais,botaoCadastroVeterinario, botaoSair, botaoHistoricoAdocoes;
+	private JButton botaoCadastroAnimais,botaoCadastroVeterinario, botaoSair, botaoHistoricoAdocoes,botaoAtualizarAnimais;
 	private IFachada fachada;
+	private Usuario usuario;
 	 
 	/**
 	 * Launch the application.
@@ -41,8 +43,9 @@ public class TelaAdm extends JFrame implements ActionListener{
 	/**
 	 * Create the frame.
 	 */
-	public TelaAdm(IFachada fachada) {
+	public TelaAdm(IFachada fachada, Usuario u) {
 		
+		this.usuario = u;
 		this.fachada = fachada;
 		setTitle("PetBuddy");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -83,13 +86,10 @@ public class TelaAdm extends JFrame implements ActionListener{
 		botaoSair.addActionListener(this);
 		painel.add(botaoSair);
 		
-		JButton botaoAtualizarAnimais = new JButton("Atualizar Animais");
-		botaoAtualizarAnimais.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-			}
-		});
+		this.botaoAtualizarAnimais = new JButton("Atualizar Animais");
 		botaoAtualizarAnimais.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		botaoAtualizarAnimais.setBounds(257, 290, 210, 41);
+		botaoAtualizarAnimais.addActionListener(this);
 		painel.add(botaoAtualizarAnimais);
 		
 		JButton botaoControleVeterinarios = new JButton("Controle Veterin\u00E1rios");
@@ -100,11 +100,11 @@ public class TelaAdm extends JFrame implements ActionListener{
 	public void actionPerformed (ActionEvent evento){
 		if (evento.getSource().equals(this.botaoCadastroAnimais)){
 			dispose();
-			TelaCadastroAnimal cadastroAnimais = new TelaCadastroAnimal(fachada);
+			TelaCadastroAnimal cadastroAnimais = new TelaCadastroAnimal(fachada,usuario);
 			cadastroAnimais.setVisible(true);
 		} else if(evento.getSource().equals(this.botaoCadastroVeterinario)){
 			dispose();
-			TelaCadastroVeterinario cadastroVet = new TelaCadastroVeterinario(fachada);
+			TelaCadastroVeterinario cadastroVet = new TelaCadastroVeterinario(fachada,usuario);
 			cadastroVet.setVisible(true);
 		}else if(evento.getSource().equals(this.botaoSair)){
 			dispose();
@@ -116,6 +116,12 @@ public class TelaAdm extends JFrame implements ActionListener{
 			TelaHistoricoAdocoes tela = new TelaHistoricoAdocoes();
 			tela.setVisible(true);
 		}
+		else if(evento.getSource().equals(botaoAtualizarAnimais)){
+			dispose();
+			TelaBuscaAnimais tela = new TelaBuscaAnimais(usuario);
+			tela.setVisible(true);
+		}
+		
 			
 		}
 }

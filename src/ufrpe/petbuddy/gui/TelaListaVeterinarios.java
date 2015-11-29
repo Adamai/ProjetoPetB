@@ -2,35 +2,29 @@ package ufrpe.petbuddy.gui;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-import javax.swing.JTable;
-import javax.swing.table.DefaultTableModel;
 import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.border.EmptyBorder;
+import javax.swing.table.DefaultTableModel;
 
+import ufrpe.petbuddy.exceptions.HistException;
+import ufrpe.petbuddy.negocio.beans.*;
 import ufrpe.petbuddy.facade.*;
 
-import java.util.ArrayList;
-
-import ufrpe.petbuddy.exceptions.*;
-import ufrpe.petbuddy.negocio.beans.*;
-
-import javax.swing.JButton;
-import javax.swing.JLabel;
-
-import java.awt.Font;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
-public class TelaHistoricoAdocoes extends JFrame implements ActionListener{
+public class TelaListaVeterinarios extends JFrame implements ActionListener{
 
 	private JPanel painel;
 	private JTable table;
-	private IFachada fachada;
 	private JButton botaoVoltar;
+	private IFachada fachada;
 
 	/**
 	 * Launch the application.
@@ -39,7 +33,7 @@ public class TelaHistoricoAdocoes extends JFrame implements ActionListener{
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					TelaHistoricoAdocoes frame = new TelaHistoricoAdocoes();
+					TelaListaVeterinarios frame = new TelaListaVeterinarios();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -51,9 +45,8 @@ public class TelaHistoricoAdocoes extends JFrame implements ActionListener{
 	/**
 	 * Create the frame.
 	 */
-	public TelaHistoricoAdocoes() {
-		fachada = Fachada.getInstance();
-		setTitle("PetBuddy");
+	public TelaListaVeterinarios() {
+		this.fachada = Fachada.getInstance();
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 800, 600);
 		painel = new JPanel();
@@ -75,41 +68,33 @@ public class TelaHistoricoAdocoes extends JFrame implements ActionListener{
 		botaoVoltar.addActionListener(this);
 		painel.add(botaoVoltar);
 		
-		JLabel lblHistricoDeAdoes = new JLabel("Hist\u00F3rico de Ado\u00E7\u00F5es");
-		lblHistricoDeAdoes.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		lblHistricoDeAdoes.setBounds(44, 11, 183, 56);
-		painel.add(lblHistricoDeAdoes);
+		modelo.addColumn("Nome");
+		modelo.addColumn("Contato");
+		modelo.addColumn("CRVM");
 		
-		modelo.addColumn("Animal");
-		modelo.addColumn("Adotante");
-		modelo.addColumn("Data");
-		modelo.addColumn("ID Adoção");
 		
 		table.getColumnModel().getColumn(0).setPreferredWidth(115);
 		table.getColumnModel().getColumn(1).setPreferredWidth(115);
 		table.getColumnModel().getColumn(2).setPreferredWidth(115);
-		table.getColumnModel().getColumn(3).setPreferredWidth(115);
 		
 		try{
-			ArrayList<Adocao> adocoes = fachada.buscaHistoricoAdocoes();
-			for(int i =0;i<adocoes.size();i++){
-				String campo1 = adocoes.get(i).getAnimal().getNome();
-				String campo2 = adocoes.get(i).getPessoa().getNome();
-				String campo3 = adocoes.get(i).getData();
-				long campo4 = adocoes.get(i).getNumid();
-				modelo.addRow(new Object[]{campo1,campo2,campo3,campo4});
+			ArrayList<Veterinario> veterinarios = fachada.ListarVet();
+			for(int i =0;i<veterinarios.size();i++){
+				String campo1 = veterinarios.get(i).getNome();
+				long campo2 = veterinarios.get(i).getContato();
+				long campo3 = veterinarios.get(i).getCrmv();
+				;
+				modelo.addRow(new Object[]{campo1,campo2,campo3});
 			}
 		}
 		catch(HistException h){
 			JOptionPane.showMessageDialog(null, h.getMessage());
 		}
+		
 	}
 	
 	public void actionPerformed(ActionEvent evento){
-		if(evento.getSource().equals(botaoVoltar)){
-			dispose();
-			TelaAdm tela = new TelaAdm(fachada,null);
-			tela.setVisible(true);
-		}
+		
 	}
+
 }

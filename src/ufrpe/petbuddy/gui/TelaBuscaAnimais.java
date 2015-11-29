@@ -171,13 +171,17 @@ public class TelaBuscaAnimais extends JFrame implements ActionListener {
 					
 					if(buscados != null){
 						JOptionPane.showMessageDialog(null, raca);
-						JOptionPane.showMessageDialog(null, buscados.size() + " Animais encontrados");			
-						dispose();
-						TelaResultadoBusca tela = new TelaResultadoBusca(usuario,buscados);
-						tela.setVisible(true);
-						//dispose();
-						//Tela tela = new Tela(fachada);
-					//tela.setVisible(true);	
+						JOptionPane.showMessageDialog(null, buscados.size() + " Animais encontrados");
+						if(usuario instanceof Pessoa){
+							dispose();
+							TelaResultadoBusca tela = new TelaResultadoBusca(usuario,buscados);
+							tela.setVisible(true);
+						}
+						else if(usuario instanceof Adm){
+							dispose();
+							TelaAtualizarAnimais tela = new TelaAtualizarAnimais(buscados);
+							tela.setVisible(true);
+						}
 						}
 					else
 						JOptionPane.showMessageDialog(null, "Nenhum animal encontrado");
@@ -189,15 +193,19 @@ public class TelaBuscaAnimais extends JFrame implements ActionListener {
 			catch(RepoException i){
 				JOptionPane.showMessageDialog(null, i.getMessage());
 			}
-			 if(evento.getSource().equals(botaoVoltar) && usuario != null){
+			 if(evento.getSource().equals(botaoVoltar) && usuario instanceof Pessoa){
 				dispose();
 				TelaLogado tela = new TelaLogado(fachada,usuario);
 				tela.setVisible(true);
-				}	else if (evento.getSource().equals(botaoVoltar) && usuario == null) {
+			}else if (evento.getSource().equals(botaoVoltar) && usuario == null) {
 					dispose();
 					TelaPrincipal tela = new TelaPrincipal(fachada);
 					tela.setVisible(true);
-				}
+			}else if(evento.getSource().equals(botaoVoltar) && usuario instanceof Adm){
+				dispose();
+				TelaAdm tela = new TelaAdm(fachada, usuario);
+				tela.setVisible(true);
+			}
 
 		
 		}

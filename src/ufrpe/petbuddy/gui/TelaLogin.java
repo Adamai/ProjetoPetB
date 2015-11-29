@@ -109,7 +109,7 @@ public class TelaLogin extends JFrame implements ActionListener {
 					}
 				else if(usuario instanceof Adm){
 					dispose();
-					TelaAdm tela = new TelaAdm(this.fachada);
+					TelaAdm tela = new TelaAdm(this.fachada,usuario);
 					tela.setVisible(true);
 				}
 				}
