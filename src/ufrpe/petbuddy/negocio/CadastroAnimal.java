@@ -33,4 +33,8 @@ public Animal busca(long numid) throws IDException{ //ADD NULL EXCEPTION
 	return a;
 	}
 
+	public void atualizar(Animal c){
+		this.repositorio.atualizar(c);
+	}
+
 }

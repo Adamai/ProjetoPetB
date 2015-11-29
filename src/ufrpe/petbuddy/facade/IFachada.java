@@ -24,4 +24,5 @@ public interface IFachada {
 	Veterinario buscaVetID(long numid) throws IDException;
 	ArrayList<Veterinario> ListarVet() throws HistException;
 	Usuario EfetuarLogin(String login, String senha) throws RepoException;
+	void atualizar(Animal c);
 }

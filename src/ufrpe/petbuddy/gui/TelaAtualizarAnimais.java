@@ -18,6 +18,7 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
 import ufrpe.petbuddy.exceptions.DadosException;
+import ufrpe.petbuddy.facade.IFachada;
 import ufrpe.petbuddy.negocio.beans.Animal;
 
 import javax.swing.JTextField;
@@ -38,6 +39,7 @@ public class TelaAtualizarAnimais extends JFrame implements ActionListener, List
 	private JTextField campoIdade;
 	private JEditorPane editorSaude;
 	private JButton botaoVoltar, botaoRemover, botaoAtualizar;
+	private IFachada fachada;
 
 	/**
 	 * Launch the application.
@@ -58,7 +60,9 @@ public class TelaAtualizarAnimais extends JFrame implements ActionListener, List
 	/**
 	 * Create the frame.
 	 */
-	public TelaAtualizarAnimais(ArrayList<Animal> resultado) {
+	
+	public TelaAtualizarAnimais(IFachada fachada, ArrayList<Animal> resultado) {
+		this.fachada = fachada;
 		setTitle("PetBuddy");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 800, 600);
@@ -162,12 +166,14 @@ public class TelaAtualizarAnimais extends JFrame implements ActionListener, List
 	public void actionPerformed(ActionEvent evento){
 		if(evento.getSource().equals(botaoAtualizar)){
 			try{
+				Animal a = (Animal)lista.getSelectedValue();
 				String nome = campoNome.getText();
-				((Animal)lista.getSelectedValue()).setNome(nome);
+				a.setNome(nome);
 				int idade = Integer.parseInt(campoIdade.getText());
-				((Animal)lista.getSelectedValue()).setIdade(idade);
+				a.setIdade(idade);
 				String saude = editorSaude.getText();
-				((Animal)lista.getSelectedValue()).setSaude(saude);
+				a.setSaude(saude);
+				fachada.atualizar(a);
 				JOptionPane.showMessageDialog(null, "Animal atualizado com sucesso");
 			}
 			catch(DadosException d){

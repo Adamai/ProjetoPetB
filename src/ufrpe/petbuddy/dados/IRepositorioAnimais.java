@@ -15,4 +15,5 @@ public interface IRepositorioAnimais {
 	void saveRepo();
 	void loadRepo();
 	void overwriteRepo(ArrayList<Animal> animais);
+	void atualizar(Animal c);
 }

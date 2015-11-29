@@ -1,5 +1,10 @@
 package ufrpe.petbuddy.negocio.beans;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import ufrpe.petbuddy.exceptions.*;
@@ -20,6 +25,7 @@ public class Adocao implements Serializable {
 		this.animal = animal;
 		this.pessoa = pessoa;
 		this.data = this.setData();
+		loadProx();
 		this.numid = proximo;
 		animal.setAdotado(true);
 		Adocao.AumentarProximo();
@@ -34,7 +40,19 @@ public class Adocao implements Serializable {
 	}
 	
 	public static void AumentarProximo(){
+		File data = new File("IdSetAdopt.rp");
+		loadProx();
+		data.delete();
 		proximo = proximo + 1;
+		ObjectOutputStream save = null;
+		try{
+		FileOutputStream fos = new FileOutputStream(data);
+		save = new ObjectOutputStream(fos);
+		save.writeObject(proximo);
+		fos.close();
+		} catch (Exception e){
+			e.printStackTrace();
+		}	
 	}
 	
 	
@@ -67,4 +85,24 @@ public class Adocao implements Serializable {
 	}else 
 		throw new DadosException();
 
-}	}
+}
+	public static void loadProx(){
+		File data = new File("IdSetAdopt.rp");
+		ObjectInputStream readob = null;
+		if (data.exists()){
+			try{
+			FileInputStream read = new FileInputStream(data);
+			readob = new ObjectInputStream(read);
+			proximo = (long) readob.readObject();
+			readob.close();
+		} catch (Exception e){
+			e.printStackTrace();
+		}
+			}
+	}
+	
+	
+
+
+
+}

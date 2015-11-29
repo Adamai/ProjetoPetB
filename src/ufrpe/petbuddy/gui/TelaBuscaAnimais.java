@@ -179,7 +179,7 @@ public class TelaBuscaAnimais extends JFrame implements ActionListener {
 						}
 						else if(usuario instanceof Adm){
 							dispose();
-							TelaAtualizarAnimais tela = new TelaAtualizarAnimais(buscados);
+							TelaAtualizarAnimais tela = new TelaAtualizarAnimais(fachada, buscados);
 							tela.setVisible(true);
 						}
 						}

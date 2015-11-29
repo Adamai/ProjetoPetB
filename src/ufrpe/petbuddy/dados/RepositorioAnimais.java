@@ -112,7 +112,11 @@ public class RepositorioAnimais implements IRepositorioAnimais, Serializable {
 	
 	
 	public void remover(Animal a){ 
-		this.animais.remove(a);
+		loadRepo();
+		for(int index = 0; index < animais.size(); index++)
+			if(animais.get(index).getNumid() == a.getNumid()){
+				this.animais.remove(index);
+			}
 		overwriteRepo(this.animais);
 	}
 	@Override
@@ -169,6 +173,18 @@ public class RepositorioAnimais implements IRepositorioAnimais, Serializable {
 		} catch (Exception e){
 			e.printStackTrace();
 		}	
+	}
+	
+	public void atualizar(Animal c){
+		loadRepo();
+		for(int i = 0;i<this.animais.size();i++){
+			if(this.animais.get(i).getNumid() == c.getNumid()){
+				this.remover(this.animais.get(i));
+				this.cadastrar(c);
+				break;
+			}
+		}
+		
 	}
 	
 

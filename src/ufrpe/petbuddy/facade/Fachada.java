@@ -32,6 +32,10 @@ public class Fachada implements IFachada{
 	public void cadastrarAdocao(Adocao a) {
 		cadastroadocao.cadastrar(a);
 	}
+	
+	public void atualizar(Animal c){
+		cadastroanimal.atualizar(c);
+	}
 
 
 	public ArrayList<Adocao> buscaHistoricoAdocoes() throws HistException {

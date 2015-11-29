@@ -9,4 +9,5 @@ public interface ICadastroAnimal {//interface de CadastroAnimal
 	void cadastrar(Animal a);
 	ArrayList<Animal> busca(String raca, AnimalEspecie especie) throws RepoException;
 	Animal busca(long numid) throws IDException;
+	void atualizar(Animal c);
 }
