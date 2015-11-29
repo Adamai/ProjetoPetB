@@ -115,6 +115,7 @@ public class TelaBuscaAnimais extends JFrame implements ActionListener {
 		grupo.add(radioButtonRoedor);
 		
 		this.radioButtonAve = new JRadioButton("Ave");
+		radioButtonAve.setBackground(new Color(102, 255, 255) );
 		radioButtonAve.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		radioButtonAve.setBounds(335, 156, 109, 23);
 		radioButtonAve.addActionListener(this);
@@ -188,10 +189,14 @@ public class TelaBuscaAnimais extends JFrame implements ActionListener {
 			catch(RepoException i){
 				JOptionPane.showMessageDialog(null, i.getMessage());
 			}
-			 if(evento.getSource().equals(botaoVoltar)){
+			 if(evento.getSource().equals(botaoVoltar) && usuario != null){
 				dispose();
 				TelaLogado tela = new TelaLogado(fachada,usuario);
 				tela.setVisible(true);
+				}	else if (evento.getSource().equals(botaoVoltar) && usuario == null) {
+					dispose();
+					TelaPrincipal tela = new TelaPrincipal(fachada);
+					tela.setVisible(true);
 				}
 
 		

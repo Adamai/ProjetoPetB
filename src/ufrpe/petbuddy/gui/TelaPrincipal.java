@@ -52,7 +52,7 @@ public class TelaPrincipal extends JFrame implements ActionListener{
 		setContentPane(painel);
 		
 		JLabel textoBemVindo = new JLabel("");
-		textoBemVindo.setIcon(new ImageIcon("E:\\Projetos Git\\Sprites\\PetBuddy.gif"));
+		textoBemVindo.setIcon(new ImageIcon("Sprites\\PetBuddy.gif"));
 		textoBemVindo.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		textoBemVindo.setBounds(237, 22, 340, 78);
 		painel.add(textoBemVindo);

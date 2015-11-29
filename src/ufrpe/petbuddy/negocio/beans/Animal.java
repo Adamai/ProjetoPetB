@@ -83,6 +83,7 @@ public  class Animal implements Serializable {
 	public static void AumentarProximo(){
 		File data = new File("IdSetter.rp");
 		loadProx();
+		data.delete();
 		proximo = proximo + 1;
 		ObjectOutputStream save = null;
 		try{
