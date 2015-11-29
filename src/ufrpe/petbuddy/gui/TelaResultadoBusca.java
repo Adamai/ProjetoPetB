@@ -34,6 +34,7 @@ import ufrpe.petbuddy.negocio.beans.*;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JEditorPane;
+import javax.swing.JTextPane;
 
 public class TelaResultadoBusca extends JFrame implements ActionListener,ListSelectionListener{
 
@@ -45,7 +46,7 @@ public class TelaResultadoBusca extends JFrame implements ActionListener,ListSel
 	private IFachada fachada;
 	private Usuario usuario;
 	private JScrollPane scrollPane;
-	private JEditorPane campoDados;
+	private JTextArea campoDados;
 
 	/**
 	 * Launch the application.
@@ -111,20 +112,21 @@ public class TelaResultadoBusca extends JFrame implements ActionListener,ListSel
 			contentPane.add(botaoAdotar);
 		}
 		
-		this.campoDados = new JEditorPane();
-		campoDados.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		campoDados.setBounds(433, 90, 278, 259);
-		contentPane.add(campoDados);
-		
 		this.botaoVoltar = new JButton("Voltar");
 		botaoVoltar.setBounds(377, 462, 107, 40);
 		botaoVoltar.addActionListener(this);
 		contentPane.add(botaoVoltar);
+		
+		this.campoDados = new JTextArea();
+		campoDados.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		campoDados.setBounds(451, 86, 275, 232);
+		contentPane.add(campoDados);
 	}
 	
 	public void valueChanged(ListSelectionEvent evento){
 		//int index = lista.getSelectedIndex();
 		campoDados.setText(((Animal)lista.getSelectedValue()).exibirDados());
+		campoDados.setEditable(false);
 		botaoAdotar.setEnabled(true);
 	}
 	

@@ -19,7 +19,7 @@ import ufrpe.petbuddy.facade.*;
 public class TelaAdm extends JFrame implements ActionListener{
 
 	private JPanel painel;
-	private JButton botaoCadastroAnimais,botaoCadastroVeterinario, botaoSair;
+	private JButton botaoCadastroAnimais,botaoCadastroVeterinario, botaoSair, botaoHistoricoAdocoes;
 	private IFachada fachada;
 	 
 	/**
@@ -54,9 +54,10 @@ public class TelaAdm extends JFrame implements ActionListener{
 		painel.setBackground(new Color(102, 255, 255) );
 		setContentPane(painel);
 		
-		JButton botaoHistoricoAdocoes = new JButton("Hist\u00F3rico Ado\u00E7\u00F5es");
+		this.botaoHistoricoAdocoes = new JButton("Hist\u00F3rico Ado\u00E7\u00F5es");
 		botaoHistoricoAdocoes.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		botaoHistoricoAdocoes.setBounds(257, 136, 210, 41);
+		botaoHistoricoAdocoes.addActionListener(this);
 		painel.add(botaoHistoricoAdocoes);
 		
 		this.botaoCadastroAnimais = new JButton("Cadastro Animais");
@@ -105,10 +106,15 @@ public class TelaAdm extends JFrame implements ActionListener{
 			dispose();
 			TelaCadastroVeterinario cadastroVet = new TelaCadastroVeterinario(fachada);
 			cadastroVet.setVisible(true);
-					}else if(evento.getSource().equals(this.botaoSair)){
-						dispose();
-						TelaPrincipal tela = new TelaPrincipal(fachada);
-						tela.setVisible(true);
+		}else if(evento.getSource().equals(this.botaoSair)){
+			dispose();
+			TelaPrincipal tela = new TelaPrincipal(fachada);
+			tela.setVisible(true);
+		}
+		else if(evento.getSource().equals(botaoHistoricoAdocoes)){
+			dispose();
+			TelaHistoricoAdocoes tela = new TelaHistoricoAdocoes();
+			tela.setVisible(true);
 		}
 			
 		}
