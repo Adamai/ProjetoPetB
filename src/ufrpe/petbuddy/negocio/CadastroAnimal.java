@@ -36,7 +36,7 @@ public Animal busca(long numid) throws IDException{ //ADD NULL EXCEPTION
 	public void atualizar(Animal c){
 		this.repositorio.atualizar(c);
 	}
-	public ArrayList<Animal> listarAnimais(){
+	public ArrayList<Animal> listarAnimais() throws HistException{
 		return this.repositorio.listarAnimais();
 	}
 	public ArrayList<Animal> buscaEspecie(AnimalEspecie especie){

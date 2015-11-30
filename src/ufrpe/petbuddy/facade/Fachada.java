@@ -103,7 +103,7 @@ public class Fachada implements IFachada{
 		return this.controlelogin.EfetuarLogin(login, senha);
 		
 	}
-	public ArrayList<Animal> listarAnimais(){
+	public ArrayList<Animal> listarAnimais() throws HistException{
 		return cadastroanimal.listarAnimais();
 	}
 	public ArrayList<Animal> buscaEspecie(AnimalEspecie especie){

@@ -26,6 +26,7 @@ public class TelaAdm extends JFrame implements ActionListener{
 	private JButton botaoAtualizarAnimais;
 	private JButton botaoControleVeterinarios;
 	private JButton botaoSair;
+	private JButton botaoHistoricoCadastro;
 	private IFachada fachada;
 	private Usuario usuario;
 	 
@@ -103,6 +104,12 @@ public class TelaAdm extends JFrame implements ActionListener{
 		botaoControleVeterinarios.addActionListener(this);
 		painel.add(botaoControleVeterinarios);
 		
+		this.botaoHistoricoCadastro = new JButton("Hist\u00F3rico Animais");
+		botaoHistoricoCadastro.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		botaoHistoricoCadastro.setBounds(257, 394, 210, 41);
+		botaoHistoricoCadastro.addActionListener(this);
+		painel.add(botaoHistoricoCadastro);
+		
 	}
 	public void actionPerformed (ActionEvent evento){
 		if (evento.getSource().equals(this.botaoCadastroAnimais)){
@@ -130,6 +137,10 @@ public class TelaAdm extends JFrame implements ActionListener{
 		} else if(evento.getSource().equals(botaoControleVeterinarios)){
 			dispose();
 			TelaListaVeterinarios tela = new TelaListaVeterinarios(usuario);
+			tela.setVisible(true);
+		}else if(evento.getSource().equals(botaoHistoricoCadastro)){
+			dispose();
+			TelaHistoricoCadastro tela = new TelaHistoricoCadastro(usuario);
 			tela.setVisible(true);
 		}
 		

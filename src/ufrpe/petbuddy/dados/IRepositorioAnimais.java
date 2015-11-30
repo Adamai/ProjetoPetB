@@ -9,7 +9,7 @@ public interface IRepositorioAnimais {
 
 	void cadastrar(Animal animal);
 	ArrayList<Animal> busca(String nome, AnimalEspecie especie) throws RepoException;
-	ArrayList<Animal> listarAnimais();
+	ArrayList<Animal> listarAnimais() throws HistException;
 	ArrayList<Animal> buscaEspecie(AnimalEspecie especie);
 	Animal busca(long numid) throws IDException;
 	void adotar(long numid)throws IDException;

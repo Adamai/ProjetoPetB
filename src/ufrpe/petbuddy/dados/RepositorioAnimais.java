@@ -1,8 +1,7 @@
 package ufrpe.petbuddy.dados;
 
 
-import ufrpe.petbuddy.exceptions.IDException;
-import ufrpe.petbuddy.exceptions.RepoException;
+import ufrpe.petbuddy.exceptions.*;
 import ufrpe.petbuddy.negocio.beans.*;
 
 import java.io.File;
@@ -185,8 +184,13 @@ public class RepositorioAnimais implements IRepositorioAnimais, Serializable {
 						}
 				}
 		}
-	public ArrayList<Animal> listarAnimais(){
-		return this.animais;
+	public ArrayList<Animal> listarAnimais() throws HistException{
+		loadRepo();
+		if(animais.size()>0){
+			return this.animais;
+		}
+		else
+			throw new HistException();
 	}
 	
 	public ArrayList<Animal> buscaEspecie(AnimalEspecie especie){

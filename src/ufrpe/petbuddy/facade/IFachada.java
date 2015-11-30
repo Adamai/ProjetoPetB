@@ -25,6 +25,6 @@ public interface IFachada {
 	ArrayList<Veterinario> ListarVet() throws HistException;
 	Usuario EfetuarLogin(String login, String senha) throws RepoException;
 	void atualizar(Animal c);
-	ArrayList<Animal> listarAnimais();
+	ArrayList<Animal> listarAnimais() throws HistException;
 	ArrayList<Animal> buscaEspecie(AnimalEspecie especie);
 }
