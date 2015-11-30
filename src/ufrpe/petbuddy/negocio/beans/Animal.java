@@ -1,6 +1,8 @@
 package ufrpe.petbuddy.negocio.beans;
 
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -23,6 +25,7 @@ public  class Animal implements Serializable {
 	private static long proximo = 1;
 	private Veterinario veterinario;
 	private AnimalEspecie especie;
+	private String data;
 	//LIGAR O ANIMAL COM UM VETERINARIO NA HORA DE CRIA-LO
 	public Animal(String nome, String raca,String sexo, double peso, int idade, String saude, String temperamento, 
 			Veterinario veterinario, AnimalEspecie especie) throws DadosException{
@@ -30,6 +33,7 @@ public  class Animal implements Serializable {
 		this.setRaca(raca);
 		this.setSexo(sexo);
 		this.setPeso(peso);
+		this.data = this.setData();
 		this.setIdade(idade);
 		this.setSaude(saude);
 		this.temperamento = temperamento;
@@ -192,6 +196,16 @@ public  class Animal implements Serializable {
 		}
 		else
 			throw new DadosException();
+	}
+	public String setData() {
+
+		Date d = new Date();
+		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+		String data = sdf.format(d).toString();
+		return data;
+	}
+	public String getData() {
+		return this.data;
 	}
 		
 	}

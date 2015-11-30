@@ -112,4 +112,7 @@ public class TelaHistoricoCadastro extends JFrame implements ActionListener {
 			tela.setVisible(true);
 		}
 	}
+	
+	
+	
 }
