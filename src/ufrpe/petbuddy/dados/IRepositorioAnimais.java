@@ -9,6 +9,8 @@ public interface IRepositorioAnimais {
 
 	void cadastrar(Animal animal);
 	ArrayList<Animal> busca(String nome, AnimalEspecie especie) throws RepoException;
+	ArrayList<Animal> listarAnimais();
+	ArrayList<Animal> buscaEspecie(AnimalEspecie especie);
 	Animal busca(long numid) throws IDException;
 	void adotar(long numid)throws IDException;
 	void remover(Animal a);
@@ -16,4 +18,5 @@ public interface IRepositorioAnimais {
 	void loadRepo();
 	void overwriteRepo(ArrayList<Animal> animais);
 	void atualizar(Animal c);
+	
 }

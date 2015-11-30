@@ -182,11 +182,67 @@ public class RepositorioAnimais implements IRepositorioAnimais, Serializable {
 				this.remover(this.animais.get(i));
 				this.cadastrar(c);
 				break;
-			}
+						}
+				}
 		}
-		
+	public ArrayList<Animal> listarAnimais(){
+		return this.animais;
 	}
 	
+	public ArrayList<Animal> buscaEspecie(AnimalEspecie especie){
+		ArrayList<Animal> buscados = new ArrayList<Animal>();
+		loadRepo();
+		
+		if(especie.equals(AnimalEspecie.CACHORRO)){
+		for(int i = 0; i<animais.size(); i++){
+			Animal a = animais.get(i);
+			if(a.getEspecie().equals(AnimalEspecie.CACHORRO)){
+				
+				buscados.add(a);
+				}
+			}
+		}
+		if(especie.equals(AnimalEspecie.GATO)){
+			for(int i = 0; i<animais.size(); i++){
+				Animal a = animais.get(i);
+				if(a.getEspecie().equals(AnimalEspecie.GATO)){
+					
+					buscados.add(a);
+					}
+				}
+			}
+		if(especie.equals(AnimalEspecie.AVE)){
+			for(int i = 0; i<animais.size(); i++){
+				Animal a = animais.get(i);
+				if(a.getEspecie().equals(AnimalEspecie.AVE)){
+					
+					buscados.add(a);
+					}
+				}
+			}
+		if(especie.equals(AnimalEspecie.ROEDOR)){
+			for(int i = 0; i<animais.size(); i++){
+				Animal a = animais.get(i);
+				if(a.getEspecie().equals(AnimalEspecie.ROEDOR)){
+					
+					buscados.add(a);
+					}
+				}
+			}
+		if(especie.equals(AnimalEspecie.REPTIL)){
+			for(int i = 0; i<animais.size(); i++){
+				Animal a = animais.get(i);
+				if(a.getEspecie().equals(AnimalEspecie.REPTIL)){
+					
+					buscados.add(a);
+					}
+				}
+			}
+			return buscados;
+		
+		
+		
+	}
 
 	
 	

@@ -38,6 +38,10 @@ public class TelaBuscaAnimais extends JFrame implements ActionListener {
 	private ButtonGroup grupo;
 	private JRadioButton radioButtonCachorro, radioButtonGato,radioButtonAve,radioButtonRoedor,radioButtonReptil;
 	private ArrayList<Animal> buscados;
+	private JLabel textoBuscarTodos;
+	private JLabel textoBuscaPorEspcie;
+	private JButton botaoBuscarTodos;
+
 
 	/**
 	 * Launch the application.
@@ -129,16 +133,33 @@ public class TelaBuscaAnimais extends JFrame implements ActionListener {
 		
 		this.botaoBusca = new JButton("Buscar");
 		botaoBusca.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		botaoBusca.setBounds(554, 420, 167, 60);
+		botaoBusca.setBounds(573, 324, 167, 60);
 		botaoBusca.setEnabled(false);
 		botaoBusca.addActionListener(this);
 		painel.add(botaoBusca);
 		
 		this.botaoVoltar = new JButton("Voltar");
 		botaoVoltar.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		botaoVoltar.setBounds(42, 425, 124, 52);
+		botaoVoltar.setBounds(42, 479, 124, 52);
 		botaoVoltar.addActionListener(this);
 		painel.add(botaoVoltar);
+		
+		this.botaoBuscarTodos = new JButton("Buscar Todos");
+		botaoBuscarTodos.addActionListener(this);			
+		botaoBuscarTodos.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		botaoBuscarTodos.setEnabled(false);
+		botaoBuscarTodos.setBounds(573, 455, 167, 60);
+		painel.add(botaoBuscarTodos);
+		
+		textoBuscarTodos = new JLabel("Buscar todos os animais da esp\u00E9cie selecionada:");
+		textoBuscarTodos.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		textoBuscarTodos.setBounds(455, 435, 285, 14);
+		painel.add(textoBuscarTodos);
+		
+		textoBuscaPorEspcie = new JLabel("Busca por esp\u00E9cie e ra\u00E7a:");
+		textoBuscaPorEspcie.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		textoBuscaPorEspcie.setBounds(538, 299, 191, 14);
+		painel.add(textoBuscaPorEspcie);
 		
 	}
 	
@@ -150,22 +171,28 @@ public class TelaBuscaAnimais extends JFrame implements ActionListener {
 				if(radioButtonCachorro.isSelected()){
 					especie = AnimalEspecie.CACHORRO;
 					botaoBusca.setEnabled(true);
+					botaoBuscarTodos.setEnabled(true);
+					
 				}
 				if(radioButtonGato.isSelected()){
 					especie = AnimalEspecie.GATO;
 					botaoBusca.setEnabled(true);
+					botaoBuscarTodos.setEnabled(true);
 				}
 				if(radioButtonAve.isSelected()){
 					especie = AnimalEspecie.AVE;
 					botaoBusca.setEnabled(true);
+					botaoBuscarTodos.setEnabled(true);
 				}
 				if(radioButtonReptil.isSelected()){
 					especie = AnimalEspecie.REPTIL;
 					botaoBusca.setEnabled(true);
+					botaoBuscarTodos.setEnabled(true);
 				}
 				if(radioButtonRoedor.isSelected()){
 					especie = AnimalEspecie.ROEDOR;
 					botaoBusca.setEnabled(true);
+					botaoBuscarTodos.setEnabled(true);
 				}
 				
 				if(evento.getSource().equals(botaoBusca)){
@@ -207,6 +234,20 @@ public class TelaBuscaAnimais extends JFrame implements ActionListener {
 					dispose();
 					TelaPrincipal tela = new TelaPrincipal(fachada);
 					tela.setVisible(true);
+			}if(evento.getSource().equals(botaoBuscarTodos) && (usuario instanceof Pessoa || usuario == null)){
+					buscados = fachada.buscaEspecie(especie);
+					JOptionPane.showMessageDialog(null,especie);
+					JOptionPane.showMessageDialog(null,buscados.size());
+					dispose();
+					TelaResultadoBusca tela = new TelaResultadoBusca(usuario,buscados);
+					tela.setVisible(true);
+			}if(evento.getSource().equals(botaoBuscarTodos) && usuario instanceof Adm){
+				buscados = fachada.buscaEspecie(especie);
+				JOptionPane.showMessageDialog(null,especie);
+				JOptionPane.showMessageDialog(null,buscados.size());
+				dispose();
+				TelaAtualizarAnimais tela = new TelaAtualizarAnimais(fachada,usuario,buscados);
+				tela.setVisible(true);
 			}
 	}
 	}

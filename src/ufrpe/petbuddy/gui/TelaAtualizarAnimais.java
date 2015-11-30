@@ -94,17 +94,20 @@ public class TelaAtualizarAnimais extends JFrame implements ActionListener, List
 		
 		campoNome = new JTextField();
 		campoNome.setBounds(509, 88, 243, 20);
-		contentPane.add(campoNome);
 		campoNome.setColumns(10);
-		
+		campoNome.setEnabled(false);
+		contentPane.add(campoNome);
+				
 		campoRaca = new JTextField();
 		campoRaca.setColumns(10);
 		campoRaca.setBounds(509, 138, 243, 20);
+		campoRaca.setEnabled(false);
 		contentPane.add(campoRaca);
-		
+				
 		campoIdade = new JTextField();
 		campoIdade.setColumns(10);
 		campoIdade.setBounds(509, 188, 243, 20);
+		campoIdade.setEnabled(false);
 		contentPane.add(campoIdade);
 		
 		this.botaoAtualizar = new JButton("Atualizar");
@@ -114,6 +117,7 @@ public class TelaAtualizarAnimais extends JFrame implements ActionListener, List
 		
 		this.editorSaude = new JEditorPane();
 		editorSaude.setBounds(509, 239, 243, 94);
+		editorSaude.setEnabled(false);
 		contentPane.add(editorSaude);
 		
 		JLabel lblNome = new JLabel("Nome");
@@ -150,7 +154,11 @@ public class TelaAtualizarAnimais extends JFrame implements ActionListener, List
 	}
 	
 	public void valueChanged(ListSelectionEvent evento){
-
+		
+		campoNome.setEnabled(true);
+		campoRaca.setEnabled(true);
+		campoIdade.setEnabled(true);
+		editorSaude.setEnabled(true);
 		campoNome.setText(((Animal)lista.getSelectedValue()).getNome());
 		campoRaca.setText(((Animal)lista.getSelectedValue()).getRaca());
 		campoRaca.setEditable(false);	
@@ -172,6 +180,10 @@ public class TelaAtualizarAnimais extends JFrame implements ActionListener, List
 				a.setSaude(saude);
 				fachada.atualizar(a);
 				JOptionPane.showMessageDialog(null, "Animal atualizado com sucesso");
+				dispose();
+				TelaAdm tela = new TelaAdm(fachada,usuario);
+				tela.setVisible(true);
+				
 			}
 			catch(DadosException d){
 				JOptionPane.showMessageDialog(null, d.getMessage());
@@ -184,7 +196,6 @@ public class TelaAtualizarAnimais extends JFrame implements ActionListener, List
 			dispose();
 		TelaBuscaAnimais tela = new TelaBuscaAnimais(usuario);
 		tela.setVisible(true);
-			
 			
 		}
 		

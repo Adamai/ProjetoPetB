@@ -1,6 +1,7 @@
 package ufrpe.petbuddy.facade;
 
 import java.util.ArrayList;
+
 import ufrpe.petbuddy.dados.*;
 import ufrpe.petbuddy.exceptions.*;
 import ufrpe.petbuddy.negocio.*;
@@ -102,7 +103,12 @@ public class Fachada implements IFachada{
 		return this.controlelogin.EfetuarLogin(login, senha);
 		
 	}
-	
+	public ArrayList<Animal> listarAnimais(){
+		return cadastroanimal.listarAnimais();
+	}
+	public ArrayList<Animal> buscaEspecie(AnimalEspecie especie){
+		return cadastroanimal.buscaEspecie(especie);
+	}
 	
 	
 }
