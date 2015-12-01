@@ -3,12 +3,20 @@ package ufrpe.petbuddy.negocio.beans;
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
+
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import ufrpe.petbuddy.exceptions.*;
+import org.apache.commons.io.*;
 
 
 public  class Animal implements Serializable {
@@ -26,9 +34,10 @@ public  class Animal implements Serializable {
 	private Veterinario veterinario;
 	private AnimalEspecie especie;
 	private String data;
+	private File foto;
 	//LIGAR O ANIMAL COM UM VETERINARIO NA HORA DE CRIA-LO
 	public Animal(String nome, String raca,String sexo, double peso, int idade, String saude, String temperamento, 
-			Veterinario veterinario, AnimalEspecie especie) throws DadosException{
+			Veterinario veterinario, AnimalEspecie especie, File foto) throws DadosException{
 		this.setNome(nome);
 		this.setRaca(raca);
 		this.setSexo(sexo);
@@ -40,10 +49,36 @@ public  class Animal implements Serializable {
 		this.adotado = false;
 		loadProx();
 		this.numid = proximo;
+		this.setFoto(foto);
 		this.setVeterinario(veterinario);
 		this.setEspecie(especie);
 		Animal.AumentarProximo();
 		}
+	
+	public void setFoto(File foto){
+		File dest = new File("Fotos\\"+String.valueOf(this.getNumid())+".jpg");
+		dest.delete();
+		try {
+		    FileUtils.copyFile(foto, dest);
+		} catch (IOException e) {
+		    e.printStackTrace();
+		}
+		this.foto = dest;
+		
+		
+		
+	}
+	
+	public ImageIcon getFoto(){ //quando for chamar foto de animal: label.setIcon(getFoto());
+	    BufferedImage img = new BufferedImage(207,174,BufferedImage.TYPE_INT_RGB);
+		try {
+		    BufferedImage ibage = ImageIO.read(this.foto);
+		    img.getGraphics().drawImage(ibage,0,0,207,174,null);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return new ImageIcon(img);
+	}
 	
 	public void setRaca(String raca)  throws DadosException {
 		if(raca != ""){

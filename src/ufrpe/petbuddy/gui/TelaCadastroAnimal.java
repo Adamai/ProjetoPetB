@@ -11,6 +11,7 @@ import javax.swing.plaf.basic.BasicBorders.RadioButtonBorder;
 import javax.swing.JLabel;
 
 import java.awt.Font;
+import java.awt.Image;
 
 import javax.swing.JOptionPane;
 import javax.swing.JRadioButton;
@@ -20,7 +21,10 @@ import javax.swing.JSpinner;
 import javax.swing.JTextArea;
 import javax.swing.JComboBox;
 import javax.swing.JEditorPane;
+import javax.swing.JFileChooser;
+import javax.imageio.ImageIO;
 import javax.swing.ButtonGroup;
+import javax.swing.Icon;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -30,10 +34,21 @@ import ufrpe.petbuddy.negocio.beans.*;
 import ufrpe.petbuddy.exceptions.*;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
+import java.nio.file.Files;
+import java.util.Scanner;
+import static java.nio.file.StandardCopyOption.*;
+import javax.swing.ImageIcon;
 
 public class TelaCadastroAnimal extends JFrame implements ActionListener{
 
 	private Usuario usuario;
+	private File image = new File("Fotos\\nophoto.png");
 	private JPanel painel;
 	private JTextField campoNome;
 	private JTextField campoRaca;
@@ -42,11 +57,13 @@ public class TelaCadastroAnimal extends JFrame implements ActionListener{
 	private JTextField campoVeterinario;
 	private JButton botaoVoltar;
 	private JButton botaoCadastrar;
+	private JButton btnEnviarFoto;
 	private JEditorPane editorSaude;
 	private IFachada fachada;
 	private ButtonGroup grupo1, grupo2, grupo3;
 	private JRadioButton radioButtonCalmo,radioButtonAgitado, radioButtonMacho, radioButtonFemea, radioButtonCachorro, radioButtonGato,
 	radioButtonAve,radioButtonRoedor,radioButtonReptil;
+	private JLabel label;
 
 	/**
 	 * Launch the application.
@@ -72,7 +89,7 @@ public class TelaCadastroAnimal extends JFrame implements ActionListener{
 		this.fachada = fachada;
 		setTitle("PetBuddy");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 800, 600);
+		setBounds(100, 100, 800, 800);
 		painel = new JPanel();
 		painel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		painel.setLayout(null);
@@ -90,23 +107,23 @@ public class TelaCadastroAnimal extends JFrame implements ActionListener{
 		painel.add(textoCadastrarAnimal);
 		
 		JLabel textoNome = new JLabel("Nome");
-		textoNome.setBounds(10, 51, 200, 50);
+		textoNome.setBounds(10, 258, 95, 50);
 		painel.add(textoNome);
 		
 		JLabel textoRaca = new JLabel("Ra\u00E7a");
-		textoRaca.setBounds(10, 141, 200, 50);
+		textoRaca.setBounds(10, 348, 57, 50);
 		painel.add(textoRaca);
 		
 		JLabel textoPeso = new JLabel("Peso");
-		textoPeso.setBounds(10, 234, 200, 50);
+		textoPeso.setBounds(10, 441, 200, 50);
 		painel.add(textoPeso);
 		
 		JLabel textoIdade = new JLabel("Idade");
-		textoIdade.setBounds(10, 314, 200, 50);
+		textoIdade.setBounds(10, 521, 200, 50);
 		painel.add(textoIdade);
 		
 		JLabel textoSade = new JLabel("Sa\u00FAde");
-		textoSade.setBounds(10, 408, 200, 50);
+		textoSade.setBounds(10, 615, 200, 50);
 		painel.add(textoSade);
 		
 		JLabel textoTemperamento = new JLabel("Temperamento");
@@ -128,7 +145,7 @@ public class TelaCadastroAnimal extends JFrame implements ActionListener{
 		grupo1.add(radioButtonAgitado);
 		
 		JLabel textoSexo = new JLabel("Sexo");
-		textoSexo.setBounds(448, 72, 57, 50);
+		textoSexo.setBounds(454, 72, 57, 50);
 		painel.add(textoSexo);
 		
 		this.radioButtonMacho = new JRadioButton("Macho");
@@ -190,23 +207,23 @@ public class TelaCadastroAnimal extends JFrame implements ActionListener{
 		
 		
 		campoNome = new JTextField();
-		campoNome.setBounds(31, 92, 207, 28);
+		campoNome.setBounds(31, 299, 207, 28);
 		painel.add(campoNome);
 		campoNome.setColumns(10);
 		
 		campoRaca = new JTextField();
-		campoRaca.setBounds(31, 174, 207, 28);
+		campoRaca.setBounds(31, 381, 207, 28);
 		painel.add(campoRaca);
 		campoRaca.setColumns(10);
 		
 		campoPeso = new JTextField();
 		campoPeso.setText("");
-		campoPeso.setBounds(31, 267, 207, 28);
+		campoPeso.setBounds(31, 474, 207, 28);
 		painel.add(campoPeso);
 		campoPeso.setColumns(10);
 		
 		campoIdade = new JTextField();
-		campoIdade.setBounds(31, 353, 207, 28);
+		campoIdade.setBounds(31, 560, 207, 28);
 		painel.add(campoIdade);
 		campoIdade.setColumns(10);
 		
@@ -216,21 +233,31 @@ public class TelaCadastroAnimal extends JFrame implements ActionListener{
 		campoVeterinario.setColumns(10);
 		
 		this.editorSaude = new JEditorPane();
-		editorSaude.setBounds(31, 449, 207, 67);
+		editorSaude.setBounds(31, 656, 207, 67);
 		painel.add(editorSaude);
 		
 		this.botaoCadastrar = new JButton("Cadastrar");
 		botaoCadastrar.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		botaoCadastrar.setBounds(555, 449, 200, 50);
+		botaoCadastrar.setBounds(574, 649, 200, 50);
 		botaoCadastrar.addActionListener(this);
 		painel.add(botaoCadastrar);
 		
 		
 		this.botaoVoltar = new JButton("Voltar");
 		botaoVoltar.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		botaoVoltar.setBounds(323, 449, 127, 50);
+		botaoVoltar.setBounds(404, 649, 127, 50);
 		botaoVoltar.addActionListener(this);
-		painel.add(botaoVoltar);	
+		painel.add(botaoVoltar);
+		
+		this.btnEnviarFoto = new JButton("Enviar Foto");
+		btnEnviarFoto.setBounds(147, 232, 117, 23);
+		btnEnviarFoto.addActionListener(this);
+		painel.add(btnEnviarFoto);
+		setImage(new File("Fotos\\nophoto.png"));
+		label = new JLabel("");
+		label.setIcon(new ImageIcon(image.getPath()));
+		label.setBounds(31, 47, 207, 174);
+		painel.add(label);
 		
 		
 	}
@@ -280,7 +307,7 @@ public class TelaCadastroAnimal extends JFrame implements ActionListener{
 
 				
 				Veterinario v = fachada.buscaVetID(vet);
-				Animal a = new Animal(nome,raca,sexo,peso,idade,saude,temperamento,v, especie);
+				Animal a = new Animal(nome,raca,sexo,peso,idade,saude,temperamento,v, especie, image);
 				fachada.cadastrarAnimal(a);
 				
 				JOptionPane.showMessageDialog(null, a.getSexo());
@@ -309,8 +336,30 @@ public class TelaCadastroAnimal extends JFrame implements ActionListener{
 			TelaAdm tela = new TelaAdm(fachada,usuario);
 			tela.setVisible(true);
 		}
+		
+		if(evento.getSource().equals(btnEnviarFoto)){
+			final JFileChooser fc = new JFileChooser();
+			fc.showOpenDialog(this);
+			setImage(new File(fc.getSelectedFile().getAbsolutePath()));
+			
+			try {
+			    BufferedImage ibage = ImageIO.read(image);
+			    BufferedImage img = new BufferedImage(207,174,BufferedImage.TYPE_INT_RGB);
+			    img.getGraphics().drawImage(ibage,0,0,207,174,null);
+			    label.setIcon(new ImageIcon(img));
+				JOptionPane.showMessageDialog(null, image.getAbsolutePath());
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
+				
+		}
+		
+	}
+	private void setImage(File x){
+		this.image = x;
 	}
 	
-
+	
 }
-
