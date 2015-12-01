@@ -10,4 +10,5 @@ public interface ICadastroUsuario {// interface de CadastroPessoa
 	Pessoa busca(String nome)throws RepoException;
 	Usuario busca(String login,String senha)throws RepoException;
 	void descadastrar(String nome)throws RepoException;
+	public boolean VerificarLogin( String login);
 }

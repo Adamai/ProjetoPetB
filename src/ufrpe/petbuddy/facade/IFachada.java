@@ -26,5 +26,9 @@ public interface IFachada {
 	Usuario EfetuarLogin(String login, String senha) throws RepoException;
 	void atualizar(Animal c);
 	ArrayList<Animal> listarAnimais() throws HistException;
-	ArrayList<Animal> buscaEspecie(AnimalEspecie especie);
+	ArrayList<Animal> buscaEspecie(AnimalEspecie especie)throws RepoException;
+	public void removerAnimal(Animal a);
+	public boolean VerificarLogin( String login);
+	public void atualizarVeterinario(Veterinario v);
+	public void removerVeterinario(Veterinario v);
 }

@@ -9,5 +9,7 @@ public interface ICadastroVet {// INTERFACE DE CADASTROVET
 	void cadastrar(Veterinario vet);
 	Veterinario busca(long numid) throws IDException;
 	ArrayList<Veterinario> busca()throws HistException;
+	public void removerVeterinario(Veterinario v);
+	public void atualizarVeterinario(Veterinario v);
 	
 }

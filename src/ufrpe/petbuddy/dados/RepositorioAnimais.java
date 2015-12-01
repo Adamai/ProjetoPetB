@@ -193,7 +193,7 @@ public class RepositorioAnimais implements IRepositorioAnimais, Serializable {
 			throw new HistException();
 	}
 	
-	public ArrayList<Animal> buscaEspecie(AnimalEspecie especie){
+	public ArrayList<Animal> buscaEspecie(AnimalEspecie especie)throws RepoException{
 		ArrayList<Animal> buscados = new ArrayList<Animal>();
 		loadRepo();
 		
@@ -242,7 +242,11 @@ public class RepositorioAnimais implements IRepositorioAnimais, Serializable {
 					}
 				}
 			}
+		if(buscados.size()>0){	
 			return buscados;
+		}
+		else
+			throw new RepoException();
 		
 		
 		

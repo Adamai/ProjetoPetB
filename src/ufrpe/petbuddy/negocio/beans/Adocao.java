@@ -8,11 +8,8 @@ import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import ufrpe.petbuddy.exceptions.*;
-import java.time.LocalDateTime;
-import java.util.Calendar;
 import java.util.Date;
 
-import ufrpe.petbuddy.dados.*;
 
 public class Adocao implements Serializable {
 	private Animal animal;

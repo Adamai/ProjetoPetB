@@ -16,6 +16,9 @@ public class ControleLogin implements ILogin {
 		return this.cadastrop.busca(login, senha);
 		
 	}
+	public boolean VerificarLogin( String login){
+		return this.cadastrop.VerificarLogin(login);
+	}
 	
 	
 	

@@ -25,6 +25,12 @@ public class CadastroVet implements ICadastroVet {
 	public ArrayList<Veterinario> busca() throws HistException{
 		return this.repositorio.busca();
 	}
+	public void removerVeterinario(Veterinario v){
+		 this.repositorio.removerVeterinario(v);
+	}
+	public void atualizarVeterinario(Veterinario v){
+		this.repositorio.atualizarVeterinario(v);
+	}
 	
 	
 }

@@ -65,7 +65,7 @@ public class TelaAtualizarAnimais extends JFrame implements ActionListener, List
 	
 	public TelaAtualizarAnimais(IFachada fachada,Usuario u, ArrayList<Animal> resultado) {
 		this.fachada = fachada;
-		this.usuario = usuario;
+		this.usuario = u;
 		setTitle("PetBuddy");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 800, 600);
@@ -124,22 +124,22 @@ public class TelaAtualizarAnimais extends JFrame implements ActionListener, List
 		lblNome.setBounds(446, 89, 53, 16);
 		contentPane.add(lblNome);
 		
-		JLabel lblRaa = new JLabel("Ra\u00E7a");
-		lblRaa.setBounds(446, 140, 53, 16);
-		contentPane.add(lblRaa);
+		JLabel textoRaa = new JLabel("Ra\u00E7a");
+		textoRaa.setBounds(446, 140, 53, 16);
+		contentPane.add(textoRaa);
 		
-		JLabel lblIdade = new JLabel("Idade");
-		lblIdade.setBounds(446, 191, 53, 16);
-		contentPane.add(lblIdade);
+		JLabel textoIdade = new JLabel("Idade");
+		textoIdade.setBounds(446, 191, 53, 16);
+		contentPane.add(textoIdade);
 		
-		JLabel lblSade = new JLabel("Sa\u00FAde");
-		lblSade.setBounds(446, 244, 53, 16);
-		contentPane.add(lblSade);
+		JLabel textoSade = new JLabel("Sa\u00FAde");
+		textoSade.setBounds(446, 244, 53, 16);
+		contentPane.add(textoSade);
 		
-		JLabel lblAnimais = new JLabel("Animais");
-		lblAnimais.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		lblAnimais.setBounds(27, 29, 164, 35);
-		contentPane.add(lblAnimais);
+		JLabel textoAnimais = new JLabel("Animais");
+		textoAnimais.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		textoAnimais.setBounds(27, 29, 164, 35);
+		contentPane.add(textoAnimais);
 		
 		this.botaoVoltar = new JButton("Voltar");
 		botaoVoltar.setBounds(294, 487, 89, 35);
@@ -196,8 +196,15 @@ public class TelaAtualizarAnimais extends JFrame implements ActionListener, List
 			dispose();
 		TelaBuscaAnimais tela = new TelaBuscaAnimais(usuario);
 		tela.setVisible(true);
-			
 		}
 		
+		else if(evento.getSource().equals(botaoRemover)){
+			Animal a =(Animal) lista.getSelectedValue();
+			fachada.removerAnimal(a);
+			JOptionPane.showMessageDialog(null, "Animal removido com sucesso");
+			dispose();
+			TelaAdm tela = new TelaAdm(fachada,usuario);
+			tela.setVisible(true);
+		}
 	}
 }

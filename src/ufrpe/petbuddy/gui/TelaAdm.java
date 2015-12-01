@@ -5,6 +5,7 @@ import java.awt.Color;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JButton;
@@ -12,10 +13,14 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Font;
+import java.util.ArrayList;
 
 import javax.swing.JLabel;
+
+import ufrpe.petbuddy.exceptions.HistException;
 import ufrpe.petbuddy.facade.*;
 import ufrpe.petbuddy.negocio.beans.*;
+import ufrpe.petbuddy.gui.*;
 
 public class TelaAdm extends JFrame implements ActionListener{
 
@@ -27,6 +32,7 @@ public class TelaAdm extends JFrame implements ActionListener{
 	private JButton botaoControleVeterinarios;
 	private JButton botaoSair;
 	private JButton botaoHistoricoCadastro;
+	private JButton botaoAtualizarVeterinarios;
 	private IFachada fachada;
 	private Usuario usuario;
 	 
@@ -76,8 +82,8 @@ public class TelaAdm extends JFrame implements ActionListener{
 		painel.add(botaoCadastroAnimais);
 		
 		JLabel textoAdministrador = new JLabel("Administrador");
-		textoAdministrador.setFont(new Font("Tahoma", Font.PLAIN, 17));
-		textoAdministrador.setBounds(316, 43, 138, 50);
+		textoAdministrador.setFont(new Font("Tahoma", Font.PLAIN, 24));
+		textoAdministrador.setBounds(282, 43, 160, 50);
 		painel.add(textoAdministrador);
 		
 		this.botaoCadastroVeterinario = new JButton("Cadastro Veterin\u00E1rio");
@@ -88,7 +94,7 @@ public class TelaAdm extends JFrame implements ActionListener{
 		
 		this.botaoSair = new JButton("Sair");
 		this.botaoSair.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		this.botaoSair.setBounds(257, 469, 210, 41);
+		this.botaoSair.setBounds(257, 509, 210, 41);
 		botaoSair.addActionListener(this);
 		painel.add(botaoSair);
 		
@@ -110,6 +116,12 @@ public class TelaAdm extends JFrame implements ActionListener{
 		botaoHistoricoCadastro.addActionListener(this);
 		painel.add(botaoHistoricoCadastro);
 		
+		this.botaoAtualizarVeterinarios = new JButton("Atualizar Veterin\u00E1rios");
+		botaoAtualizarVeterinarios.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		botaoAtualizarVeterinarios.setBounds(257, 446, 210, 41);
+		botaoAtualizarVeterinarios.addActionListener(this);
+		painel.add(botaoAtualizarVeterinarios);
+		
 	}
 	public void actionPerformed (ActionEvent evento){
 		if (evento.getSource().equals(this.botaoCadastroAnimais)){
@@ -126,9 +138,19 @@ public class TelaAdm extends JFrame implements ActionListener{
 			tela.setVisible(true);
 		}
 		else if(evento.getSource().equals(botaoHistoricoAdocoes)){
-			dispose();
-			TelaHistoricoAdocoes tela = new TelaHistoricoAdocoes(usuario);
-			tela.setVisible(true);
+			
+			try{
+				ArrayList<Adocao>adocoes = fachada.buscaHistoricoAdocoes();
+				if(adocoes.size()>0){
+					TelaHistoricoAdocoes tela = new TelaHistoricoAdocoes(usuario,adocoes);
+					dispose();
+					tela.setVisible(true);
+				}
+				}
+			catch(HistException h){
+				JOptionPane.showMessageDialog(null, h.getMessage());
+			}
+				
 		}
 		else if(evento.getSource().equals(botaoAtualizarAnimais)){
 			dispose();
@@ -139,12 +161,27 @@ public class TelaAdm extends JFrame implements ActionListener{
 			TelaListaVeterinarios tela = new TelaListaVeterinarios(usuario);
 			tela.setVisible(true);
 		}else if(evento.getSource().equals(botaoHistoricoCadastro)){
-			dispose();
-			TelaHistoricoCadastro tela = new TelaHistoricoCadastro(usuario);
-			tela.setVisible(true);
+			try{
+				ArrayList<Animal>animais = fachada.listarAnimais();
+				dispose();
+				TelaHistoricoCadastro tela = new TelaHistoricoCadastro(usuario,animais);
+				tela.setVisible(true);
+			}
+			catch(HistException h){
+				JOptionPane.showMessageDialog(null, h.getMessage());
+			}
+		}else if(evento.getSource().equals(botaoAtualizarVeterinarios)){
+				try{
+				ArrayList<Veterinario> vet = fachada.ListarVet();
+				dispose();
+				TelaAtualizarVet tela = new TelaAtualizarVet(fachada,usuario,vet);
+				tela.setVisible(true);
+				}
+				catch(HistException h){
+					JOptionPane.showMessageDialog(null, h.getMessage());
 		}
 		
 			
 		}
-}
+}}
 

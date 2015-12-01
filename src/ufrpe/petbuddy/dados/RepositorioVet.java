@@ -8,7 +8,6 @@ import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-import ufrpe.petbuddy.negocio.*;
 import ufrpe.petbuddy.negocio.beans.Veterinario;
 import ufrpe.petbuddy.exceptions.*;
 
@@ -83,6 +82,25 @@ public class RepositorioVet implements IRepositorioVet, Serializable {
 	}
 
 		}
+	
+	}
+	public void atualizarVeterinario(Veterinario v){
+		loadRepo();
+		for(int i = 0;i<this.veterinarios.size();i++){
+			if(this.veterinarios.get(i).getNumid() == v.getNumid()){
+				this.removerVeterinario(this.veterinarios.get(i));
+				this.cadastrar(v);
+				break;
+						}
+				}
+		}
+	public void removerVeterinario(Veterinario v){ 
+		loadRepo();
+		for(int index = 0; index < veterinarios.size(); index++)
+			if(veterinarios.get(index).getNumid() == v.getNumid()){
+				this.veterinarios.remove(index);
+			}
+		overwriteRepo(this.veterinarios);
 	}
 	
 }

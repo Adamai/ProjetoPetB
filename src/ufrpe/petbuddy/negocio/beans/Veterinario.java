@@ -24,5 +24,12 @@ public class Veterinario extends Usuario implements Serializable {
 	public long getNumid() {
 		return numid;
 	}
+	public String toString(){
+		  return this.nome;
+		 	}
+	public String exibirDados(){
+		 return this.nome;
+		 }
+	
 		
 }

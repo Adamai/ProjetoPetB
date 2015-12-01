@@ -28,6 +28,7 @@ public class TelaHistoricoCadastro extends JFrame implements ActionListener {
 	private JTable table;
 	private IFachada fachada;
 	private JButton botaoVoltar;
+	private ArrayList<Animal>animais;
 
 	/**
 	 * Launch the application.
@@ -48,8 +49,9 @@ public class TelaHistoricoCadastro extends JFrame implements ActionListener {
 	/**
 	 * Create the frame.
 	 */
-	public TelaHistoricoCadastro(Usuario u) {
+	public TelaHistoricoCadastro(Usuario u,ArrayList<Animal> animais) {
 		setTitle("PetBuddy");
+		this.animais = animais;
 		fachada = Fachada.getInstance();
 		this.usuario = u;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -79,7 +81,7 @@ public class TelaHistoricoCadastro extends JFrame implements ActionListener {
 		modelo.addColumn("Idade");
 		modelo.addColumn("Peso");
 		modelo.addColumn("ID");
-		modelo.addColumn("Data Cadastro");
+		modelo.addColumn("Data de Cadastro");
 		
 		table.getColumnModel().getColumn(0).setPreferredWidth(115);
 		table.getColumnModel().getColumn(1).setPreferredWidth(115);
@@ -88,21 +90,16 @@ public class TelaHistoricoCadastro extends JFrame implements ActionListener {
 		table.getColumnModel().getColumn(4).setPreferredWidth(115);
 		table.getColumnModel().getColumn(5).setPreferredWidth(115);
 		
-		try{
-			ArrayList<Animal> animais = fachada.listarAnimais();
-			for(int i =0;i<animais.size();i++){
-				String campo1 = animais.get(i).getNome();
-				String campo2 = animais.get(i).getSexo();
-				int campo3 = animais.get(i).getIdade();
-				double campo4 = animais.get(i).getPeso();
-				long campo5 = animais.get(i).getNumid();
-				String campo6 = animais.get(i).getData();
-				modelo.addRow(new Object[]{campo1,campo2,campo3,campo4,campo5,campo6});
+		for(int i =0;i<animais.size();i++){
+			String campo1 = animais.get(i).getNome();
+			String campo2 = animais.get(i).getSexo();
+			int campo3 = animais.get(i).getIdade();
+			double campo4 = animais.get(i).getPeso();
+			long campo5 = animais.get(i).getNumid();
+			String campo6 = animais.get(i).getData();
+			modelo.addRow(new Object[]{campo1,campo2,campo3,campo4,campo5,campo6});
 			}
-		}
-		catch(HistException h){
-			JOptionPane.showMessageDialog(null, h.getMessage());
-		}
+		
 	}
 	
 	public void actionPerformed(ActionEvent evento){

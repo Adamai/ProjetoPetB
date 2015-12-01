@@ -28,4 +28,7 @@ public class CadastroUsuario implements ICadastroUsuario{
 	public Usuario busca(String login, String senha) throws RepoException{
 		return this.repositorio.buscaLogin(login, senha);
 	}
+	public boolean VerificarLogin( String login){
+		return this.repositorio.VerificarLogin(login);
+	}
 }

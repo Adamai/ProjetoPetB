@@ -235,19 +235,37 @@ public class TelaBuscaAnimais extends JFrame implements ActionListener {
 					TelaPrincipal tela = new TelaPrincipal(fachada);
 					tela.setVisible(true);
 			}if(evento.getSource().equals(botaoBuscarTodos) && (usuario instanceof Pessoa || usuario == null)){
+				try{	
 					buscados = fachada.buscaEspecie(especie);
-					JOptionPane.showMessageDialog(null,especie);
-					JOptionPane.showMessageDialog(null,buscados.size());
-					dispose();
-					TelaResultadoBusca tela = new TelaResultadoBusca(usuario,buscados);
-					tela.setVisible(true);
+						//if(buscados.size()>0){
+						JOptionPane.showMessageDialog(null,especie);
+						JOptionPane.showMessageDialog(null,buscados.size());
+						dispose();
+						TelaResultadoBusca tela = new TelaResultadoBusca(usuario,buscados);
+						tela.setVisible(true);
+					//}
+					//else{
+						//JOptionPane.showMessageDialog(null, "Nenhum animal encontrado");
+					//}
+				}
+				catch(RepoException r){
+					JOptionPane.showMessageDialog(null, r.getMessage());
+				}
 			}if(evento.getSource().equals(botaoBuscarTodos) && usuario instanceof Adm){
-				buscados = fachada.buscaEspecie(especie);
-				JOptionPane.showMessageDialog(null,especie);
-				JOptionPane.showMessageDialog(null,buscados.size());
-				dispose();
-				TelaAtualizarAnimais tela = new TelaAtualizarAnimais(fachada,usuario,buscados);
-				tela.setVisible(true);
+				try{
+					buscados = fachada.buscaEspecie(especie);
+					//if(buscados.size()>0){
+						JOptionPane.showMessageDialog(null,especie);
+						JOptionPane.showMessageDialog(null,buscados.size());
+						dispose();
+						TelaAtualizarAnimais tela = new TelaAtualizarAnimais(fachada,usuario,buscados);
+						tela.setVisible(true);
+					//}
+				}
+				catch(RepoException r){
+					JOptionPane.showMessageDialog(null, r.getMessage());
+				}
+	
 			}
 	}
 	}

@@ -106,9 +106,20 @@ public class Fachada implements IFachada{
 	public ArrayList<Animal> listarAnimais() throws HistException{
 		return cadastroanimal.listarAnimais();
 	}
-	public ArrayList<Animal> buscaEspecie(AnimalEspecie especie){
+	public ArrayList<Animal> buscaEspecie(AnimalEspecie especie)throws RepoException{
 		return cadastroanimal.buscaEspecie(especie);
 	}
 	
-	
+	public void removerAnimal(Animal a){
+		cadastroanimal.removerAnimal(a);
+	}
+	public boolean VerificarLogin( String login){
+		return controlelogin.VerificarLogin(login);
+	}
+	public void atualizarVeterinario(Veterinario v){
+		cadastrovet.atualizarVeterinario(v);
+	}
+	public void removerVeterinario(Veterinario v){
+		cadastrovet.removerVeterinario(v);
+	}
 }

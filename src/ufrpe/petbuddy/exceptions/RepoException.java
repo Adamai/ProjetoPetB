@@ -26,5 +26,8 @@ public class RepoException extends Exception {
 		super("Não foi encontrado nenhuma conta cadastrada com esses dados");
 
 	}
+	public RepoException(){
+		super("Nenhum item cadastrado");
+	}
 	
 }

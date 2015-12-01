@@ -65,10 +65,12 @@ public class TelaLogin extends JFrame implements ActionListener {
 		setContentPane(painel);
 		
 		JLabel textoLogins = new JLabel("Usu\u00E1rio\r\n");
+		textoLogins.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		textoLogins.setBounds(70, 174, 60, 26);
 		painel.add(textoLogins);
 		
 		JLabel textoSenha = new JLabel("Senha");
+		textoSenha.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		textoSenha.setBounds(70, 230, 46, 14);
 		painel.add(textoSenha);
 		
@@ -87,7 +89,7 @@ public class TelaLogin extends JFrame implements ActionListener {
 		painel.add(botaoEfetuarLogin);
 		
 		JLabel textoEntrar = new JLabel("Login");
-		textoEntrar.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		textoEntrar.setFont(new Font("Tahoma", Font.PLAIN, 27));
 		textoEntrar.setBounds(154, 43, 149, 38);
 		painel.add(textoEntrar);
 		

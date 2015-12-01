@@ -1,6 +1,6 @@
 package ufrpe.petbuddy.dados;
 
-import ufrpe.petbuddy.negocio.*;
+
 import ufrpe.petbuddy.negocio.beans.Adm;
 import ufrpe.petbuddy.negocio.beans.Pessoa;
 import ufrpe.petbuddy.negocio.beans.Usuario;
@@ -100,6 +100,20 @@ public class RepositorioUsuarios implements IRepositorioUsuarios, Serializable {
 	}
 
 		}
+	}
+	
+	public boolean VerificarLogin( String login){
+		loadRepo();
+		boolean resultado = true;
+		for(int i = 0; i<usuarios.size(); i++){
+			if(usuarios.get(i) instanceof Pessoa){
+				Pessoa p =(Pessoa) usuarios.get(i);
+				if(p.getLogin().equals(login)){
+					resultado = false;
+				}
+			}
+		}
+		return resultado;
 	}
 	
 	

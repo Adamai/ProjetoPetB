@@ -165,12 +165,16 @@ public class TelaCadastroUsuario extends JFrame implements ActionListener{
 			endereco = campoEndereco.getText();
 			contato = Integer.parseInt(campoTelefone.getText());
 			
-			Pessoa p = new Pessoa(nome,idade,contato,endereco,login,senha);
-			fachada.cadastrarPessoa(p);
-			JOptionPane.showMessageDialog(null, "Cadastro realizado com sucesso");
-			dispose();
-			TelaPrincipal tela = new TelaPrincipal(fachada);
-			tela.setVisible(true);
+			if(fachada.VerificarLogin(login)){
+				Pessoa p = new Pessoa(nome,idade,contato,endereco,login,senha);
+				fachada.cadastrarPessoa(p);
+				JOptionPane.showMessageDialog(null, "Cadastro realizado com sucesso");
+				dispose();
+				TelaPrincipal tela = new TelaPrincipal(fachada);
+				tela.setVisible(true);
+			}
+			else
+				JOptionPane.showMessageDialog(null, "Login indisponível");
 			}
 			catch(NumberFormatException e){
 				JOptionPane.showMessageDialog(null, "dados incorretos");

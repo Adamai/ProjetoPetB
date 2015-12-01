@@ -33,6 +33,7 @@ public class TelaHistoricoAdocoes extends JFrame implements ActionListener{
 	private IFachada fachada;
 	private JButton botaoVoltar;
 	private Usuario usuario;
+	private ArrayList<Adocao>adocoes;
 
 	/**
 	 * Launch the application.
@@ -53,8 +54,9 @@ public class TelaHistoricoAdocoes extends JFrame implements ActionListener{
 	/**
 	 * Create the frame.
 	 */
-	public TelaHistoricoAdocoes(Usuario usuario) {
+	public TelaHistoricoAdocoes(Usuario usuario,ArrayList<Adocao> adocoes) {
 		this.usuario = usuario;
+		this.adocoes = adocoes;
 		fachada = Fachada.getInstance();
 		setTitle("PetBuddy");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -93,21 +95,16 @@ public class TelaHistoricoAdocoes extends JFrame implements ActionListener{
 		table.getColumnModel().getColumn(1).setPreferredWidth(115);
 		table.getColumnModel().getColumn(2).setPreferredWidth(115);
 		table.getColumnModel().getColumn(3).setPreferredWidth(115);
-		
-		try{
-			ArrayList<Adocao> adocoes = fachada.buscaHistoricoAdocoes();
-			for(int i =0;i<adocoes.size();i++){
-				String campo1 = adocoes.get(i).getAnimal().getNome();
-				String campo2 = adocoes.get(i).getPessoa().getNome();
-				String campo3 = adocoes.get(i).getData();
-				long campo4 = adocoes.get(i).getNumid();
-				modelo.addRow(new Object[]{campo1,campo2,campo3,campo4});
-			}
+			
+		for(int i =0;i<this.adocoes.size();i++){
+			String campo1 = this.adocoes.get(i).getAnimal().getNome();
+			String campo2 = this.adocoes.get(i).getPessoa().getNome();
+			String campo3 = this.adocoes.get(i).getData();
+			long campo4 = this.adocoes.get(i).getNumid();
+			modelo.addRow(new Object[]{campo1,campo2,campo3,campo4});
+				}
+			
 		}
-		catch(HistException h){
-			JOptionPane.showMessageDialog(null, h.getMessage());
-		}
-	}
 	
 	public void actionPerformed(ActionEvent evento){
 		if(evento.getSource().equals(botaoVoltar)){
