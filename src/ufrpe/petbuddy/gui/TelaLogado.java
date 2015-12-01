@@ -18,7 +18,7 @@ import java.awt.event.ActionEvent;
 public class TelaLogado extends JFrame implements ActionListener{
 
 	private JPanel painel;
-	private JButton botaoBusca, botaoAdotar,botaoSair;
+	private JButton botaoBusca,botaoSair;
 	private IFachada fachada;
 	private Usuario usuario;
 
@@ -55,22 +55,16 @@ public class TelaLogado extends JFrame implements ActionListener{
 		painel.setBackground(new Color(255, 228, 181) );
 		setContentPane(painel);
 		
-		JLabel textoPergunta = new JLabel("O que deseja?");
-		textoPergunta.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		JLabel textoPergunta = new JLabel("Que tal ");
+		textoPergunta.setFont(new Font("Tahoma", Font.PLAIN, 32));
 		textoPergunta.setBounds(342, 89, 127, 65);
 		painel.add(textoPergunta);
 		
-		this.botaoBusca = new JButton("Procurar animais");
-		botaoBusca.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		botaoBusca.setBounds(304, 165, 179, 65);
+		this.botaoBusca = new JButton("Procurar animais?");
+		botaoBusca.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		botaoBusca.setBounds(304, 215, 191, 65);
 		botaoBusca.addActionListener(this);
 		painel.add(botaoBusca);
-		
-		this.botaoAdotar = new JButton("Adotar Animal");
-		botaoAdotar.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		botaoAdotar.setBounds(306, 289, 179, 65);
-		botaoAdotar.addActionListener(this);
-		painel.add(botaoAdotar);
 		
 		this.botaoSair = new JButton("Sair");
 		botaoSair.setFont(new Font("Tahoma", Font.PLAIN, 14));
