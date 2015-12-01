@@ -74,29 +74,38 @@ public class TelaPrincipal extends JFrame implements ActionListener{
 		
 
 		
-		this.botaoCadastro = new JButton("Cadastre-se");
-		this.botaoCadastro.setBounds(322, 308, 164, 58);
-		botaoCadastro.addActionListener(this);
-		painel.add(botaoCadastro);
+
 		
 		try {
+			BufferedImage buttonIcon2 = ImageIO.read(new File("Sprites\\cadastro.gif"));
+			this.botaoCadastro = new JButton(new ImageIcon(buttonIcon2));
+			this.botaoCadastro.setBounds(10, 267, 227, 45);
+			this.botaoCadastro.setBorder(BorderFactory.createEmptyBorder());
+			this.botaoCadastro.setContentAreaFilled(false);
+			botaoCadastro.addActionListener(this);
+			painel.add(botaoCadastro);
+			
+			
 			BufferedImage buttonIcon = ImageIO.read(new File("Sprites\\Login.gif"));
 			this.botaoLogin = new JButton(new ImageIcon(buttonIcon));
-			this.botaoLogin.setBounds(322, 233, 164, 58);
+			this.botaoLogin.setBounds(10, 192, 130, 46);
 			this.botaoLogin.setBorder(BorderFactory.createEmptyBorder());
 			this.botaoLogin.setContentAreaFilled(false);
 			botaoLogin.addActionListener(this);
 			painel.add(botaoLogin);
+			
+			BufferedImage buttonIcon3 = ImageIO.read(new File("Sprites\\buscar animais.gif"));
+			this.botaoBusca = new JButton(new ImageIcon(buttonIcon3));
+			this.botaoBusca.setBounds(10, 342, 383, 47);
+			this.botaoBusca.setBorder(BorderFactory.createEmptyBorder());
+			this.botaoBusca.setContentAreaFilled(false);
+			botaoBusca.addActionListener(this);
+			painel.add(botaoBusca);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 
 		
-		this.botaoBusca = new JButton("Procurar Animais");
-		this.botaoBusca.setBounds(322, 383, 164, 58);
-		//AcaoBotaoBusca actionBusca = new AcaoBotaoBusca();
-		botaoBusca.addActionListener(this);
-		painel.add(botaoBusca);
 		BackgroundImageJFrame();
 	}
 
@@ -122,7 +131,7 @@ public class TelaPrincipal extends JFrame implements ActionListener{
     setLocationRelativeTo(null);
     setDefaultCloseOperation(EXIT_ON_CLOSE);
     setVisible(true);
-    setLayout(new BorderLayout());
+    getContentPane().setLayout(new BorderLayout());
     try {
 	    BufferedImage ibage = ImageIO.read(imagem);		//imagem a ser utilizada
 	    BufferedImage img = new BufferedImage(
@@ -134,7 +143,7 @@ public class TelaPrincipal extends JFrame implements ActionListener{
 	    		,564			//modificar baseado no tamanho da janela(background)
 	    		,null);
 	    JLabel background =new JLabel(new ImageIcon(img));
-	    add(background);
+	    getContentPane().add(background);
 	    background.setLayout(new FlowLayout());
 	} catch (IOException e) {
 		e.printStackTrace();
