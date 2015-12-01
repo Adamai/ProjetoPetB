@@ -58,6 +58,7 @@ public class TelaCadastroVeterinario extends JFrame implements ActionListener{
 		this.fachada = fachada;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 800, 600);
+		setResizable(false);
 		painel = new JPanel();
 		painel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		painel.setLayout(null);

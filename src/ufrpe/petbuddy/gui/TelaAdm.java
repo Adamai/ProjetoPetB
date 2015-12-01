@@ -62,7 +62,7 @@ public class TelaAdm extends JFrame implements ActionListener{
 		setTitle("PetBuddy");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 800, 600);
-		
+		setResizable(false);
 		painel = new JPanel();
 		painel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		painel.setLayout(null);
@@ -157,9 +157,17 @@ public class TelaAdm extends JFrame implements ActionListener{
 			TelaBuscaAnimais tela = new TelaBuscaAnimais(usuario);
 			tela.setVisible(true);
 		} else if(evento.getSource().equals(botaoControleVeterinarios)){
-			dispose();
-			TelaListaVeterinarios tela = new TelaListaVeterinarios(usuario);
-			tela.setVisible(true);
+			try{
+				ArrayList<Veterinario>buscados = fachada.ListarVet();
+				dispose();
+				TelaListaVeterinarios tela = new TelaListaVeterinarios(usuario,buscados);
+				tela.setVisible(true);
+
+			}
+			catch(HistException h){
+				JOptionPane.showMessageDialog(null, h.getMessage());
+			}
+						
 		}else if(evento.getSource().equals(botaoHistoricoCadastro)){
 			try{
 				ArrayList<Animal>animais = fachada.listarAnimais();

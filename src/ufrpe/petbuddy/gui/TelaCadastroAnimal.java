@@ -89,7 +89,8 @@ public class TelaCadastroAnimal extends JFrame implements ActionListener{
 		this.fachada = fachada;
 		setTitle("PetBuddy");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 800, 800);
+		setBounds(100, 100, 800, 600);
+		setResizable(false);
 		painel = new JPanel();
 		painel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		painel.setLayout(null);
@@ -102,150 +103,150 @@ public class TelaCadastroAnimal extends JFrame implements ActionListener{
 		
 		
 		JLabel textoCadastrarAnimal = new JLabel("Cadastrar Animal");
-		textoCadastrarAnimal.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		textoCadastrarAnimal.setBounds(292, 11, 200, 50);
+		textoCadastrarAnimal.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		textoCadastrarAnimal.setBounds(326, 11, 200, 50);
 		painel.add(textoCadastrarAnimal);
 		
 		JLabel textoNome = new JLabel("Nome");
-		textoNome.setBounds(10, 258, 95, 50);
+		textoNome.setBounds(10, 267, 37, 50);
 		painel.add(textoNome);
 		
 		JLabel textoRaca = new JLabel("Ra\u00E7a");
-		textoRaca.setBounds(10, 348, 57, 50);
+		textoRaca.setBounds(10, 328, 37, 50);
 		painel.add(textoRaca);
 		
 		JLabel textoPeso = new JLabel("Peso");
-		textoPeso.setBounds(10, 441, 200, 50);
+		textoPeso.setBounds(10, 389, 37, 37);
 		painel.add(textoPeso);
 		
 		JLabel textoIdade = new JLabel("Idade");
-		textoIdade.setBounds(10, 521, 200, 50);
+		textoIdade.setBounds(10, 437, 37, 50);
 		painel.add(textoIdade);
 		
 		JLabel textoSade = new JLabel("Sa\u00FAde");
-		textoSade.setBounds(10, 615, 200, 50);
+		textoSade.setBounds(355, 363, 48, 50);
 		painel.add(textoSade);
 		
 		JLabel textoTemperamento = new JLabel("Temperamento");
-		textoTemperamento.setBounds(444, 197, 87, 50);
+		textoTemperamento.setBounds(355, 133, 87, 50);
 		painel.add(textoTemperamento);
 		
 		this.radioButtonCalmo = new JRadioButton("Calmo");
 		radioButtonCalmo.setBackground(new Color(255, 228, 181) );
-		radioButtonCalmo.setBounds(633, 211, 109, 23);
+		radioButtonCalmo.setBounds(546, 147, 109, 23);
 		radioButtonCalmo.addActionListener(this);
 		painel.add(radioButtonCalmo);
 		grupo1.add(radioButtonCalmo);
 		
 		this.radioButtonAgitado = new JRadioButton("Agitado");
 		radioButtonAgitado.setBackground(new Color(255, 228, 181) );
-		radioButtonAgitado.setBounds(535, 211, 95, 23);
+		radioButtonAgitado.setBounds(448, 147, 95, 23);
 		radioButtonAgitado.addActionListener(this);
 		painel.add(radioButtonAgitado);
 		grupo1.add(radioButtonAgitado);
 		
 		JLabel textoSexo = new JLabel("Sexo");
-		textoSexo.setBounds(454, 72, 57, 50);
+		textoSexo.setBounds(355, 72, 57, 50);
 		painel.add(textoSexo);
 		
 		this.radioButtonMacho = new JRadioButton("Macho");
 		radioButtonMacho.setBackground(new Color(255, 228, 181) );
-		radioButtonMacho.setBounds(504, 86, 109, 23);
+		radioButtonMacho.setBounds(459, 86, 67, 23);
 		radioButtonMacho.addActionListener(this);
 		painel.add(radioButtonMacho);
 		grupo2.add(radioButtonMacho);
 		
 		this.radioButtonFemea = new JRadioButton("F\u00EAmea");
 		radioButtonFemea.setBackground(new Color(255, 228, 181) );
-		radioButtonFemea.setBounds(615, 86, 109, 23);
+		radioButtonFemea.setBounds(546, 86, 72, 23);
 		radioButtonFemea.addActionListener(this);
 		painel.add(radioButtonFemea);
 		grupo2.add(radioButtonFemea);
 		
-		JLabel textoVeterinrio = new JLabel("Veterin\u00E1rio");
-		textoVeterinrio.setBounds(444, 133, 67, 50);
+		JLabel textoVeterinrio = new JLabel("ID Vet");
+		textoVeterinrio.setBounds(10, 498, 67, 50);
 		painel.add(textoVeterinrio);
 		
 		JLabel textoEspecie = new JLabel("Esp\u00E9cie");
-		textoEspecie.setBounds(444, 258, 133, 29);
+		textoEspecie.setBounds(354, 199, 133, 29);
 		painel.add(textoEspecie);
 		
 		this.radioButtonCachorro = new JRadioButton("Cachorro");
 		radioButtonCachorro.setBackground(new Color(255, 228, 181) );
-		radioButtonCachorro.setBounds(468, 294, 109, 23);
+		radioButtonCachorro.setBounds(378, 235, 109, 23);
 		radioButtonCachorro.addActionListener(this);
 		painel.add(radioButtonCachorro);
 		grupo3.add(radioButtonCachorro);
 		
 		this.radioButtonGato = new JRadioButton("Gato");
 		radioButtonGato.setBackground(new Color(255, 228, 181) );
-		radioButtonGato.setBounds(468, 339, 109, 23);
+		radioButtonGato.setBounds(378, 280, 109, 23);
 		radioButtonGato.addActionListener(this);
 		painel.add(radioButtonGato);
 		grupo3.add(radioButtonGato);
 		
 		this.radioButtonAve = new JRadioButton("Ave");
 		radioButtonAve.setBackground(new Color(255, 228, 181) );
-		radioButtonAve.setBounds(468, 380, 109, 23);
+		radioButtonAve.setBounds(378, 321, 109, 23);
 		radioButtonAve.addActionListener(this);
 		painel.add(radioButtonAve);
 		grupo3.add(radioButtonAve);
 		
 		this.radioButtonRoedor = new JRadioButton("Roedor");
 		radioButtonRoedor.setBackground(new Color(255, 228, 181) );
-		radioButtonRoedor.setBounds(633, 339, 109, 23);
+		radioButtonRoedor.setBounds(528, 280, 72, 23);
 		radioButtonRoedor.addActionListener(this);
 		painel.add(radioButtonRoedor);
 		grupo3.add(radioButtonRoedor);
 		
 		this.radioButtonReptil = new JRadioButton("R\u00E9ptil");
 		radioButtonReptil.setBackground(new Color(255, 228, 181) );
-		radioButtonReptil.setBounds(633, 294, 109, 23);
+		radioButtonReptil.setBounds(528, 235, 57, 23);
 		radioButtonReptil.addActionListener(this);
 		painel.add(radioButtonReptil);
 		grupo3.add(radioButtonReptil);
 		
 		
 		campoNome = new JTextField();
-		campoNome.setBounds(31, 299, 207, 28);
+		campoNome.setBounds(57, 279, 207, 28);
 		painel.add(campoNome);
 		campoNome.setColumns(10);
 		
 		campoRaca = new JTextField();
-		campoRaca.setBounds(31, 381, 207, 28);
+		campoRaca.setBounds(57, 339, 207, 28);
 		painel.add(campoRaca);
 		campoRaca.setColumns(10);
 		
 		campoPeso = new JTextField();
 		campoPeso.setText("");
-		campoPeso.setBounds(31, 474, 207, 28);
+		campoPeso.setBounds(57, 393, 207, 28);
 		painel.add(campoPeso);
 		campoPeso.setColumns(10);
 		
 		campoIdade = new JTextField();
-		campoIdade.setBounds(31, 560, 207, 28);
+		campoIdade.setBounds(57, 448, 207, 28);
 		painel.add(campoIdade);
 		campoIdade.setColumns(10);
 		
 		campoVeterinario = new JTextField();
-		campoVeterinario.setBounds(515, 144, 200, 29);
+		campoVeterinario.setBounds(87, 509, 177, 29);
 		painel.add(campoVeterinario);
 		campoVeterinario.setColumns(10);
 		
 		this.editorSaude = new JEditorPane();
-		editorSaude.setBounds(31, 656, 207, 67);
+		editorSaude.setBounds(401, 375, 207, 67);
 		painel.add(editorSaude);
 		
 		this.botaoCadastrar = new JButton("Cadastrar");
 		botaoCadastrar.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		botaoCadastrar.setBounds(574, 649, 200, 50);
+		botaoCadastrar.setBounds(514, 477, 200, 50);
 		botaoCadastrar.addActionListener(this);
 		painel.add(botaoCadastrar);
 		
 		
 		this.botaoVoltar = new JButton("Voltar");
 		botaoVoltar.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		botaoVoltar.setBounds(404, 649, 127, 50);
+		botaoVoltar.setBounds(355, 477, 127, 50);
 		botaoVoltar.addActionListener(this);
 		painel.add(botaoVoltar);
 		

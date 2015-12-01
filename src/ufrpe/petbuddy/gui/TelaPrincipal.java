@@ -13,6 +13,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import ufrpe.petbuddy.facade.*;
 import javax.swing.ImageIcon;
+import java.awt.Toolkit;
 
 public class TelaPrincipal extends JFrame implements ActionListener{
 
@@ -41,10 +42,12 @@ public class TelaPrincipal extends JFrame implements ActionListener{
 	 * Create the frame.
 	 */
 	public TelaPrincipal(IFachada fachada) {
+		setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\DELL\\Desktop\\ProjetoPetB\\Fotos\\sai.jpg"));
 
 		this.fachada = fachada;		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 800, 600);
+		setResizable(false);
 		painel = new JPanel();
 		painel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		painel.setLayout(null);

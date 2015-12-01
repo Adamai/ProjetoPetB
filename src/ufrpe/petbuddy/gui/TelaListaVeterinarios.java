@@ -27,6 +27,7 @@ public class TelaListaVeterinarios extends JFrame implements ActionListener{
 	private JButton botaoVoltar;
 	private IFachada fachada;
 	private Usuario usuario;
+	private ArrayList<Veterinario>veterinarios;
 
 	/**
 	 * Launch the application.
@@ -47,9 +48,9 @@ public class TelaListaVeterinarios extends JFrame implements ActionListener{
 	/**
 	 * Create the frame.
 	 */
-	public TelaListaVeterinarios(Usuario usuario) {
+	public TelaListaVeterinarios(Usuario usuario,ArrayList<Veterinario> buscados) {
 		this.usuario = usuario;
-		this.fachada = Fachada.getInstance();
+		this.veterinarios = buscados;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 800, 600);
 		painel = new JPanel();
@@ -80,18 +81,13 @@ public class TelaListaVeterinarios extends JFrame implements ActionListener{
 		table.getColumnModel().getColumn(1).setPreferredWidth(115);
 		table.getColumnModel().getColumn(2).setPreferredWidth(115);
 		
-		try{
-			ArrayList<Veterinario> veterinarios = fachada.ListarVet();
-			for(int i =0;i<veterinarios.size();i++){
+		
+			for(int i =0;i< this.veterinarios.size();i++){
 				String campo1 = veterinarios.get(i).getNome();
 				long campo2 = veterinarios.get(i).getContato();
 				long campo3 = veterinarios.get(i).getNumid();
 				modelo.addRow(new Object[]{campo1,campo2,campo3});
 			}
-		}
-		catch(HistException h){
-			JOptionPane.showMessageDialog(null, h.getMessage());
-		}
 		
 	}
 	
