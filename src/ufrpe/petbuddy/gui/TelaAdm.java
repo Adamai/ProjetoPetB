@@ -87,7 +87,7 @@ public class TelaAdm extends JFrame implements ActionListener{
 		try {
 			buttonIcon = ImageIO.read(new File("Sprites\\historico adocoes.gif"));
 			this.botaoHistoricoAdocoes = new JButton(new ImageIcon(buttonIcon));
-			this.botaoHistoricoAdocoes.setBounds(10, 98, 465, 47);
+			this.botaoHistoricoAdocoes.setBounds(10, 97, 350, 35);
 			this.botaoHistoricoAdocoes.setBorder(BorderFactory.createEmptyBorder());
 			this.botaoHistoricoAdocoes.setContentAreaFilled(false);
 			botaoHistoricoAdocoes.addActionListener(this);
@@ -95,7 +95,7 @@ public class TelaAdm extends JFrame implements ActionListener{
 			
 			BufferedImage buttonIcon3 = ImageIO.read(new File("Sprites\\cadastro animais.gif"));
 			this.botaoCadastroAnimais = new JButton(new ImageIcon(buttonIcon3));
-			this.botaoCadastroAnimais.setBounds(10, 270, 441, 47);
+			this.botaoCadastroAnimais.setBounds(10, 330, 331, 35);
 			this.botaoCadastroAnimais.setBorder(BorderFactory.createEmptyBorder());
 			this.botaoCadastroAnimais.setContentAreaFilled(false);
 			botaoCadastroAnimais.addActionListener(this);
@@ -103,7 +103,7 @@ public class TelaAdm extends JFrame implements ActionListener{
 			
 			BufferedImage buttonIcon4 = ImageIO.read(new File("Sprites\\cadastro veterinario.gif"));
 			this.botaoCadastroVeterinario = new JButton(new ImageIcon(buttonIcon4));
-			this.botaoCadastroVeterinario.setBounds(10, 502, 548, 45);
+			this.botaoCadastroVeterinario.setBounds(10, 388, 437, 35);
 			this.botaoCadastroVeterinario.setBorder(BorderFactory.createEmptyBorder());
 			this.botaoCadastroVeterinario.setContentAreaFilled(false);
 			botaoCadastroVeterinario.addActionListener(this);
@@ -119,7 +119,7 @@ public class TelaAdm extends JFrame implements ActionListener{
 			
 			BufferedImage buttonIcon5 = ImageIO.read(new File("Sprites\\atualizar animais.gif"));
 			this.botaoAtualizarAnimais = new JButton(new ImageIcon(buttonIcon5));
-			this.botaoAtualizarAnimais.setBounds(10, 444, 461, 47);
+			this.botaoAtualizarAnimais.setBounds(10, 500, 350, 35);
 			this.botaoAtualizarAnimais.setBorder(BorderFactory.createEmptyBorder());
 			this.botaoAtualizarAnimais.setContentAreaFilled(false);
 			botaoAtualizarAnimais.addActionListener(this);
@@ -127,7 +127,7 @@ public class TelaAdm extends JFrame implements ActionListener{
 			
 			BufferedImage buttonIcon6 = ImageIO.read(new File("Sprites\\historico veterinarios.gif"));
 			this.botaoControleVeterinarios = new JButton(new ImageIcon(buttonIcon6));
-			this.botaoControleVeterinarios.setBounds(10, 328, 581, 47);
+			this.botaoControleVeterinarios.setBounds(10, 271, 437, 35);
 			this.botaoControleVeterinarios.setBorder(BorderFactory.createEmptyBorder());
 			this.botaoControleVeterinarios.setContentAreaFilled(false);
 			botaoControleVeterinarios.addActionListener(this);
@@ -135,7 +135,7 @@ public class TelaAdm extends JFrame implements ActionListener{
 			
 			BufferedImage buttonIcon7 = ImageIO.read(new File("Sprites\\historico animais.gif"));
 			this.botaoHistoricoCadastro = new JButton(new ImageIcon(buttonIcon7));
-			this.botaoHistoricoCadastro.setBounds(10, 156, 445, 47);
+			this.botaoHistoricoCadastro.setBounds(10, 155, 340, 35);
 			this.botaoHistoricoCadastro.setBorder(BorderFactory.createEmptyBorder());
 			this.botaoHistoricoCadastro.setContentAreaFilled(false);
 			botaoHistoricoCadastro.addActionListener(this);
@@ -143,7 +143,7 @@ public class TelaAdm extends JFrame implements ActionListener{
 			
 			BufferedImage buttonIcon8 = ImageIO.read(new File("Sprites\\atualizar veterinarios.gif"));
 			this.botaoAtualizarVeterinarios = new JButton(new ImageIcon(buttonIcon8));
-			this.botaoAtualizarVeterinarios.setBounds(10, 386, 597, 47);
+			this.botaoAtualizarVeterinarios.setBounds(10, 444, 453, 35);
 			this.botaoAtualizarVeterinarios.setBorder(BorderFactory.createEmptyBorder());
 			this.botaoAtualizarVeterinarios.setContentAreaFilled(false);
 			botaoAtualizarVeterinarios.addActionListener(this);
@@ -151,7 +151,7 @@ public class TelaAdm extends JFrame implements ActionListener{
 			
 			BufferedImage buttonIcon9 = ImageIO.read(new File("Sprites\\historico usuario.gif"));
 			this.botaoListaUsuarios = new JButton(new ImageIcon(buttonIcon9));
-			this.botaoListaUsuarios.setBounds(10, 214, 449, 45);
+			this.botaoListaUsuarios.setBounds(10, 213, 350, 35);
 			this.botaoListaUsuarios.setBorder(BorderFactory.createEmptyBorder());
 			this.botaoListaUsuarios.setContentAreaFilled(false);
 			botaoListaUsuarios.addActionListener(this);
