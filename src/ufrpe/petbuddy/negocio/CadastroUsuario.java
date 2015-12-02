@@ -1,5 +1,7 @@
 package ufrpe.petbuddy.negocio;
 
+import java.util.ArrayList;
+
 import ufrpe.petbuddy.dados.*;
 import ufrpe.petbuddy.negocio.beans.Pessoa;
 import ufrpe.petbuddy.negocio.beans.Usuario;
@@ -31,4 +33,8 @@ public class CadastroUsuario implements ICadastroUsuario{
 	public boolean VerificarLogin( String login){
 		return this.repositorio.VerificarLogin(login);
 	}
+	public ArrayList<Usuario> listarUsuarios() throws HistException{
+		return this.repositorio.listarUsuarios();
+	}
+	
 }

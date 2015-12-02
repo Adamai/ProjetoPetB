@@ -122,4 +122,7 @@ public class Fachada implements IFachada{
 	public void removerVeterinario(Veterinario v){
 		cadastrovet.removerVeterinario(v);
 	}
+	public ArrayList<Usuario> listarUsuarios() throws HistException{
+		return cadastrousuario.listarUsuarios();
+	}
 }

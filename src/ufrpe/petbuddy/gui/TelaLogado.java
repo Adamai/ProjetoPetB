@@ -3,15 +3,20 @@ package ufrpe.petbuddy.gui;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.EventQueue;
+import java.awt.Toolkit;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
+
 import java.awt.Font;
+
 import javax.swing.JButton;
+
 import ufrpe.petbuddy.facade.*;
 import ufrpe.petbuddy.negocio.beans.*;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
@@ -47,6 +52,7 @@ public class TelaLogado extends JFrame implements ActionListener{
 		this.usuario = u;
 		
 		setTitle("PetBuddy");
+		setIconImage(Toolkit.getDefaultToolkit().getImage("Sprites\\sai.png"));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 800, 600);
 		setResizable(false);

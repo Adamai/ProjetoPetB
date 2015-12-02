@@ -3,6 +3,7 @@ package ufrpe.petbuddy.gui;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.EventQueue;
+import java.awt.Toolkit;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -56,6 +57,7 @@ public class TelaLogin extends JFrame implements ActionListener {
 		
 		this.fachada = fachada;
 		setTitle("PetBuddy");
+		setIconImage(Toolkit.getDefaultToolkit().getImage("Sprites\\sai.png"));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 800, 600);
 		setResizable(false);

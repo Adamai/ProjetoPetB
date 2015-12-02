@@ -3,6 +3,7 @@ package ufrpe.petbuddy.gui;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.EventQueue;
+import java.awt.Toolkit;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -32,6 +33,7 @@ import java.awt.event.ActionListener;
 import ufrpe.petbuddy.facade.*;
 import ufrpe.petbuddy.negocio.beans.*;
 import ufrpe.petbuddy.exceptions.*;
+
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.awt.image.BufferedImage;
@@ -42,7 +44,9 @@ import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.nio.file.Files;
 import java.util.Scanner;
+
 import static java.nio.file.StandardCopyOption.*;
+
 import javax.swing.ImageIcon;
 
 public class TelaCadastroAnimal extends JFrame implements ActionListener{
@@ -88,6 +92,7 @@ public class TelaCadastroAnimal extends JFrame implements ActionListener{
 		this.usuario = usuario;
 		this.fachada = fachada;
 		setTitle("PetBuddy");
+		setIconImage(Toolkit.getDefaultToolkit().getImage("Sprites\\sai.png"));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 800, 600);
 		setResizable(false);

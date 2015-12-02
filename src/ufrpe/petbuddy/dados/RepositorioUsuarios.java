@@ -116,6 +116,13 @@ public class RepositorioUsuarios implements IRepositorioUsuarios, Serializable {
 		return resultado;
 	}
 	
+	public ArrayList<Usuario> listarUsuarios() throws HistException{
+		loadRepo();
+		if(usuarios.size()>0){
+			return this.usuarios;
+		}
+		else
+			throw new HistException();	}
 	
 	
 }

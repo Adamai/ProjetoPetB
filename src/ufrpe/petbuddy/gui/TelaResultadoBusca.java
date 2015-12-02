@@ -4,6 +4,7 @@ package ufrpe.petbuddy.gui;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.EventQueue;
+import java.awt.Toolkit;
 
 import javax.swing.DefaultListModel;
 import javax.swing.JFrame;
@@ -71,6 +72,7 @@ public class TelaResultadoBusca extends JFrame implements ActionListener,ListSel
 	public TelaResultadoBusca(Usuario u,ArrayList<Animal>resultado) {
 		fachada = Fachada.getInstance();
 		usuario = u;
+		setIconImage(Toolkit.getDefaultToolkit().getImage("Sprites\\sai.png"));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 800, 600);
 		setResizable(false);

@@ -10,26 +10,26 @@ import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 
-import ufrpe.petbuddy.exceptions.HistException;
 import ufrpe.petbuddy.facade.Fachada;
 import ufrpe.petbuddy.facade.IFachada;
-import ufrpe.petbuddy.negocio.beans.*;
+import ufrpe.petbuddy.negocio.beans.Pessoa;
+import ufrpe.petbuddy.negocio.beans.Usuario;
 
-public class TelaHistoricoCadastro extends JFrame implements ActionListener {
+public class TelaListaUsuarios extends JFrame implements ActionListener{
 
 	private JPanel painel;
 	private Usuario usuario;
 	private JTable table;
 	private IFachada fachada;
 	private JButton botaoVoltar;
-	private ArrayList<Animal>animais;
+	private ArrayList<Usuario>usuarios;
+
 
 	/**
 	 * Launch the application.
@@ -38,7 +38,7 @@ public class TelaHistoricoCadastro extends JFrame implements ActionListener {
 	//	EventQueue.invokeLater(new Runnable() {
 	//		public void run() {
 	//			try {
-	//				TelaHistoricoCadastro frame = new TelaHistoricoCadastro();
+	//				TelaListaUsuarios frame = new TelaListaUsuarios();
 	//				frame.setVisible(true);
 	//			} catch (Exception e) {
 	//				e.printStackTrace();
@@ -47,12 +47,13 @@ public class TelaHistoricoCadastro extends JFrame implements ActionListener {
 	//	});
 	//}
 
+
 	/**
 	 * Create the frame.
 	 */
-	public TelaHistoricoCadastro(Usuario u,ArrayList<Animal> animais) {
+	public TelaListaUsuarios(Usuario u,ArrayList<Usuario>usuarios) {
 		setTitle("PetBuddy");
-		this.animais = animais;
+		this.usuarios = usuarios;
 		fachada = Fachada.getInstance();
 		this.usuario = u;
 		setIconImage(Toolkit.getDefaultToolkit().getImage("Sprites\\sai.png"));
@@ -80,27 +81,26 @@ public class TelaHistoricoCadastro extends JFrame implements ActionListener {
 		painel.add(botaoVoltar);
 		
 		modelo.addColumn("Nome");
-		modelo.addColumn("Sexo");
 		modelo.addColumn("Idade");
-		modelo.addColumn("Peso");
-		modelo.addColumn("ID");
-		modelo.addColumn("Data de Cadastro");
+		modelo.addColumn("Email");
+		modelo.addColumn("Contato");
+		modelo.addColumn("Endereço");
 		
 		table.getColumnModel().getColumn(0).setPreferredWidth(115);
 		table.getColumnModel().getColumn(1).setPreferredWidth(115);
 		table.getColumnModel().getColumn(2).setPreferredWidth(115);
 		table.getColumnModel().getColumn(3).setPreferredWidth(115);
 		table.getColumnModel().getColumn(4).setPreferredWidth(115);
-		table.getColumnModel().getColumn(5).setPreferredWidth(115);
+	
 		
-		for(int i =0;i<animais.size();i++){
-			String campo1 = animais.get(i).getNome();
-			String campo2 = animais.get(i).getSexo();
-			int campo3 = animais.get(i).getIdade();
-			double campo4 = animais.get(i).getPeso();
-			long campo5 = animais.get(i).getNumid();
-			String campo6 = animais.get(i).getData();
-			modelo.addRow(new Object[]{campo1,campo2,campo3,campo4,campo5,campo6});
+		for(int i =0;i<usuarios.size();i++){
+			Pessoa p = (Pessoa)usuarios.get(i);
+			String campo1 = p.getNome();
+			int campo2 = p.getIdade();
+			String campo3 = p.getEmail();
+			long campo4 = p.getContato();
+			String campo5 = p.getEndereco();
+			modelo.addRow(new Object[]{campo1,campo2,campo3,campo4,campo5});
 			}
 		
 	}
@@ -114,5 +114,5 @@ public class TelaHistoricoCadastro extends JFrame implements ActionListener {
 	}
 	
 	
-	
+
 }

@@ -31,4 +31,5 @@ public interface IFachada {
 	public boolean VerificarLogin( String login);
 	public void atualizarVeterinario(Veterinario v);
 	public void removerVeterinario(Veterinario v);
+	ArrayList<Usuario> listarUsuarios() throws HistException;
 }
