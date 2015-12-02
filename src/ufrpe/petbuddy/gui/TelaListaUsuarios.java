@@ -28,6 +28,7 @@ import ufrpe.petbuddy.facade.Fachada;
 import ufrpe.petbuddy.facade.IFachada;
 import ufrpe.petbuddy.negocio.beans.Pessoa;
 import ufrpe.petbuddy.negocio.beans.Usuario;
+import java.awt.Font;
 
 public class TelaListaUsuarios extends JFrame implements ActionListener{
 
@@ -37,6 +38,7 @@ public class TelaListaUsuarios extends JFrame implements ActionListener{
 	private IFachada fachada = Fachada.getInstance();
 	private JButton botaoVoltar;
 	private ArrayList<Usuario>users;
+	private JLabel lblNewLabel;
 
 
 	/**
@@ -90,6 +92,12 @@ public class TelaListaUsuarios extends JFrame implements ActionListener{
 			this.botaoVoltar.setContentAreaFilled(false);
 			botaoVoltar.addActionListener(this);
 			painel.add(botaoVoltar);
+			
+			lblNewLabel = new JLabel("Hist\u00F3rico de Usu\u00E1rios");
+			lblNewLabel.setForeground(new Color(139, 69, 19));
+			lblNewLabel.setFont(new Font("Segoe Script", Font.PLAIN, 19));
+			lblNewLabel.setBounds(44, 37, 230, 26);
+			painel.add(lblNewLabel);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

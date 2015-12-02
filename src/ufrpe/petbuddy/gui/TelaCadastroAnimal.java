@@ -109,35 +109,43 @@ public class TelaCadastroAnimal extends JFrame implements ActionListener{
 		
 		
 		JLabel textoCadastrarAnimal = new JLabel("Cadastrar Animal");
-		textoCadastrarAnimal.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		textoCadastrarAnimal.setForeground(new Color(139, 69, 19));
+		textoCadastrarAnimal.setFont(new Font("Segoe Script", Font.PLAIN, 20));
 		textoCadastrarAnimal.setBounds(326, 11, 200, 50);
 		painel.add(textoCadastrarAnimal);
 		
 		JLabel textoNome = new JLabel("Nome");
-		textoNome.setBounds(10, 267, 37, 50);
+		textoNome.setFont(new Font("Segoe Script", Font.BOLD, 11));
+		textoNome.setBounds(10, 266, 37, 50);
 		painel.add(textoNome);
 		
 		JLabel textoRaca = new JLabel("Ra\u00E7a");
+		textoRaca.setFont(new Font("Segoe Script", Font.BOLD, 11));
 		textoRaca.setBounds(10, 328, 37, 50);
 		painel.add(textoRaca);
 		
 		JLabel textoPeso = new JLabel("Peso");
+		textoPeso.setFont(new Font("Segoe Script", Font.BOLD, 11));
 		textoPeso.setBounds(10, 389, 37, 37);
 		painel.add(textoPeso);
 		
 		JLabel textoIdade = new JLabel("Idade");
+		textoIdade.setFont(new Font("Segoe Script", Font.BOLD, 11));
 		textoIdade.setBounds(10, 437, 37, 50);
 		painel.add(textoIdade);
 		
 		JLabel textoSade = new JLabel("Sa\u00FAde");
+		textoSade.setFont(new Font("Segoe Script", Font.BOLD, 11));
 		textoSade.setBounds(355, 363, 48, 50);
 		painel.add(textoSade);
 		
 		JLabel textoTemperamento = new JLabel("Temperamento");
+		textoTemperamento.setFont(new Font("Segoe Script", Font.BOLD, 11));
 		textoTemperamento.setBounds(355, 133, 87, 50);
 		painel.add(textoTemperamento);
 		
 		this.radioButtonCalmo = new JRadioButton("Calmo");
+		radioButtonCalmo.setFont(new Font("Segoe Script", Font.BOLD, 11));
 		radioButtonCalmo.setContentAreaFilled(false);
 		radioButtonCalmo.setBounds(546, 147, 109, 23);
 		radioButtonCalmo.addActionListener(this);
@@ -145,6 +153,7 @@ public class TelaCadastroAnimal extends JFrame implements ActionListener{
 		grupo1.add(radioButtonCalmo);
 		
 		this.radioButtonAgitado = new JRadioButton("Agitado");
+		radioButtonAgitado.setFont(new Font("Segoe Script", Font.BOLD, 11));
 		radioButtonAgitado.setContentAreaFilled(false);
 		radioButtonAgitado.setBounds(448, 147, 95, 23);
 		radioButtonAgitado.addActionListener(this);
@@ -152,10 +161,12 @@ public class TelaCadastroAnimal extends JFrame implements ActionListener{
 		grupo1.add(radioButtonAgitado);
 		
 		JLabel textoSexo = new JLabel("Sexo");
+		textoSexo.setFont(new Font("Segoe Script", Font.BOLD, 11));
 		textoSexo.setBounds(355, 72, 57, 50);
 		painel.add(textoSexo);
 		
 		this.radioButtonMacho = new JRadioButton("Macho");
+		radioButtonMacho.setFont(new Font("Segoe Script", Font.BOLD, 11));
 		radioButtonMacho.setContentAreaFilled(false);
 		radioButtonMacho.setBounds(459, 86, 67, 23);
 		radioButtonMacho.addActionListener(this);
@@ -163,6 +174,7 @@ public class TelaCadastroAnimal extends JFrame implements ActionListener{
 		grupo2.add(radioButtonMacho);
 		
 		this.radioButtonFemea = new JRadioButton("F\u00EAmea");
+		radioButtonFemea.setFont(new Font("Segoe Script", Font.BOLD, 11));
 		radioButtonFemea.setContentAreaFilled(false);
 		radioButtonFemea.setBounds(546, 86, 72, 23);
 		radioButtonFemea.addActionListener(this);
@@ -170,14 +182,17 @@ public class TelaCadastroAnimal extends JFrame implements ActionListener{
 		grupo2.add(radioButtonFemea);
 		
 		JLabel textoVeterinrio = new JLabel("ID Vet");
+		textoVeterinrio.setFont(new Font("Segoe Script", Font.BOLD, 11));
 		textoVeterinrio.setBounds(10, 498, 67, 50);
 		painel.add(textoVeterinrio);
 		
 		JLabel textoEspecie = new JLabel("Esp\u00E9cie");
+		textoEspecie.setFont(new Font("Segoe Script", Font.BOLD, 11));
 		textoEspecie.setBounds(354, 199, 133, 29);
 		painel.add(textoEspecie);
 		
 		this.radioButtonCachorro = new JRadioButton("Cachorro");
+		radioButtonCachorro.setFont(new Font("Segoe Script", Font.BOLD, 11));
 		radioButtonCachorro.setContentAreaFilled(false);
 		radioButtonCachorro.setBounds(378, 235, 109, 23);
 		radioButtonCachorro.addActionListener(this);
@@ -185,6 +200,7 @@ public class TelaCadastroAnimal extends JFrame implements ActionListener{
 		grupo3.add(radioButtonCachorro);
 		
 		this.radioButtonGato = new JRadioButton("Gato");
+		radioButtonGato.setFont(new Font("Segoe Script", Font.BOLD, 11));
 		radioButtonGato.setContentAreaFilled(false);
 		radioButtonGato.setBounds(378, 280, 109, 23);
 		radioButtonGato.addActionListener(this);
@@ -192,6 +208,7 @@ public class TelaCadastroAnimal extends JFrame implements ActionListener{
 		grupo3.add(radioButtonGato);
 		
 		this.radioButtonAve = new JRadioButton("Ave");
+		radioButtonAve.setFont(new Font("Segoe Script", Font.BOLD, 11));
 		radioButtonAve.setContentAreaFilled(false);
 		radioButtonAve.setBounds(378, 321, 109, 23);
 		radioButtonAve.addActionListener(this);
@@ -199,6 +216,7 @@ public class TelaCadastroAnimal extends JFrame implements ActionListener{
 		grupo3.add(radioButtonAve);
 		
 		this.radioButtonRoedor = new JRadioButton("Roedor");
+		radioButtonRoedor.setFont(new Font("Segoe Script", Font.BOLD, 11));
 		radioButtonRoedor.setContentAreaFilled(false);
 		radioButtonRoedor.setBounds(528, 280, 72, 23);
 		radioButtonRoedor.addActionListener(this);
@@ -206,8 +224,9 @@ public class TelaCadastroAnimal extends JFrame implements ActionListener{
 		grupo3.add(radioButtonRoedor);
 		
 		this.radioButtonReptil = new JRadioButton("R\u00E9ptil");
+		radioButtonReptil.setFont(new Font("Segoe Script", Font.BOLD, 11));
 		radioButtonReptil.setContentAreaFilled(false);
-		radioButtonReptil.setBounds(528, 235, 57, 23);
+		radioButtonReptil.setBounds(528, 235, 72, 23);
 		radioButtonReptil.addActionListener(this);
 		painel.add(radioButtonReptil);
 		grupo3.add(radioButtonReptil);

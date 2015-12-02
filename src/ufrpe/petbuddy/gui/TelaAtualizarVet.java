@@ -120,19 +120,23 @@ public class TelaAtualizarVet extends JFrame implements ActionListener, ListSele
 	contentPane.add(campoIdade);
 	
 	JLabel textoNome = new JLabel("Nome");
-	textoNome.setBounds(446, 89, 53, 16);
+	textoNome.setFont(new Font("Segoe Script", Font.PLAIN, 13));
+	textoNome.setBounds(446, 89, 61, 16);
 	contentPane.add(textoNome);
 	
 	JLabel textoContato = new JLabel("Contato");
-	textoContato.setBounds(446, 140, 53, 16);
+	textoContato.setFont(new Font("Segoe Script", Font.PLAIN, 13));
+	textoContato.setBounds(446, 140, 61, 16);
 	contentPane.add(textoContato);
 	
 	JLabel textoIdade = new JLabel("Idade");
-	textoIdade.setBounds(446, 191, 53, 16);
+	textoIdade.setFont(new Font("Segoe Script", Font.PLAIN, 13));
+	textoIdade.setBounds(446, 191, 61, 16);
 	contentPane.add(textoIdade);
 	
 	JLabel textoVeterinarios = new JLabel("Veterin\u00E1rios");
-	textoVeterinarios.setFont(new Font("Tahoma", Font.PLAIN, 15));
+	textoVeterinarios.setForeground(new Color(139, 69, 19));
+	textoVeterinarios.setFont(new Font("Segoe Script", Font.PLAIN, 19));
 	textoVeterinarios.setBounds(27, 29, 164, 35);
 	contentPane.add(textoVeterinarios);
 	

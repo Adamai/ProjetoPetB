@@ -156,23 +156,28 @@ public class TelaAtualizarAnimais extends JFrame implements ActionListener, List
 		contentPane.add(editorSaude);
 		
 		JLabel lblNome = new JLabel("Nome");
+		lblNome.setFont(new Font("Segoe Script", Font.PLAIN, 13));
 		lblNome.setBounds(446, 89, 53, 16);
 		contentPane.add(lblNome);
 		
 		JLabel textoRaa = new JLabel("Ra\u00E7a");
+		textoRaa.setFont(new Font("Segoe Script", Font.PLAIN, 13));
 		textoRaa.setBounds(446, 140, 53, 16);
 		contentPane.add(textoRaa);
 		
 		JLabel textoIdade = new JLabel("Idade");
+		textoIdade.setFont(new Font("Segoe Script", Font.PLAIN, 13));
 		textoIdade.setBounds(446, 191, 53, 16);
 		contentPane.add(textoIdade);
 		
 		JLabel textoSade = new JLabel("Sa\u00FAde");
+		textoSade.setFont(new Font("Segoe Script", Font.PLAIN, 13));
 		textoSade.setBounds(446, 244, 53, 16);
 		contentPane.add(textoSade);
 		
 		JLabel textoAnimais = new JLabel("Animais");
-		textoAnimais.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		textoAnimais.setForeground(new Color(139, 69, 19));
+		textoAnimais.setFont(new Font("Segoe Script", Font.PLAIN, 19));
 		textoAnimais.setBounds(27, 29, 164, 35);
 		contentPane.add(textoAnimais);
 

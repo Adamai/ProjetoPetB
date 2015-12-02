@@ -29,6 +29,7 @@ import ufrpe.petbuddy.exceptions.HistException;
 import ufrpe.petbuddy.facade.Fachada;
 import ufrpe.petbuddy.facade.IFachada;
 import ufrpe.petbuddy.negocio.beans.*;
+import java.awt.Font;
 
 public class TelaHistoricoCadastro extends JFrame implements ActionListener {
 
@@ -91,6 +92,12 @@ public class TelaHistoricoCadastro extends JFrame implements ActionListener {
 			this.botaoVoltar.setContentAreaFilled(false);
 			botaoVoltar.addActionListener(this);
 			painel.add(botaoVoltar);
+			
+			JLabel lblNewLabel = new JLabel("Hist\u00F3rico de Animais");
+			lblNewLabel.setForeground(new Color(139, 69, 19));
+			lblNewLabel.setFont(new Font("Segoe Script", Font.PLAIN, 19));
+			lblNewLabel.setBounds(44, 25, 233, 25);
+			painel.add(lblNewLabel, BorderLayout.NORTH);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -144,6 +151,4 @@ public class TelaHistoricoCadastro extends JFrame implements ActionListener {
 			e.printStackTrace();
 		}
 		}
-	
-	
 }

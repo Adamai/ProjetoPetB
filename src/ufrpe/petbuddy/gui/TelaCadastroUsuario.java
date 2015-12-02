@@ -76,36 +76,44 @@ public class TelaCadastroUsuario extends JFrame implements ActionListener{
 		setContentPane(contentPane);
 		
 		JLabel textoCadastroUsuario = new JLabel("Cadastro Usu\u00E1rio");
-		textoCadastroUsuario.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		textoCadastroUsuario.setBounds(314, 26, 156, 44);
+		textoCadastroUsuario.setForeground(new Color(139, 69, 19));
+		textoCadastroUsuario.setFont(new Font("Segoe Script", Font.PLAIN, 24));
+		textoCadastroUsuario.setBounds(277, 26, 240, 44);
 		contentPane.add(textoCadastroUsuario);
 		
 		JLabel textoNome = new JLabel("Nome");
-		textoNome.setBounds(42, 271, 46, 14);
+		textoNome.setFont(new Font("Segoe Script", Font.BOLD, 11));
+		textoNome.setBounds(73, 268, 54, 14);
 		contentPane.add(textoNome);
 		
 		JLabel textoEmail = new JLabel("Email");
-		textoEmail.setBounds(42, 331, 46, 14);
+		textoEmail.setFont(new Font("Segoe Script", Font.BOLD, 11));
+		textoEmail.setBounds(73, 328, 54, 14);
 		contentPane.add(textoEmail);
 		
 		JLabel textoTelefone = new JLabel("Telefone");
-		textoTelefone.setBounds(42, 391, 66, 14);
+		textoTelefone.setFont(new Font("Segoe Script", Font.BOLD, 11));
+		textoTelefone.setBounds(73, 391, 54, 14);
 		contentPane.add(textoTelefone);
 		
 		JLabel textoIdade = new JLabel("Idade");
-		textoIdade.setBounds(42, 451, 46, 14);
+		textoIdade.setFont(new Font("Segoe Script", Font.BOLD, 11));
+		textoIdade.setBounds(73, 451, 54, 14);
 		contentPane.add(textoIdade);
 		
 		JLabel textoEndereco = new JLabel("Endere\u00E7o");
-		textoEndereco.setBounds(42, 511, 79, 14);
+		textoEndereco.setFont(new Font("Segoe Script", Font.BOLD, 11));
+		textoEndereco.setBounds(73, 511, 54, 14);
 		contentPane.add(textoEndereco);
 		
 		JLabel textoLogin = new JLabel("Login");
-		textoLogin.setBounds(42, 112, 46, 14);
+		textoLogin.setFont(new Font("Segoe Script", Font.BOLD, 11));
+		textoLogin.setBounds(73, 112, 54, 14);
 		contentPane.add(textoLogin);
 		
 		JLabel textoSenha = new JLabel("Senha");
-		textoSenha.setBounds(42, 172, 46, 14);
+		textoSenha.setFont(new Font("Segoe Script", Font.BOLD, 11));
+		textoSenha.setBounds(73, 169, 54, 14);
 		contentPane.add(textoSenha);
 		
 		campoLogin = new JTextField();
@@ -169,7 +177,8 @@ public class TelaCadastroUsuario extends JFrame implements ActionListener{
 		contentPane.add(campoConfirma);
 		
 		JLabel lblConfirmeASenha = new JLabel("Confirme a senha");
-		lblConfirmeASenha.setBounds(42, 219, 123, 14);
+		lblConfirmeASenha.setFont(new Font("Segoe Script", Font.BOLD, 11));
+		lblConfirmeASenha.setBounds(54, 216, 111, 14);
 		contentPane.add(lblConfirmeASenha);
 		BackgroundImageJFrame();
 	}

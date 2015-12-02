@@ -78,9 +78,10 @@ public class TelaAdm extends JFrame implements ActionListener{
 		painel.setLayout(null);
 		setContentPane(painel);
 		JLabel textoAdministrador = new JLabel("Administrador");
-		textoAdministrador.setFont(new Font("Tahoma", Font.PLAIN, 24));
-		textoAdministrador.setBounds(328, 11, 160, 50);
-		painel.add(textoAdministrador);
+		textoAdministrador.setForeground(new Color(160, 82, 45));
+		textoAdministrador.setFont(new Font("Segoe Script", Font.PLAIN, 34));
+		textoAdministrador.setBounds(246, 11, 288, 50);
+		painel.add(textoAdministrador, BorderLayout.NORTH);
 		
 		BufferedImage buttonIcon;
 		try {

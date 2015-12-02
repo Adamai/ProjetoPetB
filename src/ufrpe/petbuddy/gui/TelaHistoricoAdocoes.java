@@ -100,8 +100,9 @@ public class TelaHistoricoAdocoes extends JFrame implements ActionListener{
 
 		
 		JLabel lblHistricoDeAdoes = new JLabel("Hist\u00F3rico de Ado\u00E7\u00F5es");
-		lblHistricoDeAdoes.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		lblHistricoDeAdoes.setBounds(44, 11, 183, 56);
+		lblHistricoDeAdoes.setForeground(new Color(139, 69, 19));
+		lblHistricoDeAdoes.setFont(new Font("Segoe Script", Font.PLAIN, 19));
+		lblHistricoDeAdoes.setBounds(46, 21, 226, 56);
 		painel.add(lblHistricoDeAdoes);
 		
 		modelo.addColumn("Animal");

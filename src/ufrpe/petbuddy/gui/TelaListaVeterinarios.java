@@ -28,6 +28,7 @@ import javax.swing.table.DefaultTableModel;
 import ufrpe.petbuddy.exceptions.HistException;
 import ufrpe.petbuddy.negocio.beans.*;
 import ufrpe.petbuddy.facade.*;
+import java.awt.Font;
 
 public class TelaListaVeterinarios extends JFrame implements ActionListener{
 
@@ -63,6 +64,7 @@ public class TelaListaVeterinarios extends JFrame implements ActionListener{
 		this.veterinarios = buscados;
 		setIconImage(Toolkit.getDefaultToolkit().getImage("Sprites\\sai.png"));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setResizable(false);
 		setBounds(100, 100, 800, 600);
 		painel = new JPanel();
 		painel.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -87,6 +89,12 @@ public class TelaListaVeterinarios extends JFrame implements ActionListener{
 			this.botaoVoltar.setContentAreaFilled(false);
 			botaoVoltar.addActionListener(this);
 			painel.add(botaoVoltar);
+			
+			JLabel lblNewLabel = new JLabel("Hist\u00F3rico de Veterin\u00E1rios");
+			lblNewLabel.setForeground(new Color(139, 69, 19));
+			lblNewLabel.setFont(new Font("Segoe Script", Font.PLAIN, 19));
+			lblNewLabel.setBounds(59, 36, 268, 22);
+			painel.add(lblNewLabel);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -133,5 +141,4 @@ public class TelaListaVeterinarios extends JFrame implements ActionListener{
 			e.printStackTrace();
 		}
 		}
-	
 	}

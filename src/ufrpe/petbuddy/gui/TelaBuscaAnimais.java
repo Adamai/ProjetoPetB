@@ -86,12 +86,12 @@ public class TelaBuscaAnimais extends JFrame implements ActionListener {
 		this.grupo = new ButtonGroup();
 		
 		JLabel textoInsiraOsDados = new JLabel("Insira os dados referentes ao tipo de animal que esta procurando");
-		textoInsiraOsDados.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		textoInsiraOsDados.setBounds(59, 62, 452, 46);
+		textoInsiraOsDados.setFont(new Font("Segoe Script", Font.PLAIN, 17));
+		textoInsiraOsDados.setBounds(138, 63, 602, 46);
 		painel.add(textoInsiraOsDados);
 		
 		JLabel textoRaca = new JLabel("Ra\u00E7a");
-		textoRaca.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		textoRaca.setFont(new Font("Segoe Script", Font.PLAIN, 13));
 		textoRaca.setBounds(42, 233, 43, 30);
 		painel.add(textoRaca);
 		
@@ -102,7 +102,7 @@ public class TelaBuscaAnimais extends JFrame implements ActionListener {
 		
 		this.radioButtonCachorro = new JRadioButton("Cachorro");
 		radioButtonCachorro.setContentAreaFilled(false);
-		radioButtonCachorro.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		radioButtonCachorro.setFont(new Font("Segoe Script", Font.PLAIN, 13));
 		radioButtonCachorro.setBounds(39, 156, 109, 23);
 		radioButtonCachorro.addActionListener(this);
 		painel.add(radioButtonCachorro);
@@ -110,7 +110,7 @@ public class TelaBuscaAnimais extends JFrame implements ActionListener {
 		
 		this.radioButtonGato = new JRadioButton("Gato");
 		radioButtonGato.setContentAreaFilled(false);
-		radioButtonGato.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		radioButtonGato.setFont(new Font("Segoe Script", Font.PLAIN, 13));
 		radioButtonGato.setBounds(187, 156, 109, 23);
 		radioButtonGato.addActionListener(this);
 		painel.add(radioButtonGato);
@@ -118,7 +118,7 @@ public class TelaBuscaAnimais extends JFrame implements ActionListener {
 		
 		this.radioButtonReptil = new JRadioButton("Reptil");
 		radioButtonReptil.setContentAreaFilled(false);
-		radioButtonReptil.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		radioButtonReptil.setFont(new Font("Segoe Script", Font.PLAIN, 13));
 		radioButtonReptil.setBounds(483, 156, 109, 23);
 		radioButtonReptil.addActionListener(this);
 		painel.add(radioButtonReptil);
@@ -126,7 +126,7 @@ public class TelaBuscaAnimais extends JFrame implements ActionListener {
 		
 		this.radioButtonRoedor = new JRadioButton("Roedor");
 		radioButtonRoedor.setContentAreaFilled(false);
-		radioButtonRoedor.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		radioButtonRoedor.setFont(new Font("Segoe Script", Font.PLAIN, 13));
 		radioButtonRoedor.setBounds(631, 156, 109, 23);
 		radioButtonRoedor.addActionListener(this);
 		painel.add(radioButtonRoedor);
@@ -134,7 +134,7 @@ public class TelaBuscaAnimais extends JFrame implements ActionListener {
 		
 		this.radioButtonAve = new JRadioButton("Ave");
 		radioButtonAve.setContentAreaFilled(false);
-		radioButtonAve.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		radioButtonAve.setFont(new Font("Segoe Script", Font.PLAIN, 13));
 		radioButtonAve.setBounds(335, 156, 109, 23);
 		radioButtonAve.addActionListener(this);
 		painel.add(radioButtonAve);
@@ -170,14 +170,14 @@ public class TelaBuscaAnimais extends JFrame implements ActionListener {
 		}
 
 		
-		textoBuscarTodos = new JLabel("Buscar todos os animais da esp\u00E9cie selecionada:");
-		textoBuscarTodos.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		textoBuscarTodos.setBounds(221, 442, 285, 14);
+		textoBuscarTodos = new JLabel("Buscar todos os animais da esp\u00E9cie selecionada");
+		textoBuscarTodos.setFont(new Font("Segoe Script", Font.BOLD, 13));
+		textoBuscarTodos.setBounds(419, 442, 352, 14);
 		painel.add(textoBuscarTodos);
 		
-		textoBuscaPorEspcie = new JLabel("Busca por esp\u00E9cie e ra\u00E7a:");
-		textoBuscaPorEspcie.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		textoBuscaPorEspcie.setBounds(357, 365, 191, 14);
+		textoBuscaPorEspcie = new JLabel("Busca por esp\u00E9cie e ra\u00E7a");
+		textoBuscaPorEspcie.setFont(new Font("Segoe Script", Font.BOLD, 13));
+		textoBuscaPorEspcie.setBounds(538, 365, 191, 14);
 		painel.add(textoBuscaPorEspcie);
 		BackgroundImageJFrame();
 	}
@@ -216,7 +216,12 @@ public class TelaBuscaAnimais extends JFrame implements ActionListener {
 				
 				if(evento.getSource().equals(botaoBusca)){
 					try{
-						buscados = fachada.buscaAnimais(raca, especie);
+						if(especie == null){
+							JOptionPane.showMessageDialog(null,"Selecione uma espécie e uma raça");
+							}
+						else {
+							buscados = fachada.buscaAnimais(raca, especie);
+						
 						if(buscados.size()>0 && (usuario instanceof Pessoa || usuario == null)){
 							JOptionPane.showMessageDialog(null,buscados.size() + " Animais encontrados" );
 							dispose();
@@ -231,8 +236,8 @@ public class TelaBuscaAnimais extends JFrame implements ActionListener {
 							JOptionPane.showMessageDialog(null, "Nenhum Animal Encontrado!");
 								}
 					}
+						}
 					
-										
 					catch(NumberFormatException n){
 						JOptionPane.showMessageDialog(null, "Dados Inválidos");
 					}
@@ -269,9 +274,13 @@ public class TelaBuscaAnimais extends JFrame implements ActionListener {
 				}
 				catch(RepoException r){
 					JOptionPane.showMessageDialog(null, r.getMessage());
-				}
+				} 
 			}if(evento.getSource().equals(botaoBuscarTodos) && usuario instanceof Adm){
+				
 				try{
+					if(especie == null){
+						JOptionPane.showMessageDialog(null,"Selecione uma espécie");
+					}
 					buscados = fachada.buscaEspecie(especie);
 					//if(buscados.size()>0){
 						JOptionPane.showMessageDialog(null,especie);
@@ -279,6 +288,7 @@ public class TelaBuscaAnimais extends JFrame implements ActionListener {
 						dispose();
 						TelaAtualizarAnimais tela = new TelaAtualizarAnimais(fachada,usuario,buscados);
 						tela.setVisible(true);
+						
 					//}
 				}
 				catch(RepoException r){

@@ -68,16 +68,11 @@ public class TelaLogado extends JFrame implements ActionListener{
 		painel.setLayout(null);
 		setContentPane(painel);
 		
-		JLabel textoPergunta = new JLabel("Que tal ");
-		textoPergunta.setFont(new Font("Tahoma", Font.PLAIN, 32));
-		textoPergunta.setBounds(342, 89, 127, 65);
-		painel.add(textoPergunta);
-		
 		BufferedImage buttonIcon;
 		try {
 			buttonIcon = ImageIO.read(new File("Sprites\\buscar animais.gif"));
 			this.botaoBusca = new JButton(new ImageIcon(buttonIcon));
-			this.botaoBusca.setBounds(176, 215, 383, 47);
+			this.botaoBusca.setBounds(174, 301, 383, 47);
 			this.botaoBusca.setBorder(BorderFactory.createEmptyBorder());
 			this.botaoBusca.setContentAreaFilled(false);
 			botaoBusca.addActionListener(this);
@@ -85,7 +80,7 @@ public class TelaLogado extends JFrame implements ActionListener{
 			
 			BufferedImage buttonIcon2 = ImageIO.read(new File("Sprites\\Sair.gif"));
 			this.botaoSair = new JButton(new ImageIcon(buttonIcon2));
-			this.botaoSair.setBounds(326, 404, 103, 46);
+			this.botaoSair.setBounds(326, 415, 103, 46);
 			this.botaoSair.setBorder(BorderFactory.createEmptyBorder());
 			this.botaoSair.setContentAreaFilled(false);
 			botaoSair.addActionListener(this);

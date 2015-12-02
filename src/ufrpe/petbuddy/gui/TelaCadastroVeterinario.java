@@ -75,19 +75,23 @@ public class TelaCadastroVeterinario extends JFrame implements ActionListener{
 		setContentPane(painel);
 		
 		JLabel textoCadastroVeterinario = new JLabel("Cadastro Veterin\u00E1rio");
-		textoCadastroVeterinario.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		textoCadastroVeterinario.setBounds(292, 24, 200, 50);
+		textoCadastroVeterinario.setForeground(new Color(139, 69, 19));
+		textoCadastroVeterinario.setFont(new Font("Segoe Script", Font.PLAIN, 19));
+		textoCadastroVeterinario.setBounds(292, 24, 244, 50);
 		painel.add(textoCadastroVeterinario);
 		
 		JLabel textoNome = new JLabel("Nome");
+		textoNome.setFont(new Font("Segoe Script", Font.PLAIN, 13));
 		textoNome.setBounds(56, 82, 56, 50);
 		painel.add(textoNome);
 		
 		JLabel textoTelefone = new JLabel("Telefone");
+		textoTelefone.setFont(new Font("Segoe Script", Font.PLAIN, 13));
 		textoTelefone.setBounds(56, 198, 94, 50);
 		painel.add(textoTelefone);
 		
 		JLabel textoIdade = new JLabel("Idade");
+		textoIdade.setFont(new Font("Segoe Script", Font.PLAIN, 13));
 		textoIdade.setBounds(56, 318, 94, 50);
 		painel.add(textoIdade);
 		
@@ -118,7 +122,7 @@ public class TelaCadastroVeterinario extends JFrame implements ActionListener{
 			
 			BufferedImage buttonIcon2 = ImageIO.read(new File("Sprites\\voltar.gif"));
 			this.botaoVoltar = new JButton(new ImageIcon(buttonIcon2));
-			this.botaoVoltar.setBounds(56, 515, 167, 46);
+			this.botaoVoltar.setBounds(89, 517, 167, 46);
 			this.botaoVoltar.setBorder(BorderFactory.createEmptyBorder());
 			this.botaoVoltar.setContentAreaFilled(false);
 			botaoVoltar.addActionListener(this);

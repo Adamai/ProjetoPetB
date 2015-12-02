@@ -82,6 +82,7 @@ public class TelaResultadoBusca extends JFrame implements ActionListener,ListSel
 	public TelaResultadoBusca(Usuario u,ArrayList<Animal>resultado) {
 		fachada = Fachada.getInstance();
 		usuario = u;
+		setTitle("PetBuddy");
 		setIconImage(Toolkit.getDefaultToolkit().getImage("Sprites\\sai.png"));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 800, 600);
@@ -109,7 +110,7 @@ public class TelaResultadoBusca extends JFrame implements ActionListener,ListSel
 		lista.setLayoutOrientation(JList.VERTICAL);
 		
 		JLabel lblNewLabel = new JLabel("Animais");
-		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblNewLabel.setFont(new Font("Segoe Script", Font.PLAIN, 18));
 		lblNewLabel.setBounds(38, 30, 150, 48);
 		contentPane.add(lblNewLabel);
 		
@@ -152,13 +153,13 @@ public class TelaResultadoBusca extends JFrame implements ActionListener,ListSel
 		this.label.setBounds(261, 89, 207, 174);
 		contentPane.add(label);
 		
-		botaoAdotar.setBounds(524, 446, 141, 56);
+		botaoAdotar.setBounds(524, 446, 167, 56);
 		botaoAdotar.addActionListener(this);
 		botaoAdotar.setEnabled(false);
 		contentPane.add(botaoAdotar);
 		
 
-		//BackgroundImageJFrame();
+		BackgroundImageJFrame();
 	}
 
 	//WRYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY
