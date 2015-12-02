@@ -26,9 +26,9 @@ public class TelaListaUsuarios extends JFrame implements ActionListener{
 	private JPanel painel;
 	private Usuario usuario;
 	private JTable table;
-	private IFachada fachada;
+	private IFachada fachada = Fachada.getInstance();
 	private JButton botaoVoltar;
-	private ArrayList<Usuario>usuarios;
+	private ArrayList<Usuario>users;
 
 
 	/**
@@ -53,8 +53,7 @@ public class TelaListaUsuarios extends JFrame implements ActionListener{
 	 */
 	public TelaListaUsuarios(Usuario u,ArrayList<Usuario>usuarios) {
 		setTitle("PetBuddy");
-		this.usuarios = usuarios;
-		fachada = Fachada.getInstance();
+		this.users = usuarios;
 		this.usuario = u;
 		setIconImage(Toolkit.getDefaultToolkit().getImage("Sprites\\sai.png"));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -93,14 +92,16 @@ public class TelaListaUsuarios extends JFrame implements ActionListener{
 		table.getColumnModel().getColumn(4).setPreferredWidth(115);
 	
 		
-		for(int i =0;i<usuarios.size();i++){
-			Pessoa p = (Pessoa)usuarios.get(i);
-			String campo1 = p.getNome();
-			int campo2 = p.getIdade();
-			String campo3 = p.getEmail();
-			long campo4 = p.getContato();
-			String campo5 = p.getEndereco();
-			modelo.addRow(new Object[]{campo1,campo2,campo3,campo4,campo5});
+		for(int i =0;i<users.size();i++){
+			if(users.get(i) instanceof Pessoa){
+				Pessoa p = (Pessoa)users.get(i);
+				String campo1 = p.getNome();
+				int campo2 = p.getIdade();
+				String campo3 = p.getEmail();
+				long campo4 = p.getContato();
+				String campo5 = p.getEndereco();
+				modelo.addRow(new Object[]{campo1,campo2,campo3,campo4,campo5});
+				}
 			}
 		
 	}

@@ -26,7 +26,7 @@ public class TelaListaVeterinarios extends JFrame implements ActionListener{
 	private JPanel painel;
 	private JTable table;
 	private JButton botaoVoltar;
-	private IFachada fachada;
+	private IFachada fachada = Fachada.getInstance();
 	private Usuario usuario;
 	private ArrayList<Veterinario>veterinarios;
 
