@@ -3,6 +3,7 @@ package ufrpe.petbuddy.gui;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.EventQueue;
+import java.awt.FlowLayout;
 import java.awt.Toolkit;
 
 import javax.swing.JFrame;
@@ -15,10 +16,16 @@ import java.awt.Font;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JPasswordField;
+import javax.imageio.ImageIO;
+import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 
 import ufrpe.petbuddy.exceptions.DadosException;
 import ufrpe.petbuddy.facade.*;
@@ -66,7 +73,6 @@ public class TelaCadastroUsuario extends JFrame implements ActionListener{
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(null);
-		contentPane.setBackground(new Color(255, 228, 181) );
 		setContentPane(contentPane);
 		
 		JLabel textoCadastroUsuario = new JLabel("Cadastro Usu\u00E1rio");
@@ -137,17 +143,25 @@ public class TelaCadastroUsuario extends JFrame implements ActionListener{
 		campoEndereco.setBounds(175, 505, 274, 20);
 		contentPane.add(campoEndereco);
 		
-		this.botaoCadastrar = new JButton("Cadastrar");
-		botaoCadastrar.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		botaoCadastrar.setBounds(560, 370, 156, 58);
-		botaoCadastrar.addActionListener(this);
-		contentPane.add(botaoCadastrar);
-		
-		this.botaoVoltar = new JButton("Voltar");
-		botaoVoltar.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		botaoVoltar.setBounds(575, 456, 127, 44);
-		botaoVoltar.addActionListener(this);
-		contentPane.add(botaoVoltar);
+		try {
+			BufferedImage buttonIcon = ImageIO.read(new File("Sprites\\Cadastrar.gif"));
+			this.botaoCadastrar = new JButton(new ImageIcon(buttonIcon));
+			this.botaoCadastrar.setBounds(304, 404, 255, 46);
+			this.botaoCadastrar.setBorder(BorderFactory.createEmptyBorder());
+			this.botaoCadastrar.setContentAreaFilled(false);
+			botaoCadastrar.addActionListener(this);
+			contentPane.add(botaoCadastrar);
+			
+			BufferedImage buttonIcon2 = ImageIO.read(new File("Sprites\\voltar.gif"));
+			this.botaoVoltar = new JButton(new ImageIcon(buttonIcon2));
+			this.botaoVoltar.setBounds(70, 428, 167, 46);
+			this.botaoVoltar.setBorder(BorderFactory.createEmptyBorder());
+			this.botaoVoltar.setContentAreaFilled(false);
+			botaoVoltar.addActionListener(this);
+			contentPane.add(botaoVoltar);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 		
 		campoConfirma = new JPasswordField();
 		campoConfirma.setColumns(10);
@@ -157,6 +171,7 @@ public class TelaCadastroUsuario extends JFrame implements ActionListener{
 		JLabel lblConfirmeASenha = new JLabel("Confirme a senha");
 		lblConfirmeASenha.setBounds(42, 219, 123, 14);
 		contentPane.add(lblConfirmeASenha);
+		BackgroundImageJFrame();
 	}
 	
 	public void actionPerformed(ActionEvent evento){
@@ -210,4 +225,20 @@ public class TelaCadastroUsuario extends JFrame implements ActionListener{
 			tela.setVisible(true);
 		}
 	}
+	public void BackgroundImageJFrame(){ //usar para mudar background, colocar no final da criação
+	    setLocationRelativeTo(null);
+	    setDefaultCloseOperation(EXIT_ON_CLOSE);
+	    setVisible(true);
+	    getContentPane().setLayout(new BorderLayout());
+	    try {
+		    BufferedImage ibage = ImageIO.read(new File("Sprites\\tcadastro usuario.jpg"));		
+		    BufferedImage img = new BufferedImage(800,600,BufferedImage.TYPE_INT_RGB);
+		    img.getGraphics().drawImage(ibage,0,0,800,600,null);
+		    JLabel background =new JLabel(new ImageIcon(img));
+		    getContentPane().add(background);
+		    background.setLayout(new FlowLayout());
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		}
 }

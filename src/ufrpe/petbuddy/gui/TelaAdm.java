@@ -3,15 +3,22 @@ package ufrpe.petbuddy.gui;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.EventQueue;
+import java.awt.FlowLayout;
 import java.awt.Toolkit;
 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.imageio.ImageIO;
+import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.awt.event.ActionEvent;
 import java.awt.Font;
 import java.util.ArrayList;
@@ -69,68 +76,91 @@ public class TelaAdm extends JFrame implements ActionListener{
 		painel = new JPanel();
 		painel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		painel.setLayout(null);
-		painel.setBackground(new Color(255, 228, 181) );
 		setContentPane(painel);
-		
-		this.botaoHistoricoAdocoes = new JButton("Hist\u00F3rico Ado\u00E7\u00F5es");
-		botaoHistoricoAdocoes.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		botaoHistoricoAdocoes.setBounds(257, 136, 210, 41);
-		botaoHistoricoAdocoes.addActionListener(this);
-		painel.add(botaoHistoricoAdocoes);
-		
-		this.botaoCadastroAnimais = new JButton("Cadastro Animais");
-		this.botaoCadastroAnimais.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		this.botaoCadastroAnimais.setBounds(257, 186, 210, 41);
-		botaoCadastroAnimais.addActionListener(this);
-		painel.add(botaoCadastroAnimais);
-		
 		JLabel textoAdministrador = new JLabel("Administrador");
 		textoAdministrador.setFont(new Font("Tahoma", Font.PLAIN, 24));
 		textoAdministrador.setBounds(282, 43, 160, 50);
 		painel.add(textoAdministrador);
 		
-		this.botaoCadastroVeterinario = new JButton("Cadastro Veterin\u00E1rio");
-		this.botaoCadastroVeterinario.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		this.botaoCadastroVeterinario.setBounds(257, 238, 210, 41);
-		botaoCadastroVeterinario.addActionListener(this);
-		painel.add(botaoCadastroVeterinario);
+		BufferedImage buttonIcon;
+		try {
+			buttonIcon = ImageIO.read(new File("Sprites\\historico adocoes.gif"));
+			this.botaoHistoricoAdocoes = new JButton(new ImageIcon(buttonIcon));
+			this.botaoHistoricoAdocoes.setBounds(304, 404, 465, 47);
+			this.botaoHistoricoAdocoes.setBorder(BorderFactory.createEmptyBorder());
+			this.botaoHistoricoAdocoes.setContentAreaFilled(false);
+			botaoHistoricoAdocoes.addActionListener(this);
+			painel.add(botaoHistoricoAdocoes);
+			
+			BufferedImage buttonIcon3 = ImageIO.read(new File("Sprites\\cadastro animais.gif"));
+			this.botaoCadastroAnimais = new JButton(new ImageIcon(buttonIcon3));
+			this.botaoCadastroAnimais.setBounds(304, 404, 441, 47);
+			this.botaoCadastroAnimais.setBorder(BorderFactory.createEmptyBorder());
+			this.botaoCadastroAnimais.setContentAreaFilled(false);
+			botaoCadastroAnimais.addActionListener(this);
+			painel.add(botaoCadastroAnimais);
+			
+			BufferedImage buttonIcon4 = ImageIO.read(new File("Sprites\\cadastro veterinario.gif"));
+			this.botaoCadastroVeterinario = new JButton(new ImageIcon(buttonIcon4));
+			this.botaoCadastroVeterinario.setBounds(304, 404, 548, 45);
+			this.botaoCadastroVeterinario.setBorder(BorderFactory.createEmptyBorder());
+			this.botaoCadastroVeterinario.setContentAreaFilled(false);
+			botaoCadastroVeterinario.addActionListener(this);
+			painel.add(botaoCadastroVeterinario);
+			
+			BufferedImage buttonIcon2 = ImageIO.read(new File("Sprites\\Sair.gif"));
+			this.botaoSair = new JButton(new ImageIcon(buttonIcon2));
+			this.botaoSair.setBounds(304, 404, 103, 46);
+			this.botaoSair.setBorder(BorderFactory.createEmptyBorder());
+			this.botaoSair.setContentAreaFilled(false);
+			botaoSair.addActionListener(this);
+			painel.add(botaoSair);
+			
+			BufferedImage buttonIcon5 = ImageIO.read(new File("Sprites\\atualizar animais.gif"));
+			this.botaoAtualizarAnimais = new JButton(new ImageIcon(buttonIcon5));
+			this.botaoAtualizarAnimais.setBounds(304, 404, 461, 47);
+			this.botaoAtualizarAnimais.setBorder(BorderFactory.createEmptyBorder());
+			this.botaoAtualizarAnimais.setContentAreaFilled(false);
+			botaoAtualizarAnimais.addActionListener(this);
+			painel.add(botaoAtualizarAnimais);
+			
+			BufferedImage buttonIcon6 = ImageIO.read(new File("Sprites\\historico veterinario.gif"));
+			this.botaoControleVeterinarios = new JButton(new ImageIcon(buttonIcon6));
+			this.botaoControleVeterinarios.setBounds(304, 404, 581, 47);
+			this.botaoControleVeterinarios.setBorder(BorderFactory.createEmptyBorder());
+			this.botaoControleVeterinarios.setContentAreaFilled(false);
+			botaoControleVeterinarios.addActionListener(this);
+			painel.add(botaoControleVeterinarios);
+			
+			BufferedImage buttonIcon7 = ImageIO.read(new File("Sprites\\historico animais.gif"));
+			this.botaoHistoricoCadastro = new JButton(new ImageIcon(buttonIcon7));
+			this.botaoHistoricoCadastro.setBounds(304, 404, 445, 47);
+			this.botaoHistoricoCadastro.setBorder(BorderFactory.createEmptyBorder());
+			this.botaoHistoricoCadastro.setContentAreaFilled(false);
+			botaoHistoricoCadastro.addActionListener(this);
+			painel.add(botaoHistoricoCadastro);
+			
+			BufferedImage buttonIcon8 = ImageIO.read(new File("Sprites\\atualizar veterinarios.gif"));
+			this.botaoAtualizarVeterinarios = new JButton(new ImageIcon(buttonIcon8));
+			this.botaoAtualizarVeterinarios.setBounds(304, 404, 597, 47);
+			this.botaoAtualizarVeterinarios.setBorder(BorderFactory.createEmptyBorder());
+			this.botaoAtualizarVeterinarios.setContentAreaFilled(false);
+			botaoAtualizarVeterinarios.addActionListener(this);
+			painel.add(botaoAtualizarVeterinarios);
+			
+			BufferedImage buttonIcon9 = ImageIO.read(new File("Sprites\\historico usuario.gif"));
+			this.botaoListaUsuarios = new JButton(new ImageIcon(buttonIcon9));
+			this.botaoListaUsuarios.setBounds(304, 404, 449, 45);
+			this.botaoListaUsuarios.setBorder(BorderFactory.createEmptyBorder());
+			this.botaoListaUsuarios.setContentAreaFilled(false);
+			botaoListaUsuarios.addActionListener(this);
+			painel.add(botaoListaUsuarios);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
 		
-		this.botaoSair = new JButton("Sair");
-		this.botaoSair.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		this.botaoSair.setBounds(257, 509, 210, 41);
-		botaoSair.addActionListener(this);
-		painel.add(botaoSair);
-		
-		this.botaoAtualizarAnimais = new JButton("Atualizar Animais");
-		botaoAtualizarAnimais.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		botaoAtualizarAnimais.setBounds(257, 290, 210, 41);
-		botaoAtualizarAnimais.addActionListener(this);
-		painel.add(botaoAtualizarAnimais);
-		
-		this.botaoControleVeterinarios = new JButton("Controle Veterin\u00E1rios");
-		botaoControleVeterinarios.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		botaoControleVeterinarios.setBounds(257, 342, 210, 41);
-		botaoControleVeterinarios.addActionListener(this);
-		painel.add(botaoControleVeterinarios);
-		
-		this.botaoHistoricoCadastro = new JButton("Hist\u00F3rico Animais");
-		botaoHistoricoCadastro.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		botaoHistoricoCadastro.setBounds(257, 394, 210, 41);
-		botaoHistoricoCadastro.addActionListener(this);
-		painel.add(botaoHistoricoCadastro);
-		
-		this.botaoAtualizarVeterinarios = new JButton("Atualizar Veterin\u00E1rios");
-		botaoAtualizarVeterinarios.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		botaoAtualizarVeterinarios.setBounds(257, 446, 210, 41);
-		botaoAtualizarVeterinarios.addActionListener(this);
-		painel.add(botaoAtualizarVeterinarios);
-		
-		this.botaoListaUsuarios = new JButton("Lista Usu\u00E1rios");
-		botaoListaUsuarios.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		botaoListaUsuarios.setBounds(513, 446, 210, 41);
-		botaoListaUsuarios.addActionListener(this);
-		painel.add(botaoListaUsuarios);
-		
+		BackgroundImageJFrame();
 	}
 	public void actionPerformed (ActionEvent evento){
 		if (evento.getSource().equals(this.botaoCadastroAnimais)){
@@ -212,5 +242,21 @@ public class TelaAdm extends JFrame implements ActionListener{
 			}
 		}
 }	
+	public void BackgroundImageJFrame(){ //usar para mudar background, colocar no final da criação
+	    setLocationRelativeTo(null);
+	    setDefaultCloseOperation(EXIT_ON_CLOSE);
+	    setVisible(true);
+	    getContentPane().setLayout(new BorderLayout());
+	    try {
+		    BufferedImage ibage = ImageIO.read(new File("Sprites\\tadm.jpg"));		
+		    BufferedImage img = new BufferedImage(800,600,BufferedImage.TYPE_INT_RGB);
+		    img.getGraphics().drawImage(ibage,0,0,800,600,null);
+		    JLabel background =new JLabel(new ImageIcon(img));
+		    getContentPane().add(background);
+		    background.setLayout(new FlowLayout());
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		}
 }
 

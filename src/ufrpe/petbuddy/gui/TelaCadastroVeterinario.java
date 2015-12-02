@@ -3,6 +3,7 @@ package ufrpe.petbuddy.gui;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.EventQueue;
+import java.awt.FlowLayout;
 import java.awt.Toolkit;
 
 import javax.swing.JFrame;
@@ -14,12 +15,18 @@ import javax.swing.JLabel;
 import java.awt.Font;
 
 import javax.swing.JTextField;
+import javax.imageio.ImageIO;
+import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
 import ufrpe.petbuddy.exceptions.DadosException;
 import ufrpe.petbuddy.facade.*;
 
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.awt.event.ActionEvent;
 
 import ufrpe.petbuddy.negocio.beans.*;
@@ -65,7 +72,6 @@ public class TelaCadastroVeterinario extends JFrame implements ActionListener{
 		painel = new JPanel();
 		painel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		painel.setLayout(null);
-		painel.setBackground(new Color(255, 228, 181) );
 		setContentPane(painel);
 		
 		JLabel textoCadastroVeterinario = new JLabel("Cadastro Veterin\u00E1rio");
@@ -100,18 +106,28 @@ public class TelaCadastroVeterinario extends JFrame implements ActionListener{
 		campoIdade.setBounds(66, 379, 226, 29);
 		painel.add(campoIdade);
 		
-		this.botaoCadastrar = new JButton("Cadastrar");
-		botaoCadastrar.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		botaoCadastrar.setBounds(550, 460, 161, 77);
-		botaoCadastrar.addActionListener(this);
-		painel.add(botaoCadastrar);
+		BufferedImage buttonIcon;
+		try {
+			buttonIcon = ImageIO.read(new File("Sprites\\Cadastrar.gif"));
+			this.botaoCadastrar = new JButton(new ImageIcon(buttonIcon));
+			this.botaoCadastrar.setBounds(304, 404, 255, 46);
+			this.botaoCadastrar.setBorder(BorderFactory.createEmptyBorder());
+			this.botaoCadastrar.setContentAreaFilled(false);
+			botaoCadastrar.addActionListener(this);
+			painel.add(botaoCadastrar);
+			
+			BufferedImage buttonIcon2 = ImageIO.read(new File("Sprites\\voltar.gif"));
+			this.botaoVoltar = new JButton(new ImageIcon(buttonIcon2));
+			this.botaoVoltar.setBounds(70, 428, 167, 46);
+			this.botaoVoltar.setBorder(BorderFactory.createEmptyBorder());
+			this.botaoVoltar.setContentAreaFilled(false);
+			botaoVoltar.addActionListener(this);
+			painel.add(botaoVoltar);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 		
-		this.botaoVoltar = new JButton("Voltar");
-		botaoVoltar.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		botaoVoltar.setBounds(66, 487, 139, 50);
-		botaoVoltar.addActionListener(this);
-		painel.add(botaoVoltar);
-		
+		BackgroundImageJFrame();
 	}
 	
 	public void actionPerformed(ActionEvent evento){
@@ -137,4 +153,20 @@ public class TelaCadastroVeterinario extends JFrame implements ActionListener{
 			tela.setVisible(true);	
 	}
 }
+	public void BackgroundImageJFrame(){ //usar para mudar background, colocar no final da criação
+	    setLocationRelativeTo(null);
+	    setDefaultCloseOperation(EXIT_ON_CLOSE);
+	    setVisible(true);
+	    getContentPane().setLayout(new BorderLayout());
+	    try {
+		    BufferedImage ibage = ImageIO.read(new File("Sprites\\tcadastro vet.jpg"));		
+		    BufferedImage img = new BufferedImage(800,600,BufferedImage.TYPE_INT_RGB);
+		    img.getGraphics().drawImage(ibage,0,0,800,600,null);
+		    JLabel background =new JLabel(new ImageIcon(img));
+		    getContentPane().add(background);
+		    background.setLayout(new FlowLayout());
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		}
 }

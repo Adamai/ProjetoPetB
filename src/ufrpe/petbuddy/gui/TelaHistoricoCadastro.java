@@ -3,13 +3,21 @@ package ufrpe.petbuddy.gui;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.EventQueue;
+import java.awt.FlowLayout;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 
+import javax.imageio.ImageIO;
+import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -74,10 +82,18 @@ public class TelaHistoricoCadastro extends JFrame implements ActionListener {
 		DefaultTableModel modelo = new DefaultTableModel();
 		table.setModel(modelo);
 		
-		this.botaoVoltar = new JButton("Voltar");
-		botaoVoltar.setBounds(44, 481, 168, 53);
-		botaoVoltar.addActionListener(this);
-		painel.add(botaoVoltar);
+		BufferedImage buttonIcon2;
+		try {
+			buttonIcon2 = ImageIO.read(new File("Sprites\\voltar.gif"));
+			this.botaoVoltar = new JButton(new ImageIcon(buttonIcon2));
+			this.botaoVoltar.setBounds(70, 428, 167, 46);
+			this.botaoVoltar.setBorder(BorderFactory.createEmptyBorder());
+			this.botaoVoltar.setContentAreaFilled(false);
+			botaoVoltar.addActionListener(this);
+			painel.add(botaoVoltar);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 		
 		modelo.addColumn("Nome");
 		modelo.addColumn("Sexo");
@@ -102,7 +118,7 @@ public class TelaHistoricoCadastro extends JFrame implements ActionListener {
 			String campo6 = animais.get(i).getData();
 			modelo.addRow(new Object[]{campo1,campo2,campo3,campo4,campo5,campo6});
 			}
-		
+		BackgroundImageJFrame();
 	}
 	
 	public void actionPerformed(ActionEvent evento){
@@ -112,7 +128,22 @@ public class TelaHistoricoCadastro extends JFrame implements ActionListener {
 			tela.setVisible(true);
 		}
 	}
-	
+	public void BackgroundImageJFrame(){ //usar para mudar background, colocar no final da criação
+	    setLocationRelativeTo(null);
+	    setDefaultCloseOperation(EXIT_ON_CLOSE);
+	    setVisible(true);
+	    getContentPane().setLayout(new BorderLayout());
+	    try {
+		    BufferedImage ibage = ImageIO.read(new File("Sprites\\thistorico animais.jpg"));		
+		    BufferedImage img = new BufferedImage(800,600,BufferedImage.TYPE_INT_RGB);
+		    img.getGraphics().drawImage(ibage,0,0,800,600,null);
+		    JLabel background =new JLabel(new ImageIcon(img));
+		    getContentPane().add(background);
+		    background.setLayout(new FlowLayout());
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		}
 	
 	
 }

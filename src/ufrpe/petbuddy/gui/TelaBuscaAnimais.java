@@ -3,6 +3,7 @@ package ufrpe.petbuddy.gui;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.EventQueue;
+import java.awt.FlowLayout;
 import java.awt.Toolkit;
 
 import javax.swing.JFrame;
@@ -12,7 +13,10 @@ import javax.swing.JLabel;
 
 import java.awt.Font;
 
+import javax.imageio.ImageIO;
+import javax.swing.BorderFactory;
 import javax.swing.ButtonGroup;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JRadioButton;
@@ -25,6 +29,9 @@ import ufrpe.petbuddy.facade.IFachada;
 import ufrpe.petbuddy.negocio.beans.*;
 
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.awt.event.ActionEvent;
 import java.util.ArrayList;
 
@@ -75,7 +82,6 @@ public class TelaBuscaAnimais extends JFrame implements ActionListener {
 		painel = new JPanel();
 		painel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		painel.setLayout(null);
-		painel.setBackground(new Color(255, 228, 181) );
 		setContentPane(painel);
 		this.grupo = new ButtonGroup();
 		
@@ -95,7 +101,7 @@ public class TelaBuscaAnimais extends JFrame implements ActionListener {
 		campoRaca.setColumns(10);
 		
 		this.radioButtonCachorro = new JRadioButton("Cachorro");
-		radioButtonCachorro.setBackground(new Color(255, 228, 181) );
+		radioButtonCachorro.setContentAreaFilled(false);
 		radioButtonCachorro.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		radioButtonCachorro.setBounds(39, 156, 109, 23);
 		radioButtonCachorro.addActionListener(this);
@@ -103,7 +109,7 @@ public class TelaBuscaAnimais extends JFrame implements ActionListener {
 		grupo.add(radioButtonCachorro);
 		
 		this.radioButtonGato = new JRadioButton("Gato");
-		radioButtonGato.setBackground(new Color(255, 228, 181) );
+		radioButtonGato.setContentAreaFilled(false);
 		radioButtonGato.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		radioButtonGato.setBounds(187, 156, 109, 23);
 		radioButtonGato.addActionListener(this);
@@ -111,7 +117,7 @@ public class TelaBuscaAnimais extends JFrame implements ActionListener {
 		grupo.add(radioButtonGato);
 		
 		this.radioButtonReptil = new JRadioButton("Reptil");
-		radioButtonReptil.setBackground(new Color(255, 228, 181) );
+		radioButtonReptil.setContentAreaFilled(false);
 		radioButtonReptil.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		radioButtonReptil.setBounds(483, 156, 109, 23);
 		radioButtonReptil.addActionListener(this);
@@ -119,7 +125,7 @@ public class TelaBuscaAnimais extends JFrame implements ActionListener {
 		grupo.add(radioButtonReptil);
 		
 		this.radioButtonRoedor = new JRadioButton("Roedor");
-		radioButtonRoedor.setBackground(new Color(255, 228, 181) );
+		radioButtonRoedor.setContentAreaFilled(false);
 		radioButtonRoedor.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		radioButtonRoedor.setBounds(631, 156, 109, 23);
 		radioButtonRoedor.addActionListener(this);
@@ -127,32 +133,42 @@ public class TelaBuscaAnimais extends JFrame implements ActionListener {
 		grupo.add(radioButtonRoedor);
 		
 		this.radioButtonAve = new JRadioButton("Ave");
-		radioButtonAve.setBackground(new Color(255, 228, 181) );
+		radioButtonAve.setContentAreaFilled(false);
 		radioButtonAve.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		radioButtonAve.setBounds(335, 156, 109, 23);
 		radioButtonAve.addActionListener(this);
 		painel.add(radioButtonAve);
 		grupo.add(radioButtonAve);
 		
-		this.botaoBusca = new JButton("Buscar");
-		botaoBusca.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		botaoBusca.setBounds(573, 324, 167, 60);
-		botaoBusca.setEnabled(false);
-		botaoBusca.addActionListener(this);
-		painel.add(botaoBusca);
-		
-		this.botaoVoltar = new JButton("Voltar");
-		botaoVoltar.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		botaoVoltar.setBounds(42, 479, 124, 52);
-		botaoVoltar.addActionListener(this);
-		painel.add(botaoVoltar);
-		
-		this.botaoBuscarTodos = new JButton("Buscar Todos");
-		botaoBuscarTodos.addActionListener(this);			
-		botaoBuscarTodos.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		botaoBuscarTodos.setEnabled(false);
-		botaoBuscarTodos.setBounds(573, 455, 167, 60);
-		painel.add(botaoBuscarTodos);
+		BufferedImage buttonIcon;
+		try {
+			buttonIcon = ImageIO.read(new File("Sprites\\buscar.gif"));
+			this.botaoBusca = new JButton(new ImageIcon(buttonIcon));
+			this.botaoBusca.setBounds(304, 404, 196, 46);
+			this.botaoBusca.setBorder(BorderFactory.createEmptyBorder());
+			this.botaoBusca.setContentAreaFilled(false);
+			botaoBusca.addActionListener(this);
+			painel.add(botaoBusca);
+			
+			BufferedImage buttonIcon2 = ImageIO.read(new File("Sprites\\voltar.gif"));
+			this.botaoVoltar = new JButton(new ImageIcon(buttonIcon2));
+			this.botaoVoltar.setBounds(70, 428, 167, 46);
+			this.botaoVoltar.setBorder(BorderFactory.createEmptyBorder());
+			this.botaoVoltar.setContentAreaFilled(false);
+			botaoVoltar.addActionListener(this);
+			painel.add(botaoVoltar);
+			
+			BufferedImage buttonIcon3 = ImageIO.read(new File("Sprites\\buscar todos.gif"));
+			this.botaoBuscarTodos = new JButton(new ImageIcon(buttonIcon3));
+			this.botaoBuscarTodos.setBounds(304, 404, 346, 47);
+			this.botaoBuscarTodos.setBorder(BorderFactory.createEmptyBorder());
+			this.botaoBuscarTodos.setContentAreaFilled(false);
+			botaoBuscarTodos.addActionListener(this);
+			painel.add(botaoBuscarTodos);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
 		
 		textoBuscarTodos = new JLabel("Buscar todos os animais da esp\u00E9cie selecionada:");
 		textoBuscarTodos.setFont(new Font("Tahoma", Font.PLAIN, 13));
@@ -163,7 +179,7 @@ public class TelaBuscaAnimais extends JFrame implements ActionListener {
 		textoBuscaPorEspcie.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		textoBuscaPorEspcie.setBounds(538, 299, 191, 14);
 		painel.add(textoBuscaPorEspcie);
-		
+		BackgroundImageJFrame();
 	}
 	
 	public void actionPerformed(ActionEvent evento){
@@ -271,6 +287,24 @@ public class TelaBuscaAnimais extends JFrame implements ActionListener {
 	
 			}
 	}
+	public void BackgroundImageJFrame(){ //usar para mudar background, colocar no final da criação
+	    setLocationRelativeTo(null);
+	    setDefaultCloseOperation(EXIT_ON_CLOSE);
+	    setVisible(true);
+	    getContentPane().setLayout(new BorderLayout());
+	    try {
+		    BufferedImage ibage = ImageIO.read(new File("Sprites\\tbusca animais.jpg"));		
+		    BufferedImage img = new BufferedImage(800,600,BufferedImage.TYPE_INT_RGB);
+		    img.getGraphics().drawImage(ibage,0,0,800,600,null);
+		    JLabel background =new JLabel(new ImageIcon(img));
+		    getContentPane().add(background);
+		    background.setLayout(new FlowLayout());
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		}
+	
+	
 	}
 			
 			

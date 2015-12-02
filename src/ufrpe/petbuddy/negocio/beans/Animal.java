@@ -35,6 +35,7 @@ public  class Animal implements Serializable {
 	private AnimalEspecie especie;
 	private String data;
 	private File foto;
+	private BufferedImage img;
 	//LIGAR O ANIMAL COM UM VETERINARIO NA HORA DE CRIA-LO
 	public Animal(String nome, String raca,String sexo, double peso, int idade, String saude, String temperamento, 
 			Veterinario veterinario, AnimalEspecie especie, File foto) throws DadosException{
@@ -68,17 +69,10 @@ public  class Animal implements Serializable {
 		
 		
 	}
-	
-	public ImageIcon getFoto(){ //quando for chamar foto de animal: label.setIcon(getFoto());
-	    BufferedImage img = new BufferedImage(207,174,BufferedImage.TYPE_INT_RGB);
-		try {
-		    BufferedImage ibage = ImageIO.read(this.foto);
-		    img.getGraphics().drawImage(ibage,0,0,207,174,null);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		return new ImageIcon(img);
+	public File getImaji(){
+		return this.foto;
 	}
+	
 	
 	public void setRaca(String raca)  throws DadosException {
 		if(raca != ""){

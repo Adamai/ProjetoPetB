@@ -3,6 +3,7 @@ package ufrpe.petbuddy.gui;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.EventQueue;
+import java.awt.FlowLayout;
 import java.awt.Toolkit;
 
 import javax.swing.JFrame;
@@ -11,9 +12,15 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+import javax.imageio.ImageIO;
+import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.awt.event.ActionEvent;
 
 import javax.swing.JPasswordField;
@@ -64,7 +71,6 @@ public class TelaLogin extends JFrame implements ActionListener {
 		painel = new JPanel();
 		painel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		painel.setLayout(null);
-		painel.setBackground(new Color(255, 228, 181) );
 		setContentPane(painel);
 		
 		JLabel textoLogins = new JLabel("Usu\u00E1rio\r\n");
@@ -86,22 +92,36 @@ public class TelaLogin extends JFrame implements ActionListener {
 		campoSenha.setBounds(133, 227, 321, 20);
 		painel.add(campoSenha);
 		
-		this.botaoEfetuarLogin = new JButton("Entrar");
-		botaoEfetuarLogin.addActionListener(this);
-		botaoEfetuarLogin.setBounds(540, 341, 125, 46);
-		painel.add(botaoEfetuarLogin);
+		BufferedImage buttonIcon;
+		try {
+			buttonIcon = ImageIO.read(new File("Sprites\\entrar.gif"));
+			this.botaoEfetuarLogin = new JButton(new ImageIcon(buttonIcon));
+			this.botaoEfetuarLogin.setBounds(540, 341, 172, 46);
+			this.botaoEfetuarLogin.setBorder(BorderFactory.createEmptyBorder());
+			this.botaoEfetuarLogin.setContentAreaFilled(false);
+			botaoEfetuarLogin.addActionListener(this);
+			painel.add(botaoEfetuarLogin);
+			
+			BufferedImage buttonIcon2 = ImageIO.read(new File("Sprites\\voltar.gif"));
+			this.botaoVoltar = new JButton(new ImageIcon(buttonIcon2));
+			this.botaoVoltar.setBounds(70, 428, 167, 46);
+			this.botaoVoltar.setBorder(BorderFactory.createEmptyBorder());
+			this.botaoVoltar.setContentAreaFilled(false);
+			botaoVoltar.addActionListener(this);
+			painel.add(botaoVoltar);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+		
 		
 		JLabel textoEntrar = new JLabel("Login");
 		textoEntrar.setFont(new Font("Tahoma", Font.PLAIN, 27));
 		textoEntrar.setBounds(154, 43, 149, 38);
 		painel.add(textoEntrar);
 		
-		this.botaoVoltar = new JButton("Voltar");
-		botaoVoltar.setBounds(70, 428, 89, 23);
-		botaoVoltar.addActionListener(this);
-		painel.add(botaoVoltar);
-		
-	
+
+	BackgroundImageJFrame();
 	}
 	
 	public void actionPerformed(ActionEvent evento){
@@ -129,5 +149,21 @@ public class TelaLogin extends JFrame implements ActionListener {
 			tela.setVisible(true);
 		}
 	}
+	public void BackgroundImageJFrame(){ //usar para mudar background, colocar no final da criação
+	    setLocationRelativeTo(null);
+	    setDefaultCloseOperation(EXIT_ON_CLOSE);
+	    setVisible(true);
+	    getContentPane().setLayout(new BorderLayout());
+	    try {
+		    BufferedImage ibage = ImageIO.read(new File("Sprites\\tlogin.jpg"));		
+		    BufferedImage img = new BufferedImage(800,600,BufferedImage.TYPE_INT_RGB);
+		    img.getGraphics().drawImage(ibage,0,0,800,600,null);
+		    JLabel background =new JLabel(new ImageIcon(img));
+		    getContentPane().add(background);
+		    background.setLayout(new FlowLayout());
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		}
 	
 }

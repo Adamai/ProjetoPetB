@@ -3,6 +3,7 @@ package ufrpe.petbuddy.gui;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.EventQueue;
+import java.awt.FlowLayout;
 import java.awt.Toolkit;
 
 import javax.swing.JFrame;
@@ -24,6 +25,7 @@ import javax.swing.JComboBox;
 import javax.swing.JEditorPane;
 import javax.swing.JFileChooser;
 import javax.imageio.ImageIO;
+import javax.swing.BorderFactory;
 import javax.swing.ButtonGroup;
 import javax.swing.Icon;
 
@@ -99,7 +101,6 @@ public class TelaCadastroAnimal extends JFrame implements ActionListener{
 		painel = new JPanel();
 		painel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		painel.setLayout(null);
-		painel.setBackground(new Color(255, 228, 181) );
 		setContentPane(painel);
 		
 		this.grupo1 = new ButtonGroup();
@@ -137,14 +138,14 @@ public class TelaCadastroAnimal extends JFrame implements ActionListener{
 		painel.add(textoTemperamento);
 		
 		this.radioButtonCalmo = new JRadioButton("Calmo");
-		radioButtonCalmo.setBackground(new Color(255, 228, 181) );
+		radioButtonCalmo.setContentAreaFilled(false);
 		radioButtonCalmo.setBounds(546, 147, 109, 23);
 		radioButtonCalmo.addActionListener(this);
 		painel.add(radioButtonCalmo);
 		grupo1.add(radioButtonCalmo);
 		
 		this.radioButtonAgitado = new JRadioButton("Agitado");
-		radioButtonAgitado.setBackground(new Color(255, 228, 181) );
+		radioButtonAgitado.setContentAreaFilled(false);
 		radioButtonAgitado.setBounds(448, 147, 95, 23);
 		radioButtonAgitado.addActionListener(this);
 		painel.add(radioButtonAgitado);
@@ -155,14 +156,14 @@ public class TelaCadastroAnimal extends JFrame implements ActionListener{
 		painel.add(textoSexo);
 		
 		this.radioButtonMacho = new JRadioButton("Macho");
-		radioButtonMacho.setBackground(new Color(255, 228, 181) );
+		radioButtonMacho.setContentAreaFilled(false);
 		radioButtonMacho.setBounds(459, 86, 67, 23);
 		radioButtonMacho.addActionListener(this);
 		painel.add(radioButtonMacho);
 		grupo2.add(radioButtonMacho);
 		
 		this.radioButtonFemea = new JRadioButton("F\u00EAmea");
-		radioButtonFemea.setBackground(new Color(255, 228, 181) );
+		radioButtonFemea.setContentAreaFilled(false);
 		radioButtonFemea.setBounds(546, 86, 72, 23);
 		radioButtonFemea.addActionListener(this);
 		painel.add(radioButtonFemea);
@@ -177,35 +178,35 @@ public class TelaCadastroAnimal extends JFrame implements ActionListener{
 		painel.add(textoEspecie);
 		
 		this.radioButtonCachorro = new JRadioButton("Cachorro");
-		radioButtonCachorro.setBackground(new Color(255, 228, 181) );
+		radioButtonCachorro.setContentAreaFilled(false);
 		radioButtonCachorro.setBounds(378, 235, 109, 23);
 		radioButtonCachorro.addActionListener(this);
 		painel.add(radioButtonCachorro);
 		grupo3.add(radioButtonCachorro);
 		
 		this.radioButtonGato = new JRadioButton("Gato");
-		radioButtonGato.setBackground(new Color(255, 228, 181) );
+		radioButtonGato.setContentAreaFilled(false);
 		radioButtonGato.setBounds(378, 280, 109, 23);
 		radioButtonGato.addActionListener(this);
 		painel.add(radioButtonGato);
 		grupo3.add(radioButtonGato);
 		
 		this.radioButtonAve = new JRadioButton("Ave");
-		radioButtonAve.setBackground(new Color(255, 228, 181) );
+		radioButtonAve.setContentAreaFilled(false);
 		radioButtonAve.setBounds(378, 321, 109, 23);
 		radioButtonAve.addActionListener(this);
 		painel.add(radioButtonAve);
 		grupo3.add(radioButtonAve);
 		
 		this.radioButtonRoedor = new JRadioButton("Roedor");
-		radioButtonRoedor.setBackground(new Color(255, 228, 181) );
+		radioButtonRoedor.setContentAreaFilled(false);
 		radioButtonRoedor.setBounds(528, 280, 72, 23);
 		radioButtonRoedor.addActionListener(this);
 		painel.add(radioButtonRoedor);
 		grupo3.add(radioButtonRoedor);
 		
 		this.radioButtonReptil = new JRadioButton("R\u00E9ptil");
-		radioButtonReptil.setBackground(new Color(255, 228, 181) );
+		radioButtonReptil.setContentAreaFilled(false);
 		radioButtonReptil.setBounds(528, 235, 57, 23);
 		radioButtonReptil.addActionListener(this);
 		painel.add(radioButtonReptil);
@@ -242,18 +243,25 @@ public class TelaCadastroAnimal extends JFrame implements ActionListener{
 		editorSaude.setBounds(401, 375, 207, 67);
 		painel.add(editorSaude);
 		
-		this.botaoCadastrar = new JButton("Cadastrar");
-		botaoCadastrar.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		botaoCadastrar.setBounds(514, 477, 200, 50);
-		botaoCadastrar.addActionListener(this);
-		painel.add(botaoCadastrar);
-		
-		
-		this.botaoVoltar = new JButton("Voltar");
-		botaoVoltar.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		botaoVoltar.setBounds(355, 477, 127, 50);
-		botaoVoltar.addActionListener(this);
-		painel.add(botaoVoltar);
+		try {
+			BufferedImage buttonIcon = ImageIO.read(new File("Sprites\\Cadastrar.gif"));
+			this.botaoCadastrar = new JButton(new ImageIcon(buttonIcon));
+			this.botaoCadastrar.setBounds(304, 404, 255, 46);
+			this.botaoCadastrar.setBorder(BorderFactory.createEmptyBorder());
+			this.botaoCadastrar.setContentAreaFilled(false);
+			botaoCadastrar.addActionListener(this);
+			painel.add(botaoCadastrar);
+			
+			BufferedImage buttonIcon2 = ImageIO.read(new File("Sprites\\voltar.gif"));
+			this.botaoVoltar = new JButton(new ImageIcon(buttonIcon2));
+			this.botaoVoltar.setBounds(70, 428, 167, 46);
+			this.botaoVoltar.setBorder(BorderFactory.createEmptyBorder());
+			this.botaoVoltar.setContentAreaFilled(false);
+			botaoVoltar.addActionListener(this);
+			painel.add(botaoVoltar);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 		
 		this.btnEnviarFoto = new JButton("Enviar Foto");
 		btnEnviarFoto.setBounds(147, 232, 117, 23);
@@ -264,7 +272,7 @@ public class TelaCadastroAnimal extends JFrame implements ActionListener{
 		label.setIcon(new ImageIcon(image.getPath()));
 		label.setBounds(31, 47, 207, 174);
 		painel.add(label);
-		
+		BackgroundImageJFrame();
 		
 	}
 	
@@ -315,12 +323,6 @@ public class TelaCadastroAnimal extends JFrame implements ActionListener{
 				Veterinario v = fachada.buscaVetID(vet);
 				Animal a = new Animal(nome,raca,sexo,peso,idade,saude,temperamento,v, especie, image);
 				fachada.cadastrarAnimal(a);
-				
-				JOptionPane.showMessageDialog(null, a.getSexo());
-				JOptionPane.showMessageDialog(null, a.getSaude());
-				if(especie != null){
-					JOptionPane.showMessageDialog(null, "FUNCIONOU LAGARTO GOD");
-				}
 				JOptionPane.showMessageDialog(null, "Cadastro Realizado com Sucesso");
 				dispose();
 				TelaAdm tela = new TelaAdm(fachada,usuario);
@@ -366,6 +368,22 @@ public class TelaCadastroAnimal extends JFrame implements ActionListener{
 	private void setImage(File x){
 		this.image = x;
 	}
+	public void BackgroundImageJFrame(){ //usar para mudar background, colocar no final da criação
+	    setLocationRelativeTo(null);
+	    setDefaultCloseOperation(EXIT_ON_CLOSE);
+	    setVisible(true);
+	    getContentPane().setLayout(new BorderLayout());
+	    try {
+		    BufferedImage ibage = ImageIO.read(new File("Sprites\\tcadastro animal.jpg"));		
+		    BufferedImage img = new BufferedImage(800,600,BufferedImage.TYPE_INT_RGB);
+		    img.getGraphics().drawImage(ibage,0,0,800,600,null);
+		    JLabel background =new JLabel(new ImageIcon(img));
+		    getContentPane().add(background);
+		    background.setLayout(new FlowLayout());
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		}
 	
 	
 }

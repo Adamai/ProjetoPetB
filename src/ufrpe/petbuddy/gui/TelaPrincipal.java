@@ -126,8 +126,7 @@ public class TelaPrincipal extends JFrame implements ActionListener{
 		}
 	}
 	
-	public void BackgroundImageJFrame() //usar para mudar background, colocar no final da criação
-    {
+	public void BackgroundImageJFrame(){ //usar para mudar background, colocar no final da criação
     setLocationRelativeTo(null);
     setDefaultCloseOperation(EXIT_ON_CLOSE);
     setVisible(true);

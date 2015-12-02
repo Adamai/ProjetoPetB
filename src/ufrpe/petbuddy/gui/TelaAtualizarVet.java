@@ -3,12 +3,19 @@ package ufrpe.petbuddy.gui;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.EventQueue;
+import java.awt.FlowLayout;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 
+import javax.imageio.ImageIO;
+import javax.swing.BorderFactory;
 import javax.swing.DefaultListModel;
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
@@ -74,7 +81,6 @@ public class TelaAtualizarVet extends JFrame implements ActionListener, ListSele
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(null);
-		contentPane.setBackground(new Color(255, 228, 181) );
 		setContentPane(contentPane);
 		
 	
@@ -113,11 +119,6 @@ public class TelaAtualizarVet extends JFrame implements ActionListener, ListSele
 	campoIdade.setEnabled(false);
 	contentPane.add(campoIdade);
 	
-	this.botaoAtualizar = new JButton("Atualizar");
-	botaoAtualizar.setBounds(545, 342, 164, 47);
-	botaoAtualizar.addActionListener(this);
-	contentPane.add(botaoAtualizar);
-	
 	JLabel textoNome = new JLabel("Nome");
 	textoNome.setBounds(446, 89, 53, 16);
 	contentPane.add(textoNome);
@@ -135,15 +136,34 @@ public class TelaAtualizarVet extends JFrame implements ActionListener, ListSele
 	textoVeterinarios.setBounds(27, 29, 164, 35);
 	contentPane.add(textoVeterinarios);
 	
-	this.botaoVoltar = new JButton("Voltar");
-	botaoVoltar.setBounds(294, 487, 89, 35);
-	botaoVoltar.addActionListener(this);
-	contentPane.add(botaoVoltar);
-	
-	this.botaoRemover = new JButton("Remover");
-	botaoRemover.setBounds(545, 475, 164, 47);
-	botaoRemover.addActionListener(this);
-	contentPane.add(botaoRemover);
+	BufferedImage buttonIcon;
+	try {
+		buttonIcon = ImageIO.read(new File("Sprites\\atualizar.gif"));
+		this.botaoAtualizar = new JButton(new ImageIcon(buttonIcon));
+		this.botaoAtualizar.setBounds(304, 404, 247, 46);
+		this.botaoAtualizar.setBorder(BorderFactory.createEmptyBorder());
+		this.botaoAtualizar.setContentAreaFilled(false);
+		botaoAtualizar.addActionListener(this);
+		contentPane.add(botaoAtualizar);
+		
+		BufferedImage buttonIcon2 = ImageIO.read(new File("Sprites\\voltar.gif"));
+		this.botaoVoltar = new JButton(new ImageIcon(buttonIcon2));
+		this.botaoVoltar.setBounds(70, 428, 167, 46);
+		this.botaoVoltar.setBorder(BorderFactory.createEmptyBorder());
+		this.botaoVoltar.setContentAreaFilled(false);
+		botaoVoltar.addActionListener(this);
+		contentPane.add(botaoVoltar);
+		
+		BufferedImage buttonIcon3 = ImageIO.read(new File("Sprites\\remover.gif"));
+		this.botaoRemover = new JButton(new ImageIcon(buttonIcon3));
+		this.botaoRemover.setBounds(304, 404, 196, 46);
+		this.botaoRemover.setBorder(BorderFactory.createEmptyBorder());
+		this.botaoRemover.setContentAreaFilled(false);
+		botaoRemover.addActionListener(this);
+		contentPane.add(botaoRemover);
+	} catch (IOException e) {
+		e.printStackTrace();
+	}
 	
 }
 
@@ -198,5 +218,24 @@ public void actionPerformed(ActionEvent evento){
 	}
 	
 }
+public void BackgroundImageJFrame(){ //usar para mudar background, colocar no final da criação
+    setLocationRelativeTo(null);
+    setDefaultCloseOperation(EXIT_ON_CLOSE);
+    setVisible(true);
+    getContentPane().setLayout(new BorderLayout());
+    try {
+	    BufferedImage ibage = ImageIO.read(new File("Sprites\\atualizarvet.jpg"));		
+	    BufferedImage img = new BufferedImage(800,600,BufferedImage.TYPE_INT_RGB);
+	    img.getGraphics().drawImage(ibage,0,0,800,600,null);
+	    JLabel background =new JLabel(new ImageIcon(img));
+	    getContentPane().add(background);
+	    background.setLayout(new FlowLayout());
+	} catch (IOException e) {
+		e.printStackTrace();
+	}
+	}
+
+
+
 }
 
