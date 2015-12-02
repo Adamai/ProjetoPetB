@@ -146,7 +146,7 @@ public class TelaCadastroUsuario extends JFrame implements ActionListener{
 		try {
 			BufferedImage buttonIcon = ImageIO.read(new File("Sprites\\Cadastrar.gif"));
 			this.botaoCadastrar = new JButton(new ImageIcon(buttonIcon));
-			this.botaoCadastrar.setBounds(304, 404, 255, 46);
+			this.botaoCadastrar.setBounds(491, 388, 255, 46);
 			this.botaoCadastrar.setBorder(BorderFactory.createEmptyBorder());
 			this.botaoCadastrar.setContentAreaFilled(false);
 			botaoCadastrar.addActionListener(this);
@@ -154,7 +154,7 @@ public class TelaCadastroUsuario extends JFrame implements ActionListener{
 			
 			BufferedImage buttonIcon2 = ImageIO.read(new File("Sprites\\voltar.gif"));
 			this.botaoVoltar = new JButton(new ImageIcon(buttonIcon2));
-			this.botaoVoltar.setBounds(70, 428, 167, 46);
+			this.botaoVoltar.setBounds(543, 463, 167, 46);
 			this.botaoVoltar.setBorder(BorderFactory.createEmptyBorder());
 			this.botaoVoltar.setContentAreaFilled(false);
 			botaoVoltar.addActionListener(this);

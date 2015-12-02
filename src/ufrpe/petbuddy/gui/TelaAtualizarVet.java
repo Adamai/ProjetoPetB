@@ -140,7 +140,7 @@ public class TelaAtualizarVet extends JFrame implements ActionListener, ListSele
 	try {
 		buttonIcon = ImageIO.read(new File("Sprites\\atualizar.gif"));
 		this.botaoAtualizar = new JButton(new ImageIcon(buttonIcon));
-		this.botaoAtualizar.setBounds(304, 404, 247, 46);
+		this.botaoAtualizar.setBounds(294, 354, 247, 46);
 		this.botaoAtualizar.setBorder(BorderFactory.createEmptyBorder());
 		this.botaoAtualizar.setContentAreaFilled(false);
 		botaoAtualizar.addActionListener(this);
@@ -148,7 +148,7 @@ public class TelaAtualizarVet extends JFrame implements ActionListener, ListSele
 		
 		BufferedImage buttonIcon2 = ImageIO.read(new File("Sprites\\voltar.gif"));
 		this.botaoVoltar = new JButton(new ImageIcon(buttonIcon2));
-		this.botaoVoltar.setBounds(70, 428, 167, 46);
+		this.botaoVoltar.setBounds(27, 515, 167, 46);
 		this.botaoVoltar.setBorder(BorderFactory.createEmptyBorder());
 		this.botaoVoltar.setContentAreaFilled(false);
 		botaoVoltar.addActionListener(this);
@@ -156,7 +156,7 @@ public class TelaAtualizarVet extends JFrame implements ActionListener, ListSele
 		
 		BufferedImage buttonIcon3 = ImageIO.read(new File("Sprites\\remover.gif"));
 		this.botaoRemover = new JButton(new ImageIcon(buttonIcon3));
-		this.botaoRemover.setBounds(304, 404, 196, 46);
+		this.botaoRemover.setBounds(294, 447, 196, 46);
 		this.botaoRemover.setBorder(BorderFactory.createEmptyBorder());
 		this.botaoRemover.setContentAreaFilled(false);
 		botaoRemover.addActionListener(this);
@@ -165,6 +165,7 @@ public class TelaAtualizarVet extends JFrame implements ActionListener, ListSele
 		e.printStackTrace();
 	}
 	
+	BackgroundImageJFrame();
 }
 
 public void valueChanged(ListSelectionEvent evento){

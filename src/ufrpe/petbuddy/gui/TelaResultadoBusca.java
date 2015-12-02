@@ -133,7 +133,7 @@ public class TelaResultadoBusca extends JFrame implements ActionListener,ListSel
 		try {
 			buttonIcon2 = ImageIO.read(new File("Sprites\\voltar.gif"));
 			this.botaoVoltar = new JButton(new ImageIcon(buttonIcon2));
-			this.botaoVoltar.setBounds(70, 428, 167, 46);
+			this.botaoVoltar.setBounds(286, 456, 167, 46);
 			this.botaoVoltar.setBorder(BorderFactory.createEmptyBorder());
 			this.botaoVoltar.setContentAreaFilled(false);
 			botaoVoltar.addActionListener(this);
@@ -152,13 +152,13 @@ public class TelaResultadoBusca extends JFrame implements ActionListener,ListSel
 		this.label.setBounds(261, 89, 207, 174);
 		contentPane.add(label);
 		
-		botaoAdotar.setBounds(493, 446, 141, 56);
+		botaoAdotar.setBounds(524, 446, 141, 56);
 		botaoAdotar.addActionListener(this);
 		botaoAdotar.setEnabled(false);
 		contentPane.add(botaoAdotar);
 		
 
-		BackgroundImageJFrame();
+		//BackgroundImageJFrame();
 	}
 
 	//WRYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY

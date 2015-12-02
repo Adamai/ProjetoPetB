@@ -82,7 +82,7 @@ public class TelaListaVeterinarios extends JFrame implements ActionListener{
 		try {
 			buttonIcon2 = ImageIO.read(new File("Sprites\\voltar.gif"));
 			this.botaoVoltar = new JButton(new ImageIcon(buttonIcon2));
-			this.botaoVoltar.setBounds(70, 428, 167, 46);
+			this.botaoVoltar.setBounds(60, 481, 167, 46);
 			this.botaoVoltar.setBorder(BorderFactory.createEmptyBorder());
 			this.botaoVoltar.setContentAreaFilled(false);
 			botaoVoltar.addActionListener(this);

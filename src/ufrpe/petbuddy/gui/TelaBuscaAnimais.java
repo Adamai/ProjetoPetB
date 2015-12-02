@@ -144,7 +144,7 @@ public class TelaBuscaAnimais extends JFrame implements ActionListener {
 		try {
 			buttonIcon = ImageIO.read(new File("Sprites\\buscar.gif"));
 			this.botaoBusca = new JButton(new ImageIcon(buttonIcon));
-			this.botaoBusca.setBounds(304, 404, 196, 46);
+			this.botaoBusca.setBounds(544, 390, 196, 46);
 			this.botaoBusca.setBorder(BorderFactory.createEmptyBorder());
 			this.botaoBusca.setContentAreaFilled(false);
 			botaoBusca.addActionListener(this);
@@ -160,7 +160,7 @@ public class TelaBuscaAnimais extends JFrame implements ActionListener {
 			
 			BufferedImage buttonIcon3 = ImageIO.read(new File("Sprites\\buscar todos.gif"));
 			this.botaoBuscarTodos = new JButton(new ImageIcon(buttonIcon3));
-			this.botaoBuscarTodos.setBounds(304, 404, 346, 47);
+			this.botaoBuscarTodos.setBounds(438, 467, 346, 47);
 			this.botaoBuscarTodos.setBorder(BorderFactory.createEmptyBorder());
 			this.botaoBuscarTodos.setContentAreaFilled(false);
 			botaoBuscarTodos.addActionListener(this);
@@ -172,12 +172,12 @@ public class TelaBuscaAnimais extends JFrame implements ActionListener {
 		
 		textoBuscarTodos = new JLabel("Buscar todos os animais da esp\u00E9cie selecionada:");
 		textoBuscarTodos.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		textoBuscarTodos.setBounds(455, 435, 285, 14);
+		textoBuscarTodos.setBounds(221, 442, 285, 14);
 		painel.add(textoBuscarTodos);
 		
 		textoBuscaPorEspcie = new JLabel("Busca por esp\u00E9cie e ra\u00E7a:");
 		textoBuscaPorEspcie.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		textoBuscaPorEspcie.setBounds(538, 299, 191, 14);
+		textoBuscaPorEspcie.setBounds(357, 365, 191, 14);
 		painel.add(textoBuscaPorEspcie);
 		BackgroundImageJFrame();
 	}

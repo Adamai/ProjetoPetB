@@ -77,7 +77,7 @@ public class TelaLogado extends JFrame implements ActionListener{
 		try {
 			buttonIcon = ImageIO.read(new File("Sprites\\buscar animais.gif"));
 			this.botaoBusca = new JButton(new ImageIcon(buttonIcon));
-			this.botaoBusca.setBounds(304, 215, 383, 47);
+			this.botaoBusca.setBounds(176, 215, 383, 47);
 			this.botaoBusca.setBorder(BorderFactory.createEmptyBorder());
 			this.botaoBusca.setContentAreaFilled(false);
 			botaoBusca.addActionListener(this);
@@ -85,7 +85,7 @@ public class TelaLogado extends JFrame implements ActionListener{
 			
 			BufferedImage buttonIcon2 = ImageIO.read(new File("Sprites\\Sair.gif"));
 			this.botaoSair = new JButton(new ImageIcon(buttonIcon2));
-			this.botaoSair.setBounds(304, 404, 103, 46);
+			this.botaoSair.setBounds(326, 404, 103, 46);
 			this.botaoSair.setBorder(BorderFactory.createEmptyBorder());
 			this.botaoSair.setContentAreaFilled(false);
 			botaoSair.addActionListener(this);
@@ -96,13 +96,14 @@ public class TelaLogado extends JFrame implements ActionListener{
 
 		
 		if(usuario != null){
-		JLabel label = new JLabel("Bem vindo " + usuario.getNome());
-		label.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		label.setBounds(104, 11, 592, 65);
-		painel.add(label);
+			JLabel label = new JLabel("Bem vindo " + usuario.getNome());
+			label.setFont(new Font("Tahoma", Font.PLAIN, 18));
+			label.setBounds(104, 11, 592, 65);
+			painel.add(label);
+		}
 	
-	}
-		BackgroundImageJFrame();}
+		BackgroundImageJFrame();
+		}
 	
 	public void actionPerformed(ActionEvent evento){
 		if(evento.getSource().equals(botaoBusca)){

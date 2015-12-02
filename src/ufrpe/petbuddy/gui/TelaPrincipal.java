@@ -83,7 +83,7 @@ public class TelaPrincipal extends JFrame implements ActionListener{
 			this.botaoCadastro.setBorder(BorderFactory.createEmptyBorder());
 			this.botaoCadastro.setContentAreaFilled(false);
 			botaoCadastro.addActionListener(this);
-			painel.add(botaoCadastro);
+			painel.add(botaoCadastro, BorderLayout.WEST);
 			
 			
 			BufferedImage buttonIcon = ImageIO.read(new File("Sprites\\Login.gif"));

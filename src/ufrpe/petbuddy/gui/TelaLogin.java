@@ -96,11 +96,11 @@ public class TelaLogin extends JFrame implements ActionListener {
 		try {
 			buttonIcon = ImageIO.read(new File("Sprites\\entrar.gif"));
 			this.botaoEfetuarLogin = new JButton(new ImageIcon(buttonIcon));
-			this.botaoEfetuarLogin.setBounds(540, 341, 172, 46);
+			this.botaoEfetuarLogin.setBounds(531, 428, 172, 46);
 			this.botaoEfetuarLogin.setBorder(BorderFactory.createEmptyBorder());
 			this.botaoEfetuarLogin.setContentAreaFilled(false);
 			botaoEfetuarLogin.addActionListener(this);
-			painel.add(botaoEfetuarLogin);
+			painel.add(botaoEfetuarLogin, BorderLayout.SOUTH);
 			
 			BufferedImage buttonIcon2 = ImageIO.read(new File("Sprites\\voltar.gif"));
 			this.botaoVoltar = new JButton(new ImageIcon(buttonIcon2));
@@ -108,7 +108,7 @@ public class TelaLogin extends JFrame implements ActionListener {
 			this.botaoVoltar.setBorder(BorderFactory.createEmptyBorder());
 			this.botaoVoltar.setContentAreaFilled(false);
 			botaoVoltar.addActionListener(this);
-			painel.add(botaoVoltar);
+			painel.add(botaoVoltar, BorderLayout.SOUTH);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
