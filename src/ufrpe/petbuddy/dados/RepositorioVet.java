@@ -90,7 +90,9 @@ public class RepositorioVet implements IRepositorioVet, Serializable {
 			if(this.veterinarios.get(i).getNumid() == v.getNumid()){
 				this.removerVeterinario(this.veterinarios.get(i));
 				this.cadastrar(v);
+				overwriteRepo(this.veterinarios);
 				break;
+				
 						}
 				}
 		}

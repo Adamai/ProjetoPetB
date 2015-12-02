@@ -193,6 +193,8 @@ public void actionPerformed(ActionEvent evento){
 			v.setNome(nome);
 			int idade = Integer.parseInt(campoIdade.getText());
 			v.setIdade(idade);
+			long contato = Long.parseLong(campoContato.getText());
+			v.setContato(contato);
 			fachada.atualizarVeterinario(v);
 			JOptionPane.showMessageDialog(null, "Veterinário Atualizado com Sucesso");
 			dispose();
